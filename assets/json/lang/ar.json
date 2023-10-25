@@ -1,0 +1,27 @@
+{
+    "titles": {
+        "happendToday": "حدث اليوم",
+        "urgent": "عاجل",
+        "lastNews": "اخر الأخبار",
+        "prayerTime": "مواقيت الصلاة",
+        "newest": "اخر الأخبار",
+        "most_readed": "الأكثر قراءة",
+        "sport": "رياضة",
+        "relatedNews": "اخبار ذات صلة",
+        "register": "تسجيل جديد",
+        "email-verify": "فضلا ادخال الرقم المرسل علي بريدك الالكتروني",
+        "resourcesType": "المصادر",
+        "countries": "اختر الدول",
+        "categories": "اختر الأقسام",
+        "resources": "اختر المصادر"
+    },
+    "searchBar": {
+        "placeholder": "ابحث عن الخبر"
+    },
+    "buttons": {
+        "cancel": "إلغاء",
+        "showMore": "عرض المزيد",
+        "login": "تسجيل دخول"
+    },
+    "showAll": "رؤية الكل ◄"
+}

@@ -1,0 +1,25 @@
+input,
+select {
+    &.sard-input {
+        border: 1px solid $main-color;
+        height: 3rem;
+        width: 100%;
+        padding: .25rem 1rem;
+        min-width: 3em;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.sard-input-error {
+    color: $main-color;
+}
+
+.email-verify {
+    &-form {
+        .sard-input {
+            min-width: 3rem;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    background-color: $white;
+    color: $black;
+    padding: 4rem 1rem 3.35rem 6.25rem;
+    background-image: url("../../public/assets/images/quote.png");
+    background-repeat: no-repeat;
+    background-position: 1.5rem 4.375rem;
+    background-size: 3.3rem;
+    border-radius: 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 10px 40px 50px 0 rgba(229, 233, 246, 0.4);
+    margin-inline-end: 30px;
+    margin-bottom: 90px;
+    // margin: 5rem 0 8rem;
+}
+
+.text {
+    font-size: 1.6rem;
+    line-height: 1.58;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    &Avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+
+    &Data {
+        font-size: 1.6rem;
+    }
+
+    &Title {
+        color: #848484;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "titles": {
+        "happendToday": "Happend Today",
+        "urgent": "urgent",
+        "lastNews": "last news",
+        "prayerTime": "Prayer Time",
+        "newest": "Latest News",
+        "most_readed": "Most Readed",
+        "sport": "Sport",
+        "relatedNews": "Related News",
+        "register": "Sign Up",
+        "email-verify": "Please enter the pin sent to your email",
+        "resourcesType": "Resources",
+        "countries": "Select Countries",
+        "categories": "Select Categories",
+        "resources": "Select Resources"
+    },
+    "searchBar": {
+        "placeholder": "Search News"
+    },
+    "buttons": {
+        "cancel": "cancel",
+        "showMore": "Show More",
+        "login": "login"
+    },
+    "showAll": "Show All ►"
+}

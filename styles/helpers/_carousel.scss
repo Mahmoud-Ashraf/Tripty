@@ -1,0 +1,25 @@
+.home-slider {
+
+    .carousel-item {
+        border-radius: 18px;
+        max-height: 600px;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, #62588d, rgba(98, 88, 141, 0.28));
+        }
+
+    }
+
+    .carousel-indicators button {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+    }
+}

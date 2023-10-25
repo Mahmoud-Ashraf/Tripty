@@ -1,0 +1,31 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 1rem;
+    background-color: $white;
+    box-shadow: 10px 40px 50px 0 rgba(229, 233, 246, 0.4);
+    color: $main-color;
+    justify-content: center;
+    padding: 2rem;
+    align-items: center;
+    // width: 20rem;
+    // height: 20rem;
+}
+
+.iconContainer {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    background-color: rgba($gray-300, .26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+}
