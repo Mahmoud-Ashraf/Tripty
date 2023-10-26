@@ -1,3 +1,5 @@
+import { Url } from 'next/dist/shared/lib/router/router';
+import { Category } from './category';
 export interface Place {
     id: number,
     name: string,
@@ -13,5 +15,6 @@ export interface Place {
     long?: string,
     logo?: string | null,
     featured_image?: string,
-    gallery?: string[]
+    gallery: string[],
+    category: Category
 }

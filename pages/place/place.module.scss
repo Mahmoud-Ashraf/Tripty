@@ -1,0 +1,109 @@
+@import '@/styles/Utils/variables';
+
+.details {
+    padding: 6rem 3rem 4rem 6.5rem;
+    background-color: #FFF;
+    border-radius: .25rem;
+    box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.04);
+    margin: 3.5rem 0 5rem;
+}
+
+.specs {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    color: $place-specs-color;
+
+    i {
+        color: $place-specs-icon-color;
+    }
+}
+
+.rate {
+    i {
+        color: $rate-star-color;
+    }
+}
+
+.gallery {
+    margin: 4rem 0;
+
+    .img {
+        width: 100%;
+        height: 100%;
+        max-height: 8rem;
+
+        img,
+        .galleryShowAll {
+            width: 100%;
+            height: 100%;
+        }
+
+        .galleryShowAll {
+            background-color: $main-color;
+            border-radius: .25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            font-size: 1.7rem;
+        }
+    }
+
+}
+
+.about {
+    h3 {
+        font-size: 2rem;
+        color: $place-heading-color;
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        color: $place-specs-icon-color;
+        font-size: 1.3rem;
+        line-height: 1.5;
+    }
+}
+
+.menu {
+    margin-top: 3rem;
+    h5 {
+        color: $place-heading-color;
+        font-size: 1.3rem;
+        letter-spacing: 1.3px;
+        font-weight: 500;
+        margin-bottom: .8rem;
+    }
+
+    a {
+        color: $main-color;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}
+
+.cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: flex-end;
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+    }
+    .bookNow {
+        background-color: $main-color;
+        color: $white;
+        padding: 1rem 9rem;
+        font-weight: 500;
+        border-radius: .5rem;
+        margin: 2rem 0;
+        border: none;
+
+    }
+}

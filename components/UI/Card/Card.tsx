@@ -13,7 +13,7 @@ const Card = ({ place }: { place: any }) => {
                 <div className={classes.specs}>
                     <div className={classes.details}>
                         <span className={classes.rate}><i className="fa-solid fa-star"></i> {place.rating}</span>
-                        <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> Italian</span>
+                        {place.category.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place.category.name}</span> : ''}
                         <span className={classes.price}>{place.min_price} SAR - {place.max_price} SAR</span>
                     </div>
                     <div className={classes.recomended}>
