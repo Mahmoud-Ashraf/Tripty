@@ -65,6 +65,7 @@ const HomeTabs = () => {
         });
         setAllPlaces(all);
     }
+    
     return (
         <>
             <SectionHeader title="Explore best places near you" />
