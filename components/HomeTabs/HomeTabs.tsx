@@ -19,7 +19,6 @@ const HomeTabs = () => {
                 method: 'GET'
             },
             (data: { data: Category[], error: boolean, message: string }) => {
-                // setTabs(data.data);
                 data.data.forEach(tab => {
                     getCategoryPlaces(tab);
                 });
