@@ -6,9 +6,9 @@ import Image from "next/image";
 
 const Header = () => {
     return <header className={classes.container}>
-        <div className={classes.logo}>
+        <Link href={'/home'} className={classes.logo}>
             <Image loading='lazy' alt='Tripty Logo' src={logo} />
-        </div>
+        </Link>
         <div className={classes.nav}>
             <Link href={'/home'}>Home</Link>
             <Link href={'/about'}>About</Link>

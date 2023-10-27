@@ -1,30 +1,33 @@
-import useHTTP from '@/hooks/use-http';
+// import useHTTP from '@/hooks/use-http';
 import classes from './home-slider.module.scss';
 import { Slider } from '@/interfaces/slider';
 import { SetStateAction, useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Image from 'next/image';
-
-const HomeSlider = () => {
-    const { isLoading, error, sendRequest } = useHTTP();
-    const [sliders, setSliders] = useState<Slider[]>();
+// import Image from 'next/image';
+interface Props {
+    sliders: Slider[] | undefined
+}
+const HomeSlider = (props: Props) => {
+    // const [sliders, setSliders] = useState<Slider[]>();
+    const { sliders } = props;
     const [index, setIndex] = useState(0);
-    const getSliders = () => {
-        sendRequest(
-            {
-                url: 'sliders',
-                method: 'GET'
-            },
-            (data: { data: Slider[], error: boolean, message: string }) => {
-                setSliders(data.data);
-                console.log(data.data);
-            }
-        )
-    }
+    // const { isLoading, error, sendRequest } = useHTTP();
+    // const getSliders = () => {
+    //     sendRequest(
+    //         {
+    //             url: 'sliders',
+    //             method: 'GET'
+    //         },
+    //         (data: { data: Slider[], error: boolean, message: string }) => {
+    //             setSliders(data.data);
+    //             console.log(data.data);
+    //         }
+    //     )
+    // }
 
-    useEffect(() => {
-        getSliders();
-    }, []);
+    // useEffect(() => {
+    //     getSliders();
+    // }, []);
 
 
     const handleSelect = (selectedIndex: SetStateAction<number>) => {

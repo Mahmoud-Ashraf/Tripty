@@ -9,9 +9,9 @@ import { Place } from '@/interfaces/place';
 
 const HomeTabs = () => {
     const [key, setKey] = useState<any>('all');
-    const { isLoading, error, sendRequest } = useHTTP();
     const [tabs, setTabs] = useState<Category[]>([]);
     const [allPlaces, setAllPlaces] = useState<Place[]>([]);
+    const { isLoading, error, sendRequest } = useHTTP();
     const getSections = () => {
         sendRequest(
             {

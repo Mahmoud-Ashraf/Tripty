@@ -2,23 +2,35 @@ import { Place } from "@/interfaces/place";
 import classes from './place.module.scss';
 import Link from "next/link";
 import Image from 'react-bootstrap/Image';
-import { Context } from "vm";
 import Head from "next/head";
 import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
+import NoData from "@/components/layout/NoData/NoData";
 
 interface Props {
-    place: Place
+    place: Place,
+    notFound: boolean
 }
 
 const PlacePage = (props: Props) => {
-    const { place } = props;
+    const { place, notFound } = props;
+
+    if (notFound) {
+        return (
+            <>
+                <Head>
+                    <title>Tripty - No Data</title>
+                </Head>
+                <NoData text="No Place Found" />
+            </>
+        )
+    }
     return (
-        <>
+        place && <>
             <Head>
                 <title>Tripty - {place?.name}</title>
             </Head>
-            {place && <PlaceHeader name={place?.name} img={place?.featured_image} />}
-            {place && <div className={classes.container}>
+            <PlaceHeader name={place?.name} img={place?.featured_image} />
+            <div className={classes.container}>
                 <div className={classes.details}>
                     <div className="row gx-5">
                         <div className="col-md-6">
@@ -31,7 +43,7 @@ const PlacePage = (props: Props) => {
                                 <div className="row">
                                     {
                                         place?.gallery?.map(
-                                            (img: any, i: number) => {
+                                            (img: string, i: number) => {
                                                 if (i > 4) return
                                                 if (i === 4) return (
                                                     <div key={i} className="col">
@@ -71,7 +83,7 @@ const PlacePage = (props: Props) => {
                         </div>
                     </div>
                 </div>
-            </div>}
+            </div>
         </>
     );
 }
@@ -83,13 +95,19 @@ export async function getStaticPaths() {
         params: { placeId: place.id.toString() },
     }));
 
+    // const paths = [
+    //     {
+    //         params: { placeId: '1' }
+    //     }
+    // ]
+
     return {
         paths,
-        fallback: false, // or true, depending on your requirements
+        fallback: true, // or true, depending on your requirements
     };
 }
 
-export async function getStaticProps(context: Context) {
+export async function getStaticProps(context: any) {
     const { placeId } = context.params;
     try {
         const response = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}`);
@@ -103,7 +121,10 @@ export async function getStaticProps(context: Context) {
     } catch (error) {
         console.error(error);
         return {
-            notFound: true,
+            props: {
+                notFound: true
+            }
+            // notFound: true,
         };
     }
 }
