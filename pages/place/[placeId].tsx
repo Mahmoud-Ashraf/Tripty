@@ -1,58 +1,37 @@
-import useHTTP from "@/hooks/use-http";
 import { Place } from "@/interfaces/place";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import classes from './place.module.scss';
 import Link from "next/link";
 import Image from 'react-bootstrap/Image';
 import { Context } from "vm";
 import Head from "next/head";
 import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
-const Place = (props: any) => {
-    const router = useRouter();
-    const [place, setPlace] = useState<Place>();
-    const { isLoading, error, sendRequest } = useHTTP();
-    const placeId = router.query.placeId;
 
-    useEffect(() => {
-        getPlace();
-    }, [placeId]);
+interface Props {
+    place: Place
+}
 
-    const getPlace = () => {
-        console.log(placeId);
-        sendRequest(
-            {
-                url: `places/${placeId}`,
-                method: 'GET'
-            },
-            (place: { data: Place, error: boolean, message: string }) => {
-                setPlace(place.data);
-            },
-            (error: any) => {
-                console.log(error);
-            }
-        )
-    }
+const PlacePage = (props: Props) => {
+    const { place } = props;
     return (
         <>
             <Head>
                 <title>Tripty - {place?.name}</title>
             </Head>
-            <PlaceHeader name={place?.name} img={place?.featured_image} />
+            {place && <PlaceHeader name={place?.name} img={place?.featured_image} />}
             {place && <div className={classes.container}>
                 <div className={classes.details}>
                     <div className="row gx-5">
                         <div className="col-md-6">
                             <div className={classes.specs}>
-                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating.toFixed(1)}</span>
+                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)}</span>
                                 {place?.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place?.category?.name}</span> : ''}
                                 <span className={classes.distance}>4.5 Km</span>
                             </div>
                             <div className={classes.gallery}>
                                 <div className="row">
                                     {
-                                        place?.gallery.map(
-                                            (img, i) => {
+                                        place?.gallery?.map(
+                                            (img: any, i: number) => {
                                                 if (i > 4) return
                                                 if (i === 4) return (
                                                     <div key={i} className="col">
@@ -71,26 +50,6 @@ const Place = (props: any) => {
                                             }
                                         )
                                     }
-                                    {/* <div className="col">
-                                    <div className={classes.img}>
-
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className={classes.img}>
-
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className={classes.img}>
-
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className={classes.img}>
-
-                                    </div>
-                                </div> */}
                                 </div>
 
                             </div>
@@ -117,43 +76,38 @@ const Place = (props: any) => {
     );
 }
 
-// export async function getStaticPaths() {
+export async function getStaticPaths() {
+    // Fetch the list of place IDs from an API or database
+    const placeIds = await fetch('http://18.133.139.168/api/v1/front/places').then(data => data.json());
+    const paths = placeIds.data.map((place: Place) => ({
+        params: { placeId: place.id.toString() },
+    }));
 
-//     return {
-//         fallback: true,
-//         paths: [
-//             {
-//                 params: {
-//                     placeId: '1'
-//                 }
-//             },
-//             {
-//                 params: {
-//                     placeId: '2'
-//                 }
-//             },
-//             {
-//                 params: {
-//                     placeId: '3'
-//                 }
-//             },
-//         ]
+    return {
+        paths,
+        fallback: false, // or true, depending on your requirements
+    };
+}
 
-//     }
-// }
+export async function getStaticProps(context: Context) {
+    const { placeId } = context.params;
+    try {
+        const response = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}`);
+        const data = await response.json();
 
-// export async function getStaticProps(context: Context) {
-//     const placeId = context.params.placeId;
-//     // const { isLoading, error, sendRequest } = useHTTP();
-//     let data;
-//     await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}`).then(data => data.json()).then(result => data = result.data);
-//     return {
-//         props: {
-//             place: data
-//         }
-//     }
-// }
+        return {
+            props: {
+                place: data?.data || undefined,
+            },
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            notFound: true,
+        };
+    }
+}
 
-export default Place;
+export default PlacePage;
 
 
