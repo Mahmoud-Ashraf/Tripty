@@ -3,14 +3,18 @@ import HomeReviews from "@/components/HomeReviews/HomeReviews";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import SectionHeader from "@/components/UI/SectionHeader/SectionHeader";
+import { Category } from "@/interfaces/category";
+import { Place } from "@/interfaces/place";
 import { Slider } from "@/interfaces/slider";
 import Head from "next/head";
 
 interface Props {
-   sliders: Slider[] | undefined;
+   sliders: Slider[] | [],
+   tabs: Category[] | [],
+   categorizedPlaces: { [categoryName: string]: Place[] }
 }
 const Home = (props: Props) => {
-   const { sliders } = props;
+   const { sliders, tabs, categorizedPlaces } = props;
    return (
       <>
          <Head>
@@ -21,47 +25,58 @@ const Home = (props: Props) => {
 
          <HomeEntryPoints />
 
-         <HomeTabs />
+         <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
 
          <HomeReviews />
       </>
    )
 }
 
-// export async function getStaticPaths() {
-//    // Fetch the list of place IDs from an API or database
-//    const sliders = await fetch('http://18.133.139.168/api/v1/front/sliders').then(data => data.json());
-//    const paths = sliders.data.map((place: Slider) => ({
-//       params: { placeId: place.id.toString() },
-//    }));
+interface CategorizedPlaces {
+   [categoryName: string]: Place[]; // Define the structure for categorized places
+}
 
-//    return {
-//       paths,
-//       fallback: true, // or true, depending on your requirements
-//    };
-// }
+//  interface Place {
+//    // Define the structure for the Place object
+//    id: number;
+//    name: string;
+//    // Add other properties based on your data structure
+//  }
 
-export async function getStaticProps(context: any) {
-   // const { placeId } = context.params;
+export async function getStaticProps() {
    try {
-      const slidersResponse = await fetch(`http://18.133.139.168/api/v1/front/sliders`).then(data => data.json());
-      // const slidersResponse = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}`).then(data => data.json());
-      // const data = await response.json();
+      const categoriesReq = await fetch('http://18.133.139.168/api/v1/front/categories');
+      const categoriesData = await categoriesReq.json();
 
+      const slidersReq = await fetch('http://18.133.139.168/api/v1/front/sliders');
+      const slidersData = await slidersReq.json();
+
+      const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
+
+      await Promise.all(categoriesData.data.map(async (category: any) => {
+         const categoryPlacesReq = await fetch(`http://18.133.139.168/api/v1/front/places?category_id=${category.id}`);
+         const categoryPlacesData = await categoryPlacesReq.json();
+
+         categorizedPlaces[category.name] = categoryPlacesData.data;
+      }));
       return {
          props: {
-            sliders: slidersResponse?.data || undefined,
-         },
+            tabs: categoriesData.data,
+            categorizedPlaces,
+            sliders: slidersData.data,
+         }
       };
    } catch (error) {
-      console.error(error);
+      console.error('Error fetching data:', error);
       return {
          props: {
-            notFound: true
+            tabs: [],
+            categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
+            sliders: [] // Adjust based on the expected sliders data structure
          }
-         // notFound: true,
       };
    }
 }
+
 
 export default Home;
