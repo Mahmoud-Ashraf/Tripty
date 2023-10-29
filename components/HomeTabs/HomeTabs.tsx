@@ -21,19 +21,6 @@ const HomeTabs = (props: Props) => {
             <SectionHeader title="Explore best places near you" />
             <div className={`home-tabs`}>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
-                    <Tab eventKey="all" title="All">
-                        <div className="row g-5">
-                            {
-                                allPlaces.map(place => {
-                                    return (
-                                        <div key={place.id} className="col-4">
-                                            <Card place={place} />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </Tab>
                     {
                         tabs.map(tab => {
                             return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>

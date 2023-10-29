@@ -47,6 +47,7 @@ export async function getStaticProps() {
    try {
       const categoriesReq = await fetch('http://18.133.139.168/api/v1/front/categories');
       const categoriesData = await categoriesReq.json();
+      categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
 
       const slidersReq = await fetch('http://18.133.139.168/api/v1/front/sliders');
       const slidersData = await slidersReq.json();

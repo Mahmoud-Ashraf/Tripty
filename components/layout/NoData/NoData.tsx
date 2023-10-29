@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import classes from './no-data.module.scss';
 
 interface Props {
@@ -8,7 +9,7 @@ const NoData = (props: Props) => {
     return (
         <div className={classes.noData}>
             <p>Sorry, {text}</p>
-            <button className='btn btn-main'>Go To Home</button>
+            <Link href={'/home'} className='btn btn-main'>Go To Home</Link>
         </div>
     )
 }

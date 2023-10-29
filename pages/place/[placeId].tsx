@@ -27,7 +27,7 @@ const PlacePage = (props: Props) => {
     return (
         place && <>
             <Head>
-                <title>Tripty - {place?.name}</title>
+                <title>{`Tripty - ${place?.name}`}</title>
             </Head>
             <PlaceHeader name={place?.name} img={place?.featured_image} />
             <div className={classes.container}>

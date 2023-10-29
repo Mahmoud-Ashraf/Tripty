@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import classes from './card.module.scss';
 import cover from '@/public/assets/images/card_cover.png';
+import Link from 'next/link';
 const Card = ({ place }: { place: any }) => {
     return (
-        <div className={classes.container}>
+        <Link href={`/place/${place.id}`} className={classes.container}>
             <Image className={classes.cover} src={cover} alt='card-image' />
             <div className={classes.data}>
                 <div className={classes.caption}>
@@ -22,7 +23,7 @@ const Card = ({ place }: { place: any }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
