@@ -1,4 +1,5 @@
-.home-slider {
+.home-slider,
+.login-slider {
 
     .carousel-item {
         border-radius: 18px;
@@ -21,5 +22,29 @@
         height: 15px;
         width: 15px;
         border-radius: 50%;
+    }
+}
+
+.login-slider {
+    .carousel {
+        height: 100%;
+
+        .carousel-inner {
+            height: 100%;
+
+            .carousel-item {
+                max-height: 100%;
+                border-radius: 0;
+
+                img {
+                    height: 100%;
+                }
+
+                &::after {
+                    background-image: linear-gradient(to top, #62588d, rgba(98, 88, 141, 0.28));
+
+                }
+            }
+        }
     }
 }

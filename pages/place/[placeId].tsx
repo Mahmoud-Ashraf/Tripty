@@ -89,17 +89,11 @@ const PlacePage = (props: Props) => {
 }
 
 export async function getStaticPaths() {
-    // Fetch the list of place IDs from an API or database
+    // Fetch the list of place IDs from an API
     const placeIds = await fetch('http://18.133.139.168/api/v1/front/places').then(data => data.json());
     const paths = placeIds.data.map((place: Place) => ({
         params: { placeId: place.id.toString() },
     }));
-
-    // const paths = [
-    //     {
-    //         params: { placeId: '1' }
-    //     }
-    // ]
 
     return {
         paths,
@@ -116,12 +110,14 @@ export async function getStaticProps(context: any) {
         return {
             props: {
                 place: data?.data || undefined,
+                notFound: false
             },
         };
     } catch (error) {
         console.error(error);
         return {
             props: {
+                place: null,
                 notFound: true
             }
             // notFound: true,

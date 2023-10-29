@@ -1,0 +1,54 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    background-color: $main-color;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.innerContainer {
+    width: max(300px, 80vw);
+    display: flex;
+    gap: 0;
+    height: 80vh;
+}
+
+.carousel {
+    width: 70%;
+}
+
+.formContainer {
+    width: 30%;
+    padding: 4rem;
+    height: 100%;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 6rem;
+
+    form {
+        width: 100%;
+        color: $main-color;
+    }
+    
+    h1 {
+        opacity: .75;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+    
+    a {
+        opacity: .75;
+        color: $main-color;
+        text-decoration: none;
+    }
+}
+.submit {
+    margin-top: 4rem;
+}
