@@ -2,6 +2,7 @@ import HomeEntryPoints from "@/components/HomeEntryPoints/HomeEntryPoints";
 import HomeReviews from "@/components/HomeReviews/HomeReviews";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
+import HomeTourism from "@/components/HomeTourism/HomeTourism";
 import SectionHeader from "@/components/UI/SectionHeader/SectionHeader";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
@@ -26,6 +27,8 @@ const Home = (props: Props) => {
          <HomeEntryPoints />
 
          <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
+
+         <HomeTourism />
 
          <HomeReviews />
       </>

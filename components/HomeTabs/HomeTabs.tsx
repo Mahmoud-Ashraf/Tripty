@@ -4,22 +4,23 @@ import Card from '../UI/Card/Card';
 import SectionHeader from '../UI/SectionHeader/SectionHeader';
 import { Category } from '@/interfaces/category';
 import { Place } from '@/interfaces/place';
-
+import explore from '@/public/assets/images/explore.svg';
 interface Props {
     tabs: Category[],
     categorizedPlaces: { [categoryName: string]: Place[] },
+    showTitle?: boolean
 }
 
 const HomeTabs = (props: Props) => {
     const [key, setKey] = useState<any>('all');
-    const { tabs, categorizedPlaces } = props;
+    const { tabs, categorizedPlaces, showTitle } = props;
     const allPlaces: Place[] = [];
     Object.values(categorizedPlaces).forEach(categorizedPlace => allPlaces.push(...categorizedPlace));
 
     return (
         <>
-            <SectionHeader title="Explore best places near you" />
-            <div className={`home-tabs`}>
+            {showTitle && <SectionHeader title="Explore best places near you" icon={explore} />}
+            <div className={`home-tabs mt-5`}>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                     {
                         tabs.map(tab => {

@@ -29,7 +29,7 @@ const PlacePage = (props: Props) => {
             <Head>
                 <title>{`Tripty - ${place?.name}`}</title>
             </Head>
-            <PlaceHeader name={place?.name} img={place?.featured_image} />
+            <PlaceHeader name={place?.name} img={place?.featured_image} fav share discount />
             <div className={classes.container}>
                 <div className={classes.details}>
                     <div className="row gx-5">
