@@ -1,18 +1,20 @@
 import classes from './place-header.module.scss';
 interface placeHeaderProps {
-    name: string | undefined,
+    name?: string | undefined,
     img?: string | undefined,
     share?: boolean,
     fav?: boolean,
-    discount?: boolean
+    discount?: boolean,
+    children?: any
 }
 const PlaceHeader = (props: placeHeaderProps) => {
-    const { name, img, share = false, fav = false, discount = false } = props;
+    const { name, img, share = false, fav = false, discount = false, children } = props;
     return (
         <div className={classes.container} style={{ backgroundImage: `url('${img}')` }}>
             <div className={classes.inner}>
-                <div className={`${classes.name} ${!discount && 'align-items-center'}`}>
-                    <h1>{name}</h1>
+                <div className={`${classes.name} ${!discount && 'flex-column justify-content-center'}`}>
+                    {name && <h2>{name}</h2>}
+                    {children && children}
                     {share && <div className={classes.actions}>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20.098" height="23.797" viewBox="0 0 20.098 23.797">

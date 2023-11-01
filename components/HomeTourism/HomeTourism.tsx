@@ -9,10 +9,10 @@ const HomeTourism = () => {
         <>
             <SectionHeader title="Tourism Packages" />
             <div className="row">
-                <div className="col-6">
+                <div className="col-7">
                     <TourismCard img={tourism1.src} big />
                 </div>
-                <div className="col-6">
+                <div className="col-5">
                     <div className={classes.stacked_images}>
                         <TourismCard img={tourism2.src} />
                         <TourismCard img={tourism3.src} />

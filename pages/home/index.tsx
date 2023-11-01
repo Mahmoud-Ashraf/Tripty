@@ -3,6 +3,7 @@ import HomeReviews from "@/components/HomeReviews/HomeReviews";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import HomeTourism from "@/components/HomeTourism/HomeTourism";
+import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
 import SectionHeader from "@/components/UI/SectionHeader/SectionHeader";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
@@ -28,6 +29,10 @@ const Home = (props: Props) => {
 
          <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
 
+         <PlaceHeader>
+            <h2>START YOUR</h2>
+            <h2>TRIP</h2>
+         </PlaceHeader>
          <HomeTourism />
 
          <HomeReviews />

@@ -1,5 +1,5 @@
-import { Url } from 'next/dist/shared/lib/router/router';
 import { Category } from './category';
+import { Offer } from './offer';
 export interface Place {
     id: number,
     name: string,
@@ -16,5 +16,8 @@ export interface Place {
     logo?: string | null,
     featured_image?: string,
     gallery: string[],
-    category: Category
+    category: Category,
+    is_recommended: boolean,
+    offer: Offer,
+    distance: string
 }
