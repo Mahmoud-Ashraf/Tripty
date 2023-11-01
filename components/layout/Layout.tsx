@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { langActions } from '@/store/Lang/Lang';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import CustomModal from '../UI/CustomModal/CustomModal';
+import TripModal from '../TripModal/TripModal';
 
 const Layout = (props: PropsWithChildren) => {
-    let rootEle: HTMLElement | null;
-    const globalLang = useSelector((state: any) => {
-        return state.lang.globalLang;
+    const showTripModal = useSelector((state: any) => {
+        return state.trip.showTripModal;
     });
     const dispatch = useDispatch();
     useEffect(() => {
@@ -17,10 +18,12 @@ const Layout = (props: PropsWithChildren) => {
             dispatch(langActions.translation({ lang: localLang }));
         }
     }, []);
-    
 
     return (
         <div className={classes.layout}>
+            {showTripModal && <CustomModal>
+                <TripModal />
+            </CustomModal>}
             <Header />
             {props.children}
             <Footer />
