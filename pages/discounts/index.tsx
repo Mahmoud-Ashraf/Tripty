@@ -3,6 +3,7 @@ import classes from './discounts.module.scss';
 import { Place } from '@/interfaces/place';
 import { Category } from '@/interfaces/category';
 import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
+import Head from 'next/head';
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -17,10 +18,15 @@ const Discounts = (props: Props) => {
     const { tabs, categorizedPlaces } = props;
 
     return (
-        <div className={classes.container}>
-            <PlaceHeader name='Discounts' />
-            <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
-        </div>
+        <>
+            <Head>
+                <title>{`Tripty - Discounts`}</title>
+            </Head>
+            <div className={classes.container}>
+                <PlaceHeader name='Discounts' />
+                <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
+            </div>
+        </>
     )
 }
 

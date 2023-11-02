@@ -15,6 +15,9 @@
             height: 100%;
             background-image: linear-gradient(to bottom, #62588d, rgba(98, 88, 141, 0.28));
         }
+        img {
+            aspect-ratio: 2.9;
+        }
 
     }
 
@@ -35,6 +38,7 @@
             .carousel-item {
                 max-height: 100%;
                 border-radius: 0;
+                height: 100%;
 
                 img {
                     height: 100%;

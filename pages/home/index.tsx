@@ -7,7 +7,9 @@ import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
 import { Slider } from "@/interfaces/slider";
+import { tripActions } from "@/store/Trip/Trip";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
 
 interface Props {
    sliders: Slider[] | [],
@@ -16,6 +18,7 @@ interface Props {
 }
 const Home = (props: Props) => {
    const { sliders, tabs, categorizedPlaces } = props;
+   const dispatch = useDispatch();
    return (
       <>
          <Head>
@@ -28,11 +31,11 @@ const Home = (props: Props) => {
 
          <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
 
-         <PlaceHeader>
+         <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2>START YOUR</h2>
             <h2>TRIP</h2>
          </PlaceHeader>
-         
+
          <HomeTourism />
 
          <HomeReviews />

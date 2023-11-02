@@ -5,12 +5,13 @@ interface placeHeaderProps {
     share?: boolean,
     fav?: boolean,
     discount?: boolean,
-    children?: any
+    children?: any,
+    onClick?: () => void
 }
 const PlaceHeader = (props: placeHeaderProps) => {
-    const { name, img, share = false, fav = false, discount = false, children } = props;
+    const { name, img, share = false, fav = false, discount = false, children, onClick } = props;
     return (
-        <div className={classes.container} style={{ backgroundImage: `url('${img}')` }}>
+        <div className={classes.container} style={{ backgroundImage: `url('${img}')`, cursor: `${onClick ? 'pointer' : 'auto'}` }} onClick={onClick}>
             <div className={classes.inner}>
                 <div className={`${classes.name} ${!discount && 'flex-column justify-content-center'}`}>
                     {name && <h2>{name}</h2>}
