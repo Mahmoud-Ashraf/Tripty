@@ -31,7 +31,7 @@ const Login = (props: Props) => {
                                 sliders?.map(slider => {
                                     return (
                                         <Carousel.Item key={slider.id}>
-                                            <img className='w-100 d-block' src={slider.image} alt="slider" />
+                                            <Image fill src={slider.image} alt="slider" />
                                         </Carousel.Item>
                                     )
                                 })
