@@ -1,6 +1,7 @@
 import classes from './card.module.scss';
 import Link from 'next/link';
 import { Place } from '@/interfaces/place';
+import Image from 'next/image';
 const Card = ({ place }: { place: Place }) => {
 
     const cutAboutWords = (text: string, wordsCount: number) => {
@@ -16,7 +17,9 @@ const Card = ({ place }: { place: Place }) => {
 
     return (
         place && <Link href={`/place/${place.id}`} className={classes.container}>
-            <img className={classes.cover} src={place?.featured_image} alt='card-image' />
+            <div className={classes.cover}>
+                <Image fill src={place?.featured_image} alt='card-image' />
+            </div>
             <div className={classes.data}>
                 <div className={classes.caption}>
                     <h3 className={classes.name}>{place?.name}</h3>
