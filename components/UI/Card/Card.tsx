@@ -1,16 +1,26 @@
-import Image from 'next/image';
 import classes from './card.module.scss';
-import cover from '@/public/assets/images/card_cover.png';
 import Link from 'next/link';
 import { Place } from '@/interfaces/place';
 const Card = ({ place }: { place: Place }) => {
+
+    const cutAboutWords = (text: string, wordsCount: number) => {
+        const splitedText = text.split(' ', wordsCount);
+        let newText;
+        if (splitedText.length < wordsCount) {
+            newText = text;
+        } else {
+            newText = splitedText.join(' ') + ' ...';
+        }
+        return newText;
+    }
+
     return (
         place && <Link href={`/place/${place.id}`} className={classes.container}>
-            <Image className={classes.cover} src={cover} alt='card-image' />
+            <img className={classes.cover} src={place?.featured_image} alt='card-image' />
             <div className={classes.data}>
                 <div className={classes.caption}>
                     <h3 className={classes.name}>{place?.name}</h3>
-                    <p className={classes.desc}>{place?.about}</p>
+                    <p className={classes.desc}>{cutAboutWords(place?.about, 12)}</p>
                 </div>
                 <div className={classes.specs}>
                     <div className={classes.details}>
