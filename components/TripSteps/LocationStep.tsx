@@ -15,11 +15,11 @@ const LocationStep = () => {
     const getLocations = () => {
         sendRequest(
             {
-                url: 'cities',
+                url: '/api/cities',
                 method: 'GET'
             },
             (data: any) => {
-                setCities(data.data);
+                setCities(data);
             },
             (error: any) => {
                 console.error(error);
