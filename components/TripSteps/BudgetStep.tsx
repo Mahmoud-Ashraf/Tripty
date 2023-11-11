@@ -6,12 +6,15 @@ import { tripActions } from '@/store/Trip/Trip';
 
 const BudgetStep = () => {
     const dispatch = useDispatch();
-    const [haveBudget, setHaveBudget] = useState<Boolean>(true);
+    const [haveBudget, setHaveBudget] = useState<Boolean>();
     const [budget, setBudget] = useState<string>('');
 
     useEffect(() => {
-        dispatch(tripActions.setTripData({ budget: haveBudget ? budget : '0' }))
-    }, [haveBudget, budget])
+        setHaveBudget(true);
+    }, []);
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ budget: (haveBudget && budget) ? budget : '0' }))
+    }, [haveBudget, budget]);
     return (
         <div className={classes.budget}>
             <div className="row">

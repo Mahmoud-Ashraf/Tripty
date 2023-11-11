@@ -20,11 +20,11 @@ const DateCustomButton = forwardRef<HTMLButtonElement, CustomDateButtonProps>(
 );
 const DetailsStep = () => {
     const dispatch = useDispatch()
-    const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [howComing, setHowComing] = useState<string[]>(['Solo', 'Family', 'Friends']);
-    const [selectedComing, setSelectedComing] = useState<string>('Solo');
-    const [adultsCount, setAdultsCount] = useState<number>(1);
-    const [childrenCount, setChildrenCount] = useState<number>(0);
+    const [selectedComing, setSelectedComing] = useState<string>('');
+    const [adultsCount, setAdultsCount] = useState<number>();
+    const [childrenCount, setChildrenCount] = useState<number>();
 
     function formatDateToYYYYMMDD(date: Date | null) {
         if (date) {
@@ -38,12 +38,18 @@ const DetailsStep = () => {
 
     const handleChangeDate = (date: Date | null) => {
         setSelectedDate(date);
-        dispatch(tripActions.setTripData({ date: formatDateToYYYYMMDD(date) }));
     }
 
     const handleSetComing = (item: string) => {
         setSelectedComing(item);
     }
+
+    useEffect(() => {
+        setSelectedDate(new Date());
+        setSelectedComing(howComing[0]);
+        setAdultsCount(1);
+        setChildrenCount(0);
+    }, []);
 
     useEffect(() => {
         setChildrenCount(0);
@@ -58,6 +64,12 @@ const DetailsStep = () => {
     useEffect(() => {
         dispatch(tripActions.setTripData({ children: childrenCount }));
     }, [childrenCount]);
+
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ date: formatDateToYYYYMMDD(selectedDate) }));
+    }, [selectedDate]);
+
+
 
     return (
         <div className={classes.details}>
@@ -97,18 +109,18 @@ const DetailsStep = () => {
                                     (selectedComing === 'Family' || selectedComing === 'Friends') &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
-                                            <span onClick={() => setAdultsCount(prev => prev > 1 ? --prev : 1)} className={classes.counterDec}>-</span>
+                                            <span onClick={() => setAdultsCount(prev => (prev && (prev > 1)) ? --prev : 1)} className={classes.counterDec}>-</span>
                                             <span className={classes.count}>{adultsCount} Adults</span>
-                                            <span onClick={() => setAdultsCount(prev => prev < 10 ? ++prev : 10)} className={classes.counterInc}>+</span>
+                                            <span onClick={() => setAdultsCount(prev => (prev && (prev < 10)) ? ++prev : 10)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>}
                                 {
                                     selectedComing === 'Family' &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
-                                            <span onClick={() => setChildrenCount(prev => prev > 0 ? --prev : 0)} className={classes.counterDec}>-</span>
+                                            <span onClick={() => setChildrenCount(prev => (prev && (prev > 0)) ? --prev : 0)} className={classes.counterDec}>-</span>
                                             <span className={classes.count}>{childrenCount} Children</span>
-                                            <span onClick={() => setChildrenCount(prev => prev < 5 ? ++prev : 5)} className={classes.counterInc}>+</span>
+                                            <span onClick={() => setChildrenCount(prev => (prev?.toString() && (prev < 5)) ? ++prev : 5)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>
                                 }

@@ -1,0 +1,27 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    padding: 2.5rem 15rem 10rem 8rem;
+    border-radius: 1rem;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #fafafa;
+    margin: 4rem 0;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        color: $main-color;
+        .city {
+            font-size: 3.3rem;
+            font-weight: 600;
+        }
+        .group {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    }
+    .content {
+        margin-top: 6rem;
+    }
+}

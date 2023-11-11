@@ -31,7 +31,10 @@ const TagsStep = () => {
     const getTags = () => {
         fetch('/api/tags')
             .then(res => res.json())
-            .then(data => setTags(data))
+            .then(data => {
+                setTags(data);
+                setSelectedTags([]);
+            })
             .catch(error => console.log(error));
     }
 

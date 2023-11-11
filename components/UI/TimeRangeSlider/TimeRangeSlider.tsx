@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import classes from './time-range-slider.module.scss';
 import { useDispatch } from 'react-redux';
@@ -30,6 +30,9 @@ const TimeRangeSlider = () => {
         dispatch(tripActions.setTripData({ start_at: formatTime(newValue[0]), end_at: formatTime(newValue[1]) }))
     };
 
+    useEffect(() => {
+        handleChange(value);
+    }, [])
     return (
         <div className={classes.container}>
             <span>0</span>
