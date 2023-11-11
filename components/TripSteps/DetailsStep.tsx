@@ -1,8 +1,10 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import TripModalHeading from '../TripModal/TripModalHeading';
 import classes from './trip-steps.module.scss';
 import DatePicker from 'react-datepicker'
 import TimeRangeSlider from '../UI/TimeRangeSlider/TimeRangeSlider';
+import { useDispatch } from 'react-redux';
+import { tripActions } from '@/store/Trip/Trip';
 
 interface CustomDateButtonProps {
     value?: string;
@@ -17,11 +19,45 @@ const DateCustomButton = forwardRef<HTMLButtonElement, CustomDateButtonProps>(
     )
 );
 const DetailsStep = () => {
+    const dispatch = useDispatch()
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
     const [howComing, setHowComing] = useState<string[]>(['Solo', 'Family', 'Friends']);
     const [selectedComing, setSelectedComing] = useState<string>('Solo');
     const [adultsCount, setAdultsCount] = useState<number>(1);
     const [childrenCount, setChildrenCount] = useState<number>(0);
+
+    function formatDateToYYYYMMDD(date: Date | null) {
+        if (date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        return null;
+    }
+
+    const handleChangeDate = (date: Date | null) => {
+        setSelectedDate(date);
+        dispatch(tripActions.setTripData({ date: formatDateToYYYYMMDD(date) }));
+    }
+
+    const handleSetComing = (item: string) => {
+        setSelectedComing(item);
+    }
+
+    useEffect(() => {
+        setChildrenCount(0);
+        setAdultsCount(1);
+        dispatch(tripActions.setTripData({ family: selectedComing === 'Family' ? 1 : 0 }));
+    }, [selectedComing]);
+
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ adults: adultsCount }));
+    }, [adultsCount]);
+
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ children: childrenCount }));
+    }, [childrenCount]);
 
     return (
         <div className={classes.details}>
@@ -30,7 +66,8 @@ const DetailsStep = () => {
                     <TripModalHeading text='Date' />
                     <DatePicker
                         selected={selectedDate}
-                        onChange={(date) => setSelectedDate(date)}
+                        dateFormat={'dd MMM yy'}
+                        onChange={(date) => handleChangeDate(date)}
                         customInput={<DateCustomButton />}
                     />
                     <TripModalHeading text='Trip Duration' />
@@ -45,7 +82,7 @@ const DetailsStep = () => {
                                     item => {
                                         return (
                                             <div key={item} className="col-auto">
-                                                <div onClick={() => setSelectedComing(item)} className={`${classes.selection} ${selectedComing === item ? classes.selected : ''}`}>
+                                                <div onClick={() => handleSetComing(item)} className={`${classes.selection} ${selectedComing === item ? classes.selected : ''}`}>
                                                     <span>{item}</span>
                                                 </div>
                                             </div>

@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import classes from './trip-steps.module.scss';
 import useHttp from '../../hooks/use-http';
 import { City } from '@/interfaces/City';
+import { useDispatch } from 'react-redux';
+import { tripActions } from '@/store/Trip/Trip';
 
 const LocationStep = () => {
+    const dispatch = useDispatch();
     const { isLoading, error, sendRequest } = useHttp();
     const [citeies, setCities] = useState<City[]>([]);
     const [selectedLocation, setSelectedLocation] = useState<City>({ id: 1, name: 'Riyadh', code: null })
@@ -12,6 +15,10 @@ const LocationStep = () => {
         getLocations();
     }, []);
 
+    const handleLocationClick = (city: City) => {
+        setSelectedLocation(city);
+        dispatch(tripActions.setTripData({ city_id: city.id }))
+    }
     const getLocations = () => {
         sendRequest(
             {
@@ -41,7 +48,7 @@ const LocationStep = () => {
                 {
                     citeies?.map(city => {
                         return (
-                            <li onClick={() => setSelectedLocation(city)} className={classes.locationCity} key={city.id}>{city.name}</li>
+                            <li onClick={() => handleLocationClick(city)} className={classes.locationCity} key={city.id}>{city.name}</li>
                         )
                     })
                 }

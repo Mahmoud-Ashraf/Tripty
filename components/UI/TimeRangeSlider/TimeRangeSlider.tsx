@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Slider from 'rc-slider';
 import classes from './time-range-slider.module.scss';
+import { useDispatch } from 'react-redux';
+import { tripActions } from '@/store/Trip/Trip';
 
 const TimeRangeSlider = () => {
+    const dispatch = useDispatch();
     const step = 10; // 10 minutes step
     const totalHours = 24; // 24 hours
 
@@ -17,7 +20,6 @@ const TimeRangeSlider = () => {
     };
 
     const handleChange = (newValue: any) => {
-        console.log('start time: ', formatTime(value[0]), 'end time: ', formatTime(value[1]));
         setValue(newValue);
         const newMarks = {
             [newValue[0]]: formatTime(newValue[0]),
@@ -25,6 +27,7 @@ const TimeRangeSlider = () => {
         };
 
         setMarks(newMarks);
+        dispatch(tripActions.setTripData({ start_at: formatTime(newValue[0]), end_at: formatTime(newValue[1]) }))
     };
 
     return (

@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import TripModalHeading from '../TripModal/TripModalHeading';
 import classes from './trip-steps.module.scss';
 import { Tag } from '@/interfaces/tag';
+import { useDispatch } from 'react-redux';
+import { tripActions } from '@/store/Trip/Trip';
 
 const TagsStep = () => {
+    const dispatch = useDispatch();
     const [tags, setTags] = useState<Tag[]>([]);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [otherTag, setOtherTag] = useState<string>('');
@@ -50,6 +53,10 @@ const TagsStep = () => {
             })
             .catch(error => console.log(error));
     }
+
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ tags: selectedTags.map(tag => tag.id) }));
+    }, [selectedTags])
     return (
         <div className={classes.tags}>
             <TripModalHeading text='How do you want spend your time?' />

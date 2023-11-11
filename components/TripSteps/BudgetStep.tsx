@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TripModalHeading from '../TripModal/TripModalHeading';
 import classes from './trip-steps.module.scss';
+import { useDispatch } from 'react-redux';
+import { tripActions } from '@/store/Trip/Trip';
 
 const BudgetStep = () => {
+    const dispatch = useDispatch();
     const [haveBudget, setHaveBudget] = useState<Boolean>(true);
     const [budget, setBudget] = useState<string>('');
 
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ budget: haveBudget ? budget : '0' }))
+    }, [haveBudget, budget])
     return (
         <div className={classes.budget}>
             <div className="row">
@@ -24,14 +30,14 @@ const BudgetStep = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6">
+                {haveBudget && <div className="col-md-6">
                     <TripModalHeading text='How much your Budget?' />
                     <div className="row">
                         <div className="col-md-7">
                             <input className={classes.input} onChange={(e: any) => setBudget(e.target.value)} value={budget} placeholder='Your Budget?' />
                         </div>
                     </div>
-                </div>
+                </div>}
             </div>
         </div>
     )

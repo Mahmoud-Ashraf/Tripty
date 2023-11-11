@@ -9,7 +9,7 @@ const useHTTP = () => {
         // if (token || requestConfig.url.includes('regist_guest')) {
         setIsLoading(true);
         setError(null);
-        let contentTypeHeader = requestConfig.method === 'POST' ? { 'Content-Type': 'application/json' } : {};
+        // let contentTypeHeader = requestConfig.method === 'POST' ? { 'Content-Type': 'application/json' } : {};
         // let langHeader = { 'lang': 'ar' };
         // let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
         let baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -18,8 +18,8 @@ const useHTTP = () => {
                 requestConfig.url,
                 {
                     method: requestConfig.method,
-                    headers: { ...contentTypeHeader, ...requestConfig.headers },
-                    body: (contentTypeHeader && contentTypeHeader['Content-Type'] === 'application/json') ? JSON.stringify(requestConfig.body) : requestConfig.body
+                    headers: { ...requestConfig.headers },
+                    body: JSON.stringify(requestConfig.body)
                 }
             );
             if (!response.ok) {
