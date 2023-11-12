@@ -5,11 +5,12 @@ interface TripState {
     showTripModal: boolean
     tripData: Trip | null,
     numberOfSteps: number,
-    currentStep: number
+    currentStep: number,
+    currentTrip: Trip | null
 }
 
 // const initialTripData = null;
-const initialTripState: TripState = { showTripModal: false, tripData: null, numberOfSteps: 4, currentStep: 1 }
+const initialTripState: TripState = { showTripModal: false, tripData: null, numberOfSteps: 4, currentStep: 1, currentTrip: null }
 
 const tripSlice = createSlice({
     name: 'trip',
@@ -28,6 +29,12 @@ const tripSlice = createSlice({
         },
         nextStep(state) {
             state.currentStep = ++state.currentStep;
+        },
+        setCurrentTrip(state, action) {
+            state.currentTrip = action.payload;
+        },
+        clearCurrentTrip(state) {
+            state.currentTrip = null;
         }
 
     }

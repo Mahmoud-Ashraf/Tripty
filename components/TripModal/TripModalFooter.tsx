@@ -1,3 +1,4 @@
+import useHTTP from "@/hooks/use-http";
 import { RootState } from "@/store";
 import { tripActions } from "@/store/Trip/Trip";
 import { useRouter } from "next/router";
@@ -10,14 +11,28 @@ const TripModalFooter = () => {
     const step = useSelector((state: RootState) => state.trip.currentStep);
     const stepsCount = useSelector((state: RootState) => state.trip.numberOfSteps);
     const tripData = useSelector((state: RootState) => state.trip.tripData);
-    const [error, setError] = useState('');
+    const [stepError, setStepError] = useState('');
+    const { isLoading, error, sendRequest } = useHTTP();
 
     const nextStep = () => {
         console.log(step);
         if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
-            setError('Please Select Tags First')
+            setStepError('Please Select Tags First')
         } else if (step === stepsCount) {
-            router.push('/create-trip');
+            sendRequest(
+                {
+                    url: '/api/trip/create',
+                    method: 'POST',
+                    body: { ...tripData, name: `trip ${tripData?.date} from ${tripData?.start_at} to ${tripData?.end_at} @ ${tripData?.city_id}` }
+                },
+                (data: any) => {
+                    console.log(data);
+                    dispatch(tripActions.setCurrentTrip(data));
+                    router.push('/create-trip');
+                    dispatch(tripActions.closeShowTripModal());
+                },
+                (err: any) => console.error(err)
+            )
         } else {
             dispatch(tripActions.nextStep());
         }
@@ -28,9 +43,9 @@ const TripModalFooter = () => {
     }
     return (
         <div>
-            {error && <div className="row">
+            {stepError && <div className="row">
                 <div className="col-12">
-                    <p className="fs-5 text-error">{error}</p>
+                    <p className="fs-5 text-error">{stepError}</p>
                 </div>
             </div>}
             <div className="row justify-content-end mt-5">

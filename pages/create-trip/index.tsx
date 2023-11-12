@@ -14,28 +14,20 @@ import TimelineCard from '@/components/UI/TimelineCard/TimelineCard';
 const CreateTrip = () => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const { isLoading, error, sendRequest } = useHTTP();
-    const tripData = useSelector((state: RootState) => state.trip.tripData);
+    // const tripData = useSelector((state: RootState) => state.trip.tripData);
+    const currentTrip = useSelector((state: RootState) => state.trip.currentTrip);
     const [data, setData] = useState<Trip>();
     useEffect(() => {
-        if (!tripData) {
-            router.push('/home')
+        if (currentTrip) {
+            setData(currentTrip);
         } else {
-            sendRequest(
-                {
-                    url: '/api/trip/create',
-                    method: 'POST',
-                    body: { ...tripData, name: 'test from web9' }
-                },
-                (data: any) => {
-                    console.log(data);
-                    setData(data);
-                    dispatch(tripActions.closeShowTripModal());
-                },
-                (err: any) => console.error(err)
-            )
+            router.push('/home');
         }
-    }, [])
+        dispatch(tripActions.closeShowTripModal());
+        return () => {
+            dispatch(tripActions.clearCurrentTrip());
+        }
+    }, [currentTrip]);
     return (
         <>
             <PlaceHeader>
