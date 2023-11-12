@@ -1,7 +1,7 @@
 import classes from './timeline-card.module.scss';
 import Image from 'next/image';
 
-const TimelineCard = ({ place }: any) => {
+const TimelineCard = ({ place, showCover = true }: any) => {
     return (
         <div className={classes.container}>
             <div className={classes.inner}>
@@ -10,11 +10,11 @@ const TimelineCard = ({ place }: any) => {
                         <i className="fa-solid fa-clock"></i>
                         <span>10.00 - 12.00</span>
                     </div>
-                    <button className='btn btn-main btn-sm'>replace</button>
+                    {showCover && <button className='btn btn-main btn-sm'>replace</button>}
                 </div>
-                <div className={classes.cover}>
+                {showCover && <div className={classes.cover}>
                     <Image fill src={place?.featured_image} alt='card-image' />
-                </div>
+                </div>}
                 <div className={classes.details}>
                     <h4>{place.name}</h4>
                     <div className={classes.specs}>
