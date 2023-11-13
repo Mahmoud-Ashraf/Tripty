@@ -15,7 +15,6 @@ const TripModalFooter = () => {
     const { isLoading, error, sendRequest } = useHTTP();
 
     const nextStep = () => {
-        console.log(step);
         if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
             setStepError('Please Select Tags First')
         } else if (step === stepsCount) {

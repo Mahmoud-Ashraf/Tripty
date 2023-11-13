@@ -37,8 +37,28 @@
     }
 }
 
-.rc-slider-mark-text-active, .rc-slider-mark-text {
+.rc-slider-mark-text-active,
+.rc-slider-mark-text {
     color: $main-color;
     font-size: .75rem;
     top: -2.3rem;
+}
+
+.custom-next,
+.custom-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: $main-color;
+    cursor: pointer;
+}
+
+.custom-next {
+    right: -1.5rem;
+}
+
+.custom-prev {
+    left: -1.5rem;
+    transform: translateY(-50%) rotate(180deg);
 }

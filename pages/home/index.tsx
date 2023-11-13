@@ -10,6 +10,7 @@ import { Slider } from "@/interfaces/slider";
 import { tripActions } from "@/store/Trip/Trip";
 import Head from "next/head";
 import { useDispatch } from "react-redux";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 interface Props {
    sliders: Slider[] | [],
@@ -54,7 +55,7 @@ interface CategorizedPlaces {
 //    // Add other properties based on your data structure
 //  }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: any) {
    try {
       const categoriesReq = await fetch('http://18.133.139.168/api/v1/front/categories');
       const categoriesData = await categoriesReq.json();
@@ -73,6 +74,10 @@ export async function getStaticProps() {
       }));
       return {
          props: {
+            ...(await serverSideTranslations(locale, [
+               'common',
+               // 'footer',
+            ])),
             tabs: categoriesData.data,
             categorizedPlaces,
             sliders: slidersData.data,
@@ -82,6 +87,10 @@ export async function getStaticProps() {
       console.error('Error fetching data:', error);
       return {
          props: {
+            ...(await serverSideTranslations(locale, [
+               'common',
+               // 'footer',
+            ])),
             tabs: [],
             categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
             sliders: [] // Adjust based on the expected sliders data structure

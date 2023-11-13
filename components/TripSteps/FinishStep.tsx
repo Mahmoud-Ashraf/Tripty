@@ -19,7 +19,6 @@ const FinishStep = () => {
                 body: { ...tripData, name: 'test from web4' }
             },
             (data: any) => {
-                console.log(data)
                 dispatch(tripActions.closeShowTripModal());
                 router.push('/create-trip');
             },

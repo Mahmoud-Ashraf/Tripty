@@ -1,7 +1,7 @@
 @import '@/styles/Utils/variables';
 
 .container {
-    padding: 2.5rem 15rem 10rem 8rem;
+    padding: 8rem;
     border-radius: 1rem;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     background-color: #fafafa;
@@ -19,6 +19,9 @@
         .group {
             font-size: 1.5rem;
             font-weight: 500;
+        }
+        .switch {
+            cursor: pointer;
         }
     }
     .content {

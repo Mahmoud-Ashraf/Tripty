@@ -16,9 +16,7 @@ const TagsStep = () => {
     }, []);
 
     const handleSelectTag = (tag: Tag) => {
-        console.log(tag, selectedTags);
         const index = selectedTags.findIndex(selectedTag => selectedTag.id === tag.id);
-        console.log(index);
         if (index !== -1) {
             setSelectedTags([
                 ...selectedTags.slice(0, index),

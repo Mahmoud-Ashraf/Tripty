@@ -18,8 +18,8 @@ const TripSteps = () => {
             return <BudgetStep />;
         case 4:
             return <TagsStep />;
-        case 5:
-            return <FinishStep />
+        // case 5:
+        //     return <FinishStep />
         default:
             return;
     }

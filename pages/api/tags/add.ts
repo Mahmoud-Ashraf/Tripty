@@ -18,7 +18,6 @@ export default function handler(
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             res.status(201).json(data.data);
         }).catch(error => console.log(error));
 }

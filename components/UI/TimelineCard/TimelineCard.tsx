@@ -1,16 +1,37 @@
+import { useSelector } from 'react-redux';
 import classes from './timeline-card.module.scss';
 import Image from 'next/image';
+import { RootState } from '@/store';
 
-const TimelineCard = ({ place, showCover = true }: any) => {
+const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) => {
+    const currentTrip = useSelector((state: RootState) => state.trip.currentTrip);
+    const formatTiming = (timing: string) => {
+        const [startTime, endTime] = timing.split('-');
+        const formattedStartTime = formatTime(startTime);
+        const formattedEndTime = formatTime(endTime);
+
+        return `${formattedStartTime} - ${formattedEndTime}`;
+    }
+
+    const formatTime = (time: string) => {
+        const [hours, minutes, seconds] = time.split(':');
+        const formattedTime = `${hours}:${minutes}`;
+
+        return formattedTime;
+    }
+
+    const handleReplace = () => {
+        onReplaceClick();
+    }
     return (
         <div className={classes.container}>
             <div className={classes.inner}>
                 <div className={classes.time}>
                     <div className={classes.timing}>
                         <i className="fa-solid fa-clock"></i>
-                        <span>10.00 - 12.00</span>
+                        <span>{formatTiming(date)}</span>
                     </div>
-                    {showCover && <button className='btn btn-main btn-sm'>replace</button>}
+                    {showCover && <button onClick={handleReplace} className='btn btn-main btn-sm'>replace</button>}
                 </div>
                 {showCover && <div className={classes.cover}>
                     <Image fill src={place?.featured_image} alt='card-image' />

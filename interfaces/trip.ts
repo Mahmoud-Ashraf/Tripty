@@ -12,5 +12,5 @@ export interface Trip {
     budget?: string,
     city_id?: number,
     tags?: (number | Tag)[]
-    places?: Place[]
+    places?: any
 }

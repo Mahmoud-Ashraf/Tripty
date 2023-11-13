@@ -1,4 +1,3 @@
-import useHTTP from '@/hooks/use-http';
 import classes from './create-trip.module.scss';
 import { useEffect, useState } from 'react';
 import { RootState } from '@/store';
@@ -7,14 +6,41 @@ import { tripActions } from '@/store/Trip/Trip';
 import { useRouter } from 'next/router';
 import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
 import Timeline from '@/components/UI/Timeline/Timeline';
-import Card from '@/components/UI/Card/Card';
 import { Trip } from '@/interfaces/trip';
 import TimelineCard from '@/components/UI/TimelineCard/TimelineCard';
+import Slider from 'react-slick';
+import ReplaceCard from '@/components/ReplaceCard/ReplaceCard';
+import { Place } from '@/interfaces/place';
+import Head from 'next/head';
 
+function SampleNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <i onClick={onClick} className="fa-solid fa-play custom-next"></i>
+    );
+}
+
+function SamplePrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <i onClick={onClick} className="fa-solid fa-play custom-prev"></i>
+    );
+}
 const CreateTrip = () => {
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
+    };
     const dispatch = useDispatch();
     const router = useRouter();
     // const tripData = useSelector((state: RootState) => state.trip.tripData);
+    const [editMode, setEditMode] = useState(false);
+    const [editDate, setEditDate] = useState('');
     const currentTrip = useSelector((state: RootState) => state.trip.currentTrip);
     const [data, setData] = useState<Trip>();
     const [viewType, setViewType] = useState<'map' | 'places' | 'replace'>('places');
@@ -29,12 +55,29 @@ const CreateTrip = () => {
 
     // useEffect(() => {
     //     return () => {
-    //         console.log('component destroy');
     //         dispatch(tripActions.clearCurrentTrip());
     //     }
     // }, [])
+
+    const handleReplaceClick = (date: string) => {
+        setEditMode(true);
+        setEditDate(date);
+    }
+
+    const handleSelectPlace = (place: Place) => {
+        const timePlacesTemp = data?.places[editDate];
+        const sortedTimePlacesTemp = [place, ...timePlacesTemp.filter((currentPlace: Place) => currentPlace.id !== place.id)];
+        const tempCurrentTrip = { ...currentTrip, places: { ...currentTrip?.places, [editDate]: sortedTimePlacesTemp } }
+        dispatch(tripActions.setCurrentTrip(tempCurrentTrip));
+        setEditMode(false);
+        setEditDate('');
+    }
+
     return (
         <>
+            <Head>
+                <title>Tripty - Create your trip</title>
+            </Head>
             <PlaceHeader>
                 <h2>YOUR</h2>
                 <h2>TRIP</h2>
@@ -50,11 +93,11 @@ const CreateTrip = () => {
                     </div>
                     <div className={classes.switch}>
                         {
-                            viewType === 'map' &&
+                            viewType === 'map' && !editMode &&
                             <i className="fa-solid fa-bars fs-1" onClick={() => setViewType('places')}></i>
                         }
                         {
-                            viewType === 'places' &&
+                            viewType === 'places' && !editMode &&
                             <svg data-name="Group 252" xmlns="http://www.w3.org/2000/svg" width="64.924" height="58.404" viewBox="0 0 64.924 58.404" onClick={() => setViewType('map')}>
                                 <defs>
                                     <clipPath id="l087ls5f0a">
@@ -70,41 +113,65 @@ const CreateTrip = () => {
                         }
                     </div>
                 </div>
-                <div className={classes.content}>
-                    {
-                        viewType === 'map' &&
-                        <>
-                            <Timeline>
+                {
+                    editMode ?
+                        <div className={classes.content}>
+                            <Slider {...settings}>
                                 {
-                                    data?.places?.map((place, i) => {
+                                    data?.places[editDate].map((place: Place) => {
                                         return (
-                                            <Timeline.Item key={place.id}>
-                                                <Timeline.Point number={i + 1}></Timeline.Point>
-                                                <TimelineCard showCover={false} place={place}></TimelineCard>
-                                            </Timeline.Item>
+                                            <ReplaceCard onSelectPlace={() => handleSelectPlace(place)} place={place} />
                                         )
                                     })
                                 }
-                            </Timeline>
-                        </>
-                    }
-                    {
-                        viewType === 'places' &&
-                        <Timeline>
+                            </Slider>
+                        </div>
+                        :
+                        <div className={classes.content}>
                             {
-                                data?.places?.map((place, i) => {
-                                    return (
-                                        <Timeline.Item key={place.id}>
-                                            <Timeline.Point number={i + 1}></Timeline.Point>
-                                            <TimelineCard place={place}></TimelineCard>
-                                        </Timeline.Item>
-                                    )
-                                })
-                            }
-                        </Timeline>
-                    }
+                                viewType === 'map' &&
+                                <>
+                                    <Timeline>
+                                        {
+                                            data?.places &&
+                                            Object.keys(data.places).map((date, i) => {
+                                                const places = data.places[date] || [];
+                                                const firstPlace = places.length > 0 ? places[0] : null;
 
-                </div>
+                                                return (
+                                                    <Timeline.Item key={i}>
+                                                        <Timeline.Point number={i + 1}></Timeline.Point>
+                                                        <TimelineCard showCover={false} date={date} place={firstPlace}></TimelineCard>
+                                                    </Timeline.Item>
+                                                );
+                                            })
+                                        }
+                                    </Timeline>
+                                </>
+                            }
+                            {
+                                viewType === 'places' &&
+                                <Timeline>
+                                    {
+                                        data?.places &&
+                                        Object.keys(data.places).map((date, i) => {
+                                            const places = data.places[date] || [];
+                                            const firstPlace = places.length > 0 ? places[0] : null;
+
+                                            return (
+                                                <Timeline.Item key={firstPlace.id}>
+                                                    <Timeline.Point number={i + 1}></Timeline.Point>
+                                                    <TimelineCard date={date} place={firstPlace} onReplaceClick={() => handleReplaceClick(date)}></TimelineCard>
+                                                </Timeline.Item>
+                                            );
+                                        })
+                                    }
+                                </Timeline>
+                            }
+
+                        </div>
+                }
+
                 <div className={classes.footer}>
                     <div className="row mt-5 justify-content-end">
                         <div className="col-md-4">
