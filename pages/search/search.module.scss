@@ -1,0 +1,24 @@
+.container {
+    margin: 4rem 0;
+
+    .search {
+        position: relative;
+
+        input {
+            padding: 1rem 3rem 1rem 2.5rem;
+            border-radius: .75rem;
+            border: solid 1px #dadbdf;
+            color: #484848;
+            font-size: 1.125rem;
+            width: 100%;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 2.5rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    }
+}

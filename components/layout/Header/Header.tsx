@@ -17,7 +17,8 @@ const Header = () => {
     const dispatch = useDispatch();
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
-    const { t } = useTranslation('common')
+    const { t } = useTranslation('common');
+    const [searchText, setSearchText] = useState('');
 
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());
@@ -49,8 +50,8 @@ const Header = () => {
                     <Image loading='lazy' alt='Tripty Logo' src={logo} />
                 </Link>
                 <div className={classes.search}>
-                    <input type='text' placeholder='Search' />
-                    <i className="fa-solid fa-magnifying-glass"></i>
+                    <input type='text' placeholder='Search' value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search/${searchText}`)}></i>
                 </div>
             </div>
             <div className={classes.nav}>
