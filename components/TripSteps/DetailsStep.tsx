@@ -79,6 +79,7 @@ const DetailsStep = () => {
                     <DatePicker
                         selected={selectedDate}
                         dateFormat={'dd MMM yy'}
+                        minDate={new Date()}
                         onChange={(date) => handleChangeDate(date)}
                         customInput={<DateCustomButton />}
                     />

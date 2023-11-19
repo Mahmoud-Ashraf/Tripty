@@ -12,6 +12,8 @@ import Slider from 'react-slick';
 import ReplaceCard from '@/components/ReplaceCard/ReplaceCard';
 import { Place } from '@/interfaces/place';
 import Head from 'next/head';
+import Map from '@/components/Map/Map';
+import useHTTP from '@/hooks/use-http';
 
 function SampleNextArrow(props: any) {
     const { className, style, onClick } = props;
@@ -27,6 +29,7 @@ function SamplePrevArrow(props: any) {
     );
 }
 const CreateTrip = () => {
+    const { isLoading, error, sendRequest } = useHTTP();
     const settings = {
         dots: false,
         infinite: false,
@@ -71,6 +74,22 @@ const CreateTrip = () => {
         dispatch(tripActions.setCurrentTrip(tempCurrentTrip));
         setEditMode(false);
         setEditDate('');
+    }
+
+    const saveTrip = () => {
+        let body: { places: { id: number, from: string, to: string }[] } = { places: [] };
+        Object.keys(currentTrip?.places).map(key => { body.places.push({ id: currentTrip?.places[key][0].id, from: key.split('-')[0], to: key.split('-')[1] }) });
+        if (currentTrip) {
+            sendRequest(
+                {
+                    url: `/api/trip/${currentTrip.id}/update`,
+                    method: 'POST',
+                    body: body
+                },
+                (data: any) => router.push('/home'),
+                (err: any) => console.error(err)
+            )
+        }
     }
 
     return (
@@ -131,6 +150,9 @@ const CreateTrip = () => {
                             {
                                 viewType === 'map' &&
                                 <>
+                                    <Map locations={Object.keys(currentTrip?.places).map((key) => {
+                                        return { location: { lat: Number(currentTrip?.places[key][0].lat), lng: Number(currentTrip?.places[key][0].long) } }
+                                    })} />
                                     <Timeline>
                                         {
                                             data?.places &&
@@ -175,7 +197,7 @@ const CreateTrip = () => {
                 <div className={classes.footer}>
                     <div className="row mt-5 justify-content-end">
                         <div className="col-md-4">
-                            <button className='btn btn-main w-100'>Save your trip</button>
+                            <button onClick={saveTrip} className='btn btn-main w-100'>Save your trip</button>
                         </div>
                     </div>
                 </div>

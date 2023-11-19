@@ -2,6 +2,7 @@ import { Place } from "./place"
 import { Tag } from "./tag"
 
 export interface Trip {
+    id?: number,
     date?: string,
     name?: string,
     start_at?: string,
