@@ -1,7 +1,64 @@
 @import '@/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import "@/node_modules/react-datepicker/dist/react-datepicker.css";
+@import '@/node_modules/rc-slider/assets/index.css';
+
 @import "@/node_modules/slick-carousel/slick/slick.css";
 @import "@/node_modules/slick-carousel/slick/slick-theme.css";
 // import "slick-carousel/slick/slick-theme.css";
 @import '@/styles/Utils/utils';
 @import '@/node_modules/bootstrap/scss/bootstrap';
 @import '@/styles/helpers/helpers';
+
+.rc-slider-rail {
+    background-color: #c4c4c4;
+    height: 3px;
+}
+
+.rc-slider-track,
+.rc-slider-tracks {
+    background-color: $main-color;
+}
+
+.rc-slider-handle {
+    background-color: $main-color;
+    width: 1.125rem;
+    height: 1.125rem;
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    border: none;
+    margin-top: 0;
+    z-index: 0;
+
+    &:active,
+    &:focus-visible,
+    &-dragging {
+        box-shadow: none !important;
+    }
+}
+
+.rc-slider-mark-text-active,
+.rc-slider-mark-text {
+    color: $main-color;
+    font-size: .75rem;
+    top: -2.3rem;
+}
+
+.custom-next,
+.custom-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: $main-color;
+    cursor: pointer;
+}
+
+.custom-next {
+    right: -1.5rem;
+}
+
+.custom-prev {
+    left: -1.5rem;
+    transform: translateY(-50%) rotate(180deg);
+}

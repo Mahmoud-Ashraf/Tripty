@@ -1,5 +1,5 @@
 import { Tab, Tabs } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../UI/Card/Card';
 import SectionHeader from '../UI/SectionHeader/SectionHeader';
 import { Category } from '@/interfaces/category';
@@ -14,9 +14,11 @@ interface Props {
 const HomeTabs = (props: Props) => {
     const [key, setKey] = useState<any>('all');
     const { tabs, categorizedPlaces, showTitle } = props;
-    const allPlaces: Place[] = [];
-    Object.values(categorizedPlaces).forEach(categorizedPlace => allPlaces.push(...categorizedPlace));
-
+    // const allPlaces: Place[] = [];
+    // Object.values(categorizedPlaces).forEach(categorizedPlace => allPlaces.push(...categorizedPlace));
+    useEffect(() => {
+        setKey(tabs[0]?.name);
+    }, [tabs])
     return (
         <>
             {showTitle && <SectionHeader title="Explore best places near you" icon={explore} />}

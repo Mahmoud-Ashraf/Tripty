@@ -2,7 +2,7 @@ import classes from './card.module.scss';
 import Link from 'next/link';
 import { Place } from '@/interfaces/place';
 import Image from 'next/image';
-const Card = ({ place }: { place: Place }) => {
+const Card = ({ place }: { place: Place | undefined }) => {
 
     const cutAboutWords = (text: string, wordsCount: number) => {
         const splitedText = text.split(' ', wordsCount);

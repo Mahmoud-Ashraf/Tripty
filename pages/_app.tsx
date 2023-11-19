@@ -3,8 +3,9 @@ import type { AppProps } from 'next/app'
 import { Provider } from "react-redux";
 import store from "../store/index";
 import Layout from '@/components/layout/Layout';
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps, router }: AppProps) {
+const App = ({ Component, pageProps, router }: AppProps) => {
   const routesWithoutLayout = ['/auth'];
   let shouldNotUseLayout = false;
   routesWithoutLayout.forEach(route => {
@@ -25,3 +26,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
     }
   </Provider>
 }
+
+
+export default appWithTranslation(App);

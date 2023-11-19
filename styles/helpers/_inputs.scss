@@ -1,5 +1,7 @@
 input,
 select {
+    color: $main-color;
+    font-size: 1.5rem;
     &.sard-input {
         border: 1px solid $main-color;
         height: 3rem;
@@ -22,4 +24,13 @@ select {
             min-width: 3rem;
         }
     }
+}
+
+:focus-visible {
+    outline: none;
+}
+
+::placeholder {
+    color: rgba($main-color, .35);
+    font-size: 1.1rem;
 }
