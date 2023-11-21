@@ -11,13 +11,7 @@ const Layout = (props: PropsWithChildren) => {
     const showTripModal = useSelector((state: any) => {
         return state.trip.showTripModal;
     });
-    const dispatch = useDispatch();
-    useEffect(() => {
-        const localLang = localStorage.getItem('lang');
-        if (localLang) {
-            dispatch(langActions.translation({ lang: localLang }));
-        }
-    }, []);
+    
 
     return (
         <div className={classes.layout}>

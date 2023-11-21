@@ -1,9 +1,11 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "../store/index";
 import Layout from '@/components/layout/Layout';
-import { appWithTranslation } from 'next-i18next'
+import { useEffect } from 'react';
+import { langActions } from '@/store/Lang/Lang';
+import Wrapper from '@/components/layout/Wrapper/Wrapper';
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const routesWithoutLayout = ['/auth'];
@@ -16,16 +18,18 @@ const App = ({ Component, pageProps, router }: AppProps) => {
   });
 
   return <Provider store={store}>
-    {
-      shouldNotUseLayout ?
-        <Component {...pageProps} />
-        :
-        <Layout>
+    <Wrapper>
+      {
+        shouldNotUseLayout ?
           <Component {...pageProps} />
-        </Layout>
-    }
+          :
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+      }
+    </Wrapper>
   </Provider>
 }
 
 
-export default appWithTranslation(App);
+export default App;

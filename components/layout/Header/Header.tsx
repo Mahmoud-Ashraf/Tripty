@@ -3,13 +3,16 @@ import classes from './header.module.scss';
 import logo from '@/public/assets/images/logo.svg';
 import userIcon from '@/public/assets/images/user_icon.svg';
 import Image from "next/image";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
 import { Lang } from '@/interfaces/lang';
-import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import Translate from '@/components/helpers/Translate/Translate';
+import { langActions } from '@/store/Lang/Lang';
+import { RootState } from '@/store';
+import { setGlobal } from 'next/dist/trace';
 
 
 const Header = () => {
@@ -17,9 +20,9 @@ const Header = () => {
     const dispatch = useDispatch();
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
-    const { t } = useTranslation('common');
     const [searchText, setSearchText] = useState('');
-
+    const globalLang = useSelector((state: RootState) => state.lang.globalLang);
+    const [selectedLang, setSlectedLang] = useState(globalLang);
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());
     }
@@ -36,8 +39,13 @@ const Header = () => {
 
     const changeLanguage = (lang: string) => {
         // console.log(router)
-        router.replace(router.pathname, router.pathname, { locale: lang })
+        // router.replace(router.pathname, router.pathname, { locale: lang })
+        dispatch(langActions.translation({ lang: lang }));
     };
+
+    useEffect(() => {
+        setSlectedLang(globalLang);
+    }, [globalLang])
 
     useEffect(() => {
         getLanguages();
@@ -55,9 +63,9 @@ const Header = () => {
                 </div>
             </div>
             <div className={classes.nav}>
-                <Link href={'/home'}>{t('home')}</Link>
-                <Link href={'/about'}>{t('about')}</Link>
-                <Link href={'/places'}>places</Link>
+                <Link href={'/home'}><Translate id={'header.home'} /></Link>
+                <Link href={'/about'}><Translate id={'header.about'} /></Link>
+                <Link href={'/places'}><Translate id={'header.places'} /></Link>
             </div>
             <div className={classes.user}>
                 <button className={classes.user_startTrip} onClick={openModal}>Start you trip
@@ -74,7 +82,7 @@ const Header = () => {
                         </g>
                     </svg>
                 </button>
-                <select className={classes.lang} value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
+                <select className={classes.lang} value={selectedLang} onChange={(e) => changeLanguage(e.target.value)}>
                     {
                         langs.map(lang => {
                             return (

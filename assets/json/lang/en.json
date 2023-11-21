@@ -1,27 +1,16 @@
 {
-    "titles": {
-        "happendToday": "Happend Today",
-        "urgent": "urgent",
-        "lastNews": "last news",
-        "prayerTime": "Prayer Time",
-        "newest": "Latest News",
-        "most_readed": "Most Readed",
-        "sport": "Sport",
-        "relatedNews": "Related News",
-        "register": "Sign Up",
-        "email-verify": "Please enter the pin sent to your email",
-        "resourcesType": "Resources",
-        "countries": "Select Countries",
-        "categories": "Select Categories",
-        "resources": "Select Resources"
+    "header": {
+        "home": "Home",
+        "about": "About",
+        "places": "Places"
     },
     "searchBar": {
-        "placeholder": "Search News"
+        "placeholder": "ابحث عن الخبر"
     },
     "buttons": {
-        "cancel": "cancel",
-        "showMore": "Show More",
-        "login": "login"
+        "cancel": "إلغاء",
+        "showMore": "عرض المزيد",
+        "login": "تسجيل دخول"
     },
-    "showAll": "Show All ►"
+    "showAll": "رؤية الكل ◄"
 }
