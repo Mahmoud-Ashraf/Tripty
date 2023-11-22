@@ -30,7 +30,7 @@ const Home = (props: Props) => {
 
          <HomeEntryPoints />
 
-         <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
+         <HomeTabs showTitle tabs={tabs} categorizedPlaces={categorizedPlaces} />
 
          <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2><Translate id='headings.startYour'/></h2>

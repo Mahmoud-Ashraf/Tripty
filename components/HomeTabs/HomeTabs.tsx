@@ -21,7 +21,7 @@ const HomeTabs = (props: Props) => {
     }, [tabs])
     return (
         <>
-            {showTitle && <SectionHeader title="Explore best places near you" icon={explore} />}
+            {showTitle && <SectionHeader title="headings.explorePlacesNearYou" icon={explore} />}
             <div className={`home-tabs mt-5`}>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                     {
