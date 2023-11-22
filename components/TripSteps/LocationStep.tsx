@@ -4,6 +4,7 @@ import useHttp from '../../hooks/use-http';
 import { City } from '@/interfaces/City';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
+import Translate from '../helpers/Translate/Translate';
 
 const LocationStep = () => {
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const LocationStep = () => {
                     <ellipse cx="4.039" cy="4.206" rx="4.039" ry="4.206" transform="translate(8.079 8.413)" fill="#fff" />
                 </svg>
                 <p className={classes.locationText}>
-                    My Current Location <span className={classes.locationName}>{selectedLocation.name}</span>
+                    <Translate id='tripModal.myLocation'/> <span className={classes.locationName}>{selectedLocation.name}</span>
                 </p>
             </div>
             <ul className={classes.locationCities}>

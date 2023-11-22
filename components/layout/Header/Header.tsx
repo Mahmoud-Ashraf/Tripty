@@ -13,11 +13,13 @@ import Translate from '@/components/helpers/Translate/Translate';
 import { langActions } from '@/store/Lang/Lang';
 import { RootState } from '@/store';
 import { setGlobal } from 'next/dist/trace';
+import useTranslate from '@/hooks/use-translate';
 
 
 const Header = () => {
     const { isLoading, error, sendRequest } = useHTTP();
     const dispatch = useDispatch();
+    const { translate } = useTranslate();
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
     const [searchText, setSearchText] = useState('');
@@ -58,7 +60,7 @@ const Header = () => {
                     <Image loading='lazy' alt='Tripty Logo' src={logo} />
                 </Link>
                 <div className={classes.search}>
-                    <input type='text' placeholder='Search' value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
                     <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search/${searchText}`)}></i>
                 </div>
             </div>
@@ -68,7 +70,7 @@ const Header = () => {
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
             </div>
             <div className={classes.user}>
-                <button className={classes.user_startTrip} onClick={openModal}>Start you trip
+                <button className={classes.user_startTrip} onClick={openModal}><Translate id='buttons.startTrip' />
                     <svg xmlns="http://www.w3.org/2000/svg" width="131.593" height="35.502" viewBox="0 0 131.593 35.502">
                         <defs>
                             <clipPath id="bxt70uwyba">

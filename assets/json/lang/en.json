@@ -5,12 +5,69 @@
         "places": "Places"
     },
     "searchBar": {
-        "placeholder": "ابحث عن الخبر"
+        "placeholder": "Search"
+    },
+    "headings": {
+        "startYour": "START YOUR",
+        "your": "YOUR",
+        "trip": "TRIP",
+        "discounts": "DISCOUNTS"
     },
     "buttons": {
-        "cancel": "إلغاء",
+        "startTrip": "Start Your Trip",
         "showMore": "عرض المزيد",
-        "login": "تسجيل دخول"
+        "login": "تسجيل دخول",
+        "replace": "Replace",
+        "moreDetails": "More Details",
+        "saveTrip": "Save your trip",
+        "bookNow": "Book Now"
     },
-    "showAll": "رؤية الكل ◄"
+    "entries": {
+        "trend": "Trend Now",
+        "discount": "Discounts",
+        "tourism": "Tourism Packages"
+    },
+    "place": {
+        "about": "About",
+        "menu": "Menu",
+        "location": "Location",
+        "getDiscount": "Get the Discount"
+    },
+    "tripModal": {
+        "create": "Create Your",
+        "trip": "Trip",
+        "myLocation": "My Current Location",
+        "date": "Date",
+        "tripDuration": "Trip Duration",
+        "WhoComing": "Who's coming with you?",
+        "solo": "Solo",
+        "family": "Family",
+        "friends": "Friends",
+        "doYouHaveBudget": "Do you have budget?",
+        "howMuchBudget": "How much your budget?",
+        "yourBudget": "Your Budget?",
+        "howSpendTime": "How do you want spend your time?",
+        "tagsPlaceHolder": "Spa, Shopping",
+        "adults": "Adults",
+        "children": "Children",
+        "other": "Other"
+    },
+    "common": {
+        "yes": "Yes",
+        "no": "No",
+        "cancel": "Cancel",
+        "next": "Next",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Recomended"
+    },
+    "errors": {
+        "tagsError": "Please Select Tags First"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "Copyright © 2023 Tripty. All rights reserved"
+    }
 }

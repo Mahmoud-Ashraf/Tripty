@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker'
 import TimeRangeSlider from '../UI/TimeRangeSlider/TimeRangeSlider';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
+import Translate from '../helpers/Translate/Translate';
 
 interface CustomDateButtonProps {
     value?: string;
@@ -21,7 +22,7 @@ const DateCustomButton = forwardRef<HTMLButtonElement, CustomDateButtonProps>(
 const DetailsStep = () => {
     const dispatch = useDispatch()
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [howComing, setHowComing] = useState<string[]>(['Solo', 'Family', 'Friends']);
+    const [howComing, setHowComing] = useState<string[]>(['solo', 'family', 'friends']);
     const [selectedComing, setSelectedComing] = useState<string>('');
     const [adultsCount, setAdultsCount] = useState<number>();
     const [childrenCount, setChildrenCount] = useState<number>();
@@ -75,7 +76,7 @@ const DetailsStep = () => {
         <div className={classes.details}>
             <div className="row">
                 <div className="col-md-6">
-                    <TripModalHeading text='Date' />
+                    <TripModalHeading text='date' />
                     <DatePicker
                         selected={selectedDate}
                         dateFormat={'dd MMM yy'}
@@ -83,11 +84,11 @@ const DetailsStep = () => {
                         onChange={(date) => handleChangeDate(date)}
                         customInput={<DateCustomButton />}
                     />
-                    <TripModalHeading text='Trip Duration' />
+                    <TripModalHeading text='tripDuration' />
                     <TimeRangeSlider />
                 </div>
                 <div className="col-md-6">
-                    <TripModalHeading text='Who’s coming with you?' />
+                    <TripModalHeading text='WhoComing' />
                     <div className={classes.coming}>
                         <div className="row justify-content-between">
                             {
@@ -96,7 +97,7 @@ const DetailsStep = () => {
                                         return (
                                             <div key={item} className="col-auto">
                                                 <div onClick={() => handleSetComing(item)} className={`${classes.selection} ${selectedComing === item ? classes.selected : ''}`}>
-                                                    <span>{item}</span>
+                                                    <span><Translate id={`tripModal.${item}`} /></span>
                                                 </div>
                                             </div>
                                         )
@@ -107,20 +108,20 @@ const DetailsStep = () => {
                         <div className={classes.comingCount}>
                             <div className="row mt-3 g-3">
                                 {
-                                    (selectedComing === 'Family' || selectedComing === 'Friends') &&
+                                    (selectedComing === 'family' || selectedComing === 'friends') &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
                                             <span onClick={() => setAdultsCount(prev => (prev && (prev > 1)) ? --prev : 1)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{adultsCount} Adults</span>
+                                            <span className={classes.count}>{adultsCount} <Translate id='tripModal.adults'/></span>
                                             <span onClick={() => setAdultsCount(prev => (prev && (prev < 10)) ? ++prev : 10)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>}
                                 {
-                                    selectedComing === 'Family' &&
+                                    selectedComing === 'family' &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
                                             <span onClick={() => setChildrenCount(prev => (prev && (prev > 0)) ? --prev : 0)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{childrenCount} Children</span>
+                                            <span className={classes.count}>{childrenCount} <Translate id='tripModal.children'/></span>
                                             <span onClick={() => setChildrenCount(prev => (prev?.toString() && (prev < 5)) ? ++prev : 5)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>

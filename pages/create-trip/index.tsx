@@ -14,6 +14,7 @@ import { Place } from '@/interfaces/place';
 import Head from 'next/head';
 import Map from '@/components/Map/Map';
 import useHTTP from '@/hooks/use-http';
+import Translate from '@/components/helpers/Translate/Translate';
 
 function SampleNextArrow(props: any) {
     const { className, style, onClick } = props;
@@ -98,8 +99,8 @@ const CreateTrip = () => {
                 <title>Tripty - Create your trip</title>
             </Head>
             <PlaceHeader>
-                <h2>YOUR</h2>
-                <h2>TRIP</h2>
+                <h2><Translate id='headings.your' /></h2>
+                <h2><Translate id='headings.trip' /></h2>
             </PlaceHeader>
             <div className={classes.container}>
                 <div className={classes.header}>
@@ -197,7 +198,7 @@ const CreateTrip = () => {
                 <div className={classes.footer}>
                     <div className="row mt-5 justify-content-end">
                         <div className="col-md-4">
-                            <button onClick={saveTrip} className='btn btn-main w-100'>Save your trip</button>
+                            <button onClick={saveTrip} className='btn btn-main w-100'><Translate id='buttons.saveTrip' /></button>
                         </div>
                     </div>
                 </div>

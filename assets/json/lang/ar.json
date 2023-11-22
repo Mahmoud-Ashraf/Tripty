@@ -5,12 +5,69 @@
         "places": "الأماكن"
     },
     "searchBar": {
-        "placeholder": "ابحث عن الخبر"
+        "placeholder": "بحث"
+    },
+    "headings": {
+        "startYour": "خطط لـ",
+        "your": "خطط",
+        "trip": "طلعتك",
+        "discounts": "خصومات"
     },
     "buttons": {
-        "cancel": "إلغاء",
+        "startTrip": "خطط لطلعتك",
         "showMore": "عرض المزيد",
-        "login": "تسجيل دخول"
+        "login": "تسجيل دخول",
+        "replace": "تغيير",
+        "moreDetails": "تفاصيل",
+        "saveTrip": "احفظ طلعتك",
+        "bookNow": "احجز الان"
     },
-    "showAll": "رؤية الكل ◄"
+    "entries": {
+        "trend": "تريند",
+        "discount": "خصومات",
+        "tourism": "باقات سياحية"
+    },
+    "place": {
+        "about": "عن المكان",
+        "menu": "المنيو",
+        "location": "العنوان",
+        "getDiscount": "احصل على الخصم"
+    },
+    "tripModal": {
+        "create": "خطط لـ",
+        "trip": "طلعتك",
+        "myLocation": "موقعي الحالي",
+        "date": "تاريخ",
+        "tripDuration": "مدة الرحلة",
+        "WhoComing": "من سياتي معك؟",
+        "solo": "مفردي",
+        "family": "عائلة",
+        "friends": "اصدقاء",
+        "doYouHaveBudget": "هل لديك ميزانية؟",
+        "howMuchBudget": "كم هي ميزانيتك؟",
+        "yourBudget": "ميزانيتك؟",
+        "howSpendTime": "كيف تريد قضاء وقتك؟",
+        "tagsPlaceHolder": "سبا, تسوق",
+        "adults": "بالغين",
+        "children": "أطفال",
+        "other": "آخرى"
+    },
+    "common": {
+        "yes": "نعم",
+        "no": "لا",
+        "cancel": "إلغاء",
+        "next": "التالي",
+        "km": "كم",
+        "m": "د",
+        "recomended": "موصى به"
+    },
+    "errors": {
+        "tagsError": "من فضلك اختر اهتماماتك اولاً"
+    },
+    "currencies": {
+        "sar": "ريال"
+    },
+    "footer": {
+        "copyRights": "حقوق النشر © 2023 Tripty. كل الحقوق محفوظة"
+    }
 }

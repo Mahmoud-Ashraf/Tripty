@@ -4,6 +4,7 @@ import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import HomeTourism from "@/components/HomeTourism/HomeTourism";
 import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
+import Translate from "@/components/helpers/Translate/Translate";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
 import { Slider } from "@/interfaces/slider";
@@ -32,8 +33,8 @@ const Home = (props: Props) => {
          <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
 
          <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
-            <h2>START YOUR</h2>
-            <h2>TRIP</h2>
+            <h2><Translate id='headings.startYour'/></h2>
+            <h2><Translate id='headings.trip'/></h2>
          </PlaceHeader>
 
          <HomeTourism />

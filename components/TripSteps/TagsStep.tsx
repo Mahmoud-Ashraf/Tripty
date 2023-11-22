@@ -4,9 +4,11 @@ import classes from './trip-steps.module.scss';
 import { Tag } from '@/interfaces/tag';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
+import useTranslate from '@/hooks/use-translate';
 
 const TagsStep = () => {
     const dispatch = useDispatch();
+    const { translate } = useTranslate();
     const [tags, setTags] = useState<Tag[]>([]);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [otherTag, setOtherTag] = useState<string>('');
@@ -60,7 +62,7 @@ const TagsStep = () => {
     }, [selectedTags])
     return (
         <div className={classes.tags}>
-            <TripModalHeading text='How do you want spend your time?' />
+            <TripModalHeading text='howSpendTime' />
             <div className="row mb-5">
                 {
                     tags?.map(tag => {
@@ -74,11 +76,11 @@ const TagsStep = () => {
                     })
                 }
             </div>
-            <TripModalHeading text='Other' />
+            <TripModalHeading text='other' />
             <div className="row">
                 <div className="col-md-7">
                     <div className={classes.inputContainer}>
-                        <input className={classes.input} onChange={(e: any) => setOtherTag(e.target.value)} value={otherTag} placeholder='Spa, Shopping' />
+                        <input className={classes.input} onChange={(e: any) => setOtherTag(e.target.value)} value={otherTag} placeholder={translate('tripModal.tagsPlaceHolder')} />
                         <button onClick={addTag} className={classes.addTagBtn}>+</button>
                     </div>
                     <div className="row mt-4">

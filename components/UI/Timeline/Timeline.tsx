@@ -19,7 +19,13 @@ Timeline.Item = ({ children }: any) => {
 Timeline.Point = ({ number }: { number: number }) => {
     return (
         <div className={classes.point}>
-            {number}
+            <div className={classes.title}>
+                {number}
+            </div>
+            <div className={classes.line} />
+            <div className={classes.titleEmpty}>
+                
+            </div>
         </div>
     )
 };
