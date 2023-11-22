@@ -15,7 +15,7 @@ const PlaceHeader = (props: placeHeaderProps) => {
         <div className={classes.container} style={{ backgroundImage: `url('${img}')`, cursor: `${onClick ? 'pointer' : 'auto'}` }} onClick={onClick}>
             <div className={classes.inner}>
                 <div className={`${classes.name} ${!discount && 'flex-column justify-content-center'}`}>
-                    {name && <h2><Translate id='headings.discounts' /></h2>}
+                    {name && <h2><Translate id={name} /></h2>}
                     {children && children}
                     {share && <div className={classes.actions}>
                         <button>

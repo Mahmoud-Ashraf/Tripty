@@ -12,7 +12,8 @@
         "your": "خطط",
         "trip": "طلعتك",
         "discounts": "خصومات",
-        "explorePlacesNearYou": "استكشف اماكن بالقرب منك"
+        "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
+        "trend": "تريند"
     },
     "buttons": {
         "startTrip": "خطط لطلعتك",

@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 import Translate from '@/components/helpers/Translate/Translate';
 import { langActions } from '@/store/Lang/Lang';
 import { RootState } from '@/store';
-import { setGlobal } from 'next/dist/trace';
 import useTranslate from '@/hooks/use-translate';
 
 
@@ -23,8 +22,8 @@ const Header = () => {
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
     const [searchText, setSearchText] = useState('');
-    const globalLang = useSelector((state: RootState) => state.lang.globalLang);
-    const [selectedLang, setSlectedLang] = useState(globalLang);
+    // const globalLang = useSelector((state: RootState) => state.lang.globalLang);
+    const [selectedLang, setSlectedLang] = useState(router.locale);
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());
     }
@@ -40,14 +39,13 @@ const Header = () => {
     }
 
     const changeLanguage = (lang: string) => {
-        // console.log(router)
-        // router.replace(router.pathname, router.pathname, { locale: lang })
+        router.replace(router.pathname, router.pathname, { locale: lang })
         dispatch(langActions.translation({ lang: lang }));
     };
 
     useEffect(() => {
-        setSlectedLang(globalLang);
-    }, [globalLang])
+        setSlectedLang(router.locale);
+    }, [router.locale])
 
     useEffect(() => {
         getLanguages();

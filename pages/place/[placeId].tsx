@@ -49,7 +49,7 @@ const PlacePage = (props: Props) => {
                                             <path data-name="Path 344" d="M12.511 32.269C7.167 27.681 2.263 22.878.447 15.883a12.528 12.528 0 1 1 24.569-4.123 15.262 15.262 0 0 1-1.225 6.653c-2.433 5.654-6.527 9.946-11.28 13.856m0-1.654c4.486-3.952 8.428-8.107 10.444-13.69 2.589-7.173-1.524-14.4-8.736-15.5A11.206 11.206 0 0 0 1.642 15.352c1.611 6.433 6.079 10.884 10.872 15.264" fill="#8b8e98" />
                                             <path data-name="Path 345" d="M21.5 16.071a5.28 5.28 0 1 1-10.558-.019 5.28 5.28 0 0 1 10.558.019m-5.218 4.014a3.958 3.958 0 0 0 3.948-3.969 4.011 4.011 0 0 0-8.022 0 3.969 3.969 0 0 0 4.074 3.967" transform="translate(-3.704 -3.677)" fill="#8b8e98" />
                                         </g>
-                                    </svg> {Number(place.distance).toFixed(1)} <Translate id='common.km'/>
+                                    </svg> {Number(place.distance).toFixed(1)} <Translate id='common.km' />
                                 </span>
                             </div>
                             <div className={classes.gallery}>
@@ -120,8 +120,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: any) {
     const { placeId } = context.params;
+    const { locale } = context;
     try {
-        const response = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}`);
+        const response = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}?change_language=${locale}`);
         const data = await response.json();
 
         return {
