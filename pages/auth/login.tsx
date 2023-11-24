@@ -45,25 +45,35 @@ const Login = (props: Props) => {
                         <Form>
                             <h1>Login</h1>
                             <Form.Group className="mb-3">
-                                <Form.Control type="text" placeholder="Mobile" />
+                                <Form.Control type="email" placeholder="Email" />
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group className="mb-3 d-flex justify-content-between">
-                                <Form.Check type="checkbox" label="Remember me" />
+                                {/* <Form.Check type="checkbox" label="Remember me" /> */}
                                 <Link href={'/home'}>Forget Password</Link>
                             </Form.Group>
                             {/* <div className="row">
                                 <div className="col-12"> */}
                             <div className={`d-grid gap-2 ${classes.submit}`}>
                                 <Button variant="main" type="submit">
-                                    Submit
+                                    login
                                 </Button>
                             </div>
                             {/* </div>
                             </div> */}
                         </Form>
+                        <div className={classes.socialLogin}>
+                            <p>Or</p>
+                            <div className={classes.loginOptions}>
+                                <button className={classes.loginOption}><i className="fa-brands fa-google"></i> Google</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-facebook-f"></i> Facebook</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-x-twitter"></i> Twitter</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-apple"></i> Apple</button>
+                            </div>
+                            <Link href={'/auth/register'} className={classes.register}>New Registeration</Link>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -86,7 +86,7 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
                     newDirectionRenderer.setDirections(result);
                     newDirectionRenderer.setOptions({
                         polylineOptions: {
-                            strokeColor: '#62588d', // Red color
+                            strokeColor: '#6c3d8e', // Red color
                             strokeWeight: 4, // Thickness of the route line
                         },
                     });
@@ -106,7 +106,7 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
 
             //         directionsRenderer.setOptions({
             //             polylineOptions: {
-            //                 strokeColor: '#62588d', // Red color
+            //                 strokeColor: '#6c3d8e', // Red color
             //                 strokeWeight: 4, // Thickness of the route line
             //             },
             //         });

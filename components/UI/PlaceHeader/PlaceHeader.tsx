@@ -20,9 +20,9 @@ const PlaceHeader = (props: placeHeaderProps) => {
                     {share && <div className={classes.actions}>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20.098" height="23.797" viewBox="0 0 20.098 23.797">
-                                <path d="M0 0v8.879A2.267 2.267 0 0 0 2.312 11.1h13.874A2.267 2.267 0 0 0 18.5 8.879V0" transform="translate(.8 11.899)" fill='none' stroke='#62588d' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
-                                <path data-name="Path" d="M9.249 4.439 4.624 0 0 4.439" transform="translate(5.424 .8)" fill='none' stroke='#62588d' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
-                                <path data-name="Path" d="M.469 0v14.428" transform="translate(9.58 .8)" fill='none' stroke='#62588d' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                <path d="M0 0v8.879A2.267 2.267 0 0 0 2.312 11.1h13.874A2.267 2.267 0 0 0 18.5 8.879V0" transform="translate(.8 11.899)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                <path data-name="Path" d="M9.249 4.439 4.624 0 0 4.439" transform="translate(5.424 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                <path data-name="Path" d="M.469 0v14.428" transform="translate(9.58 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
                             </svg>
                         </button>
                     </div>}
