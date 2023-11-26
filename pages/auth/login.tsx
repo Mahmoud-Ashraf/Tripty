@@ -7,6 +7,7 @@ import { Button, Form, Row } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import { Slider } from '@/interfaces/slider';
 import { SetStateAction, useState } from 'react';
+import { signIn } from 'next-auth/react';
 
 interface Props {
     sliders: Slider[]
@@ -67,10 +68,10 @@ const Login = (props: Props) => {
                         <div className={classes.socialLogin}>
                             <p>Or</p>
                             <div className={classes.loginOptions}>
-                                <button className={classes.loginOption}><i className="fa-brands fa-google"></i> Google</button>
-                                <button className={classes.loginOption}><i className="fa-brands fa-facebook-f"></i> Facebook</button>
-                                <button className={classes.loginOption}><i className="fa-brands fa-x-twitter"></i> Twitter</button>
-                                <button className={classes.loginOption}><i className="fa-brands fa-apple"></i> Apple</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-google" onClick={() => signIn('google')}></i> Google</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-facebook-f" onClick={() => signIn('facebook')}></i> Facebook</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-x-twitter" onClick={() => signIn('twitter')}></i> Twitter</button>
+                                <button className={classes.loginOption}><i className="fa-brands fa-apple" onClick={() => signIn('apple')}></i> Apple</button>
                             </div>
                             <Link href={'/auth/register'} className={classes.register}>New Registeration</Link>
                         </div>
