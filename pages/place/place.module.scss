@@ -20,8 +20,17 @@
 }
 
 .rate {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
     i {
         color: $rate-star-color;
+    }
+    .addRate {
+        font-size: 1rem;
+        color: $main-color;
+        font-weight: 500;
+        cursor: pointer;
     }
 }
 

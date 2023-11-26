@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { tripActions } from "@/store/Trip/Trip";
 
 interface Props {
-    children: ReactNode
+    children: ReactNode,
+    onOutsideClick: any
 }
 const CustomModal = (props: Props) => {
     const { children } = props;
@@ -16,7 +17,7 @@ const CustomModal = (props: Props) => {
             e.target instanceof Node &&
             !modalRef.current.contains(e.target)
         ) {
-            dispatch(tripActions.closeShowTripModal());
+            props.onOutsideClick();
         }
     };
     useEffect(() => {

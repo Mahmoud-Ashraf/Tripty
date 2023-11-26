@@ -6,6 +6,9 @@ import Head from "next/head";
 import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
 import NoData from "@/components/layout/NoData/NoData";
 import Translate from "@/components/helpers/Translate/Translate";
+import CustomModal from "@/components/UI/CustomModal/CustomModal";
+import { useState } from "react";
+import RateModal from "@/components/RateModal/RateModal";
 
 interface Props {
     place: Place,
@@ -14,7 +17,7 @@ interface Props {
 
 const PlacePage = (props: Props) => {
     const { place, notFound } = props;
-
+    const [showRateModal, setShowRateModal] = useState(false);
     if (notFound) {
         return (
             <>
@@ -30,13 +33,19 @@ const PlacePage = (props: Props) => {
             <Head>
                 <title>{`Tripty - ${place?.name}`}</title>
             </Head>
+            {
+                showRateModal &&
+                <CustomModal onOutsideClick={() => setShowRateModal(false)}>
+                    <RateModal placeId={place.id} />
+                </CustomModal>
+            }
             <PlaceHeader name={place?.name} img={place?.featured_image} logo={place.logo} fav share discount={place.offer} />
             <div className={classes.container}>
                 <div className={classes.details}>
                     <div className="row gx-5">
                         <div className="col-md-6">
                             <div className={classes.specs}>
-                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)}</span>
+                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}>Add rate..</span></span>
                                 {place?.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place?.category?.name}</span> : ''}
                                 <span className={classes.distance}>
                                     <svg data-name="Group 274" xmlns="http://www.w3.org/2000/svg" width="25.026" height="32.269" viewBox="0 0 25.026 32.269">
