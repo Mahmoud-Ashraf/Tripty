@@ -13,16 +13,20 @@ import Translate from '@/components/helpers/Translate/Translate';
 import { langActions } from '@/store/Lang/Lang';
 import { RootState } from '@/store';
 import useTranslate from '@/hooks/use-translate';
+import { Dropdown } from 'react-bootstrap';
+import { signOut, useSession } from 'next-auth/react';
 
 
 const Header = () => {
     const { isLoading, error, sendRequest } = useHTTP();
+    const { data: session } = useSession();
     const dispatch = useDispatch();
     const { translate } = useTranslate();
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
     const [searchText, setSearchText] = useState('');
     const [selectedLang, setSlectedLang] = useState(router.locale);
+    const [showUserDialog, setShowUserDialog] = useState(false);
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());
     }
@@ -49,6 +53,10 @@ const Header = () => {
     useEffect(() => {
         getLanguages();
     }, []);
+
+    const toggleUserDialog = () => {
+        setShowUserDialog(prev => !prev);
+    }
 
     return (
         <header className={classes.container}>
@@ -90,7 +98,27 @@ const Header = () => {
                         })
                     }
                 </select>
-                <Image loading='lazy' alt='user' src={userIcon} />
+                {session?.user && <div className={classes.userDialog}>
+                    <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
+                    {
+                        showUserDialog &&
+                        <div className={classes.userDialogContent}>
+                            <Image loading='lazy' alt='user' src={userIcon} />
+                            <p>Hi, {session?.user?.name}</p>
+                            <button className="btn btn-outline-main">Manage your Account</button>
+                            <button className="btn btn-outline-main" onClick={() => signOut()}>Sign out <i className="fa-solid fa-right-from-bracket"></i></button>
+                        </div>
+                    }
+                </div>}
+                {/* <Dropdown>
+                    <Dropdown.Toggle className={classes.dropdown} id="dropdown-basic">
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Settings</Dropdown.Item>
+                        <Dropdown.Item onClick={() => logOut()}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown> */}
             </div>
         </header>
     )

@@ -6,19 +6,38 @@ import Head from 'next/head';
 import { Button, Form, Row } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import { Slider } from '@/interfaces/slider';
-import { SetStateAction, useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { SetStateAction, useEffect, useState } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 interface Props {
     sliders: Slider[]
 }
 const Login = (props: Props) => {
     const { sliders } = props;
+    const router = useRouter();
     const [index, setIndex] = useState(0);
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { data: session } = useSession();
     const handleSelect = (selectedIndex: SetStateAction<number>) => {
         setIndex(selectedIndex);
     };
+
+    const handleSignIn = async () => {
+        const result = await signIn('credentials', {
+            redirect: false,
+            email: email,
+            password: password,
+        });
+        console.log(result);
+    };
+
+    useEffect(() => {
+        if (session?.user) {
+            router.push('/')
+        }
+    }, [session])
     return (
         <>
             <Head>
@@ -46,10 +65,10 @@ const Login = (props: Props) => {
                         <Form>
                             <h1>Login</h1>
                             <Form.Group className="mb-3">
-                                <Form.Control type="email" placeholder="Email" />
+                                <Form.Control type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="mb-3 d-flex justify-content-between">
                                 {/* <Form.Check type="checkbox" label="Remember me" /> */}
@@ -58,7 +77,7 @@ const Login = (props: Props) => {
                             {/* <div className="row">
                                 <div className="col-12"> */}
                             <div className={`d-grid gap-2 ${classes.submit}`}>
-                                <Button variant="main" type="submit">
+                                <Button variant="main" type="submit" onClick={handleSignIn}>
                                     login
                                 </Button>
                             </div>
