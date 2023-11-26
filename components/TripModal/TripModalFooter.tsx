@@ -26,7 +26,6 @@ const TripModalFooter = () => {
                     body: { ...tripData, name: `trip ${tripData?.date} from ${tripData?.start_at} to ${tripData?.end_at} @ ${tripData?.city_id}` }
                 },
                 (data: any) => {
-                    console.log(data);
                     dispatch(tripActions.setCurrentTrip(data));
                     router.push('/create-trip');
                     dispatch(tripActions.closeShowTripModal());

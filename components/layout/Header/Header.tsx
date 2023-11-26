@@ -22,7 +22,6 @@ const Header = () => {
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
     const [searchText, setSearchText] = useState('');
-    // const globalLang = useSelector((state: RootState) => state.lang.globalLang);
     const [selectedLang, setSlectedLang] = useState(router.locale);
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());

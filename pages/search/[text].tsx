@@ -38,7 +38,6 @@ const Search = () => {
     }
 
     const getSearchData = () => {
-        console.log(searchText);
         sendRequest(
             {
                 url: `/api/search/${searchText}`

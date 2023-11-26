@@ -40,7 +40,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         // const categories = Array.from(categoriesSet).map(category => (category));
         // Respond with the categorized places
-        console.log(categories);
         res.status(200).json({ categorizedPlaces, categories });
     } catch (error: any) {
         res.status(400).json({ error: error.message });

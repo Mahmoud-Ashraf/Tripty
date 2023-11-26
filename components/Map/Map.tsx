@@ -11,7 +11,6 @@ interface Waypoint {
 const Map = ({ locations }: { locations: Waypoint[] }) => {
     const googleMapRef = useRef<HTMLDivElement | null>(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
-    // const [directionsService, setDirectionsService] = useState<google.maps.DirectionsService | null>(null);
     const [directionsRenderer, setDirectionsRenderer] = useState<google.maps.DirectionsRenderer | null>(null);
     const [infoWindows, setInfoWindows] = useState<google.maps.InfoWindow[]>([]);
     const [markers, setMarkers] = useState<google.maps.Marker[]>([]);

@@ -27,7 +27,6 @@ const Home = (props: Props) => {
    // const [categorizedPlaces, setCategorizedPlaces] = useState({});
    const { sliders, tabs, categorizedPlaces } = props;
    const dispatch = useDispatch();
-
    // useEffect(() => {
    //    fetchTabsData();
    //    fetchSliders();
