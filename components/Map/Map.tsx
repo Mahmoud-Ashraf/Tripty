@@ -22,12 +22,12 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
         center: locations[0].location,
         zoom: 10,
         // mapTypeId: 'satellite',
-        keyboardShortcuts: false 
+        keyboardShortcuts: false
     };
 
     useEffect(() => {
         const loader = new Loader({
-            apiKey: 'AIzaSyAnWYQEIvHTYKCXFfiqw7rjHrIZJtD9pwo',
+            apiKey: process.env.NEXT_PUBLIC_MAP_API_KEY || '',
             version: 'weekly',
         });
 

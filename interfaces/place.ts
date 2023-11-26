@@ -14,6 +14,7 @@ export interface Place {
     lat?: string,
     long?: string,
     logo?: string,
+    booking_link?: string,
     featured_image: string,
     gallery: string[],
     category: Category,

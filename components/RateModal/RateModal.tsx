@@ -5,9 +5,6 @@ import Rate from 'rc-rate';
 const RateModal = ({ placeId }: { placeId: number }) => {
     const [rate, setRate] = useState(0);
     const [comment, setComment] = useState('');
-    const onChange = (v: number) => {
-        setRate(v);
-    }
     const saveRate = () => {
         console.log(placeId, rate, comment);
     }
@@ -17,7 +14,7 @@ const RateModal = ({ placeId }: { placeId: number }) => {
                 <label>Your rate</label>
                 <Rate
                     defaultValue={4.5}
-                    onChange={onChange}
+                    onChange={(v) => setRate(v)}
                     style={{ fontSize: 20 }}
                     allowHalf
                     character={<i className="anticon anticon-star" />}

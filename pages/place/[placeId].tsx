@@ -9,6 +9,7 @@ import Translate from "@/components/helpers/Translate/Translate";
 import CustomModal from "@/components/UI/CustomModal/CustomModal";
 import { useState } from "react";
 import RateModal from "@/components/RateModal/RateModal";
+import PlaceMap from "@/components/UI/PlaceMap/PlaceMap";
 
 interface Props {
     place: Place,
@@ -97,14 +98,14 @@ const PlacePage = (props: Props) => {
                             </div>
                             <div className={classes.menu}>
                                 <h5 className={classes.menuTitle}><Translate id='place.location' /></h5>
-                                <Link href={place?.menu ? place.menu : ''} className={classes.aboutText}>This is a link will go to Menu</Link>
+                                <PlaceMap lat={place.lat} lng={place.long} name={place.name} />
                             </div>
 
                         </div>
                         <div className="col-md-6">
                             <div className={classes.cover}>
                                 {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                <button className={classes.bookNow}><Translate id='buttons.bookNow' /></button>
+                                {place.booking_link && <button className={classes.bookNow}><Translate id='buttons.bookNow' /></button>}
                             </div>
                         </div>
                     </div>
