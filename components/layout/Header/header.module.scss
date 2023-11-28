@@ -96,9 +96,10 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        white-space: nowrap;
 
         button {
-            white-space: nowrap;
+            // white-space: nowrap;
             width: 100%;
         }
     }

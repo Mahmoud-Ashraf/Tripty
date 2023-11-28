@@ -105,23 +105,14 @@ const Header = () => {
                     <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
                     {
                         showUserDialog &&
-                        <div className={classes.userDialogContent}>
+                        <div className={`ar-right ${classes.userDialogContent}`}>
                             <Image loading='lazy' alt='user' src={userIcon} />
-                            <p>Hi, {session?.user?.name}</p>
-                            <button className="btn btn-outline-main">Manage your Account</button>
-                            <button className="btn btn-outline-main" onClick={handleLogout}>Sign out <i className="fa-solid fa-right-from-bracket"></i></button>
+                            <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
+                            <button className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
+                            <button className="btn btn-outline-main" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
                         </div>
                     }
                 </div>}
-                {/* <Dropdown>
-                    <Dropdown.Toggle className={classes.dropdown} id="dropdown-basic">
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Settings</Dropdown.Item>
-                        <Dropdown.Item onClick={() => logOut()}>Logout</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
             </div>
         </header>
     )

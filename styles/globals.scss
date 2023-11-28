@@ -186,5 +186,8 @@ $icon-url: "//at.alicdn.com/t/font_r5u29ls31bgldi";
 }
 
 html[lang="ar"] {
-    
+    .ar-right {
+        right: unset !important;
+        left: 0;
+    }
 }

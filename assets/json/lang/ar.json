@@ -2,7 +2,12 @@
     "header": {
         "home": "الرئيسية",
         "about": "عننا",
-        "places": "الأماكن"
+        "places": "الأماكن",
+        "dialog": {
+            "hi": "اهلا",
+            "manage": "إدارة حسابك",
+            "signout": "تسجيل خروج"
+        }
     },
     "searchBar": {
         "placeholder": "بحث"

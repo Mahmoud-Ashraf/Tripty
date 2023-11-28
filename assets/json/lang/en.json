@@ -2,7 +2,12 @@
     "header": {
         "home": "Home",
         "about": "About",
-        "places": "Places"
+        "places": "Places",
+        "dialog": {
+            "hi": "Hi",
+            "manage": "Manage your Account",
+            "signout": "Sign out"
+        }
     },
     "searchBar": {
         "placeholder": "Search"
