@@ -22,7 +22,8 @@
         "replace": "تغيير",
         "moreDetails": "تفاصيل",
         "saveTrip": "احفظ طلعتك",
-        "bookNow": "احجز الان"
+        "bookNow": "احجز الان",
+        "register": "تسجيل"
     },
     "entries": {
         "trend": "تريند",
@@ -71,5 +72,18 @@
     },
     "footer": {
         "copyRights": "حقوق النشر © 2023 Tripty. كل الحقوق محفوظة"
+    },
+    "auth": {
+        "login": "تسجيل الدخول",
+        "forgetPassword": "نسيت كلمة المرور",
+        "loginBy": "او الدخول عبر",
+        "registerWithMail": "تسجيل جديد بالإيميل"
+    },
+    "placeholder": {
+        "name": "الاسم",
+        "mobile": "رقم الجوال",
+        "email": "الريد الالكتروني",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور"
     }
 }

@@ -18,11 +18,12 @@
     "buttons": {
         "startTrip": "Start Your Trip",
         "showMore": "عرض المزيد",
-        "login": "تسجيل دخول",
+        "login": "Login",
         "replace": "Replace",
         "moreDetails": "More Details",
         "saveTrip": "Save your trip",
-        "bookNow": "Book Now"
+        "bookNow": "Book Now",
+        "register": "Register"
     },
     "entries": {
         "trend": "Trend Now",
@@ -71,5 +72,18 @@
     },
     "footer": {
         "copyRights": "Copyright © 2023 Tripty. All rights reserved"
+    },
+    "auth": {
+        "login": "Login",
+        "forgetPassword": "Forget Password",
+        "loginBy": "Or Login By",
+        "registerWithMail": "New Register By Email"
+    },
+    "placeholder": {
+        "name": "Name",
+        "mobile": "Mobile",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
     }
 }
