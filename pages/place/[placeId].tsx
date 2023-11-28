@@ -129,9 +129,8 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getStaticProps(context: any) {
-    const { placeId } = context.params;
-    const { locale } = context;
+export async function getStaticProps({ locale, params }: any) {
+    const { placeId } = params;
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     try {
         const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
