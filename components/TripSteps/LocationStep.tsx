@@ -4,6 +4,7 @@ import useHttp from '../../hooks/use-http';
 import { City } from '@/interfaces/City';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
+import Translate from '../helpers/Translate/Translate';
 
 const LocationStep = () => {
     const dispatch = useDispatch();
@@ -37,11 +38,11 @@ const LocationStep = () => {
         <div className={classes.location}>
             <div className={classes.locationInput}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24.237" height="30.847" viewBox="0 0 24.237 30.847">
-                    <path d="M24.237 12.619c0 9.815-12.118 18.228-12.118 18.228S0 22.434 0 12.619A12.376 12.376 0 0 1 12.118 0a12.376 12.376 0 0 1 12.119 12.619z" fill="#62588d" fillRule="evenodd" />
+                    <path d="M24.237 12.619c0 9.815-12.118 18.228-12.118 18.228S0 22.434 0 12.619A12.376 12.376 0 0 1 12.118 0a12.376 12.376 0 0 1 12.119 12.619z" fill="#6c3d8e" fillRule="evenodd" />
                     <ellipse cx="4.039" cy="4.206" rx="4.039" ry="4.206" transform="translate(8.079 8.413)" fill="#fff" />
                 </svg>
                 <p className={classes.locationText}>
-                    My Current Location <span className={classes.locationName}>{selectedLocation.name}</span>
+                    <Translate id='tripModal.myLocation'/> <span className={classes.locationName}>{selectedLocation.name}</span>
                 </p>
             </div>
             <ul className={classes.locationCities}>

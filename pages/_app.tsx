@@ -1,9 +1,10 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "../store/index";
 import Layout from '@/components/layout/Layout';
-import { appWithTranslation } from 'next-i18next'
+import Wrapper from '@/components/layout/Wrapper/Wrapper';
+import { SessionProvider } from "next-auth/react"
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const routesWithoutLayout = ['/auth'];
@@ -15,17 +16,24 @@ const App = ({ Component, pageProps, router }: AppProps) => {
     }
   });
 
-  return <Provider store={store}>
-    {
-      shouldNotUseLayout ?
-        <Component {...pageProps} />
-        :
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-    }
-  </Provider>
+  return (
+
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        <Wrapper>
+          {
+            shouldNotUseLayout ?
+              <Component {...pageProps} />
+              :
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+          }
+        </Wrapper>
+      </Provider>
+    </SessionProvider>
+  )
 }
 
 
-export default appWithTranslation(App);
+export default App;

@@ -3,23 +3,30 @@ import classes from './header.module.scss';
 import logo from '@/public/assets/images/logo.svg';
 import userIcon from '@/public/assets/images/user_icon.svg';
 import Image from "next/image";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
 import { Lang } from '@/interfaces/lang';
-import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import Translate from '@/components/helpers/Translate/Translate';
+import { langActions } from '@/store/Lang/Lang';
+import { RootState } from '@/store';
+import useTranslate from '@/hooks/use-translate';
+import { Dropdown } from 'react-bootstrap';
+import { signOut, useSession } from 'next-auth/react';
 
 
 const Header = () => {
     const { isLoading, error, sendRequest } = useHTTP();
+    const { data: session } = useSession();
     const dispatch = useDispatch();
+    const { translate } = useTranslate();
     const [langs, setLangs] = useState<Lang[]>([]);
     const router = useRouter();
-    const { t } = useTranslation('common');
     const [searchText, setSearchText] = useState('');
-
+    const [selectedLang, setSlectedLang] = useState(router.locale);
+    const [showUserDialog, setShowUserDialog] = useState(false);
     const openModal = () => {
         dispatch(tripActions.openShowTripModal());
     }
@@ -35,14 +42,25 @@ const Header = () => {
     }
 
     const changeLanguage = (lang: string) => {
-        // console.log(router)
         router.replace(router.pathname, router.pathname, { locale: lang })
+        dispatch(langActions.translation({ lang: lang }));
     };
+
+    useEffect(() => {
+        setSlectedLang(router.locale);
+    }, [router.locale])
 
     useEffect(() => {
         getLanguages();
     }, []);
 
+    const toggleUserDialog = () => {
+        setShowUserDialog(prev => !prev);
+    }
+    const handleLogout = async () => {
+        await signOut();
+        // router.push('/auth/login');
+    }
     return (
         <header className={classes.container}>
             <div className={classes.start}>
@@ -50,17 +68,17 @@ const Header = () => {
                     <Image loading='lazy' alt='Tripty Logo' src={logo} />
                 </Link>
                 <div className={classes.search}>
-                    <input type='text' placeholder='Search' value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search/${searchText}`)}></i>
+                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search?text=${searchText}`)}></i>
                 </div>
             </div>
             <div className={classes.nav}>
-                <Link href={'/home'}>{t('home')}</Link>
-                <Link href={'/about'}>{t('about')}</Link>
-                <Link href={'/places'}>places</Link>
+                <Link href={'/home'}><Translate id={'header.home'} /></Link>
+                <Link href={'/about'}><Translate id={'header.about'} /></Link>
+                <Link href={'/places'}><Translate id={'header.places'} /></Link>
             </div>
             <div className={classes.user}>
-                <button className={classes.user_startTrip} onClick={openModal}>Start you trip
+                <button className={classes.user_startTrip} onClick={openModal}><Translate id='buttons.startTrip' />
                     <svg xmlns="http://www.w3.org/2000/svg" width="131.593" height="35.502" viewBox="0 0 131.593 35.502">
                         <defs>
                             <clipPath id="bxt70uwyba">
@@ -74,7 +92,7 @@ const Header = () => {
                         </g>
                     </svg>
                 </button>
-                <select className={classes.lang} value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
+                <select className={classes.lang} value={selectedLang} onChange={(e) => changeLanguage(e.target.value)}>
                     {
                         langs.map(lang => {
                             return (
@@ -83,7 +101,18 @@ const Header = () => {
                         })
                     }
                 </select>
-                <Image loading='lazy' alt='user' src={userIcon} />
+                {session?.user && <div className={classes.userDialog}>
+                    <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
+                    {
+                        showUserDialog &&
+                        <div className={`ar-right ${classes.userDialogContent}`}>
+                            <Image loading='lazy' alt='user' src={userIcon} />
+                            <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
+                            <button className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
+                            <button className="btn btn-outline-main" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
+                        </div>
+                    }
+                </div>}
             </div>
         </header>
     )

@@ -4,6 +4,7 @@ import { tripActions } from "@/store/Trip/Trip";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Translate from "../helpers/Translate/Translate";
 
 const TripModalFooter = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const TripModalFooter = () => {
 
     const nextStep = () => {
         if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
-            setStepError('Please Select Tags First')
+            setStepError('errors.tagsError')
         } else if (step === stepsCount) {
             sendRequest(
                 {
@@ -25,7 +26,6 @@ const TripModalFooter = () => {
                     body: { ...tripData, name: `trip ${tripData?.date} from ${tripData?.start_at} to ${tripData?.end_at} @ ${tripData?.city_id}` }
                 },
                 (data: any) => {
-                    console.log(data);
                     dispatch(tripActions.setCurrentTrip(data));
                     router.push('/create-trip');
                     dispatch(tripActions.closeShowTripModal());
@@ -44,15 +44,15 @@ const TripModalFooter = () => {
         <div>
             {stepError && <div className="row">
                 <div className="col-12">
-                    <p className="fs-5 text-error">{stepError}</p>
+                    <p className="fs-5 text-error"><Translate id={stepError} /></p>
                 </div>
             </div>}
             <div className="row justify-content-end mt-5">
                 <div className="col-4">
-                    <button onClick={cancel} className="btn btn-main btn-lg w-100">Cancel</button>
+                    <button onClick={cancel} className="btn btn-main btn-lg w-100"><Translate id='common.cancel' /></button>
                 </div>
                 <div className="col-4">
-                    <button onClick={nextStep} className="btn btn-main btn-lg w-100">Next</button>
+                    <button onClick={nextStep} className="btn btn-main btn-lg w-100"><Translate id='common.next' /></button>
                 </div>
             </div>
         </div>

@@ -13,7 +13,8 @@ export interface Place {
     city?: { id: number, name: string, code: string | null }
     lat?: string,
     long?: string,
-    logo?: string | null,
+    logo?: string,
+    booking_link?: string,
     featured_image: string,
     gallery: string[],
     category: Category,

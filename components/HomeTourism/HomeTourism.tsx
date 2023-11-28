@@ -7,7 +7,7 @@ import SectionHeader from "../UI/SectionHeader/SectionHeader";
 const HomeTourism = () => {
     return (
         <>
-            <SectionHeader title="Tourism Packages" />
+            <SectionHeader title="entries.tourism" />
             <div className="row">
                 <div className="col-7">
                     <TourismCard img={tourism1.src} big />

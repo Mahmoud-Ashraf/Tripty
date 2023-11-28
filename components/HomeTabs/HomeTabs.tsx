@@ -14,14 +14,13 @@ interface Props {
 const HomeTabs = (props: Props) => {
     const [key, setKey] = useState<any>('all');
     const { tabs, categorizedPlaces, showTitle } = props;
-    // const allPlaces: Place[] = [];
-    // Object.values(categorizedPlaces).forEach(categorizedPlace => allPlaces.push(...categorizedPlace));
+
     useEffect(() => {
         setKey(tabs[0]?.name);
     }, [tabs])
     return (
         <>
-            {showTitle && <SectionHeader title="Explore best places near you" icon={explore} />}
+            {showTitle && <SectionHeader title="headings.explorePlacesNearYou" icon={explore} />}
             <div className={`home-tabs mt-5`}>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                     {

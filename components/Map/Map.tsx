@@ -11,7 +11,6 @@ interface Waypoint {
 const Map = ({ locations }: { locations: Waypoint[] }) => {
     const googleMapRef = useRef<HTMLDivElement | null>(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
-    // const [directionsService, setDirectionsService] = useState<google.maps.DirectionsService | null>(null);
     const [directionsRenderer, setDirectionsRenderer] = useState<google.maps.DirectionsRenderer | null>(null);
     const [infoWindows, setInfoWindows] = useState<google.maps.InfoWindow[]>([]);
     const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
@@ -23,12 +22,12 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
         center: locations[0].location,
         zoom: 10,
         // mapTypeId: 'satellite',
-        keyboardShortcuts: false 
+        keyboardShortcuts: false
     };
 
     useEffect(() => {
         const loader = new Loader({
-            apiKey: 'AIzaSyAnWYQEIvHTYKCXFfiqw7rjHrIZJtD9pwo',
+            apiKey: process.env.NEXT_PUBLIC_MAP_API_KEY || '',
             version: 'weekly',
         });
 
@@ -86,7 +85,7 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
                     newDirectionRenderer.setDirections(result);
                     newDirectionRenderer.setOptions({
                         polylineOptions: {
-                            strokeColor: '#62588d', // Red color
+                            strokeColor: '#6c3d8e', // Red color
                             strokeWeight: 4, // Thickness of the route line
                         },
                     });
@@ -106,7 +105,7 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
 
             //         directionsRenderer.setOptions({
             //             polylineOptions: {
-            //                 strokeColor: '#62588d', // Red color
+            //                 strokeColor: '#6c3d8e', // Red color
             //                 strokeWeight: 4, // Thickness of the route line
             //             },
             //         });

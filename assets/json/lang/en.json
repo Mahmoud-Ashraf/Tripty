@@ -1,27 +1,94 @@
 {
-    "titles": {
-        "happendToday": "Happend Today",
-        "urgent": "urgent",
-        "lastNews": "last news",
-        "prayerTime": "Prayer Time",
-        "newest": "Latest News",
-        "most_readed": "Most Readed",
-        "sport": "Sport",
-        "relatedNews": "Related News",
-        "register": "Sign Up",
-        "email-verify": "Please enter the pin sent to your email",
-        "resourcesType": "Resources",
-        "countries": "Select Countries",
-        "categories": "Select Categories",
-        "resources": "Select Resources"
+    "header": {
+        "home": "Home",
+        "about": "About",
+        "places": "Places",
+        "dialog": {
+            "hi": "Hi",
+            "manage": "Manage your Account",
+            "signout": "Sign out"
+        }
     },
     "searchBar": {
-        "placeholder": "Search News"
+        "placeholder": "Search"
+    },
+    "headings": {
+        "startYour": "START YOUR",
+        "your": "YOUR",
+        "trip": "TRIP",
+        "discounts": "DISCOUNTS",
+        "explorePlacesNearYou": "Explore best places near you",
+        "trend": "TREND NOW"
     },
     "buttons": {
-        "cancel": "cancel",
-        "showMore": "Show More",
-        "login": "login"
+        "startTrip": "Start Your Trip",
+        "showMore": "عرض المزيد",
+        "login": "Login",
+        "replace": "Replace",
+        "moreDetails": "More Details",
+        "saveTrip": "Save your trip",
+        "bookNow": "Book Now",
+        "register": "Register"
     },
-    "showAll": "Show All ►"
+    "entries": {
+        "trend": "Trend Now",
+        "discount": "Discounts",
+        "tourism": "Tourism Packages"
+    },
+    "place": {
+        "about": "About",
+        "menu": "Menu",
+        "location": "Location",
+        "getDiscount": "Get the Discount"
+    },
+    "tripModal": {
+        "create": "Create Your",
+        "trip": "Trip",
+        "myLocation": "My Current Location",
+        "date": "Date",
+        "tripDuration": "Trip Duration",
+        "WhoComing": "Who's coming with you?",
+        "solo": "Solo",
+        "family": "Family",
+        "friends": "Friends",
+        "doYouHaveBudget": "Do you have budget?",
+        "howMuchBudget": "How much your budget?",
+        "yourBudget": "Your Budget?",
+        "howSpendTime": "How do you want spend your time?",
+        "tagsPlaceHolder": "Spa, Shopping",
+        "adults": "Adults",
+        "children": "Children",
+        "other": "Other"
+    },
+    "common": {
+        "yes": "Yes",
+        "no": "No",
+        "cancel": "Cancel",
+        "next": "Next",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Recomended"
+    },
+    "errors": {
+        "tagsError": "Please Select Tags First"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "Copyright © 2023 Tripty. All rights reserved"
+    },
+    "auth": {
+        "login": "Login",
+        "forgetPassword": "Forget Password",
+        "loginBy": "Or Login By",
+        "registerWithMail": "New Register By Email"
+    },
+    "placeholder": {
+        "name": "Name",
+        "mobile": "Mobile",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
+    }
 }

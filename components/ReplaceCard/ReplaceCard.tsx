@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import classes from './replace-card.module.scss';
+import Translate from '../helpers/Translate/Translate';
 
 const ReplaceCard = ({ place, onSelectPlace }: any) => {
     return (
@@ -10,7 +11,7 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
                     <div className={classes.desc}>
                         <h4>{place.name}</h4>
                         <span className={classes.rate}><i className="fa-solid fa-star"></i> {place.rating.toFixed(1)}</span>
-                        <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} KM</span>
+                        <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km' /></span>
                     </div>
                     {place.category.parent &&
                         <div className={classes.cuisine}>
@@ -23,7 +24,7 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
                 </div>
             </div>
             <div className={classes.actions}>
-                <a href={`/place/${place.id}`} target='_blank'>More Details</a>
+                <a href={`/place/${place.id}`} target='_blank'><Translate id='button.moreDetails' /></a>
                 <button onClick={onSelectPlace}><i className="fa-solid fa-plus"></i></button>
             </div>
         </div>

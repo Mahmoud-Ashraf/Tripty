@@ -1,27 +1,94 @@
 {
-    "titles": {
-        "happendToday": "حدث اليوم",
-        "urgent": "عاجل",
-        "lastNews": "اخر الأخبار",
-        "prayerTime": "مواقيت الصلاة",
-        "newest": "اخر الأخبار",
-        "most_readed": "الأكثر قراءة",
-        "sport": "رياضة",
-        "relatedNews": "اخبار ذات صلة",
-        "register": "تسجيل جديد",
-        "email-verify": "فضلا ادخال الرقم المرسل علي بريدك الالكتروني",
-        "resourcesType": "المصادر",
-        "countries": "اختر الدول",
-        "categories": "اختر الأقسام",
-        "resources": "اختر المصادر"
+    "header": {
+        "home": "الرئيسية",
+        "about": "عننا",
+        "places": "الأماكن",
+        "dialog": {
+            "hi": "اهلا",
+            "manage": "إدارة حسابك",
+            "signout": "تسجيل خروج"
+        }
     },
     "searchBar": {
-        "placeholder": "ابحث عن الخبر"
+        "placeholder": "بحث"
+    },
+    "headings": {
+        "startYour": "خطط لـ",
+        "your": "خطط",
+        "trip": "طلعتك",
+        "discounts": "خصومات",
+        "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
+        "trend": "تريند"
     },
     "buttons": {
-        "cancel": "إلغاء",
+        "startTrip": "خطط لطلعتك",
         "showMore": "عرض المزيد",
-        "login": "تسجيل دخول"
+        "login": "تسجيل دخول",
+        "replace": "تغيير",
+        "moreDetails": "تفاصيل",
+        "saveTrip": "احفظ طلعتك",
+        "bookNow": "احجز الان",
+        "register": "تسجيل"
     },
-    "showAll": "رؤية الكل ◄"
+    "entries": {
+        "trend": "تريند",
+        "discount": "خصومات",
+        "tourism": "باقات سياحية"
+    },
+    "place": {
+        "about": "عن المكان",
+        "menu": "المنيو",
+        "location": "العنوان",
+        "getDiscount": "احصل على الخصم"
+    },
+    "tripModal": {
+        "create": "خطط لـ",
+        "trip": "طلعتك",
+        "myLocation": "موقعي الحالي",
+        "date": "تاريخ",
+        "tripDuration": "مدة الرحلة",
+        "WhoComing": "من سياتي معك؟",
+        "solo": "مفردي",
+        "family": "عائلة",
+        "friends": "اصدقاء",
+        "doYouHaveBudget": "هل لديك ميزانية؟",
+        "howMuchBudget": "كم هي ميزانيتك؟",
+        "yourBudget": "ميزانيتك؟",
+        "howSpendTime": "كيف تريد قضاء وقتك؟",
+        "tagsPlaceHolder": "سبا, تسوق",
+        "adults": "بالغين",
+        "children": "أطفال",
+        "other": "آخرى"
+    },
+    "common": {
+        "yes": "نعم",
+        "no": "لا",
+        "cancel": "إلغاء",
+        "next": "التالي",
+        "km": "كم",
+        "m": "د",
+        "recomended": "موصى به"
+    },
+    "errors": {
+        "tagsError": "من فضلك اختر اهتماماتك اولاً"
+    },
+    "currencies": {
+        "sar": "ريال"
+    },
+    "footer": {
+        "copyRights": "حقوق النشر © 2023 Tripty. كل الحقوق محفوظة"
+    },
+    "auth": {
+        "login": "تسجيل الدخول",
+        "forgetPassword": "نسيت كلمة المرور",
+        "loginBy": "او الدخول عبر",
+        "registerWithMail": "تسجيل جديد بالإيميل"
+    },
+    "placeholder": {
+        "name": "الاسم",
+        "mobile": "رقم الجوال",
+        "email": "الريد الالكتروني",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور"
+    }
 }
