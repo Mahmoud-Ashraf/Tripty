@@ -96,8 +96,10 @@ const Login = (props: Props) => {
 }
 
 export async function getStaticProps() {
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
     try {
-        const slidersReq = await fetch('http://18.133.139.168/api/v1/front/sliders');
+        const slidersReq = await fetch(`${baseUrl}sliders`);
         const slidersData = await slidersReq.json();
 
         return {
