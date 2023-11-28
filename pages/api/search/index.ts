@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             throw new Error('Invalid text parameter');
         }
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        const response = await fetch(baseUrl + `places?change_language=${locale}&text=${text}`, {
+        const response = await fetch(`${baseUrl}places?change_language=${locale}&text=${text}`, {
             method: 'GET'
         });
 

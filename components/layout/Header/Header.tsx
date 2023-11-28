@@ -42,7 +42,7 @@ const Header = () => {
     }
 
     const changeLanguage = (lang: string) => {
-        router.replace(router.pathname, router.pathname, { locale: lang })
+        router.replace(router.asPath, router.asPath, { locale: lang })
         dispatch(langActions.translation({ lang: lang }));
     };
 

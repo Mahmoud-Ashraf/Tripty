@@ -5,34 +5,52 @@ import Head from "next/head";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import { useEffect, useState } from "react";
 import { Place } from "@/interfaces/place";
-import { GetServerSidePropsContext } from "next/types";
+import { Category } from "@/interfaces/category";
+import useHTTP from "@/hooks/use-http";
+import useTranslate from "@/hooks/use-translate";
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
 }
 
 interface Props {
-    tabs: [],
+    tabs: Category[] | [],
     categorizedPlaces: CategorizedPlaces
 }
 
-const Search = ({ tabs, categorizedPlaces }: Props) => {
+const Search = () => {
     const router = useRouter();
+    const { translate } = useTranslate();
     const searchText = router.query.text;
-    // const { isLoading, error, sendRequest } = useHTTP();
+    const { isLoading, error, sendRequest } = useHTTP();
     const [searchValue, setSearchValue] = useState<string>('');
     // const [searchText, setSearchText] = useState(router.query.text);
-    // const [searchTabs, setSearchTabs] = useState<any>();
-    // const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
+    const [searchTabs, setSearchTabs] = useState<any>();
+    const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
 
     useEffect(() => {
+        console.log(router.locale);
         if (searchText) {
             setSearchValue(Array.isArray(searchText) ? searchText[0] : searchText); // Set searchValue when query changes
+            getSearchData();
         }
-    }, [searchText]); // Watch for changes in searchText
+    }, [searchText, router.locale]); // Watch for changes in searchText
 
     const search = () => {
         router.push(`/search?text=${searchValue}`);
+    }
+
+    const getSearchData = () => {
+        sendRequest(
+            {
+                url: `/api/search?locale=${router.locale}&text=${searchText}`
+            },
+            (data: any) => {
+                setSearchTabs(data.categories);
+                setSearchCategorizedPlaces(data.categorizedPlaces)
+            },
+            (err: any) => console.log(err)
+        )
     }
 
     return (
@@ -45,46 +63,18 @@ const Search = ({ tabs, categorizedPlaces }: Props) => {
             </PlaceHeader>
             <div className={classes.container}>
                 <div className={classes.search}>
-                    <input type='text' placeholder='Search' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
                     <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
                 </div>
                 <div className={classes.content}>
                     {
-                        tabs && categorizedPlaces &&
-                        <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
+                        searchTabs && searchCategorizedPlaces &&
+                        <HomeTabs tabs={searchTabs} categorizedPlaces={searchCategorizedPlaces} />
                     }
                 </div>
             </div>
         </>
     )
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { query, locale, req } = context;
-    const { text } = query || {};
-    const protocol = req.headers['x-forwarded-proto'] || '';
-    const host = req.headers.host || '';
-
-    // Construct the base URL dynamically with protocol and host
-    const baseURL = `${protocol}://${host}/api/search`;
-    try {
-        const categoriesReq = await fetch(`${baseURL}?locale=${locale}&text=${text}`);
-        const categoriesData = await categoriesReq.json();
-        return {
-            props: {
-                tabs: categoriesData.categories,
-                categorizedPlaces: categoriesData.categorizedPlaces
-            }
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            props: {
-                tabs: [],
-                categorizedPlaces: {} as CategorizedPlaces // Initialize as the defined interface
-            }
-        };
-    }
 }
 
 export default Search;
