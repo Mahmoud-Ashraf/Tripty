@@ -94,7 +94,7 @@ const PlacePage = (props: Props) => {
                             </div>
                             <div className={classes.menu}>
                                 <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
-                                <Link href={place?.menu ? place.menu : ''} className={classes.aboutText}>This is a link will go to Menu</Link>
+                                <Link href={place?.menu ? place.menu : ''} className={classes.menuLink}><Translate id='buttons.showMenu' /></Link>
                             </div>
                             <div className={classes.menu}>
                                 <h5 className={classes.menuTitle}><Translate id='place.location' /></h5>
@@ -105,7 +105,7 @@ const PlacePage = (props: Props) => {
                         <div className="col-md-6">
                             <div className={classes.cover}>
                                 {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                {place.booking_link && <button className={classes.bookNow}><Translate id='buttons.bookNow' /></button>}
+                                {place?.booking_link && <Link className={classes.bookNow} href={place?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,8 @@ const PlacePage = (props: Props) => {
 
 export async function getStaticPaths() {
     // Fetch the list of place IDs from an API
-    const placeIds = await fetch('http://18.133.139.168/api/v1/front/places').then(data => data.json());
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const placeIds = await fetch(`${baseUrl}places`).then(data => data.json());
     const paths = placeIds.data.map((place: Place) => ({
         params: { placeId: place.id.toString() },
     }));
@@ -131,8 +132,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: any) {
     const { placeId } = context.params;
     const { locale } = context;
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     try {
-        const response = await fetch(`http://18.133.139.168/api/v1/front/places/${placeId}?change_language=${locale}`);
+        const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
         const data = await response.json();
 
         return {

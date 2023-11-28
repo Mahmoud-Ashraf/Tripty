@@ -28,7 +28,8 @@
         "moreDetails": "More Details",
         "saveTrip": "Save your trip",
         "bookNow": "Book Now",
-        "register": "Register"
+        "register": "Register",
+        "showMenu": "Show The Menu"
     },
     "entries": {
         "trend": "Trend Now",
