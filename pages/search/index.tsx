@@ -5,6 +5,7 @@ import Head from "next/head";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import { useEffect, useState } from "react";
 import { Place } from "@/interfaces/place";
+import { GetServerSidePropsContext } from "next/types";
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -58,11 +59,16 @@ const Search = ({ tabs, categorizedPlaces }: Props) => {
     )
 }
 
-export async function getServerSideProps(context: any) {
-    const { query, locale } = context;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { query, locale, req } = context;
     const { text } = query || {};
+    const protocol = req.headers['x-forwarded-proto'] || '';
+    const host = req.headers.host || '';
+
+    // Construct the base URL dynamically with protocol and host
+    const baseURL = `${protocol}://${host}/api/search`;
     try {
-        const categoriesReq = await fetch(`http://localhost:3000/api/search?locale=${locale}&text=${text}`);
+        const categoriesReq = await fetch(`${baseURL}?locale=${locale}&text=${text}`);
         const categoriesData = await categoriesReq.json();
         return {
             props: {

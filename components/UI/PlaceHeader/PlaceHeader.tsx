@@ -17,7 +17,7 @@ const PlaceHeader = (props: placeHeaderProps) => {
     return (
         <div className={classes.container} style={{ backgroundImage: `url('${img}')`, cursor: `${onClick ? 'pointer' : 'auto'}` }} onClick={onClick}>
             <div className={classes.inner}>
-                <div className={`${classes.name} ${!discount && 'flex-column justify-content-center'}`}>
+                <div className={`${classes.name} ${!discount && !fav && !logo && 'flex-column justify-content-center'}`}>
                     {name && <h2><Translate id={name} /></h2>}
                     {children && children}
                     {share && <div className={classes.actions}>
@@ -43,7 +43,7 @@ const PlaceHeader = (props: placeHeaderProps) => {
                     </svg></button>}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
