@@ -1,7 +1,9 @@
 $white: #FFF;
 $black: #000;
 $stc: "STC";
+$baloo: "Baloo";
 $yellow: #fa8b24;
+$red: #dc3545;
 
 // Grays
 $gray-100: #f7f7f7;
@@ -14,8 +16,8 @@ $gray-700: #484848;
 $gray-800: #313737;
 $gray-900: #1e1e1e;
 
-$main-color : #62588d;
-$main-font-family: $stc;
+$main-color : #6c3d8e;
+$main-font-family: $baloo;
 $main-bg: $gray-100;
 $text-color: $gray-500;
 $main-box-bg: $white;
@@ -32,6 +34,7 @@ $place-specs-icon-color: $gray-500;
 $place-heading-color: $gray-800;
 
 $theme-colors: (
-    "main": $main-color
+    "main": $main-color,
+    "error": $red
 );
 $form-check-input-checked-bg-color: $main-color;

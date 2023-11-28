@@ -7,9 +7,9 @@ const HomeEntryPoints = () => {
         <div className="row justify-content-center my-5">
             <div className="col-10">
                 <div className="row g-5 justify-content-center">
-                    <div className="col-3"><EntryPoint icon={trend} text={'Trend Now'} url="/trend" /></div>
-                    <div className="col-3"><EntryPoint icon={discounts} text={'Discounts'} url="/discounts" /></div>
-                    <div className="col-3"><EntryPoint icon={tourism} text={'Tourism Packages'} url="/tourism" /></div>
+                    <div className="col-3"><EntryPoint icon={trend} text={'trend'} url="/trend" /></div>
+                    <div className="col-3"><EntryPoint icon={discounts} text={'discount'} url="/discounts" /></div>
+                    <div className="col-3"><EntryPoint icon={tourism} text={'tourism'} url="/tourism" /></div>
                 </div>
             </div>
         </div>

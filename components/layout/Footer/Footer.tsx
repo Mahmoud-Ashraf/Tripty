@@ -1,3 +1,4 @@
+import Translate from '@/components/helpers/Translate/Translate';
 import classes from './footer.module.scss';
 import logo from '@/public/assets/images/logo_white.svg';
 import Image from "next/image";
@@ -7,12 +8,12 @@ const Footer = () => {
     return <footer className={classes.container}>
         <div className={classes.logo}>
             <Image loading='lazy' alt='Tripty Logo' src={logo} />
-            <p className='mb-0'>Copyright © 2023 Tripty. All rights reserved</p>
+            <p className='mb-0'><Translate id={'footer.copyRights'} /></p>
         </div>
         <div className={classes.nav}>
-            <Link href={'/home'}>Home</Link>
-            <Link href={'/about'}>About</Link>
-            <Link href={'/places'}>places</Link>
+            <Link href={'/home'}><Translate id={'header.home'} /></Link>
+            <Link href={'/about'}><Translate id={'header.about'} /></Link>
+            <Link href={'/places'}><Translate id={'header.places'} /></Link>
         </div>
         <div className={classes.social}>
             <i className="fa-brands fa-square-facebook"></i>

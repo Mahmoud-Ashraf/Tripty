@@ -23,7 +23,7 @@ const Discounts = (props: Props) => {
                 <title>{`Tripty - Discounts`}</title>
             </Head>
             <div className={classes.container}>
-                <PlaceHeader name='Discounts' />
+                <PlaceHeader name='headings.discounts' />
                 <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
             </div>
         </>
@@ -31,16 +31,18 @@ const Discounts = (props: Props) => {
 }
 
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: any) {
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
     try {
-        const categoriesReq = await fetch('http://18.133.139.168/api/v1/front/categories');
+        const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
         const categoriesData = await categoriesReq.json();
         categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
 
         const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
         await Promise.all(categoriesData.data.map(async (category: any) => {
-            const categoryPlacesReq = await fetch(`http://18.133.139.168/api/v1/front/places?category_id=${category.id}`);
+            const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}`);
             const categoryPlacesData = await categoryPlacesReq.json();
 
             categorizedPlaces[category.name] = categoryPlacesData.data;

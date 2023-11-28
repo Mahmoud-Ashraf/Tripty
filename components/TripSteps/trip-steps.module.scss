@@ -1,0 +1,113 @@
+@import '@/styles/Utils/variables';
+
+.location {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+
+    &Cities {
+        display: inline-flex;
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+    }
+
+    &City {
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 3;
+        color: $main-color;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    &Input {
+        padding: 0 3rem 1.8rem 0;
+        border-bottom: .5px solid $main-color;
+        font-size: 1.8rem;
+        color: $main-color;
+        display: inline-flex;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    &Name {
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+}
+
+.selection {
+    background-color: #f0f0f0;
+    color: $main-color;
+    font-weight: 400;
+    text-align: center;
+    padding: .7rem 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &.selected {
+        border: 1px solid $main-color;
+        font-weight: 600;
+    }
+}
+
+.inputContainer {
+    position: relative;
+
+    button {
+        position: absolute;
+        right: 0;
+        bottom: .25rem;
+    }
+}
+
+.input {
+    border: none;
+    border-bottom: 1px solid rgba($main-color, .35);
+    // color: $main-color;
+    padding: 0 2rem 1.25rem;
+    width: 100%;
+}
+
+.addTagBtn {
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    font-size: 19px;
+    color: $main-color;
+    border: none;
+}
+
+.customDateButton {
+    padding: .875rem 1rem;
+    border-radius: .5rem;
+    background-color: #f0f0f0;
+    color: $main-color;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    width: 100%;
+    border: none;
+}
+
+.counter {
+    background-color: #f0f0f0;
+    color: $main-color;
+    font-size: 1rem;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.2rem;
+    border-radius: .5rem;
+    &Dec, &Inc {
+        padding: .125rem .5rem;
+        background-color: #FFF;
+        border-radius: .3rem;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+        cursor: pointer;
+    }
+}

@@ -20,8 +20,19 @@
 }
 
 .rate {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+
     i {
         color: $rate-star-color;
+    }
+
+    .addRate {
+        font-size: 1rem;
+        color: $main-color;
+        font-weight: 500;
+        cursor: pointer;
     }
 }
 
@@ -76,6 +87,7 @@
 
 .menu {
     margin-top: 3rem;
+
     h5 {
         color: $place-heading-color;
         font-size: 1.3rem;
@@ -84,11 +96,11 @@
         margin-bottom: .8rem;
     }
 
-    a {
-        color: $main-color;
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
+    // a {
+    //     color: $main-color;
+    //     font-size: 1.2rem;
+    //     font-weight: 500;
+    // }
 }
 
 .cover {
@@ -97,19 +109,24 @@
     justify-content: space-between;
     height: 100%;
     align-items: flex-end;
+
     img {
         width: 100%;
         height: auto;
         max-height: 500px;
     }
-    .bookNow {
-        background-color: $main-color;
-        color: $white;
-        padding: 1rem 9rem;
-        font-weight: 500;
-        border-radius: .5rem;
-        margin: 2rem 0;
-        border: none;
 
-    }
+}
+
+.bookNow,
+.menuLink {
+    background-color: $main-color;
+    color: $white;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: .5rem;
+    margin: 2rem 0;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
 }

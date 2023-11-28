@@ -1,0 +1,63 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    display: flex;
+    // gap: 2rem;
+    padding-top: 2rem;
+}
+
+.item {
+    width: 100%;
+    position: relative;
+
+    &:last-child {
+        .point {
+            .titleEmpty {
+                width: 1.7rem;
+                height: 1.7rem;
+                background-color: $main-color;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.point {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    margin-bottom: 2rem;
+    // justify-content: space-between;
+
+    .title {
+        width: 1.7rem;
+        height: 1.7rem;
+        background-color: $main-color;
+        color: $white;
+        border-radius: 50%;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+    }
+
+    .line {
+        height: 1px;
+        background-color: $main-color;
+        width: 100%;
+    }
+
+    // position: absolute;
+    // top: -3rem;
+    // left: 0;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // transform: translateY(-50%);
+    // z-index: 2;
+}
+
+// .content {
+//     padding: 
+// }

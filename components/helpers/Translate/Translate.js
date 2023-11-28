@@ -1,7 +1,8 @@
 import useTranslate from "../../../hooks/use-translate";
 
 export const Translate = (props) => {
-    return useTranslate(props.id)
+    const { translate } = useTranslate()
+    return translate(props.id);
 
 }
 

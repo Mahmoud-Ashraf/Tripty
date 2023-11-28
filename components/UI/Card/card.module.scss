@@ -1,3 +1,5 @@
+@import '@/styles/Utils/variables';
+
 .container {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,25 @@
     height: 300px;
     position: relative;
     overflow: hidden;
+}
+
+.offer {
+    position: absolute;
+    background-color: $main-color;
+    color: $white;
+    font-size: 1.25rem;
+    padding: .8rem;
+    border-radius: .8rem;
+    top: 1rem;
+    left: 1rem;
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: .5rem;
+    span {
+        font-size: 2rem;
+    }
 }
 
 .data {
@@ -63,9 +84,11 @@
         font-size: 1.1rem;
     }
 }
+
 .cuisine {
     font-size: 1.4rem;
 }
+
 .cuisine i {
     color: #979aa3;
 }

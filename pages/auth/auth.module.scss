@@ -26,29 +26,95 @@
     height: 100%;
     background-color: $white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    gap: 6rem;
+    gap: 3rem;
+
+    .registerForm {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // align-items: center;
+        .logo {
+            align-self: center;
+        }
+    }
 
     form {
         width: 100%;
         color: $main-color;
+
+        .input {
+            border: none;
+            border-bottom: 1px solid #707070;
+            color: $main-color;
+            font-size: .75rem;
+            width: 100%;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            padding: .5rem;
+        }
+
+        a {
+            // opacity: .75;
+            color: $main-color;
+            text-decoration: none;
+            font-size: .75rem;
+        }
     }
-    
+
     h1 {
         opacity: .75;
         text-align: center;
         margin-bottom: 2rem;
-        font-size: 2rem;
+        font-size: 1.25rem;
     }
-    
-    a {
-        opacity: .75;
+
+}
+
+.submit {
+    margin-top: 2rem;
+}
+
+.socialLogin {
+    width: 100%;
+
+    p {
+        text-align: center;
         color: $main-color;
-        text-decoration: none;
+        font-size: 1.25rem;
+        // opacity: .75;
+        margin-bottom: 1.5rem;
     }
 }
-.submit {
-    margin-top: 4rem;
+
+.loginOptions {
+    display: flex;
+    justify-content: center;
+    gap: .75rem;
+
+    .loginOption {
+        width: 3.25rem;
+        height: 3.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $main-color;
+        color: $white;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 50%;
+    }
+}
+
+a.register {
+    color: $main-color;
+    font-weight: 500;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 2rem;
+    text-align: center;
 }
