@@ -3,14 +3,13 @@ import { Place } from '@/interfaces/place';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { text } = req.query;
-
+    const { text, locale } = req.query;
     try {
         if (typeof text !== 'string') {
             throw new Error('Invalid text parameter');
         }
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        const response = await fetch(baseUrl + `places?text=${text}`, {
+        const response = await fetch(baseUrl + `places?change_language=${locale}&text=${text}`, {
             method: 'GET'
         });
 
@@ -20,7 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
         const data = await response.json();
-
 
         // Search for places based on the provided text
         const places = data.data;

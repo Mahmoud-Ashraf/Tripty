@@ -14,21 +14,22 @@
 
     .search {
         position: relative;
+        padding: .75rem .9rem .75rem .9rem;
+        border-radius: .75rem;
+        border: solid 1px #dadbdf;
+        width: 18.5rem;
+        display: flex;
+        justify-content: space-between;
 
         input {
-            padding: .75rem 2rem .75rem .9rem;
-            border-radius: .75rem;
-            border: solid 1px #dadbdf;
             color: #484848;
             font-size: .75rem;
-            width: 18.5rem;
+            border: none;
+            width: 100%;
+            background-color: transparent;
         }
 
         i {
-            position: absolute;
-            top: 50%;
-            right: .7rem;
-            transform: translateY(-50%);
             cursor: pointer;
         }
     }

@@ -5,50 +5,33 @@ import Head from "next/head";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import { useEffect, useState } from "react";
 import { Place } from "@/interfaces/place";
-import { Category } from "@/interfaces/category";
-import useHTTP from "@/hooks/use-http";
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
 }
 
 interface Props {
-    tabs: Category[] | [],
+    tabs: [],
     categorizedPlaces: CategorizedPlaces
 }
 
-const Search = () => {
+const Search = ({ tabs, categorizedPlaces }: Props) => {
     const router = useRouter();
     const searchText = router.query.text;
-    const { isLoading, error, sendRequest } = useHTTP();
+    // const { isLoading, error, sendRequest } = useHTTP();
     const [searchValue, setSearchValue] = useState<string>('');
     // const [searchText, setSearchText] = useState(router.query.text);
-    const [searchTabs, setSearchTabs] = useState<any>();
-    const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
+    // const [searchTabs, setSearchTabs] = useState<any>();
+    // const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
 
     useEffect(() => {
         if (searchText) {
             setSearchValue(Array.isArray(searchText) ? searchText[0] : searchText); // Set searchValue when query changes
-            getSearchData();
         }
     }, [searchText]); // Watch for changes in searchText
 
     const search = () => {
-        router.push(`/search/${searchValue}`);
-    }
-
-    const getSearchData = () => {
-        sendRequest(
-            {
-                url: `/api/search/${searchText}`
-            },
-            (data: any) => {
-                // console.log(data);
-                setSearchTabs(data.categories);
-                setSearchCategorizedPlaces(data.categorizedPlaces)
-            },
-            (err: any) => console.log(err)
-        )
+        router.push(`/search?text=${searchValue}`);
     }
 
     return (
@@ -66,13 +49,36 @@ const Search = () => {
                 </div>
                 <div className={classes.content}>
                     {
-                        searchTabs && searchCategorizedPlaces &&
-                        <HomeTabs tabs={searchTabs} categorizedPlaces={searchCategorizedPlaces} />
+                        tabs && categorizedPlaces &&
+                        <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
                     }
                 </div>
             </div>
         </>
     )
+}
+
+export async function getServerSideProps(context: any) {
+    const { query, locale } = context;
+    const { text } = query || {};
+    try {
+        const categoriesReq = await fetch(`http://localhost:3000/api/search?locale=${locale}&text=${text}`);
+        const categoriesData = await categoriesReq.json();
+        return {
+            props: {
+                tabs: categoriesData.categories,
+                categorizedPlaces: categoriesData.categorizedPlaces
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                tabs: [],
+                categorizedPlaces: {} as CategorizedPlaces // Initialize as the defined interface
+            }
+        };
+    }
 }
 
 export default Search;

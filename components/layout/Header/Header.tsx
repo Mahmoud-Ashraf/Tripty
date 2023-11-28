@@ -69,7 +69,7 @@ const Header = () => {
                 </Link>
                 <div className={classes.search}>
                     <input type='text' placeholder={translate('searchBar.placeholder')} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search/${searchText}`)}></i>
+                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search?text=${searchText}`)}></i>
                 </div>
             </div>
             <div className={classes.nav}>
