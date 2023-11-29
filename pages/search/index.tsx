@@ -29,7 +29,6 @@ const Search = () => {
     const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
 
     useEffect(() => {
-        console.log(router.locale);
         if (searchText) {
             setSearchValue(Array.isArray(searchText) ? searchText[0] : searchText); // Set searchValue when query changes
             getSearchData();

@@ -7,9 +7,11 @@ import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
 import NoData from "@/components/layout/NoData/NoData";
 import Translate from "@/components/helpers/Translate/Translate";
 import CustomModal from "@/components/UI/CustomModal/CustomModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RateModal from "@/components/RateModal/RateModal";
 import PlaceMap from "@/components/UI/PlaceMap/PlaceMap";
+import useHTTP from "@/hooks/use-http";
+import { useRouter } from "next/router";
 
 interface Props {
     place: Place,
@@ -17,16 +19,34 @@ interface Props {
 }
 
 const PlacePage = (props: Props) => {
-    const { place, notFound } = props;
+    const [place, setPlace] = useState<Place>();
     const [showRateModal, setShowRateModal] = useState(false);
-    if (notFound) {
-        return (
-            <>
-                <Head>
-                    <title>Tripty - No Data</title>
-                </Head>
-                <NoData text="No Place Found" />
-            </>
+    const { isLoading, error, sendRequest } = useHTTP();
+    const router = useRouter();
+    const { placeId } = router.query;
+    const { locale } = router;
+    // if (notFound) {
+    //     return (
+    //         <>
+    //             <Head>
+    //                 <title>Tripty - No Data</title>
+    //             </Head>
+    //             <NoData text="No Place Found" />
+    //         </>
+    //     )
+    // }
+    useEffect(() => {
+        if (locale && placeId) {
+            getPlace();
+        }
+    }, [locale, placeId])
+    const getPlace = () => {
+        sendRequest(
+            {
+                url: `/api/place?id=${placeId}&locale=${locale}`
+            },
+            (data: any) => setPlace(data.place),
+            (err: any) => console.log(err)
         )
     }
     return (
@@ -129,30 +149,30 @@ const PlacePage = (props: Props) => {
 //     };
 // }
 
-export async function getServerSideProps({ locale, params }: any) {
-    const { placeId } = params;
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    try {
-        const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
-        const data = await response.json();
+// export async function getServerSideProps({ locale, params }: any) {
+//     const { placeId } = params;
+//     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+//     try {
+//         const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
+//         const data = await response.json();
 
-        return {
-            props: {
-                place: data?.data || undefined,
-                notFound: false
-            },
-        };
-    } catch (error) {
-        console.error(error);
-        return {
-            props: {
-                place: null,
-                notFound: true
-            }
-            // notFound: true,
-        };
-    }
-}
+//         return {
+//             props: {
+//                 place: data?.data || undefined,
+//                 notFound: false
+//             },
+//         };
+//     } catch (error) {
+//         console.error(error);
+//         return {
+//             props: {
+//                 place: null,
+//                 notFound: true
+//             }
+//             // notFound: true,
+//         };
+//     }
+// }
 
 export default PlacePage;
 

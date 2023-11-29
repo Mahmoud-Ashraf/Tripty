@@ -15,12 +15,12 @@ const useHTTP = () => {
         // let contentTypeHeader = requestConfig.method === 'POST' ? { 'Content-Type': 'application/json' } : {};
         // let langHeader = { 'lang': 'ar' };
         // let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
-        let baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        if (url.includes('http')) {
-            const newUrl = new URL(url);
-            newUrl.searchParams.set(`change_language`, `${lang || 'ar'}`);
-            url = newUrl.toString();
-        }
+        // let baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        // if (url.includes('http')) {
+        //     const newUrl = new URL(url);
+        //     newUrl.searchParams.set(`change_language`, `${lang || 'ar'}`);
+        //     url = newUrl.toString();
+        // }
         try {
             const response = await fetch(
                 url,
