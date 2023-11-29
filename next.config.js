@@ -8,7 +8,10 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   images: {
-    domains: ['18.133.139.168']
+    domains: [
+      '18.133.139.168',
+      'tripty.app'
+    ]
   }
 }
 
