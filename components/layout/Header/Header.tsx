@@ -3,7 +3,7 @@ import classes from './header.module.scss';
 import logo from '@/public/assets/images/logo.svg';
 import userIcon from '@/public/assets/images/user_icon.svg';
 import Image from "next/image";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
@@ -11,9 +11,7 @@ import { Lang } from '@/interfaces/lang';
 import { useRouter } from 'next/router';
 import Translate from '@/components/helpers/Translate/Translate';
 import { langActions } from '@/store/Lang/Lang';
-import { RootState } from '@/store';
 import useTranslate from '@/hooks/use-translate';
-import { Dropdown } from 'react-bootstrap';
 import { signOut, useSession } from 'next-auth/react';
 
 

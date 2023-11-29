@@ -8,10 +8,21 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   images: {
-    domains: [
-      '18.133.139.168',
-      'tripty.app'
-    ]
+    disableStaticImages: false,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tripty.app',
+        port: '',
+        pathname: '/storage/**',
+      },
+    ],
+    // domains: [
+
+    //   // '18.133.139.168',
+    //   'https://tripty.app',
+    //   'tripty.app'
+    // ]
   }
 }
 

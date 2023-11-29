@@ -19,7 +19,7 @@ const Card = ({ place }: { place: Place | undefined }) => {
     return (
         place && <Link href={`/place/${place.id}`} className={classes.container}>
             <div className={classes.cover}>
-                <Image fill src={place?.featured_image} alt='card-image' />
+                <img src={place?.featured_image} alt='card-image' />
                 {place.offer && <div className={classes.offer}>
                     <span>{place.offer.amount}%</span> <Translate id='place.getDiscount' />
                 </div>}
