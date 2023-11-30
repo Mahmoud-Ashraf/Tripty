@@ -66,7 +66,7 @@ const PlacePage = (props: Props) => {
                 <div className={classes.details}>
                     <div className="row gx-5">
                         <div className="col-md-6">
-                            <div className={classes.tags}>
+                            {place.tags.length > 0 && <div className={classes.tags}>
                                 <div className="row">
                                     {
                                         place.tags.map(tag => {
@@ -78,7 +78,7 @@ const PlacePage = (props: Props) => {
                                         })
                                     }
                                 </div>
-                            </div>
+                            </div>}
                             <div className={classes.specs}>
                                 <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}>Add rate..</span></span>
                                 {place?.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place?.category?.name}</span> : ''}
