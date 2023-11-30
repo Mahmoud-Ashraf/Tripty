@@ -130,3 +130,16 @@
     text-decoration: none;
     display: inline-block;
 }
+
+.tags {
+    margin-bottom: 1.5rem;
+    .tag {
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        background-color: #f8f8f8;
+        font-size: 1.1rem;
+        font-weight: 300;
+        letter-spacing: 1.36px;
+        color: #484848;
+    }
+}

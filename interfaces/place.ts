@@ -1,5 +1,6 @@
 import { Category } from './category';
 import { Offer } from './offer';
+import { Tag } from './tag';
 export interface Place {
     id: number,
     name: string,
@@ -17,6 +18,7 @@ export interface Place {
     booking_link?: string,
     featured_image: string,
     gallery: string[],
+    tags: Tag[],
     category: Category,
     is_recommended: boolean,
     offer: Offer,

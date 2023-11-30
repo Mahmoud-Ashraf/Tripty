@@ -30,7 +30,7 @@ const PlaceHeader = (props: placeHeaderProps) => {
                         </button>
                         {logo &&
                             <div className={classes.logoContainer}>
-                                <Image width={100} height={100} src={logo} alt={`${name} logo`} />
+                                <img src={logo} alt={`${name} logo`} />
                             </div>
                         }
                     </div>}
