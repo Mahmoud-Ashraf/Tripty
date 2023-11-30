@@ -96,6 +96,7 @@
         "password": "Password",
         "confirmPassword": "Confirm Password",
         "gender": "Gender",
-        "city": "City"
+        "city": "City",
+        "selectInterests": "Select Your Interests"
     }
 }

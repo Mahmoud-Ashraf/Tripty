@@ -8,6 +8,7 @@ import { Button, Form } from 'react-bootstrap';
 import Translate from '@/components/helpers/Translate/Translate';
 import useTranslate from '@/hooks/use-translate';
 import AuthLayout from '@/components/layout/AuthLayout/AuthLayout';
+import useHttp from '@/hooks/use-http';
 
 interface Props {
     sliders: Slider[]
@@ -21,8 +22,8 @@ const Register = (props: Props) => {
     const [name, setName] = useState('');
     const [mobile, setMobile] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
+    const [password_confirmation, setPassword_confirmation] = useState('');
+    const { isLoading, error, sendRequest } = useHttp();
     const { data: session } = useSession();
     const handleSignIn = async () => {
         const result = await signIn('credentials', {
@@ -37,6 +38,26 @@ const Register = (props: Props) => {
             router.push('/home');
         }
     }, [session, router]);
+
+    const register = () => {
+        sendRequest(
+            {
+                url: '/api/user/register',
+                method: 'POST',
+                body: { name, email, mobile, password, password_confirmation }
+            },
+            (data: any) => {
+                console.log(data);
+                signIn('credentials', {
+                    redirect: false,
+                    email: email,
+                    password: password,
+                });
+                router.push('/auth/complete-data');
+            },
+            (err: any) => console.log(err)
+        )
+    }
     return (
         <>
             <Head>
@@ -50,10 +71,10 @@ const Register = (props: Props) => {
                         <input className={classes.input} type="phone" placeholder={translate('placeholder.mobile')} value={mobile} onChange={(e) => setMobile(e.target.value)} />
                         <input className={classes.input} type="email" placeholder={translate('placeholder.email')} value={email} onChange={(e) => setEmail(e.target.value)} />
                         <input className={classes.input} type="password" placeholder={translate('placeholder.password')} value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input className={classes.input} type="password" placeholder={translate('placeholder.confirmPassword')} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                        <input className={classes.input} type="password" placeholder={translate('placeholder.confirmPassword')} value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
                     </div>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
-                        <Button variant="main" type="submit" onClick={handleSignIn}>
+                        <Button variant="main" type="button" onClick={register}>
                             <Translate id='buttons.register' />
                         </Button>
                     </div>

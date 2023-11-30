@@ -30,12 +30,22 @@ export default (req, res) => {
                     if (credentials && credentials.email && credentials.password) {
                         // Validate the credentials here
                         const user = { email: credentials.email, password: credentials.password };
-
-                        // Example validation - replace this with your own logic
-                        if (user) {
-                            // Return the user object if authenticated
-                            return Promise.resolve(user);
+                        const res = await fetch('http://18.133.139.168/api/v1/front/login', {
+                            method: 'POST',
+                            headers: { 'Content-type': 'application/json' },
+                            body: JSON.stringify(user)
+                        });
+                        if (!res.ok) {
+                            return Promise.resolve(null);
                         }
+                        const userData = await res.json();
+                        if (userData.error) {
+                            return Promise.resolve(null);
+                        }
+
+                        // Return the user object if authenticated
+                        return Promise.resolve(user);
+
                     }
 
                     // Return null if authentication fails or credentials are missing
@@ -67,8 +77,27 @@ export default (req, res) => {
                     }
                     user.data = userData;
                     return true
+                } else if (account.provider === 'credentials') {
+                    const body = {
+                        password: user.password,
+                        email: user.email,
+                    }
+                    const res = await fetch('http://18.133.139.168/api/v1/front/login', {
+                        method: 'POST',
+                        headers: { 'Content-type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    if (!res.ok) {
+                        return false
+                    }
+                    const userData = await res.json();
+                    if (userData.error) {
+                        return false;
+                    }
+                    user.data = userData;
+                    return true
                 }
-                return false;
+                return true;
             },
             async jwt({ token, user }) {
                 if (user?.data?.data) {

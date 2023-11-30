@@ -13,7 +13,6 @@ const Login = (props: any) => {
     const { translate } = useTranslate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const handleSignIn = async () => {
         const result = await signIn('credentials', {
             redirect: false,
@@ -21,7 +20,6 @@ const Login = (props: any) => {
             password: password,
         });
     };
-
     return (
         <>
             <Head>

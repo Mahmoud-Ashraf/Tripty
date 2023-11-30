@@ -21,6 +21,8 @@ const AuthLayout = ({ sliders, children, className }: any) => {
         if (session?.user) {
             if (Object.values(session.user).some(value => value === null)) {
                 router.push('/auth/complete-data');
+            } else {
+                router.push('/home');
             }
         }
     }, [session?.user, router.pathname]);

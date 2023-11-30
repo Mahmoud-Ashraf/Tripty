@@ -18,11 +18,13 @@
 
 .carousel {
     width: 70%;
+
     img {
         width: 100%;
         min-height: 100%;
     }
 }
+
 .complete {
     form {
         margin-bottom: auto;
@@ -46,6 +48,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         // align-items: center;
         .logo {
             align-self: center;
@@ -126,4 +129,29 @@ a.register {
     display: inline-block;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.multiSelect {
+    label {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        font-size: .75rem;
+        font-weight: 500;
+    }
+    .selection {
+        padding: .5rem 1rem;
+        border-radius: .75rem;
+        border: 1px solid $main-color;
+        color: $main-color;
+        font-size: .7rem;
+        font-weight: 500;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+
+        &.selected,
+        &:hover {
+            background-color: $main-color;
+            color: $white;
+        }
+    }
 }

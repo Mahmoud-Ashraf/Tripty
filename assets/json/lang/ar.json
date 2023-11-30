@@ -96,6 +96,7 @@
         "password": "كلمة المرور",
         "confirmPassword": "تأكيد كلمة المرور",
         "gender": "الجنس",
-        "city": "المدينة"
+        "city": "المدينة",
+        "selectInterests": "اختر اهتماماتك"
     }
 }

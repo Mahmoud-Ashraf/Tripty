@@ -8,17 +8,22 @@ import AuthLayout from '@/components/layout/AuthLayout/AuthLayout';
 import useHttp from '@/hooks/use-http';
 import { City } from '@/interfaces/City';
 import { useRouter } from 'next/router';
+import { Tag } from '@/interfaces/tag';
 
 const CompleteData = (props: any) => {
     const { sliders } = props;
     const { translate } = useTranslate();
+    const router = useRouter();
     const { isLoading, error, sendRequest } = useHttp();
     const [citeies, setCities] = useState<City[]>([]);
     const [gender, setGender] = useState('');
     const [city, setCity] = useState('');
+    const [tags, setTags] = useState<Tag[]>([]);
+    const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
     useEffect(() => {
         getLocations();
+        getTags();
     }, []);
 
     const getLocations = () => {
@@ -41,12 +46,38 @@ const CompleteData = (props: any) => {
             {
                 url: '/api/user/update',
                 method: 'POST',
-                body: JSON.stringify({ gender: gender, city_id: city })
+                body: { gender: gender, city_id: city, tags: selectedTags }
             },
-            (data: any) => console.log(data),
+            (data: any) => {
+                console.log(data)
+                router.push('/home')
+            },
             (err: any) => console.log(err)
         )
     }
+
+    const getTags = () => {
+        fetch('/api/tags')
+            .then(res => res.json())
+            .then(data => {
+                setTags(data);
+                setSelectedTags([]);
+            })
+            .catch(error => console.log(error));
+    }
+
+    const handleSelectTag = (tag: Tag) => {
+        const index = selectedTags.findIndex(selectedTag => selectedTag.id === tag.id);
+        if (index !== -1) {
+            setSelectedTags([
+                ...selectedTags.slice(0, index),
+                ...selectedTags.slice(index + 1)
+            ])
+        } else {
+            setSelectedTags([...selectedTags, tag]);
+        }
+    }
+
     return (
         <>
             <Head>
@@ -68,8 +99,24 @@ const CompleteData = (props: any) => {
                             )
                         })}
                     </select>
+                    <div className={classes.multiSelect}>
+                        <label><Translate id='placeholder.selectInterests' /></label>
+                        <div className="row g-2">
+                            {
+                                tags.map(tag => {
+                                    return (
+                                        <div key={tag.id} className="col-auto">
+                                            <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>
+                                                <span>{tag.name}</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
-                        <Button disabled={!city || !gender} variant="main" type="button" onClick={updateProfile}>
+                        <Button disabled={!city || !gender || selectedTags.length < 1} variant="main" type="button" onClick={updateProfile}>
                             <Translate id='buttons.update' />
                         </Button>
                     </div>
