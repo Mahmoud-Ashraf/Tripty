@@ -42,7 +42,8 @@ const Search = () => {
     const getSearchData = () => {
         sendRequest(
             {
-                url: `/api/search?locale=${router.locale}&text=${searchText}`
+                url: `/api/search?text=${searchText}`,
+                method: 'GET'
             },
             (data: any) => {
                 setSearchTabs(data.categories);

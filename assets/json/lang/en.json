@@ -29,7 +29,8 @@
         "saveTrip": "Save your trip",
         "bookNow": "Book Now",
         "register": "Register",
-        "showMenu": "Show The Menu"
+        "showMenu": "Show The Menu",
+        "update": "Update"
     },
     "entries": {
         "trend": "Trend Now",
@@ -68,7 +69,9 @@
         "next": "Next",
         "km": "KM",
         "m": "m",
-        "recomended": "Recomended"
+        "recomended": "Recomended",
+        "male": "Male",
+        "female": "Female"
     },
     "errors": {
         "tagsError": "Please Select Tags First"
@@ -83,13 +86,16 @@
         "login": "Login",
         "forgetPassword": "Forget Password",
         "loginBy": "Or Login By",
-        "registerWithMail": "New Register By Email"
+        "registerWithMail": "New Register By Email",
+        "completeData": "Complete Data"
     },
     "placeholder": {
         "name": "Name",
         "mobile": "Mobile",
         "email": "Email",
         "password": "Password",
-        "confirmPassword": "Confirm Password"
+        "confirmPassword": "Confirm Password",
+        "gender": "Gender",
+        "city": "City"
     }
 }

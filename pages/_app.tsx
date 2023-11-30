@@ -4,7 +4,8 @@ import { Provider, useDispatch } from "react-redux";
 import store from "../store/index";
 import Layout from '@/components/layout/Layout';
 import Wrapper from '@/components/layout/Wrapper/Wrapper';
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider, useSession } from "next-auth/react"
+import { useEffect } from 'react';
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const routesWithoutLayout = ['/auth'];

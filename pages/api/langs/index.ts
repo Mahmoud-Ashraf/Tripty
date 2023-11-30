@@ -6,8 +6,9 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const { locale } = req.query;
     try {
-        const response = await fetch(baseUrl + 'languages');
+        const response = await fetch(baseUrl + `languages?change_language=${locale}`);
         const data = await response.json();
         res.status(200).json(data.data);
     }

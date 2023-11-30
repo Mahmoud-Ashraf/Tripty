@@ -29,7 +29,8 @@
         "saveTrip": "احفظ طلعتك",
         "bookNow": "احجز الان",
         "register": "تسجيل",
-        "showMenu": "اظهر القائمة"
+        "showMenu": "اظهر القائمة",
+        "update": "تحديث"
     },
     "entries": {
         "trend": "تريند",
@@ -68,7 +69,9 @@
         "next": "التالي",
         "km": "كم",
         "m": "د",
-        "recomended": "موصى به"
+        "recomended": "موصى به",
+        "male": "ذكر",
+        "female": "انثى"
     },
     "errors": {
         "tagsError": "من فضلك اختر اهتماماتك اولاً"
@@ -83,13 +86,16 @@
         "login": "تسجيل الدخول",
         "forgetPassword": "نسيت كلمة المرور",
         "loginBy": "او الدخول عبر",
-        "registerWithMail": "تسجيل جديد بالإيميل"
+        "registerWithMail": "تسجيل جديد بالإيميل",
+        "completeData": "استكمال البيانات"
     },
     "placeholder": {
         "name": "الاسم",
         "mobile": "رقم الجوال",
         "email": "الريد الالكتروني",
         "password": "كلمة المرور",
-        "confirmPassword": "تأكيد كلمة المرور"
+        "confirmPassword": "تأكيد كلمة المرور",
+        "gender": "الجنس",
+        "city": "المدينة"
     }
 }

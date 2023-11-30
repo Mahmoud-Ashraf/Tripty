@@ -43,7 +43,8 @@ const PlacePage = (props: Props) => {
     const getPlace = () => {
         sendRequest(
             {
-                url: `/api/place?id=${placeId}&locale=${locale}`
+                url: `/api/place?id=${placeId}`,
+                method: 'GET'
             },
             (data: any) => setPlace(data.place),
             (err: any) => console.log(err)

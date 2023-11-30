@@ -32,7 +32,8 @@ const Header = () => {
     const getLanguages = () => {
         sendRequest(
             {
-                url: '/api/langs'
+                url: '/api/langs',
+                method: 'GET'
             },
             (data: any) => setLangs(data),
             (err: any) => console.log(err)
@@ -99,7 +100,7 @@ const Header = () => {
                         })
                     }
                 </select>
-                {session?.user && <div className={classes.userDialog}>
+                {session && <div className={classes.userDialog}>
                     <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
                     {
                         showUserDialog &&
