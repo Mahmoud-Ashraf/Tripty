@@ -108,18 +108,27 @@ export async function getServerSideProps({ locale }: any) {
 
    try {
       const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
-      const categoriesData = await categoriesReq.json();
-      categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
+      if (!categoriesReq.ok) {
+         throw new Error('error fetching categories');
+      }
+      const categoriesData = await categoriesReq?.json();
+      categoriesData?.data?.unshift({ name: 'all', id: 0, icon: '' });
 
       const slidersReq = await fetch(`${baseUrl}sliders`);
-      const slidersData = await slidersReq.json();
+      if (!slidersReq.ok) {
+         throw new Error('error fetching sliders');
+      }
+      const slidersData = await slidersReq?.json();
 
       const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
       await Promise.all(categoriesData?.data?.map(async (category: any) => {
          const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}`);
-         const categoryPlacesData = await categoryPlacesReq.json();
-         categorizedPlaces[category.name] = categoryPlacesData.data;
+         if (!categoryPlacesReq.ok) {
+            throw new Error('error fetching categoty data');
+         }
+         const categoryPlacesData = await categoryPlacesReq?.json();
+         categorizedPlaces[category.name] = categoryPlacesData?.data;
       }));
       return {
          props: {
