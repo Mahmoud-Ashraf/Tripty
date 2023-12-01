@@ -16,31 +16,36 @@ const HomeTabs = (props: Props) => {
     const { tabs, categorizedPlaces, showTitle } = props;
 
     useEffect(() => {
-        setKey(tabs[0]?.name);
+        if (tabs.length > 0) {
+            setKey(tabs[0]?.name);
+        }
     }, [tabs])
     return (
         <>
             {showTitle && <SectionHeader title="headings.explorePlacesNearYou" icon={explore} />}
             <div className={`home-tabs mt-5`}>
-                <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
-                    {
-                        tabs?.map(tab => {
-                            return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>
-                                <div className="row g-5">
-                                    {
-                                        categorizedPlaces[tab.name]?.map(place => {
-                                            return (
-                                                <div key={place?.id} className="col-4">
-                                                    <Card place={place} />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </Tab>
-                        })
-                    }
-                </Tabs>
+                {
+                    tabs?.length > 0 &&
+                    <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
+                        {
+                            tabs?.map(tab => {
+                                return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>
+                                    <div className="row g-5">
+                                        {
+                                            categorizedPlaces[tab.name]?.map(place => {
+                                                return (
+                                                    <div key={place?.id} className="col-4">
+                                                        <Card place={place} />
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </Tab>
+                            })
+                        }
+                    </Tabs>
+                }
             </div>
         </>
     )
