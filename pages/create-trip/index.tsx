@@ -79,7 +79,7 @@ const CreateTrip = () => {
 
     const saveTrip = () => {
         let body: { places: { id: number, from: string, to: string }[] } = { places: [] };
-        Object.keys(currentTrip?.places).map(key => { body.places.push({ id: currentTrip?.places[key][0].id, from: key.split('-')[0], to: key.split('-')[1] }) });
+        Object.keys(currentTrip?.places)?.map(key => { body.places.push({ id: currentTrip?.places[key][0].id, from: key.split('-')[0], to: key.split('-')[1] }) });
         if (currentTrip) {
             sendRequest(
                 {
@@ -138,7 +138,7 @@ const CreateTrip = () => {
                         <div className={classes.content}>
                             <Slider {...settings}>
                                 {
-                                    data?.places[editDate].map((place: Place) => {
+                                    data?.places[editDate]?.map((place: Place) => {
                                         return (
                                             <ReplaceCard onSelectPlace={() => handleSelectPlace(place)} place={place} />
                                         )
@@ -151,13 +151,13 @@ const CreateTrip = () => {
                             {
                                 viewType === 'map' &&
                                 <>
-                                    <Map locations={Object.keys(currentTrip?.places).map((key) => {
+                                    <Map locations={Object.keys(currentTrip?.places)?.map((key) => {
                                         return { location: { lat: Number(currentTrip?.places[key][0].lat), lng: Number(currentTrip?.places[key][0].long) } }
                                     })} />
                                     <Timeline>
                                         {
                                             data?.places &&
-                                            Object.keys(data.places).map((date, i) => {
+                                            Object.keys(data.places)?.map((date, i) => {
                                                 const places = data.places[date] || [];
                                                 const firstPlace = places.length > 0 ? places[0] : null;
 
@@ -177,7 +177,7 @@ const CreateTrip = () => {
                                 <Timeline>
                                     {
                                         data?.places &&
-                                        Object.keys(data.places).map((date, i) => {
+                                        Object.keys(data.places)?.map((date, i) => {
                                             const places = data.places[date] || [];
                                             const firstPlace = places.length > 0 ? places[0] : null;
 

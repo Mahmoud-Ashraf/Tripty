@@ -41,7 +41,7 @@ export async function getStaticProps({ locale }: any) {
 
         const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
-        await Promise.all(categoriesData.data.map(async (category: any) => {
+        await Promise.all(categoriesData?.data?.map(async (category: any) => {
             const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&trend_now=1&category_id=${category.id}`);
             const categoryPlacesData = await categoryPlacesReq.json();
 

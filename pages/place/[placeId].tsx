@@ -69,7 +69,7 @@ const PlacePage = (props: Props) => {
                             {place.tags.length > 0 && <div className={classes.tags}>
                                 <div className="row">
                                     {
-                                        place.tags.map(tag => {
+                                        place?.tags?.map(tag => {
                                             return (
                                                 <div key={tag.id} className="col-auto">
                                                     <div className={classes.tag}>{tag.name}</div>

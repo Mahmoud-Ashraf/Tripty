@@ -24,7 +24,7 @@ const HomeTabs = (props: Props) => {
             <div className={`home-tabs mt-5`}>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                     {
-                        tabs.map(tab => {
+                        tabs?.map(tab => {
                             return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>
                                 <div className="row g-5">
                                     {

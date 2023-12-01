@@ -93,7 +93,7 @@ const Header = () => {
                 </button>
                 <select className={classes.lang} value={selectedLang} onChange={(e) => changeLanguage(e.target.value)}>
                     {
-                        langs.map(lang => {
+                        langs?.map(lang => {
                             return (
                                 <option value={lang.code} key={lang.code}>{lang.code}</option>
                             )

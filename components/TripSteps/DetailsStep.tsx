@@ -92,7 +92,7 @@ const DetailsStep = () => {
                     <div className={classes.coming}>
                         <div className="row justify-content-between">
                             {
-                                howComing.map(
+                                howComing?.map(
                                     item => {
                                         return (
                                             <div key={item} className="col-auto">

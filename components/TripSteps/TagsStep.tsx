@@ -58,7 +58,7 @@ const TagsStep = () => {
     }
 
     useEffect(() => {
-        dispatch(tripActions.setTripData({ tags: selectedTags.map(tag => tag.id) }));
+        dispatch(tripActions.setTripData({ tags: selectedTags?.map(tag => tag.id) }));
     }, [selectedTags])
     return (
         <div className={classes.tags}>

@@ -93,7 +93,7 @@ const CompleteData = (props: any) => {
                     </select>
                     <select className={classes.input} value={city} onChange={(e) => setCity(e.target.value)}>
                         <option disabled value={''}><Translate id="placeholder.city" /></option>
-                        {citeies.map(city => {
+                        {citeies?.map(city => {
                             return (
                                 <option value={city.id} key={city.id}>{city.name}</option>
                             )
@@ -103,7 +103,7 @@ const CompleteData = (props: any) => {
                         <label><Translate id='placeholder.selectInterests' /></label>
                         <div className="row g-2">
                             {
-                                tags.map(tag => {
+                                tags?.map(tag => {
                                     return (
                                         <div key={tag.id} className="col-auto">
                                             <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>

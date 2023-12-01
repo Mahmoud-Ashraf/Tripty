@@ -116,7 +116,7 @@ export async function getServerSideProps({ locale }: any) {
 
       const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
-      await Promise.all(categoriesData.data.map(async (category: any) => {
+      await Promise.all(categoriesData?.data?.map(async (category: any) => {
          const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}`);
          const categoryPlacesData = await categoryPlacesReq.json();
          categorizedPlaces[category.name] = categoryPlacesData.data;
