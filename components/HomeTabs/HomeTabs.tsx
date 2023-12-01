@@ -16,7 +16,7 @@ const HomeTabs = (props: Props) => {
     const { tabs, categorizedPlaces, showTitle } = props;
 
     useEffect(() => {
-        if (tabs.length > 0) {
+        if (tabs?.length > 0) {
             setKey(tabs[0]?.name);
         }
     }, [tabs])
