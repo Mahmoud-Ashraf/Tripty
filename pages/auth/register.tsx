@@ -95,7 +95,7 @@ const Register = (props: Props) => {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     try {

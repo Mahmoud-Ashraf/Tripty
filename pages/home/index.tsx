@@ -103,7 +103,7 @@ interface CategorizedPlaces {
 //    // Add other properties based on your data structure
 //  }
 
-export async function getStaticProps({ locale }: any) {
+export async function getServerSideProps({ locale }: any) {
    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
    try {
@@ -111,7 +111,7 @@ export async function getStaticProps({ locale }: any) {
       const categoriesData = await categoriesReq.json();
       categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
 
-      const slidersReq = await fetch(`${baseUrl}sliders?change_language=${locale}`);
+      const slidersReq = await fetch(`${baseUrl}sliders`);
       const slidersData = await slidersReq.json();
 
       const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface

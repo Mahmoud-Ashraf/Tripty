@@ -54,7 +54,7 @@ const Login = (props: any) => {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     try {
