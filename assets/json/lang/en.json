@@ -30,7 +30,8 @@
         "bookNow": "Book Now",
         "register": "Register",
         "showMenu": "Show The Menu",
-        "update": "Update"
+        "update": "Update",
+        "addRate": "Add rate"
     },
     "entries": {
         "trend": "Trend Now",
