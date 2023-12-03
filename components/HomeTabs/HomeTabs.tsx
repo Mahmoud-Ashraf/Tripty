@@ -12,12 +12,12 @@ interface Props {
 }
 
 const HomeTabs = (props: Props) => {
-    const [key, setKey] = useState<any>('all');
+    const [key, setKey] = useState<any>(0);
     const { tabs, categorizedPlaces, showTitle } = props;
 
     useEffect(() => {
         if (tabs?.length > 0) {
-            setKey(tabs[0]?.name);
+            setKey(tabs[0]?.id);
         }
     }, [tabs])
     return (
@@ -29,7 +29,7 @@ const HomeTabs = (props: Props) => {
                     <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                         {
                             tabs?.map(tab => {
-                                return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>
+                                return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
                                     <div className="row g-5">
                                         {
                                             categorizedPlaces[tab.name]?.map(place => {
