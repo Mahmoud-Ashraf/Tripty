@@ -1,11 +1,14 @@
 import { forwardRef, useEffect, useState } from 'react';
 import TripModalHeading from '../TripModal/TripModalHeading';
 import classes from './trip-steps.module.scss';
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
 import TimeRangeSlider from '../UI/TimeRangeSlider/TimeRangeSlider';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import Translate from '../helpers/Translate/Translate';
+import ar from 'date-fns/locale/ar';
+import { useRouter } from 'next/router';
+registerLocale('ar', ar);
 
 interface CustomDateButtonProps {
     value?: string;
@@ -20,7 +23,8 @@ const DateCustomButton = forwardRef<HTMLButtonElement, CustomDateButtonProps>(
     )
 );
 const DetailsStep = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const router = useRouter();
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [howComing, setHowComing] = useState<string[]>(['solo', 'family', 'friends']);
     const [selectedComing, setSelectedComing] = useState<string>('');
@@ -79,6 +83,7 @@ const DetailsStep = () => {
                     <TripModalHeading text='date' />
                     <DatePicker
                         selected={selectedDate}
+                        locale={router.locale}
                         dateFormat={'dd MMM yy'}
                         minDate={new Date()}
                         onChange={(date) => handleChangeDate(date)}
@@ -112,7 +117,7 @@ const DetailsStep = () => {
                                     <div className="col-12">
                                         <div className={classes.counter}>
                                             <span onClick={() => setAdultsCount(prev => (prev && (prev > 1)) ? --prev : 1)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{adultsCount} <Translate id='tripModal.adults'/></span>
+                                            <span className={classes.count}>{adultsCount} <Translate id='tripModal.adults' /></span>
                                             <span onClick={() => setAdultsCount(prev => (prev && (prev < 10)) ? ++prev : 10)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>}
@@ -121,7 +126,7 @@ const DetailsStep = () => {
                                     <div className="col-12">
                                         <div className={classes.counter}>
                                             <span onClick={() => setChildrenCount(prev => (prev && (prev > 0)) ? --prev : 0)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{childrenCount} <Translate id='tripModal.children'/></span>
+                                            <span className={classes.count}>{childrenCount} <Translate id='tripModal.children' /></span>
                                             <span onClick={() => setChildrenCount(prev => (prev?.toString() && (prev < 5)) ? ++prev : 5)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>
