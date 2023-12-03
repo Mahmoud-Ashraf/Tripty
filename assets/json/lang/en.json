@@ -99,5 +99,9 @@
         "gender": "Gender",
         "city": "City",
         "selectInterests": "Select Your Interests"
+    },
+    "noData": {
+        "sorry": "Sorry",
+        "noPlaces": "No places found"
     }
 }
