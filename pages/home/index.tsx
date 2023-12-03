@@ -112,7 +112,7 @@ export async function getServerSideProps({ locale }: any) {
          throw new Error('error fetching categories');
       }
       const categoriesData = await categoriesReq?.json();
-      categoriesData?.data?.unshift({ name: 'all', id: 0, icon: '' });
+      categoriesData?.data?.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
 
       const slidersReq = await fetch(`${baseUrl}sliders`);
       if (!slidersReq.ok) {

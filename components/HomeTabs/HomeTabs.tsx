@@ -5,6 +5,8 @@ import SectionHeader from '../UI/SectionHeader/SectionHeader';
 import { Category } from '@/interfaces/category';
 import { Place } from '@/interfaces/place';
 import explore from '@/public/assets/images/explore.svg';
+import NoData from '../layout/NoData/NoData';
+import useTranslate from '@/hooks/use-translate';
 interface Props {
     tabs: Category[],
     categorizedPlaces: { [categoryName: string]: Place[] },
@@ -12,12 +14,13 @@ interface Props {
 }
 
 const HomeTabs = (props: Props) => {
-    const [key, setKey] = useState<any>('all');
+    const { translate } = useTranslate();
+    const [key, setKey] = useState<any>(0);
     const { tabs, categorizedPlaces, showTitle } = props;
 
     useEffect(() => {
         if (tabs?.length > 0) {
-            setKey(tabs[0]?.name);
+            setKey(tabs[0]?.id);
         }
     }, [tabs])
     return (
@@ -29,16 +32,19 @@ const HomeTabs = (props: Props) => {
                     <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                         {
                             tabs?.map(tab => {
-                                return <Tab key={tab.id} eventKey={tab.name} title={tab.name}>
+                                return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
                                     <div className="row g-5">
                                         {
-                                            categorizedPlaces[tab.name]?.map(place => {
-                                                return (
-                                                    <div key={place?.id} className="col-4">
-                                                        <Card place={place} />
-                                                    </div>
-                                                )
-                                            })
+                                            categorizedPlaces[tab.name]?.length > 0 ?
+                                                categorizedPlaces[tab.name]?.map(place => {
+                                                    return (
+                                                        <div key={place?.id} className="col-4">
+                                                            <Card place={place} />
+                                                        </div>
+                                                    )
+                                                })
+                                                :
+                                                <NoData text={translate('noData.noPlaces')} showHomeBtn={false} />
                                         }
                                     </div>
                                 </Tab>

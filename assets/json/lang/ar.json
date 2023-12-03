@@ -30,7 +30,8 @@
         "bookNow": "احجز الان",
         "register": "تسجيل",
         "showMenu": "اظهر القائمة",
-        "update": "تحديث"
+        "update": "تحديث",
+        "addRate": "إضافة تقييم"
     },
     "entries": {
         "trend": "تريند",
@@ -98,5 +99,9 @@
         "gender": "الجنس",
         "city": "المدينة",
         "selectInterests": "اختر اهتماماتك"
+    },
+    "noData": {
+        "sorry": "عفواً",
+        "noPlaces": "لا يوجد اماكن الان"
     }
 }

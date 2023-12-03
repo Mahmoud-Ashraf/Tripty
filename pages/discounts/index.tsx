@@ -37,7 +37,7 @@ export async function getStaticProps({ locale }: any) {
     try {
         const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
         const categoriesData = await categoriesReq.json();
-        categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
+        categoriesData.data.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
 
         const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 

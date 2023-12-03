@@ -5,6 +5,7 @@ import { Tag } from '@/interfaces/tag';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import useTranslate from '@/hooks/use-translate';
+import useHTTP from '@/hooks/use-http';
 
 const TagsStep = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,8 @@ const TagsStep = () => {
     const [tags, setTags] = useState<Tag[]>([]);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [otherTag, setOtherTag] = useState<string>('');
-    const [otherTags, setOtherTags] = useState<Tag[]>([])
+    const [otherTags, setOtherTags] = useState<Tag[]>([]);
+    const { isLoading, error, sendRequest } = useHTTP();
     useEffect(() => {
         getTags();
     }, []);
@@ -29,13 +31,17 @@ const TagsStep = () => {
         }
     }
     const getTags = () => {
-        fetch('/api/tags')
-            .then(res => res.json())
-            .then(data => {
+        sendRequest(
+            {
+                url: '/api/tags',
+                method: 'GET'
+            },
+            (data: any) => {
                 setTags(data);
                 setSelectedTags([]);
-            })
-            .catch(error => console.log(error));
+            },
+            (error: any) => console.log(error)
+        )
     }
 
     const addTag = () => {
