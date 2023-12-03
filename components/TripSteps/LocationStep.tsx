@@ -10,7 +10,7 @@ const LocationStep = () => {
     const dispatch = useDispatch();
     const { isLoading, error, sendRequest } = useHttp();
     const [citeies, setCities] = useState<City[]>([]);
-    const [selectedLocation, setSelectedLocation] = useState<City>({ id: 1, name: 'Riyadh', code: null })
+    const [selectedLocation, setSelectedLocation] = useState<City>()
 
     useEffect(() => {
         getLocations();
@@ -28,6 +28,7 @@ const LocationStep = () => {
             },
             (data: any) => {
                 setCities(data);
+                setSelectedLocation(data[0]);
             },
             (error: any) => {
                 console.error(error);
@@ -42,7 +43,7 @@ const LocationStep = () => {
                     <ellipse cx="4.039" cy="4.206" rx="4.039" ry="4.206" transform="translate(8.079 8.413)" fill="#fff" />
                 </svg>
                 <p className={classes.locationText}>
-                    <Translate id='tripModal.myLocation'/> <span className={classes.locationName}>{selectedLocation.name}</span>
+                    <Translate id='tripModal.myLocation' /> <span className={classes.locationName}>{selectedLocation?.name}</span>
                 </p>
             </div>
             <ul className={classes.locationCities}>
