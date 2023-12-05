@@ -75,7 +75,8 @@
         "female": "Female"
     },
     "errors": {
-        "tagsError": "Please Select Tags First"
+        "tagsError": "Please Select Tags First",
+        "wrongCredentials": "Email or Password is incorrect"
     },
     "currencies": {
         "sar": "SAR"
