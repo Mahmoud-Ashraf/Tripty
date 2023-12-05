@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Translate from "../helpers/Translate/Translate";
+import { useSession } from "next-auth/react";
+import { authActions } from "@/store/Auth/Auth";
 
 const TripModalFooter = () => {
     const dispatch = useDispatch();
@@ -14,11 +16,13 @@ const TripModalFooter = () => {
     const tripData = useSelector((state: RootState) => state.trip.tripData);
     const [stepError, setStepError] = useState('');
     const { isLoading, error, sendRequest } = useHTTP();
+    const { data: session }: any = useSession();
 
     const nextStep = () => {
         if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
             setStepError('errors.tagsError')
         } else if (step === stepsCount) {
+            // if (session?.token) {
             sendRequest(
                 {
                     url: '/api/trip/create',
@@ -32,6 +36,9 @@ const TripModalFooter = () => {
                 },
                 (err: any) => console.error(err)
             )
+            // } else {
+            //     dispatch(authActions.openShowAuthModal());
+            // }
         } else {
             dispatch(tripActions.nextStep());
         }

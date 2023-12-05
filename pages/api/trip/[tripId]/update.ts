@@ -6,13 +6,13 @@ export default async function handler(
 ) {
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        const headersObj = Object.fromEntries(
+            Object.entries(req.headers) as [string, string][]
+        );
         const response = await fetch(baseUrl + `trips/${req.query.tripId}/update`, {
             method: 'POST',
-            body: req.body,
-            headers: {
-                'Authorization': 'Bearer 25|C2HIokiAYxGSZFWCYl7IWC4ielpX9DBg4PRvMSkob2c78ec2',
-                'Content-Type': 'application/json'
-            }
+            body: JSON.stringify(req.body),
+            headers: headersObj
         });
 
         if (!response.ok) {

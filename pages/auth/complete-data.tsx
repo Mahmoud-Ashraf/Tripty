@@ -57,13 +57,17 @@ const CompleteData = (props: any) => {
     }
 
     const getTags = () => {
-        fetch('/api/tags')
-            .then(res => res.json())
-            .then(data => {
+        sendRequest(
+            {
+                url: '/api/tags',
+                method: 'GET'
+            },
+            (data: any) => {
                 setTags(data);
                 setSelectedTags([]);
-            })
-            .catch(error => console.log(error));
+            },
+            (err: any) => console.log(err)
+        );
     }
 
     const handleSelectTag = (tag: Tag) => {
@@ -106,7 +110,7 @@ const CompleteData = (props: any) => {
                                 tags?.map(tag => {
                                     return (
                                         <div key={tag.id} className="col-auto">
-                                            <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>
+                                            <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags?.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>
                                                 <span>{tag.name}</span>
                                             </div>
                                         </div>
@@ -116,7 +120,7 @@ const CompleteData = (props: any) => {
                         </div>
                     </div>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
-                        <Button disabled={!city || !gender || selectedTags.length < 1} variant="main" type="button" onClick={updateProfile}>
+                        <Button disabled={!city || !gender || selectedTags?.length < 1} variant="main" type="button" onClick={updateProfile}>
                             <Translate id='buttons.update' />
                         </Button>
                     </div>

@@ -54,22 +54,27 @@
     }
 }
 
-.inputContainer {
-    position: relative;
-
-    button {
-        position: absolute;
-        right: 0;
-        bottom: .25rem;
-    }
-}
-
 .input {
     border: none;
     border-bottom: 1px solid rgba($main-color, .35);
     // color: $main-color;
     padding: 0 2rem 1.25rem;
     width: 100%;
+}
+
+.inputContainer {
+    position: relative;
+    border-bottom: 1px solid rgba($main-color, .35);
+    // color: $main-color;
+    padding: 0 1rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .input {
+        border-bottom: none;
+        padding: 0;
+    }
 }
 
 .addTagBtn {
@@ -101,7 +106,9 @@
     align-items: center;
     line-height: 1.2rem;
     border-radius: .5rem;
-    &Dec, &Inc {
+
+    &Dec,
+    &Inc {
         padding: .125rem .5rem;
         background-color: #FFF;
         border-radius: .3rem;

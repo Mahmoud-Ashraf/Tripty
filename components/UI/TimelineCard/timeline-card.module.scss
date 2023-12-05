@@ -40,6 +40,11 @@
     height: 180px;
     position: relative;
     overflow: hidden;
+
+    img {
+        width: 100%;
+        min-height: 100%;
+    }
 }
 
 .details {

@@ -6,7 +6,7 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
     return (
         <div className={classes.container}>
             <div className={classes.cover}>
-                <Image fill src={place?.featured_image} alt={`${place.name} cover`} />
+                <img src={place?.featured_image} alt={`${place.name} cover`} />
                 <div className={classes.details}>
                     <div className={classes.desc}>
                         <h4>{place.name}</h4>
@@ -24,7 +24,7 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
                 </div>
             </div>
             <div className={classes.actions}>
-                <a href={`/place/${place.id}`} target='_blank'><Translate id='button.moreDetails' /></a>
+                <a href={`/place/${place.id}`} target='_blank'><Translate id='buttons.moreDetails' /></a>
                 <button onClick={onSelectPlace}><i className="fa-solid fa-plus"></i></button>
             </div>
         </div>

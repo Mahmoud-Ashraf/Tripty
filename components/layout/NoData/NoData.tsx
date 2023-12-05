@@ -7,11 +7,13 @@ interface Props {
     showHomeBtn?: boolean
 }
 const NoData = (props: Props) => {
-    const { text, showHomeBtn = true } = props;
+    const { text, showHomeBtn } = props;
     return (
-        <div className={classes.noData}>
-            <p><Translate id="noData.sorry" />, {text}</p>
-            {showHomeBtn && <Link href={'/home'} className='btn btn-main'>Go To Home</Link>}
+        <div className="col-12">
+            <div className={classes.noData}>
+                <p><Translate id="noData.sorry" />, {text}</p>
+                {showHomeBtn && <Link href={'/home'} className='btn btn-main'>Go To Home</Link>}
+            </div>
         </div>
     )
 }

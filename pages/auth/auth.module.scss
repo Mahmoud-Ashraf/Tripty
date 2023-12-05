@@ -138,6 +138,7 @@ a.register {
         font-size: .75rem;
         font-weight: 500;
     }
+
     .selection {
         padding: .5rem 1rem;
         border-radius: .75rem;
@@ -154,4 +155,9 @@ a.register {
             color: $white;
         }
     }
+}
+
+.loginError {
+    color: var(--bs-red);
+    font-size: .75rem;
 }

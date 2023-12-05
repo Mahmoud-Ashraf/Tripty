@@ -17,8 +17,7 @@ const LocationStep = () => {
     }, []);
 
     const handleLocationClick = (city: City) => {
-        setSelectedLocation(city);
-        dispatch(tripActions.setTripData({ city_id: city.id }))
+        setCurrentCity(city);
     }
     const getLocations = () => {
         sendRequest(
@@ -28,12 +27,17 @@ const LocationStep = () => {
             },
             (data: any) => {
                 setCities(data);
-                setSelectedLocation(data[0]);
+                setCurrentCity(data[0]);
             },
             (error: any) => {
                 console.error(error);
             }
         )
+    }
+
+    const setCurrentCity = (city: City) => {
+        setSelectedLocation(city);
+        dispatch(tripActions.setTripData({ city_id: city.id }));
     }
     return (
         <div className={classes.location}>

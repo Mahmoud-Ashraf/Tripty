@@ -11,7 +11,7 @@ import logo from '@/public/assets/images/logo.svg';
 const AuthLayout = ({ sliders, children, className }: any) => {
     const router = useRouter();
     const [index, setIndex] = useState(0);
-    const { data: session } = useSession();
+    const { data: session }: any = useSession();
 
     const handleSelect = (selectedIndex: SetStateAction<number>) => {
         setIndex(selectedIndex);
@@ -19,13 +19,13 @@ const AuthLayout = ({ sliders, children, className }: any) => {
 
     useEffect(() => {
         if (session?.user) {
-            if (Object.values(session.user).some(value => value === null)) {
+            if (session.user.name === null || session.user.gender === null || session.user.city === null) {
                 router.push('/auth/complete-data');
             } else {
                 router.push('/home');
             }
         }
-    }, [session?.user, router.pathname]);
+    }, [session?.user]);
     return (
         <>
             <div className={`${classes.container} ${className}`}>

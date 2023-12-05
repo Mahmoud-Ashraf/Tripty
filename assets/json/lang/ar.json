@@ -18,7 +18,8 @@
         "trip": "طلعتك",
         "discounts": "خصومات",
         "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
-        "trend": "تريند"
+        "trend": "تريند",
+        "places": "الأماكن"
     },
     "buttons": {
         "startTrip": "خطط لطلعتك",
@@ -75,7 +76,8 @@
         "female": "انثى"
     },
     "errors": {
-        "tagsError": "من فضلك اختر اهتماماتك اولاً"
+        "tagsError": "من فضلك اختر اهتماماتك اولاً",
+        "wrongCredentials": "البريد الإلكتروني او كلمة المرور غير صحيحة"
     },
     "currencies": {
         "sar": "ريال"
@@ -103,5 +105,10 @@
     "noData": {
         "sorry": "عفواً",
         "noPlaces": "لا يوجد اماكن الان"
+    },
+    "rate": {
+        "yourRate": "تقيمك",
+        "comments": "تعليقك",
+        "send": "ارسال"
     }
 }

@@ -113,7 +113,8 @@ export default (req, res) => {
             }
         },
         pages: {
-            signIn: `/auth/login`,
+            signIn: `/home`,
+            newUser: '/auth/complete-data'
         },
     }
     return NextAuth(req, res, options);
