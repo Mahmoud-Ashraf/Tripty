@@ -44,7 +44,7 @@ const HomeTabs = (props: Props) => {
                                                     )
                                                 })
                                                 :
-                                                <NoData text={translate('noData.noPlaces')} showHomeBtn={false} />
+                                                <NoData text={translate('noData.noPlaces')} />
                                         }
                                     </div>
                                 </Tab>

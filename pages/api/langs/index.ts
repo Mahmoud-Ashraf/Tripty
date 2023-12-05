@@ -9,7 +9,13 @@ export default async function handler(
     const { locale } = req.query;
     try {
         const response = await fetch(baseUrl + `languages?change_language=${locale}`);
+        if (!response.ok) {
+            throw new Error('fetch langs failed');
+        }
         const data = await response.json();
+        if (!data.data) {
+            throw new Error('something went wrong');
+        }
         res.status(200).json(data.data);
     }
     catch (error: any) {

@@ -32,10 +32,10 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
                         <i className="fa-solid fa-clock"></i>
                         <span>{formatTiming(date)}</span>
                     </div>
-                    {showCover && <button onClick={handleReplace} className='btn btn-main btn-sm'><Translate id='buttons.replace'/></button>}
+                    {showCover && <button onClick={handleReplace} className='btn btn-main btn-sm'><Translate id='buttons.replace' /></button>}
                 </div>
                 {showCover && <div className={classes.cover}>
-                    <Image fill src={place?.featured_image} alt='card-image' />
+                    <img src={place?.featured_image} alt='card-image' />
                 </div>}
                 <div className={classes.details}>
                     <h4>{place.name}</h4>
@@ -63,7 +63,7 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
                 <div className={classes.utils}>
                     <span className={classes.location}><i className="fa-solid fa-location-dot"></i> {place.city.name}</span>
                     {place.category.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place.category.name}</span> : ''}
-                    <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km'/></span>
+                    <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km' /></span>
                 </div>
             </div>
             <span className={classes.distanceTime}><i className="fa-solid fa-car"></i> 30<Translate id='common.m' /></span>

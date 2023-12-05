@@ -13,11 +13,12 @@ import Translate from '@/components/helpers/Translate/Translate';
 import { langActions } from '@/store/Lang/Lang';
 import useTranslate from '@/hooks/use-translate';
 import { signOut, useSession } from 'next-auth/react';
+import { authActions } from '@/store/Auth/Auth';
 
 
 const Header = () => {
     const { isLoading, error, sendRequest } = useHTTP();
-    const { data: session } = useSession();
+    const { data: session }: any = useSession();
     const dispatch = useDispatch();
     const { translate } = useTranslate();
     const [langs, setLangs] = useState<Lang[]>([]);
@@ -26,7 +27,11 @@ const Header = () => {
     const [selectedLang, setSlectedLang] = useState(router.locale);
     const [showUserDialog, setShowUserDialog] = useState(false);
     const openModal = () => {
-        dispatch(tripActions.openShowTripModal());
+        if (session?.token) {
+            dispatch(tripActions.openShowTripModal());
+        } else {
+            dispatch(authActions.openShowAuthModal());
+        }
     }
 
     const getLanguages = () => {

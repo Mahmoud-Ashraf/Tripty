@@ -6,14 +6,16 @@ export default async function handler(
 ) {
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        const headersObj = Object.fromEntries(
+            Object.entries(req.headers) as [string, string][]
+        );
         const response = await fetch(baseUrl + 'trips', {
             method: 'POST',
-            body: req.body,
-            headers: {
-                'Authorization': 'Bearer 25|C2HIokiAYxGSZFWCYl7IWC4ielpX9DBg4PRvMSkob2c78ec2',
-                'Content-Type': 'application/json'
-            }
+            body: JSON.stringify(req.body),
+            headers: headersObj
         });
+
+        console.log(response);
 
         if (!response.ok) {
             const errorData = await response.json();
@@ -22,8 +24,8 @@ export default async function handler(
 
         const data = await response.json();
         res.status(201).json(data.data);
-    } catch (error) {
+    } catch (error: any) {
         console.error('API Error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 }
