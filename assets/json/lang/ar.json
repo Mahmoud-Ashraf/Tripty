@@ -103,5 +103,10 @@
     "noData": {
         "sorry": "عفواً",
         "noPlaces": "لا يوجد اماكن الان"
+    },
+    "rate": {
+        "yourRate": "تقيمك",
+        "comments": "تعليقك",
+        "send": "ارسال"
     }
 }

@@ -103,5 +103,10 @@
     "noData": {
         "sorry": "Sorry",
         "noPlaces": "No places found"
+    },
+    "rate": {
+        "yourRate": "Your rate",
+        "comments": "Comments",
+        "send": "Send"
     }
 }
