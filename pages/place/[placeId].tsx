@@ -12,6 +12,7 @@ import RateModal from "@/components/RateModal/RateModal";
 import PlaceMap from "@/components/UI/PlaceMap/PlaceMap";
 import useHTTP from "@/hooks/use-http";
 import { useRouter } from "next/router";
+import GalleryModal from "@/components/GalleryModal/GalleryModal";
 
 interface Props {
     place: Place,
@@ -21,6 +22,7 @@ interface Props {
 const PlacePage = (props: Props) => {
     const [place, setPlace] = useState<Place>();
     const [showRateModal, setShowRateModal] = useState(false);
+    const [showGalleryModal, setShowGalleryModal] = useState(false);
     const { isLoading, error, sendRequest } = useHTTP();
     const router = useRouter();
     const { placeId } = router.query;
@@ -59,6 +61,12 @@ const PlacePage = (props: Props) => {
                 showRateModal &&
                 <CustomModal onOutsideClick={() => setShowRateModal(false)}>
                     <RateModal placeId={place.id} closeModal={() => setShowRateModal(false)} />
+                </CustomModal>
+            }
+            {
+                showGalleryModal &&
+                <CustomModal onOutsideClick={() => setShowGalleryModal(false)}>
+                    <GalleryModal images={place.gallery} />
                 </CustomModal>
             }
             <PlaceHeader name={place?.name} img={place?.featured_image} logo={place.logo} fav share discount={place.offer} />
@@ -104,7 +112,7 @@ const PlacePage = (props: Props) => {
                                                 if (i > 4) return
                                                 if (i === 4) return (
                                                     <div key={i} className="col">
-                                                        <div className={classes.img}>
+                                                        <div className={classes.img} onClick={() => setShowGalleryModal(true)}>
                                                             <div className={classes.galleryShowAll}>+{place.gallery.length - 4}</div>
                                                         </div>
                                                     </div>
