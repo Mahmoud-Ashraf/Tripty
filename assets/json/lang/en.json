@@ -18,7 +18,8 @@
         "trip": "TRIP",
         "discounts": "DISCOUNTS",
         "explorePlacesNearYou": "Explore best places near you",
-        "trend": "TREND NOW"
+        "trend": "TREND NOW",
+        "places": "PLACES"
     },
     "buttons": {
         "startTrip": "Start Your Trip",
