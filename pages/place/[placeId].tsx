@@ -58,7 +58,7 @@ const PlacePage = (props: Props) => {
             {
                 showRateModal &&
                 <CustomModal onOutsideClick={() => setShowRateModal(false)}>
-                    <RateModal placeId={place.id} />
+                    <RateModal placeId={place.id} closeModal={() => setShowRateModal(false)} />
                 </CustomModal>
             }
             <PlaceHeader name={place?.name} img={place?.featured_image} logo={place.logo} fav share discount={place.offer} />

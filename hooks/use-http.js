@@ -36,7 +36,6 @@ const useHTTP = () => {
                     body: JSON.stringify(requestConfig.body)
                 }
             );
-            // console.log(await response.json());
             if (!response.ok) {
                 if (response.status === 401) {
                 }

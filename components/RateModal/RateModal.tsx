@@ -3,13 +3,28 @@ import classes from './rate-modal.module.scss';
 import Rate from 'rc-rate';
 import Translate from '../helpers/Translate/Translate';
 import { useRouter } from 'next/router';
+import useHTTP from '@/hooks/use-http';
 
-const RateModal = ({ placeId }: { placeId: number }) => {
+const RateModal = ({ placeId, closeModal }: { placeId: number, closeModal: () => void }) => {
     const [rate, setRate] = useState(0);
     const [comment, setComment] = useState('');
     const router = useRouter();
+    const { isLoading, error, sendRequest } = useHTTP();
     const saveRate = () => {
-        console.log(placeId, rate, comment);
+        if (!comment || !rate) {
+            return;
+        }
+        sendRequest(
+            {
+                url: `/api/place/${placeId}/rating`,
+                method: 'POST',
+                body: { comment, stars: rate }
+            },
+            (data: any) => {
+                closeModal();
+            },
+            (err: any) => console.error(err)
+        )
     }
     return (
         <div className={classes.container}>
@@ -30,7 +45,7 @@ const RateModal = ({ placeId }: { placeId: number }) => {
             </div>
             <div className="row justify-content-end">
                 <div className="col-4">
-                    <button className='btn btn-main w-100' onClick={saveRate}><Translate id="rate.send" /></button>
+                    <button disabled={!comment || !rate} className='btn btn-main w-100' onClick={saveRate}><Translate id="rate.send" /></button>
                 </div>
             </div>
         </div>

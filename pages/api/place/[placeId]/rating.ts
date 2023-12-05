@@ -9,7 +9,7 @@ export default async function handler(
         const headersObj = Object.fromEntries(
             Object.entries(req.headers) as [string, string][]
         );
-        const response = await fetch(baseUrl + 'trips', {
+        const response = await fetch(baseUrl + `places/${req.query.placeId}/ratings`, {
             method: 'POST',
             body: JSON.stringify(req.body),
             headers: headersObj
@@ -21,9 +21,12 @@ export default async function handler(
         }
 
         const data = await response.json();
+        if (data.error) {
+            throw new Error(data.message);
+        }
         res.status(201).json(data.data);
-    } catch (error: any) {
+    } catch (error) {
         console.error('API Error:', error);
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 }
