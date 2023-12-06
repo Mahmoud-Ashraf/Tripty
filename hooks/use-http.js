@@ -9,19 +9,15 @@ const useHTTP = () => {
     const lang = useSelector(state => state.lang.globalLang);
     const router = useRouter();
     const { data: session } = useSession();
+    const token = session?.token;
 
-    // const token = 'ffjhjhgjhgjkghjkghjg';
     const sendRequest = useCallback(async (requestConfig, applyData, applyError) => {
-        // if (token || requestConfig.url.includes('regist_guest')) {
-        const token = session?.token;
         const baseUrl = window.location.origin;
         setIsLoading(true);
         setError(null);
         let url = requestConfig.url;
         let contentTypeHeader = requestConfig.method === 'POST' ? { 'Content-Type': 'application/json' } : {};
-        // let langHeader = { 'lang': 'ar' };
         let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
-        // let baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
         if (requestConfig.method === 'GET') {
             const newUrl = new URL(baseUrl + url);
             newUrl.searchParams.set(`locale`, `${router.locale || 'ar'}`);
@@ -52,9 +48,7 @@ const useHTTP = () => {
             applyError(err.message);
         }
         setIsLoading(false);
-        // }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [session?.token]);
+    }, [session?.token, lang]);
     return {
         isLoading,
         error,

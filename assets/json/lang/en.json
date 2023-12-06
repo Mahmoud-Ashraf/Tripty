@@ -110,5 +110,9 @@
         "yourRate": "Your rate",
         "comments": "Comments",
         "send": "Send"
+    },
+    "notFound": {
+        "404": "404 - Page Not Found",
+        "sorry": "Sorry, the page you're looking for does not exist."
     }
 }
