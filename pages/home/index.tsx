@@ -21,64 +21,61 @@ interface Props {
    categorizedPlaces: { [categoryName: string]: Place[] }
 }
 const Home = (props: Props) => {
-   // const { isLoading, error, sendRequest } = useHTTP();
-   // const [tabs, setTabs] = useState([]);
-   // const [sliders, setSliders] = useState([]);
-   // const [categorizedPlaces, setCategorizedPlaces] = useState({});
+   const { isLoading, error, sendRequest } = useHTTP();
    const { sliders, tabs, categorizedPlaces } = props;
+   const [newTabs, setNewTabs] = useState(tabs);
+   const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
+   const [newSliders, setNewSliders] = useState(sliders);
    const dispatch = useDispatch();
-   // useEffect(() => {
-   //    fetchTabsData();
-   //    fetchSliders();
-   // }, []);
 
-   // const fetchTabsData = () => {
-   //    sendRequest(
-   //       {
-   //          url: 'http://18.133.139.168/api/v1/front/categories',
-   //       }, (categoriesData: any) => {
-   //          categoriesData.data.unshift({ name: 'all', id: 0, icon: '' });
-   //          setTabs(categoriesData.data);
-   //          // const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
-   //          categoriesData.data.map(async (category: any) => {
-   //             sendRequest(
-   //                {
-   //                   url: `http://18.133.139.168/api/v1/front/places?category_id=${category.id}`
-   //                },
-   //                (categoryPlacesData: any) => {
-   //                   setCategorizedPlaces({ ...categorizedPlaces, [category.name]: categoryPlacesData.data });
-   //                   // categorizedPlaces[category.name] = categoryPlacesData.data;
-   //                },
-   //                (err: any) => console.log(err)
-   //             )
-   //          })
-   //       },
-   //       (err: any) => console.log(err)
-   //    )
+   useEffect(() => {
+      fetchPlaces();
+      fetchSliders();
+   }, []);
 
-   // }
+   const fetchPlaces = () => {
+      sendRequest(
+         {
+            url: '/api/places/categorized',
+            method: 'GET'
+         },
+         (data: any) => {
+            console.log('categorized', data);
+            setNewPlaces(data.categorizedPlaces);
+            setNewTabs(data.categories);
+         },
+         (err: any) => {
+            setNewTabs([]);
+            setNewPlaces({});
+         }
+      )
+   }
 
-   // const fetchSliders = () => {
-   //    sendRequest(
-   //       {
-   //          url: 'http://18.133.139.168/api/v1/front/sliders'
-   //       },
-   //       (slidersData: any) => {
-   //          setSliders(slidersData.data);
-   //       }
-   //    )
-   // }
+   const fetchSliders = () => {
+      sendRequest(
+         {
+            url: '/api/sliders',
+            method: 'GET'
+         },
+         (data: any) => {
+            setNewSliders(data);
+         },
+         (err: any) => {
+            setNewSliders([]);
+         }
+      )
+   }
    return (
       <>
          <Head>
             <title>Tripty - Home</title>
          </Head>
 
-         <HomeSlider sliders={sliders} />
+         <HomeSlider sliders={newSliders} />
 
          <HomeEntryPoints />
 
-         <HomeTabs showTitle tabs={tabs} categorizedPlaces={categorizedPlaces} />
+         <HomeTabs showTitle tabs={newTabs} categorizedPlaces={newPlaces} />
 
          <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2><Translate id='headings.startYour' /></h2>
@@ -103,7 +100,7 @@ interface CategorizedPlaces {
 //    // Add other properties based on your data structure
 //  }
 
-export async function getServerSideProps({ locale }: any) {
+export async function getStaticProps({ locale }: any) {
    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
    try {
