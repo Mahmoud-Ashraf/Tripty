@@ -1,9 +1,10 @@
 import HomeTabs from '@/components/HomeTabs/HomeTabs';
-// import classes from './discounts.module.scss';
 import { Place } from '@/interfaces/place';
 import { Category } from '@/interfaces/category';
 import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
 import Head from 'next/head';
+import useHTTP from '@/hooks/use-http';
+import { useEffect, useState } from 'react';
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -15,8 +16,32 @@ interface Props {
 }
 
 const Places = (props: Props) => {
+    const { isLoading, error, sendRequest } = useHTTP();
     const { tabs, categorizedPlaces } = props;
+    const [newTabs, setNewTabs] = useState(tabs);
+    const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
 
+    useEffect(() => {
+        fetchPlaces();
+    }, []);
+
+    const fetchPlaces = () => {
+        sendRequest(
+            {
+                url: '/api/places/categorized',
+                method: 'GET'
+            },
+            (data: any) => {
+                console.log('categorized', data);
+                setNewPlaces(data.categorizedPlaces);
+                setNewTabs(data.categories);
+            },
+            (err: any) => {
+                // setNewTabs([]);
+                // setNewPlaces({});
+            }
+        )
+    }
     return (
         <>
             <Head>
@@ -24,7 +49,7 @@ const Places = (props: Props) => {
             </Head>
             <div>
                 <PlaceHeader name='headings.places' />
-                <HomeTabs tabs={tabs} categorizedPlaces={categorizedPlaces} />
+                <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
             </div>
         </>
     )
