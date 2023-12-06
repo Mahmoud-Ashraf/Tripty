@@ -9,7 +9,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // if (typeof text !== 'string') {
         //     throw new Error('Invalid text parameter');
         // }
-        const response = await fetch(`${baseUrl}places/${id}?change_language=${locale}`);
+        const headersObj = Object.fromEntries(
+            Object.entries(req.headers) as [string, string][]
+        );
+        const response = await fetch(`${baseUrl}places/${id}?change_language=${locale}`, {
+            headers: headersObj
+        });
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message);
@@ -19,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         // Search for places based on the provided text
         const place = data.data;
-
         // const categories = Array.from(categoriesSet).map(category => (category));
         // Respond with the categorized places
         res.status(200).json({ place });

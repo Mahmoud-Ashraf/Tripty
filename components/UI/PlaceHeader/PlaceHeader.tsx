@@ -4,6 +4,11 @@ import { Offer } from '@/interfaces/offer';
 import Image from 'next/image';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ShareButtons from '../ShareButtons/ShareButtons';
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useDispatch } from 'react-redux';
+import { authActions } from '@/store/Auth/Auth';
+import useHTTP from '@/hooks/use-http';
 
 interface placeHeaderProps {
     name?: string | undefined,
@@ -12,12 +17,33 @@ interface placeHeaderProps {
     logo?: string,
     share?: boolean,
     fav?: boolean,
+    isFav?: boolean,
     discount?: false | null | Offer,
     children?: any,
     onClick?: () => void
 }
 const PlaceHeader = (props: placeHeaderProps) => {
-    const { name, img, id, logo, share = false, fav = false, discount = false, children, onClick } = props;
+    const dispatch = useDispatch();
+    const { name, img, id, logo, share = false, fav = false, isFav, discount = false, children, onClick } = props;
+    const [isFavorite, setIsFavorite] = useState(isFav);
+    const { data: session }: any = useSession();
+    const { isLoading, error, sendRequest } = useHTTP();
+
+    const handleToggleFav = () => {
+        if (session?.token) {
+            const prevFav = isFavorite;
+            setIsFavorite(prev => !prev);
+            sendRequest(
+                {
+                    url: `/api/favs/toggle?prevFav=${prevFav}&placeId=${id}`
+                },
+                (data: any) => setIsFavorite(data.is_favoritable),
+                (err: any) => console.error(err)
+            )
+        } else {
+            dispatch(authActions.openShowAuthModal());
+        }
+    }
     return (
         <div className={classes.container} style={{ backgroundImage: `url('${img}')`, cursor: `${onClick ? 'pointer' : 'auto'}` }} onClick={onClick}>
             <div className={classes.inner}>
@@ -47,9 +73,9 @@ const PlaceHeader = (props: placeHeaderProps) => {
                 </div>
                 <div className={classes.offer}>
                     {discount && <div className={classes.offerData}><span>{discount.amount}{discount.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' /></div>}
-                    {fav && <button className={classes.fav}><svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39">
+                    {fav && <button onClick={handleToggleFav} className={classes.fav}><svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39">
                         <rect width="39" height="39" rx="4" fill="#f8f8f8" />
-                        <path data-name="Icon" d="m10.5 19-.351-.318C2.153 11.955 0 9.591 0 5.727A5.639 5.639 0 0 1 5.536 0 6.29 6.29 0 0 1 10.5 2.636 6.29 6.29 0 0 1 15.464 0 5.639 5.639 0 0 1 21 5.727c0 3.864-2.153 6.227-10.149 12.955L10.5 19z" transform="translate(9 10)" fill="#cbcfe9" />
+                        <path data-name="Icon" d="m10.5 19-.351-.318C2.153 11.955 0 9.591 0 5.727A5.639 5.639 0 0 1 5.536 0 6.29 6.29 0 0 1 10.5 2.636 6.29 6.29 0 0 1 15.464 0 5.639 5.639 0 0 1 21 5.727c0 3.864-2.153 6.227-10.149 12.955L10.5 19z" transform="translate(9 10)" fill={isFavorite ? '#dc3545' : '#cbcfe9'} />
                     </svg></button>}
                 </div>
             </div>
