@@ -38,7 +38,7 @@ const HomeTabs = (props: Props) => {
                                             categorizedPlaces[tab.name]?.length > 0 ?
                                                 categorizedPlaces[tab.name]?.map(place => {
                                                     return (
-                                                        <div key={place?.id} className="col-4">
+                                                        <div key={place?.id} className="col-md-6 col-lg-4">
                                                             <Card place={place} />
                                                         </div>
                                                     )
