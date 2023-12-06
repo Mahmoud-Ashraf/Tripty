@@ -17,6 +17,7 @@ export interface Place {
     logo?: string,
     booking_link?: string,
     featured_image: string,
+    is_favoritable: boolean,
     gallery: string[],
     tags: Tag[],
     category: Category,
