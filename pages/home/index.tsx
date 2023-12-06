@@ -45,8 +45,8 @@ const Home = (props: Props) => {
             setNewTabs(data.categories);
          },
          (err: any) => {
-            setNewTabs([]);
-            setNewPlaces({});
+            // setNewTabs([]);
+            // setNewPlaces({});
          }
       )
    }
@@ -61,7 +61,7 @@ const Home = (props: Props) => {
             setNewSliders(data);
          },
          (err: any) => {
-            setNewSliders([]);
+            // setNewSliders([]);
          }
       )
    }
@@ -84,7 +84,7 @@ const Home = (props: Props) => {
 
          <HomeTourism />
 
-         <HomeReviews />
+         {/* <HomeReviews /> */}
       </>
    )
 }

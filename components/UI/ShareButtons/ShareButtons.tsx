@@ -13,7 +13,7 @@ import {
 } from 'react-share'
 const ShareButtons = ({ url, title, tags }: any) => {
     const twitterHandle = "_MsLinda";
-    const baseUrl = window.location.origin;
+    const baseUrl = process.env.NEXT_PUBLIC_ORIGIN;
     return (
         <Dropdown.Menu>
             <Dropdown.Item>

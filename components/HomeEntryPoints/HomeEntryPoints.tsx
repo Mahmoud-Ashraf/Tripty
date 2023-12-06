@@ -5,11 +5,11 @@ import trend from '@/public/assets/images/trend.svg';
 const HomeEntryPoints = () => {
     return (
         <div className="row justify-content-center my-5">
-            <div className="col-10">
-                <div className="row g-5 justify-content-center">
-                    <div className="col-3"><EntryPoint icon={trend} text={'trend'} url="/trend" /></div>
-                    <div className="col-3"><EntryPoint icon={discounts} text={'discount'} url="/discounts" /></div>
-                    <div className="col-3"><EntryPoint icon={tourism} text={'tourism'} url="/tourism" /></div>
+            <div className="col-lg-10">
+                <div className="row g-3 justify-content-center">
+                    <div className="col-md-4"><EntryPoint icon={trend} text={'trend'} url="/trend" /></div>
+                    <div className="col-md-4"><EntryPoint icon={discounts} text={'discount'} url="/discounts" /></div>
+                    <div className="col-md-4"><EntryPoint icon={tourism} text={'tourism'} url="/tourism" /></div>
                 </div>
             </div>
         </div>

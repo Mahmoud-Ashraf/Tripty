@@ -12,7 +12,7 @@ const NoData = (props: Props) => {
         <div className="col-12">
             <div className={classes.noData}>
                 <p><Translate id="noData.sorry" />, {text}</p>
-                {showHomeBtn && <Link href={'/home'} className='btn btn-main'>Go To Home</Link>}
+                {showHomeBtn && <Link href={'/home'} className='btn btn-main'><Translate id="buttons.goToHome" /></Link>}
             </div>
         </div>
     )
