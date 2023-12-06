@@ -49,7 +49,7 @@ const Header = () => {
         router.replace(router.asPath, router.asPath, { locale: lang }).then(
             data => {
                 dispatch(langActions.translation({ lang: lang }));
-                router.reload();
+                // router.reload();
             }
         )
     };
