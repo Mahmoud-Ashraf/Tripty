@@ -2,9 +2,13 @@ import Translate from '@/components/helpers/Translate/Translate';
 import classes from './place-header.module.scss';
 import { Offer } from '@/interfaces/offer';
 import Image from 'next/image';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ShareButtons from '../ShareButtons/ShareButtons';
+
 interface placeHeaderProps {
     name?: string | undefined,
     img?: string | undefined,
+    id?: number,
     logo?: string,
     share?: boolean,
     fav?: boolean,
@@ -13,7 +17,7 @@ interface placeHeaderProps {
     onClick?: () => void
 }
 const PlaceHeader = (props: placeHeaderProps) => {
-    const { name, img, logo, share = false, fav = false, discount = false, children, onClick } = props;
+    const { name, img, id, logo, share = false, fav = false, discount = false, children, onClick } = props;
     return (
         <div className={classes.container} style={{ backgroundImage: `url('${img}')`, cursor: `${onClick ? 'pointer' : 'auto'}` }} onClick={onClick}>
             <div className={classes.inner}>
@@ -21,13 +25,19 @@ const PlaceHeader = (props: placeHeaderProps) => {
                     {name && <h2><Translate id={name} /></h2>}
                     {children && children}
                     {share && <div className={classes.actions}>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20.098" height="23.797" viewBox="0 0 20.098 23.797">
-                                <path d="M0 0v8.879A2.267 2.267 0 0 0 2.312 11.1h13.874A2.267 2.267 0 0 0 18.5 8.879V0" transform="translate(.8 11.899)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
-                                <path data-name="Path" d="M9.249 4.439 4.624 0 0 4.439" transform="translate(5.424 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
-                                <path data-name="Path" d="M.469 0v14.428" transform="translate(9.58 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
-                            </svg>
-                        </button>
+                        {/* <button>
+                        </button> */}
+                        <Dropdown>
+                            <Dropdown.Toggle className='text-white' variant="transperent" id="share-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20.098" height="23.797" viewBox="0 0 20.098 23.797">
+                                    <path d="M0 0v8.879A2.267 2.267 0 0 0 2.312 11.1h13.874A2.267 2.267 0 0 0 18.5 8.879V0" transform="translate(.8 11.899)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                    <path data-name="Path" d="M9.249 4.439 4.624 0 0 4.439" transform="translate(5.424 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                    <path data-name="Path" d="M.469 0v14.428" transform="translate(9.58 .8)" fill='none' stroke='#6c3d8e' strokeLinecap='round' strokeLinejoin='round' strokeMiterlimit='10' strokeWidth='1.6px' />
+                                </svg>
+                                {/* <img src={share} alt="share icon" /> */}
+                            </Dropdown.Toggle>
+                            <ShareButtons url={`/place/${id}`} title={name} />
+                        </Dropdown>
                         {logo &&
                             <div className={classes.logoContainer}>
                                 <img src={logo} alt={`${name} logo`} />

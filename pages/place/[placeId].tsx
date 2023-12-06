@@ -69,7 +69,7 @@ const PlacePage = (props: Props) => {
                     <GalleryModal images={place.gallery} />
                 </CustomModal>
             }
-            <PlaceHeader name={place?.name} img={place?.featured_image} logo={place.logo} fav share discount={place.offer} />
+            <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav share discount={place.offer} />
             <div className={classes.container}>
                 <div className={classes.details}>
                     <div className="row gx-5">
