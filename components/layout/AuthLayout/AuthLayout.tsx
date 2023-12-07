@@ -17,15 +17,15 @@ const AuthLayout = ({ sliders, children, className }: any) => {
         setIndex(selectedIndex);
     };
 
-    useEffect(() => {
-        if (session?.user) {
-            if (session.user.name === null || session.user.gender === null || session.user.city === null) {
-                router.push('/auth/complete-data');
-            } else {
-                router.push('/home');
-            }
-        }
-    }, [session?.token]);
+    // useEffect(() => {
+    //     if (session?.user) {
+    //         if (session.user.name === null || session.user.gender === null || session.user.city === null) {
+    //             router.push('/auth/complete-data');
+    //         } else {
+    //             router.push('/home');
+    //         }
+    //     }
+    // }, [session?.token]);
     return (
         <>
             <div className={`${classes.container} ${className}`}>

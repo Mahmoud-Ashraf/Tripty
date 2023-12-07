@@ -113,7 +113,7 @@ export default (req, res) => {
             }
         },
         pages: {
-            signIn: `/home`,
+            signIn: `/auth/login`,
             newUser: '/auth/complete-data'
         },
     }

@@ -51,10 +51,10 @@ const Login = (props: any) => {
                 <div className={classes.socialLogin}>
                     <p><Translate id='auth.loginBy' /></p>
                     <div className={classes.loginOptions}>
-                        <button className={classes.loginOption} onClick={() => signIn('google')}><i className="fa-brands fa-google"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('facebook')}><i className="fa-brands fa-facebook-f"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('twitter')}><i className="fa-brands fa-x-twitter"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('apple')}><i className="fa-brands fa-apple"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('google', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-google"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('facebook', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-facebook-f"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('twitter', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-x-twitter"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('apple', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-apple"></i></button>
                     </div>
                 </div>
                 <Link href={'/auth/register'} className={classes.register}><Translate id='auth.registerWithMail' /></Link>

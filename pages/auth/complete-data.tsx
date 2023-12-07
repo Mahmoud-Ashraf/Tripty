@@ -9,6 +9,7 @@ import useHttp from '@/hooks/use-http';
 import { City } from '@/interfaces/City';
 import { useRouter } from 'next/router';
 import { Tag } from '@/interfaces/tag';
+import { useSession } from 'next-auth/react';
 
 const CompleteData = (props: any) => {
     const { sliders } = props;
@@ -20,11 +21,19 @@ const CompleteData = (props: any) => {
     const [city, setCity] = useState('');
     const [tags, setTags] = useState<Tag[]>([]);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+    const { data: session }: any = useSession();
 
     useEffect(() => {
         getLocations();
         getTags();
     }, []);
+
+    useEffect(() => {
+        if (session?.user?.name && session.user.gender && session.user.city) {
+            router.push('/home');
+        }
+    }, [session?.user]);
+
 
     const getLocations = () => {
         sendRequest(
