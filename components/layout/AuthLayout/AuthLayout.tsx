@@ -25,7 +25,7 @@ const AuthLayout = ({ sliders, children, className }: any) => {
                 router.push('/home');
             }
         }
-    }, [session?.user]);
+    }, [session?.token]);
     return (
         <>
             <div className={`${classes.container} ${className}`}>
