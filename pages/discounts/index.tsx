@@ -6,6 +6,7 @@ import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
 import Head from 'next/head';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
+import PageHeading from '@/components/UI/PageHeading/PageHeading';
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -50,7 +51,8 @@ const Discounts = (props: Props) => {
                 <title>{`Tripty - Discounts`}</title>
             </Head>
             <div className={classes.container}>
-                <PlaceHeader name='headings.discounts' />
+                {/* <PlaceHeader name='headings.discounts' /> */}
+                <PageHeading icon={<i className="fa-solid fa-percent"></i>} title="headings.discounts" />
                 <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
             </div>
         </>

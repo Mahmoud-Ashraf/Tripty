@@ -1,0 +1,25 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .icon {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background-color: lighten($main-color, 40);
+        color: $main-color;
+        font-size: 2rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 4.5rem;
+        color: $main-color;
+        font-weight: 600;
+    }
+}
