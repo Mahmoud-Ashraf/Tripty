@@ -50,10 +50,10 @@ const Header = () => {
         try {
             const replace = await router.replace(router.asPath, router.asPath, { locale: lang });
             console.log(replace);
-            if (replace) {
-                dispatch(langActions.translation({ lang: lang }));
-            }
+            dispatch(langActions.translation({ lang: lang }));
             // router.reload();
+            // if (replace) {
+            // }
         } catch (err) {
             console.log(err)
         }
