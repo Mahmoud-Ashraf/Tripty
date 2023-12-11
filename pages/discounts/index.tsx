@@ -2,7 +2,7 @@ import HomeTabs from '@/components/HomeTabs/HomeTabs';
 import classes from './discounts.module.scss';
 import { Place } from '@/interfaces/place';
 import { Category } from '@/interfaces/category';
-import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
+// import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
 import Head from 'next/head';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
@@ -34,7 +34,6 @@ const Discounts = (props: Props) => {
                 method: 'GET'
             },
             (data: any) => {
-                console.log('categorized', data);
                 setNewPlaces(data.categorizedPlaces);
                 setNewTabs(data.categories);
             },
@@ -60,7 +59,7 @@ const Discounts = (props: Props) => {
 }
 
 
-export async function getStaticProps({ locale }: any) {
+export async function getServerSideProps({ locale }: any) {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     try {

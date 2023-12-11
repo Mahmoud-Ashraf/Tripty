@@ -58,7 +58,6 @@ const CompleteData = (props: any) => {
                 body: { gender: gender, city_id: city, tags: selectedTags }
             },
             (data: any) => {
-                console.log(data)
                 router.push('/home')
             },
             (err: any) => console.log(err)

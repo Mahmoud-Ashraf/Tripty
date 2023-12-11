@@ -1,0 +1,12 @@
+@import '@/styles/Utils/_variables';
+
+.link {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $main-color;
+    text-decoration: none;
+
+    &.active {
+        font-weight: 600;
+    }
+}

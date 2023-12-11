@@ -1,0 +1,30 @@
+@import '@/styles/Utils/variables';
+
+.card {
+    border-bottom: 1px solid #707070;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.cardCover {
+    color: $main-color;
+    font-size: 3rem;
+    text-align: center;
+    flex: 2;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.cardDetails {
+    font-size: 1.5rem;
+    flex: 8;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: $main-color;
+    }
+}

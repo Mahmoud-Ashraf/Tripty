@@ -1,18 +1,18 @@
 import { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
 
 const useHTTP = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const lang = useSelector(state => state.lang.globalLang);
     const router = useRouter();
-    const { data: session } = useSession();
-    const token = session?.token;
 
     const sendRequest = useCallback(async (requestConfig, applyData, applyError) => {
         const baseUrl = window.location.origin;
+        const session = await getSession();
+        const token = session?.token;
         setIsLoading(true);
         setError(null);
         let url = requestConfig.url;
@@ -48,7 +48,7 @@ const useHTTP = () => {
             applyError(err.message);
         }
         setIsLoading(false);
-    }, [session?.token, lang]);
+    }, [lang]);
     return {
         isLoading,
         error,

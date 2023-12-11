@@ -32,7 +32,6 @@ const Places = (props: Props) => {
                 method: 'GET'
             },
             (data: any) => {
-                console.log('categorized', data);
                 setNewPlaces(data.categorizedPlaces);
                 setNewTabs(data.categories);
             },
@@ -55,7 +54,7 @@ const Places = (props: Props) => {
     )
 }
 
-export async function getStaticProps({ locale }: any) {
+export async function getServerSideProps({ locale }: any) {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     try {

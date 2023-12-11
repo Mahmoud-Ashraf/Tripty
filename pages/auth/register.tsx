@@ -47,7 +47,6 @@ const Register = (props: Props) => {
                 body: { name, email, mobile, password, password_confirmation }
             },
             (data: any) => {
-                console.log(data);
                 signIn('credentials', {
                     redirect: false,
                     email: email,

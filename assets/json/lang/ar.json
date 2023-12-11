@@ -19,7 +19,8 @@
         "discounts": "خصومات",
         "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
         "trend": "تريند",
-        "places": "الأماكن"
+        "places": "الأماكن",
+        "myAccount": "حسابي"
     },
     "buttons": {
         "startTrip": "خطط لطلعتك",
@@ -116,5 +117,14 @@
     "notFound": {
         "404": "404 - الصفحة غير متوفرة",
         "sorry": "عفواً, الصفحة التي تريدها غير متوفرة."
+    },
+    "sidebar": {
+        "personalData": "البيانات الشخصية",
+        "favorite": "المفضلة",
+        "trips": "رحلاتي",
+        "notifications": "اشعارات",
+        "terms": "الشروط والاحكام",
+        "privacy": "سياسة الخصوصية",
+        "logout": "تسجيل خروج"
     }
 }

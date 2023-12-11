@@ -1,0 +1,19 @@
+@import '@/styles/Utils/_variables';
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 1rem;
+
+    .item {
+        color: $main-color;
+        display: inline-flex;
+        gap: 1.5rem;
+        font-size: 1.5rem;
+        align-items: center;
+        i {
+            font-size: 1.5em;
+        }
+    }
+}

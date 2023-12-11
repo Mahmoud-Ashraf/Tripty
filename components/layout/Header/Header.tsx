@@ -66,8 +66,14 @@ const Header = () => {
         setShowUserDialog(prev => !prev);
     }
     const handleLogout = async () => {
-        await signOut();
-        // router.push('/auth/login');
+        await signOut().then(() => {
+            router.push('/auth/login');
+        });
+    }
+
+    const handleGoToProfile = () => {
+        toggleUserDialog();
+        router.push('/account/profile');
     }
     return (
         <header className={classes.container}>
@@ -116,7 +122,7 @@ const Header = () => {
                         <div className={`ar-right ${classes.userDialogContent}`}>
                             <Image loading='lazy' alt='user' src={userIcon} />
                             <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
-                            <button className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
+                            <button onClick={handleGoToProfile} className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
                             <button className="btn btn-outline-main" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
                         </div>
                     }

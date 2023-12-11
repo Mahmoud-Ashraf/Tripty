@@ -161,21 +161,21 @@ const PlacePage = (props: Props) => {
     );
 }
 
-export async function getStaticPaths() {
-    // Fetch the list of place IDs from an API
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const placeIds = await fetch(`${baseUrl}places`).then(data => data.json());
-    const paths = placeIds.data.map((place: Place) => ({
-        params: { placeId: place.id.toString() },
-    }));
+// export async function getStaticPaths() {
+//     // Fetch the list of place IDs from an API
+//     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+//     const placeIds = await fetch(`${baseUrl}places`).then(data => data.json());
+//     const paths = placeIds.data.map((place: Place) => ({
+//         params: { placeId: place.id.toString() },
+//     }));
 
-    return {
-        paths,
-        fallback: true, // or true, depending on your requirements
-    };
-}
+//     return {
+//         paths,
+//         fallback: true, // or true, depending on your requirements
+//     };
+// }
 
-export async function getStaticProps({ locale, params }: any) {
+export async function getServerSideProps({ locale, params }: any) {
     const { placeId } = params;
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     try {

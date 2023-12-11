@@ -1,3 +1,4 @@
+import { City } from "./City"
 import { Place } from "./place"
 import { Tag } from "./tag"
 
@@ -12,6 +13,7 @@ export interface Trip {
     children?: number,
     budget?: string,
     city_id?: number,
+    city?: City,
     tags?: (number | Tag)[]
     places?: any
 }

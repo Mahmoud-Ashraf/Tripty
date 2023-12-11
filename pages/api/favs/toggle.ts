@@ -21,7 +21,6 @@ export default async function handler(
         } else {
             response = await fetch(baseUrl + `favorites/add/places/${placeId}`, { headers });
         }
-        console.log(response);
         if (!response.ok) {
             throw new Error('somthing went wrong');
         }

@@ -19,7 +19,8 @@
         "discounts": "DISCOUNTS",
         "explorePlacesNearYou": "Explore best places near you",
         "trend": "TREND NOW",
-        "places": "PLACES"
+        "places": "PLACES",
+        "myAccount": "My Account"
     },
     "buttons": {
         "startTrip": "Start Your Trip",
@@ -116,5 +117,14 @@
     "notFound": {
         "404": "404 - Page Not Found",
         "sorry": "Sorry, the page you're looking for does not exist."
+    },
+    "sidebar": {
+        "personalData": "Personal Data",
+        "favorite": "Favorite",
+        "trips": "trips",
+        "notifications": "Notifications",
+        "terms": "Terms and Conditions",
+        "privacy": "Privacy Policy",
+        "logout": "sign out"
     }
 }
