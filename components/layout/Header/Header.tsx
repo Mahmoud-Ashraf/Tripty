@@ -46,6 +46,7 @@ const Header = () => {
     }
 
     const changeLanguage = async (lang: string) => {
+        console.log(lang);
         await router.replace(router.asPath, router.asPath, { locale: lang })
         dispatch(langActions.translation({ lang: lang }));
         router.reload();
