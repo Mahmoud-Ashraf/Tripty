@@ -45,13 +45,14 @@ const Header = () => {
         )
     }
 
-    const changeLanguage = (lang: string) => {
-        router.replace(router.asPath, router.asPath, { locale: lang }).then(
-            data => {
-                dispatch(langActions.translation({ lang: lang }));
-                router.reload();
-            }
-        )
+    const changeLanguage = async (lang: string) => {
+        await router.replace(router.asPath, router.asPath, { locale: lang })
+        dispatch(langActions.translation({ lang: lang }));
+        router.reload();
+        // .then(
+        //     data => {
+        //     }
+        // )
     };
 
     useEffect(() => {
