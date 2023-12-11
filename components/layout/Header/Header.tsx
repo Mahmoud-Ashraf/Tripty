@@ -49,9 +49,9 @@ const Header = () => {
         console.log(lang);
         try {
             const replace = await router.replace(router.asPath, router.asPath, { locale: lang });
+            console.log(replace);
             if (replace) {
                 dispatch(langActions.translation({ lang: lang }));
-                console.log(replace);
             }
             // router.reload();
         } catch (err) {
