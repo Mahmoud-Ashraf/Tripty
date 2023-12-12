@@ -1,19 +1,20 @@
 import HomeEntryPoints from "@/components/HomeEntryPoints/HomeEntryPoints";
-import HomeReviews from "@/components/HomeReviews/HomeReviews";
+// import HomeReviews from "@/components/HomeReviews/HomeReviews";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import HomeTourism from "@/components/HomeTourism/HomeTourism";
 import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
+import SectionHeader from "@/components/UI/SectionHeader/SectionHeader";
 import Translate from "@/components/helpers/Translate/Translate";
 import useHTTP from "@/hooks/use-http";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
 import { Slider } from "@/interfaces/slider";
-import { RootState } from "@/store";
 import { tripActions } from "@/store/Trip/Trip";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import explore from '@/public/assets/images/explore.svg';
 
 interface Props {
    sliders: Slider[] | [],
@@ -40,6 +41,7 @@ const Home = (props: Props) => {
             method: 'GET'
          },
          (data: any) => {
+            console.log(data);
             setNewPlaces(data.categorizedPlaces);
             setNewTabs(data.categories);
          },
@@ -74,7 +76,8 @@ const Home = (props: Props) => {
 
          <HomeEntryPoints />
 
-         <HomeTabs showTitle tabs={newTabs} categorizedPlaces={newPlaces} />
+         <SectionHeader title="headings.explorePlacesNearYou" icon={explore} onIconClick={'/places'} />
+         <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
 
          <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2><Translate id='headings.startYour' /></h2>

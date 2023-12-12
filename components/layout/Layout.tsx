@@ -20,7 +20,7 @@ const Layout = (props: PropsWithChildren) => {
 
     return (
         <div className={classes.layout}>
-            {showTripModal && <CustomModal onOutsideClick={() => { dispatch(tripActions.closeShowTripModal()); }}>
+            {showTripModal && <CustomModal onOutsideClick={() => { }}>
                 <TripModal />
             </CustomModal>}
             {showAuthModal && <CustomModal onOutsideClick={() => { dispatch(authActions.closeShowAuthModal()) }}>

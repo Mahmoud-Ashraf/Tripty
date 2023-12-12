@@ -20,7 +20,8 @@
         "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
         "trend": "تريند",
         "places": "الأماكن",
-        "myAccount": "حسابي"
+        "myAccount": "حسابي",
+        "loginToContinue": "من فضلك؛ قم بتسجيل الدخول للمتابعة"
     },
     "buttons": {
         "startTrip": "خطط لطلعتك",

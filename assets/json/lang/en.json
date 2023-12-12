@@ -20,7 +20,8 @@
         "explorePlacesNearYou": "Explore best places near you",
         "trend": "TREND NOW",
         "places": "PLACES",
-        "myAccount": "My Account"
+        "myAccount": "My Account",
+        "loginToContinue": "Please, Login to continue"
     },
     "buttons": {
         "startTrip": "Start Your Trip",

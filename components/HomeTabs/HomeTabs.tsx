@@ -4,19 +4,18 @@ import Card from '../UI/Card/Card';
 import SectionHeader from '../UI/SectionHeader/SectionHeader';
 import { Category } from '@/interfaces/category';
 import { Place } from '@/interfaces/place';
-import explore from '@/public/assets/images/explore.svg';
 import NoData from '../layout/NoData/NoData';
 import useTranslate from '@/hooks/use-translate';
 interface Props {
     tabs: Category[],
     categorizedPlaces: { [categoryName: string]: Place[] },
-    showTitle?: boolean
+    // showTitle?: boolean
 }
 
 const HomeTabs = (props: Props) => {
     const { translate } = useTranslate();
     const [key, setKey] = useState<any>(0);
-    const { tabs, categorizedPlaces, showTitle } = props;
+    const { tabs, categorizedPlaces } = props;
 
     useEffect(() => {
         if (tabs?.length > 0) {
@@ -25,7 +24,6 @@ const HomeTabs = (props: Props) => {
     }, [tabs])
     return (
         <>
-            {showTitle && <SectionHeader title="headings.explorePlacesNearYou" icon={explore} />}
             <div className={`home-tabs mt-5`}>
                 {
                     tabs?.length > 0 &&
