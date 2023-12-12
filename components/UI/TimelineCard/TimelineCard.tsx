@@ -7,7 +7,7 @@ import Translate from '@/components/helpers/Translate/Translate';
 const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) => {
     const currentTrip = useSelector((state: RootState) => state.trip.currentTrip);
     const formatTiming = (timing: string) => {
-        const [startTime, endTime] = timing.split('-');
+        const [startTime, endTime] = timing?.split('-');
         const formattedStartTime = formatTime(startTime);
         const formattedEndTime = formatTime(endTime);
 
@@ -15,7 +15,7 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
     }
 
     const formatTime = (time: string) => {
-        const [hours, minutes, seconds] = time.split(':');
+        const [hours, minutes, seconds] = time?.split(':');
         const formattedTime = `${hours}:${minutes}`;
 
         return formattedTime;

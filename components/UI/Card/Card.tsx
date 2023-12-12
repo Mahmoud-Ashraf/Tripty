@@ -6,6 +6,9 @@ import Translate from '@/components/helpers/Translate/Translate';
 const Card = ({ place }: { place: Place | undefined }) => {
 
     const cutAboutWords = (text: string, wordsCount: number) => {
+        if (!text) {
+            return
+        }
         const splitedText = text.split(' ', wordsCount);
         let newText;
         if (splitedText.length < wordsCount) {
