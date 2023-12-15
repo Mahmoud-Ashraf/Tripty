@@ -74,9 +74,9 @@ const Home = (props: Props) => {
 
          <HomeSlider sliders={newSliders} />
 
+         <SectionHeader title="headings.explore" />
          <HomeEntryPoints />
 
-         <SectionHeader title="headings.explorePlacesNearYou" icon={explore} onIconClick={'/places'} />
          <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
 
          <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
