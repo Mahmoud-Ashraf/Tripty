@@ -2,13 +2,21 @@
 
 .container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 4.1875rem 2.5rem;
+    flex-direction: column;
+    gap: 5rem;
+    // justify-content: space-between;
+    // align-items: flex-start;
+    padding: 3.2rem 3.2rem 1.5rem;
     margin-bottom: 1.9rem;
     background-color: $main-color;
     border-radius: 2rem;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+}
+
+.data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -24,11 +32,12 @@
     gap: 4.5rem;
 
     a {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: $white;
         opacity: .75;
         text-decoration: none;
         transition: opacity .3s ease-in-out;
+
         &:hover {
             opacity: 1;
         }
@@ -37,8 +46,13 @@
 
 .social {
     display: flex;
-    gap: 1.6rem;
+    gap: 1.5rem;
     align-items: center;
     color: $white;
-    font-size: 2.75rem;
+    font-size: 2.2rem;
+}
+
+.copyRights {
+    color: $white;
+    font-size: .875rem;
 }
