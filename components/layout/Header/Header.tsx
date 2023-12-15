@@ -90,10 +90,6 @@ const Header = () => {
                 <Link href={'/home'} className={classes.logo}>
                     <Image loading='lazy' alt='Tripty Logo' src={logo} />
                 </Link>
-                <div className={classes.search}>
-                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search?text=${searchText}`)}></i>
-                </div>
             </div>
             <div className={classes.nav}>
                 <Link href={'/home'}><Translate id={'header.home'} /></Link>
@@ -101,7 +97,7 @@ const Header = () => {
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
             </div>
             <div className={classes.user}>
-                <button className={classes.user_startTrip} onClick={openModal}><Translate id='buttons.startTrip' />
+                {/* <button className={classes.user_startTrip} onClick={openModal}><Translate id='buttons.startTrip' />
                     <svg xmlns="http://www.w3.org/2000/svg" width="131.593" height="35.502" viewBox="0 0 131.593 35.502">
                         <defs>
                             <clipPath id="bxt70uwyba">
@@ -114,7 +110,11 @@ const Header = () => {
                             </g>
                         </g>
                     </svg>
-                </button>
+                </button> */}
+                <div className={classes.search}>
+                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <i className="fa-solid fa-magnifying-glass" onClick={() => router.push(`/search?text=${searchText}`)}></i>
+                </div>
                 <select className={classes.lang} value={selectedLang} onChange={(e) => changeLanguage(e.target.value)}>
                     {
                         langs?.map(lang => {
