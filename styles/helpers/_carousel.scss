@@ -3,7 +3,7 @@
 
     .carousel-item {
         border-radius: 18px;
-        height: 600px;
+        height: 286px;
         overflow: hidden;
 
         &::after {
@@ -15,6 +15,7 @@
             height: 100%;
             background-image: linear-gradient(to top, #6c3d8e, rgba(98, 88, 141, 0.28));
         }
+
         img {
             aspect-ratio: 2.9;
         }
@@ -25,6 +26,9 @@
         height: 15px;
         width: 15px;
         border-radius: 50%;
+    }
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
     }
 }
 
