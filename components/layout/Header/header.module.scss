@@ -109,7 +109,8 @@
         }
     }
 
-    img {
+    &>img {
+        cursor: pointer;
         width: 2.5rem;
     }
 }
