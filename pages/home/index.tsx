@@ -15,6 +15,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import explore from '@/public/assets/images/explore.svg';
+import HomeTrip from "@/components/HomeTrip/HomeTrip";
 
 interface Props {
    sliders: Slider[] | [],
@@ -79,10 +80,12 @@ const Home = (props: Props) => {
 
          <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
 
-         <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
+         {/* <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2><Translate id='headings.startYour' /></h2>
             <h2><Translate id='headings.trip' /></h2>
-         </PlaceHeader>
+         </PlaceHeader> */}
+
+         <HomeTrip />
 
          <HomeTourism />
 
