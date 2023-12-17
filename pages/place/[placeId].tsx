@@ -14,6 +14,11 @@ import useHTTP from "@/hooks/use-http";
 import { useRouter } from "next/router";
 import GalleryModal from "@/components/GalleryModal/GalleryModal";
 import useTranslate from "@/hooks/use-translate";
+import { Dropdown } from "react-bootstrap";
+import ShareButtons from "@/components/UI/ShareButtons/ShareButtons";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/store/Auth/Auth";
 
 interface Props {
     serverPlace: Place,
@@ -23,13 +28,17 @@ interface Props {
 const PlacePage = (props: Props) => {
     const { serverPlace, notFound } = props;
     const { translate } = useTranslate();
+    const dispatch = useDispatch();
     const [place, setPlace] = useState<Place>(serverPlace);
     const [showRateModal, setShowRateModal] = useState(false);
     const [showGalleryModal, setShowGalleryModal] = useState(false);
     const { isLoading, error, sendRequest } = useHTTP();
     const router = useRouter();
+    const [isFavorite, setIsFavorite] = useState<boolean>();
+    const { data: session }: any = useSession();
     const { placeId } = router.query;
     // const { locale } = router;
+    console.log(serverPlace);
     useEffect(() => {
         if (placeId) {
             getPlace();
@@ -46,6 +55,31 @@ const PlacePage = (props: Props) => {
             (err: any) => console.log(err)
         )
     }
+
+    const handleToggleFav = () => {
+        if (session?.token) {
+            const prevFav = isFavorite;
+            setIsFavorite(prev => !prev);
+            sendRequest(
+                {
+                    url: `/api/favs/toggle?prevFav=${prevFav}&placeId=${place.id}`,
+                    method: 'GET'
+                },
+                (data: any) => {
+                    setPlace(data);
+                },
+                (err: any) => console.error(err)
+            )
+        } else {
+            dispatch(authActions.openShowAuthModal());
+        }
+    }
+
+    useEffect(() => {
+        console.log(place);
+        setIsFavorite(place.is_favoritable);
+    }, [place])
+
     if (notFound) {
         return (
             <>
@@ -73,9 +107,41 @@ const PlacePage = (props: Props) => {
                     <GalleryModal images={place.gallery} />
                 </CustomModal>
             }
-            <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} />
+            {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
             <div className={classes.container}>
                 <div className={classes.details}>
+                    <div className={classes.title}>
+                        <div className={classes.naming}>
+                            <div className={classes.logo}>
+                                <img src={place.logo} alt={`${place.name} logo`} />
+                            </div>
+                            <div className={classes.name}>
+                                <h2>{place.name}</h2>
+                            </div>
+                        </div>
+                        <div className={classes.actions}>
+                            <button onClick={handleToggleFav} className={classes.fav}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                                    <g transform="translate(.327 -.31)">
+                                        <rect width="56" height="56" rx="4" transform="translate(-.327 .31)" fill="#f8f8f8" />
+                                        <path data-name="Icon" d="m15 28-.5-.469C3.075 17.617 0 14.134 0 8.44A8.194 8.194 0 0 1 7.908 0c3.64 0 5.711 2.211 7.092 3.885C16.381 2.211 18.452 0 22.092 0A8.2 8.2 0 0 1 30 8.44c0 5.694-3.075 9.177-14.5 19.091L15 28z" transform="translate(12.673 14.31)" fill={isFavorite ? '#dc3545' : '#cbcfe9'} />
+                                    </g>
+                                </svg>
+                            </button>
+                            <Dropdown>
+                                <Dropdown.Toggle className='text-white' variant="transperent" id="share-dropdown">
+                                    <span className={classes.shareBtn}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24.089" height="28.587" viewBox="0 0 24.089 28.587">
+                                            <path d="M0 0v10.795a2.757 2.757 0 0 0 2.811 2.7h16.867a2.757 2.757 0 0 0 2.811-2.7V0" transform="translate(.8 14.294)" fill="none" stroke="#6c3d8e" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.6px" />
+                                            <path data-name="Path" d="M11.245 5.4 5.622 0 0 5.4" transform="translate(6.422 .8)" fill="none" stroke="#6c3d8e" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.6px" />
+                                            <path data-name="Path" d="M.469 0v17.542" transform="translate(11.576 .8)" fill="none" stroke="#6c3d8e" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="1.6px" />
+                                        </svg>
+                                    </span>
+                                </Dropdown.Toggle>
+                                <ShareButtons url={`/place/${place.id}`} title={place.name} />
+                            </Dropdown>
+                        </div>
+                    </div>
                     <div className="row gx-5">
                         <div className="col-md-6">
                             {place.tags.length > 0 && <div className={classes.tags}>
@@ -150,7 +216,12 @@ const PlacePage = (props: Props) => {
                         </div>
                         <div className="col-md-6">
                             <div className={classes.cover}>
-                                {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
+                                <div className={classes.photo}>
+                                    {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
+                                    {place.offer && <div className={classes.offer}>
+                                        <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
+                                    </div>}
+                                </div>
                                 {place?.booking_link && <Link className={classes.bookNow} href={place?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
                             </div>
                         </div>
