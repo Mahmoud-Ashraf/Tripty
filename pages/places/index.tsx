@@ -5,6 +5,7 @@ import PlaceHeader from '@/components/UI/PlaceHeader/PlaceHeader';
 import Head from 'next/head';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
+import PageHeading from '@/components/UI/PageHeading/PageHeading';
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -47,7 +48,7 @@ const Places = (props: Props) => {
                 <title>{`Tripty - Places`}</title>
             </Head>
             <div>
-                <PlaceHeader name='headings.places' />
+                <PageHeading title="headings.places" />
                 <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
             </div>
         </>

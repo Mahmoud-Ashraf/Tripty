@@ -51,7 +51,7 @@ const Discounts = (props: Props) => {
             </Head>
             <div className={classes.container}>
                 {/* <PlaceHeader name='headings.discounts' /> */}
-                <PageHeading icon={<i className="fa-solid fa-percent"></i>} title="headings.discounts" />
+                <PageHeading title="headings.discounts" />
                 <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
             </div>
         </>
