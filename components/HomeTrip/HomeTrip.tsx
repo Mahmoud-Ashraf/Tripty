@@ -4,9 +4,19 @@ import img from '@/public/assets/images/travel-bus.jpg';
 import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import logo from '@/public/assets/images/logo_white.svg';
+import { useSession } from 'next-auth/react';
+import { authActions } from '@/store/Auth/Auth';
 
 const HomeTrip = () => {
     const dispatch = useDispatch();
+    const { data: session }: any = useSession();
+    const openModal = () => {
+        if (session?.token) {
+            dispatch(tripActions.openShowTripModal());
+        } else {
+            dispatch(authActions.openShowAuthModal());
+        }
+    }
     return (
         <div className={classes.container}>
             <div className="row">
@@ -17,7 +27,7 @@ const HomeTrip = () => {
                             <h3>Experience</h3>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={() => dispatch(tripActions.openShowTripModal())} className='btn btn-main'>START YOUR TRIP NOW</button>
+                            <button onClick={openModal} className='btn btn-main'>START YOUR TRIP NOW</button>
                         </div>
                         <div className={classes.desc}>
                             <p>Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture.</p>
