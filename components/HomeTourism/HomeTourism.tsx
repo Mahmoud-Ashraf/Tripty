@@ -8,7 +8,7 @@ const HomeTourism = () => {
     return (
         <>
             <SectionHeader title="entries.tourism" />
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-7">
                     <TourismCard img={tourism1.src} big />
                 </div>

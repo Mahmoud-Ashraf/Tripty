@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+    <g transform="translate(.327 -.31)">
+        <rect width="56" height="56" rx="4" transform="translate(-.327 .31)" style="fill:#f8f8f8"/>
+        <path data-name="Icon" d="m15 28-.5-.469C3.075 17.617 0 14.134 0 8.44A8.194 8.194 0 0 1 7.908 0c3.64 0 5.711 2.211 7.092 3.885C16.381 2.211 18.452 0 22.092 0A8.2 8.2 0 0 1 30 8.44c0 5.694-3.075 9.177-14.5 19.091L15 28z" transform="translate(12.673 14.31)" style="fill:#cbcfe9"/>
+    </g>
+</svg>

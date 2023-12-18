@@ -31,7 +31,7 @@ const HomeTabs = (props: Props) => {
                         {
                             tabs?.map(tab => {
                                 return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
-                                    <div className="row g-5">
+                                    <div className="row g-4">
                                         {
                                             categorizedPlaces[tab.name]?.length > 0 ?
                                                 categorizedPlaces[tab.name]?.map(place => {

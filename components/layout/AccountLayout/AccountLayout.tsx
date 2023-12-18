@@ -6,12 +6,12 @@ import { ReactNode } from 'react';
 const AccountLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className={classes.container}>
-            <PageHeading title="headings.myAccount" icon={<i className="fa-solid fa-gear"></i>} />
+            <PageHeading title="headings.myAccount" />
             <div className="row">
-                <div className="col-4">
+                <div className="col-12">
                     <Sidebar />
                 </div>
-                <div className="col-8">
+                <div className="col-12">
                     <main className={classes.contentWrapper}>
                         {children}
                     </main>

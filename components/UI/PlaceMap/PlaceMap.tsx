@@ -39,7 +39,7 @@ const PlaceMap = (props: Props) => {
         });
     }, [loader]);
 
-    return <div style={{ width: '70%', height: '215px' }} ref={googleMapRef}></div>;
+    return <div style={{ width: '100%', height: '270px' }} ref={googleMapRef}></div>;
 };
 
 export default PlaceMap;

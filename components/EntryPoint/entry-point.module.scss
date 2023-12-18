@@ -2,34 +2,35 @@
 
 .container {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    border-radius: 1rem;
+    // gap: 1.5rem;
+    border-radius: .75rem;
     background-color: $white;
-    box-shadow: 10px 40px 50px 0 rgba(229, 233, 246, 0.4);
+    // box-shadow: 10px 40px 50px 0 rgba(229, 233, 246, 0.4);
     color: $main-color;
-    justify-content: flex-start;
-    padding: 2rem;
+    justify-content: space-between;
+    padding: .75rem 1.25rem;
     align-items: center;
-    // width: 20rem;
-    // height: 20rem;
     height: 100%;
     text-decoration: none;
+    border: 1px solid $main-color;
 }
 
 .iconContainer {
-    width: 11rem;
-    height: 11rem;
-    border-radius: 50%;
-    background-color: rgba(239, 236, 236, .26);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // width: 11rem;
+    // height: 11rem;
+    // border-radius: 50%;
+    // background-color: rgba(239, 236, 236, .26);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    img {
+        width: 2.2rem;
+    }
 }
 
 .title {
-    font-size: 2rem;
-    font-weight: 600;
-    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    // text-align: center;
 }

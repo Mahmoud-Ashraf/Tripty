@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import useHTTP from '@/hooks/use-http';
 import { useDispatch } from 'react-redux';
+import PageHeading from '@/components/UI/PageHeading/PageHeading';
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -51,7 +52,7 @@ const Trend = (props: Props) => {
                 <title>{`Tripty - Trend Now`}</title>
             </Head>
             <div className={classes.container}>
-                <PlaceHeader name='headings.trend' />
+                <PageHeading title='headings.trend' />
                 <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
             </div>
         </>

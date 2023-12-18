@@ -8,6 +8,7 @@ import { Place } from "@/interfaces/place";
 import { Category } from "@/interfaces/category";
 import useHTTP from "@/hooks/use-http";
 import useTranslate from "@/hooks/use-translate";
+import PageHeading from "@/components/UI/PageHeading/PageHeading";
 
 interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
@@ -58,9 +59,10 @@ const Search = () => {
             <Head>
                 <title>Tripty - Search</title>
             </Head>
-            <PlaceHeader>
+            {/* <PlaceHeader>
                 <h2>Search</h2>
-            </PlaceHeader>
+            </PlaceHeader> */}
+            <PageHeading  title='headings.search'/>
             <div className={classes.container}>
                 <div className={classes.search}>
                     <input type='text' placeholder={translate('searchBar.placeholder')} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />

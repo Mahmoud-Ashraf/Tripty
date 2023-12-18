@@ -13,10 +13,10 @@ const EntryPoint = (props: Props) => {
     const { icon, text, url } = props;
     return (
         <Link href={url} className={classes.container}>
+            <h4 className={classes.title}><Translate id={`entries.${text}`} /></h4>
             <div className={classes.iconContainer}>
                 <Image alt={text} src={icon} />
             </div>
-            <h4 className={classes.title}><Translate id={`entries.${text}`} /></h4>
         </Link>
     )
 }

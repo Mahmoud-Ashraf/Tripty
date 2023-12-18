@@ -23,13 +23,14 @@
     }
 
     &Input {
-        padding: 0 3rem 1.8rem 0;
+        padding: 0 0 1.8rem 0;
         border-bottom: .5px solid $main-color;
         font-size: 1.8rem;
         color: $main-color;
         display: inline-flex;
         gap: 2rem;
         margin-top: 2rem;
+        width: calc(100% + 1.8rem);
     }
 
     &Name {

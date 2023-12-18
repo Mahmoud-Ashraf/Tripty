@@ -26,7 +26,7 @@ const Layout = (props: PropsWithChildren) => {
             {showAuthModal && <CustomModal onOutsideClick={() => { dispatch(authActions.closeShowAuthModal()) }}>
                 <LoginModal />
             </CustomModal>}
-            <div className="container-fluid">
+            <div className="container">
                 <Header />
                 {props.children}
                 <Footer />
