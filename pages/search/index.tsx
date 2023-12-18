@@ -62,11 +62,14 @@ const Search = () => {
             {/* <PlaceHeader>
                 <h2>Search</h2>
             </PlaceHeader> */}
-            <PageHeading  title='headings.search'/>
+            <PageHeading title='headings.search' />
             <div className={classes.container}>
-                <div className={classes.search}>
-                    <input type='text' placeholder={translate('searchBar.placeholder')} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
-                    <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
+                <div className={classes.searchInput}>
+                    <div className={classes.search}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <input type='text' placeholder={translate('searchBar.placeholder')} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                    </div>
+                    <button onClick={search} className="btn btn-main">Search</button>
                 </div>
                 <div className={classes.content}>
                     {

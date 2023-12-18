@@ -1,14 +1,23 @@
 .container {
     margin: 4rem 0;
 
+    .searchInput {
+        display: flex;
+        gap: 2rem;
+        button {
+            min-width: 15rem;
+        }
+    }
     .search {
         position: relative;
-        padding: 1rem 2.5rem 1rem 2.5rem;
+        padding: .82rem 1.5rem;
         border-radius: .75rem;
         border: solid 1px #dadbdf;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        gap: .5rem;
+        align-items: baseline;
+        // justify-content: space-between;
 
         input {
             color: #484848;
