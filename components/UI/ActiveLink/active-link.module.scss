@@ -1,12 +1,14 @@
 @import '@/styles/Utils/_variables';
 
 .link {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 300;
-    color: $main-color;
+    color: #898989;
     text-decoration: none;
+    padding: 1.5rem;
 
     &.active {
         font-weight: 600;
+        border-bottom: 3px solid $main-color;
     }
 }

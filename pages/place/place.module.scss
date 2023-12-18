@@ -19,6 +19,14 @@
         align-items: center;
         gap: 2rem;
 
+        .logo {
+            max-width: 170px;
+
+            img {
+                width: 100%;
+            }
+        }
+
         .name {
             color: $main-color;
             font-size: 2.5rem;

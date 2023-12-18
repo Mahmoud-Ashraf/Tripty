@@ -77,7 +77,7 @@ const PlacePage = (props: Props) => {
 
     useEffect(() => {
         console.log(place);
-        setIsFavorite(place.is_favoritable);
+        setIsFavorite(place?.is_favoritable);
     }, [place])
 
     if (notFound) {
