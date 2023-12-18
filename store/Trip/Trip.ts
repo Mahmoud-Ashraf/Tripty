@@ -10,7 +10,7 @@ interface TripState {
 }
 
 // const initialTripData = null;
-const initialTripState: TripState = { showTripModal: false, tripData: null, numberOfSteps: 4, currentStep: 1, currentTrip: null }
+const initialTripState: TripState = { showTripModal: false, tripData: null, numberOfSteps: 5, currentStep: 1, currentTrip: null }
 
 const tripSlice = createSlice({
     name: 'trip',

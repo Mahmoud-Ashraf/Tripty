@@ -69,7 +69,7 @@ const TagsStep = () => {
     return (
         <div className={classes.tags}>
             <TripModalHeading text='howSpendTime' />
-            <div className="row mb-5">
+            <div className="row mb-5 gy-2">
                 {
                     tags?.map(tag => {
                         return (

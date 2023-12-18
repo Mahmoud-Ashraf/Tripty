@@ -54,7 +54,7 @@ const CreateTrip = () => {
         } else {
             router.push('/home');
         }
-        dispatch(tripActions.closeShowTripModal());
+        // dispatch(tripActions.closeShowTripModal());
     }, [currentTrip]);
 
     // useEffect(() => {
@@ -87,7 +87,10 @@ const CreateTrip = () => {
                     method: 'POST',
                     body: body
                 },
-                (data: any) => router.push('/home'),
+                (data: any) => {
+                    dispatch(tripActions.closeShowTripModal());
+                    router.push('/home')
+                },
                 (err: any) => console.error(err)
             )
         }
@@ -95,13 +98,13 @@ const CreateTrip = () => {
 
     return (
         <>
-            <Head>
+            {/* <Head>
                 <title>Tripty - Create your trip</title>
-            </Head>
-            <PlaceHeader>
+            </Head> */}
+            {/* <PlaceHeader>
                 <h2><Translate id='headings.your' /></h2>
                 <h2><Translate id='headings.trip' /></h2>
-            </PlaceHeader>
+            </PlaceHeader> */}
             <div className={classes.container}>
                 <div className={classes.header}>
                     <div className={classes.city}>

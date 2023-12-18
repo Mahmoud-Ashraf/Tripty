@@ -21,7 +21,7 @@ const TripModalFooter = () => {
     const nextStep = () => {
         if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
             setStepError('errors.tagsError')
-        } else if (step === stepsCount) {
+        } else if (step === 4) {
             // if (session?.token) {
             sendRequest(
                 {
@@ -31,8 +31,9 @@ const TripModalFooter = () => {
                 },
                 (data: any) => {
                     dispatch(tripActions.setCurrentTrip(data));
-                    router.push('/create-trip');
-                    dispatch(tripActions.closeShowTripModal());
+                    // router.push('/create-trip');
+                    // dispatch(tripActions.closeShowTripModal());
+                    dispatch(tripActions.nextStep());
                 },
                 (err: any) => console.error(err)
             )
