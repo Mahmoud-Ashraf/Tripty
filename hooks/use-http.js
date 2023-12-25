@@ -13,6 +13,7 @@ const useHTTP = () => {
         const baseUrl = window.location.origin;
         const session = await getSession();
         const token = session?.token;
+        console.log('token useHttp(): ', token);
         setIsLoading(true);
         setError(null);
         let url = requestConfig.url;
