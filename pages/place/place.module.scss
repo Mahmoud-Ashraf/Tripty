@@ -20,7 +20,9 @@
         gap: 2rem;
 
         .logo {
-            max-width: 170px;
+            max-width: 90px;
+            border-radius: 999rem;
+            overflow: hidden;
 
             img {
                 width: 100%;

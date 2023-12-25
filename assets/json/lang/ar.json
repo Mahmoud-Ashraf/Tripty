@@ -37,7 +37,8 @@
         "showMenu": "اظهر القائمة",
         "update": "تحديث",
         "addRate": "إضافة تقييم",
-        "goToHome": "الصفحة الرئيسية"
+        "goToHome": "الصفحة الرئيسية",
+        "send": "ارسال"
     },
     "entries": {
         "trend": "تريند",
@@ -95,7 +96,9 @@
         "forgetPassword": "نسيت كلمة المرور",
         "loginBy": "او الدخول عبر",
         "registerWithMail": "تسجيل جديد بالإيميل",
-        "completeData": "استكمال البيانات"
+        "completeData": "استكمال البيانات",
+        "enterEmail": "قم بادخال الايميل",
+        "enterNewPassword": "قم بادخال كلمة المرور"
     },
     "placeholder": {
         "name": "الاسم",
@@ -114,8 +117,7 @@
     },
     "rate": {
         "yourRate": "تقيمك",
-        "comments": "تعليقك",
-        "send": "ارسال"
+        "comments": "تعليقك"
     },
     "notFound": {
         "404": "404 - الصفحة غير متوفرة",

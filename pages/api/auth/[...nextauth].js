@@ -75,6 +75,7 @@ export default (req, res) => {
                     if (userData.error) {
                         return false;
                     }
+                    console.log(userData);
                     user.data = userData;
                     return true
                 } else if (account.provider === 'credentials') {
