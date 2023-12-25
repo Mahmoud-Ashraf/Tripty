@@ -37,7 +37,8 @@
         "showMenu": "Show The Menu",
         "update": "Update",
         "addRate": "Add rate",
-        "goToHome": "Go To Home"
+        "goToHome": "Go To Home",
+        "send": "Send"
     },
     "entries": {
         "trend": "Trend Now",
@@ -95,7 +96,9 @@
         "forgetPassword": "Forget Password",
         "loginBy": "Or Login By",
         "registerWithMail": "New Register By Email",
-        "completeData": "Complete Data"
+        "completeData": "Complete Data",
+        "enterEmail": "Enter your email",
+        "enterNewPassword": "Enter new password"
     },
     "placeholder": {
         "name": "Name",
@@ -114,8 +117,7 @@
     },
     "rate": {
         "yourRate": "Your rate",
-        "comments": "Comments",
-        "send": "Send"
+        "comments": "Comments"
     },
     "notFound": {
         "404": "404 - Page Not Found",

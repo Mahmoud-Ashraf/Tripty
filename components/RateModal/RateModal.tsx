@@ -45,7 +45,7 @@ const RateModal = ({ placeId, closeModal }: { placeId: number, closeModal: () =>
             </div>
             <div className="row justify-content-end">
                 <div className="col-4">
-                    <button disabled={!comment || !rate} className='btn btn-main w-100' onClick={saveRate}><Translate id="rate.send" /></button>
+                    <button disabled={!comment || !rate} className='btn btn-main w-100' onClick={saveRate}><Translate id="buttons.send" /></button>
                 </div>
             </div>
         </div>

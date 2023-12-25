@@ -30,7 +30,7 @@ const CompleteData = (props: any) => {
 
     useEffect(() => {
         if (session?.user?.name && session.user.gender && session.user.city) {
-            router.push('/home');
+            // router.push('/home');
         }
     }, [session?.user]);
 
@@ -55,7 +55,7 @@ const CompleteData = (props: any) => {
             {
                 url: '/api/user/update',
                 method: 'POST',
-                body: { gender: gender, city_id: city, tags: selectedTags }
+                body: { gender: gender, city_id: city, interests: selectedTags.map(tag => tag.id) }
             },
             (data: any) => {
                 router.push('/home')
@@ -89,6 +89,10 @@ const CompleteData = (props: any) => {
             setSelectedTags([...selectedTags, tag]);
         }
     }
+
+    useEffect(() => {
+        console.log(selectedTags.map(tag => tag.id));
+    }, [selectedTags])
 
     return (
         <>
