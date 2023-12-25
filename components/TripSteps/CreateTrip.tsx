@@ -199,7 +199,7 @@ const CreateTrip = () => {
                 }
 
                 <div className={classes.footer}>
-                    <div className="row mt-5 justify-content-end">
+                    <div className="row mt-3 justify-content-end">
                         <div className="col-md-4">
                             <button onClick={saveTrip} className='btn btn-main w-100'><Translate id='buttons.saveTrip' /></button>
                         </div>
