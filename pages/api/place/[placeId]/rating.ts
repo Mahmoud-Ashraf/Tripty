@@ -4,15 +4,14 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    const { body, headers, method } = req;
+
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        const headersObj = Object.fromEntries(
-            Object.entries(req.headers) as [string, string][]
-        );
         const response = await fetch(baseUrl + `places/${req.query.placeId}/ratings`, {
-            method: 'POST',
-            body: JSON.stringify(req.body),
-            headers: headersObj
+            method,
+            body: JSON.stringify(body),
+            headers: { 'Authorization': headers['authorization'] || '', 'Content-type': 'application/json' }
         });
 
         if (!response.ok) {

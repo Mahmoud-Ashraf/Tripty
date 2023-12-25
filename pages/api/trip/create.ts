@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { headers } from 'next/headers'
 
 export default async function handler(
     req: NextApiRequest,

@@ -5,15 +5,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { id, locale } = req.query;
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const { headers } = req;
+
     try {
-        // if (typeof text !== 'string') {
-        //     throw new Error('Invalid text parameter');
-        // }
-        const headersObj = Object.fromEntries(
-            Object.entries(req.headers) as [string, string][]
-        );
         const response = await fetch(`${baseUrl}places/${id}?change_language=${locale}`, {
-            headers: headersObj
+            headers: { 'Authorization': headers['authorization'] || '' }
         });
         if (!response.ok) {
             const errorData = await response.json();
