@@ -7,12 +7,11 @@ export default async function handler(
 ) {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     const { locale } = req.query;
+    const { headers } = req;
+
     try {
-        const headersObj = Object.fromEntries(
-            Object.entries(req.headers) as [string, string][]
-        );
         const response = await fetch(baseUrl + `trips?change_language=${locale}`, {
-            headers: headersObj
+            headers: { 'Authorization': headers['authorization'] || '' }
         });
         const data = await response.json();
         res.status(200).json(data.data);
