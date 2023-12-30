@@ -8,7 +8,7 @@ import { SessionProvider, useSession } from "next-auth/react"
 import { useEffect } from 'react';
 
 const App = ({ Component, pageProps, router }: AppProps) => {
-  const routesWithoutLayout = ['/auth'];
+  const routesWithoutLayout = ['/auth', '/mobile'];
   let shouldNotUseLayout = false;
   routesWithoutLayout.forEach(route => {
     if (router.pathname.includes(route)) {
