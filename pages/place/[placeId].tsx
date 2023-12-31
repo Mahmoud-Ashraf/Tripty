@@ -222,7 +222,11 @@ const PlacePage = (props: Props) => {
                                         <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>
-                                {place?.booking_link && <Link className={classes.bookNow} href={place?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
+                                {place?.booking_link && <div className="row justify-content-end">
+                                    <div className="col-lg-6">
+                                        <Link className={`${classes.bookNow} w-100 text-center`} href={place?.booking_link} ><Translate id='buttons.bookNow' /></Link>
+                                    </div>
+                                </div>}
                             </div>
                         </div>
                     </div>

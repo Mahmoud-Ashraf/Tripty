@@ -3,7 +3,7 @@ import { Offer } from './offer';
 import { Tag } from './tag';
 export interface TourismPackage {
     id: number,
-    name: string,
+    title: string,
     about: string,
     price?: string,
     rating: number,
@@ -16,6 +16,7 @@ export interface TourismPackage {
     tags: Tag[],
     category: Category,
     is_recommended: boolean,
-    offer: Offer,
+    // offer: Offer,
+    discount: number,
     program: string
 }

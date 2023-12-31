@@ -95,7 +95,7 @@ const PlacePage = (props: Props) => {
     return (
         tourismPackage && <>
             <Head>
-                <title>{`Tripty - ${tourismPackage?.name}`}</title>
+                <title>{`Tripty - ${tourismPackage?.title}`}</title>
             </Head>
             {
                 showRateModal &&
@@ -109,7 +109,6 @@ const PlacePage = (props: Props) => {
                     <GalleryModal images={tourismPackage.gallery} />
                 </CustomModal>
             }
-            {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
             <div className={classes.container}>
                 <div className={classes.details}>
                     <div className={classes.title}>
@@ -118,7 +117,7 @@ const PlacePage = (props: Props) => {
                                 <img src={tourismPackage.logo} alt={`${tourismPackage.name} logo`} />
                             </div> */}
                             <div className={classes.name}>
-                                <h2>{tourismPackage.name}</h2>
+                                <h2>{tourismPackage.title}</h2>
                             </div>
                         </div>
                         <div className={classes.actions}>
@@ -140,7 +139,7 @@ const PlacePage = (props: Props) => {
                                         </svg>
                                     </span>
                                 </Dropdown.Toggle>
-                                <ShareButtons url={`/tourism-package/${tourismPackage.id}`} title={tourismPackage.name} />
+                                <ShareButtons url={`/tourism-package/${tourismPackage.id}`} title={tourismPackage.title} />
                             </Dropdown>
                         </div>
                     </div>
@@ -192,7 +191,7 @@ const PlacePage = (props: Props) => {
                                                 return (
                                                     <div key={i} className="col">
                                                         <div className={classes.img}>
-                                                            <Image src={img} alt={`${tourismPackage.name} gallery`} rounded fluid />
+                                                            <Image src={img} alt={`${tourismPackage.title} gallery`} rounded fluid />
                                                         </div>
                                                     </div>
                                                 )
@@ -214,12 +213,16 @@ const PlacePage = (props: Props) => {
                         <div className="col-md-6">
                             <div className={classes.cover}>
                                 <div className={classes.photo}>
-                                    {tourismPackage?.featured_image && <Image alt={`${tourismPackage.name} Cover`} src={tourismPackage?.featured_image} fluid />}
-                                    {tourismPackage.offer && <div className={classes.offer}>
-                                        <span>{tourismPackage.offer.amount}{tourismPackage.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
+                                    {tourismPackage?.featured_image && <Image alt={`${tourismPackage.title} Cover`} src={tourismPackage?.featured_image} fluid />}
+                                    {tourismPackage.discount && <div className={classes.offer}>
+                                        <span>{tourismPackage.discount}%</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>
-                                {tourismPackage?.booking_link && <Link className={classes.bookNow} href={tourismPackage?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
+                                {tourismPackage?.booking_link && <div className="row justify-content-end">
+                                    <div className="col-lg-6">
+                                        <Link className={`${classes.bookNow} w-100 text-center`} href={tourismPackage?.booking_link} ><Translate id='buttons.bookNow' /></Link>
+                                    </div>
+                                </div>}
                             </div>
                         </div>
                     </div>
@@ -243,35 +246,35 @@ const PlacePage = (props: Props) => {
 //     };
 // }
 
-// export async function getServerSideProps({ locale, params }: any) {
-//     const { placeId } = params;
-//     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-//     try {
-//         const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
-//         if (!response.ok) {
-//             throw new Error('Fetch Place Failed')
-//         }
-//         const data = await response.json();
-//         if (data.error) {
-//             throw new Error(data.error);
-//         }
-//         return {
-//             props: {
-//                 serverPlace: data?.data || undefined,
-//                 notFound: false
-//             },
-//         };
-//     } catch (error) {
-//         console.error(error);
-//         return {
-//             props: {
-//                 serverPlace: null,
-//                 notFound: true
-//             }
-//             // notFound: true,
-//         };
-//     }
-// }
+export async function getServerSideProps({ locale, params }: any) {
+    const { tourismId } = params;
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    try {
+        const response = await fetch(`${baseUrl}tourism-packages/${tourismId}?change_language=${locale}`);
+        if (!response.ok) {
+            throw new Error('Fetch Tourism Package Failed')
+        }
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        return {
+            props: {
+                serverPlace: data?.data || undefined,
+                notFound: false
+            },
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            props: {
+                serverPlace: null,
+                notFound: true
+            }
+            // notFound: true,
+        };
+    }
+}
 
 export default PlacePage;
 

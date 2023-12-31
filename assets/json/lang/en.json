@@ -3,6 +3,7 @@
         "home": "Home",
         "about": "About",
         "places": "Places",
+        "tourismPackages": "Tourism Packages",
         "dialog": {
             "hi": "Hi",
             "manage": "Manage your Account",

@@ -42,7 +42,7 @@ const TourismPackages = () => {
                         {
                             tourismPackages?.map((tourismPackage, i) => {
                                 return (
-                                    <div key={i} className="col-md-4">
+                                    <div key={i} className="col-lg-4 col-md-6">
                                         <Card isTourism={true} place={tourismPackage} />
                                         {/* {tourismPackage} */}
                                     </div>
