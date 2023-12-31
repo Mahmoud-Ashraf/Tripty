@@ -95,6 +95,7 @@ const Header = () => {
                 <Link href={'/home'}><Translate id={'header.home'} /></Link>
                 <Link href={'/about'}><Translate id={'header.about'} /></Link>
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
+                <Link href={'/tourism-packages'}><Translate id={'header.tourismPackages'} /></Link>
             </div>
             <div className={classes.user}>
                 {/* <button className={classes.user_startTrip} onClick={openModal}><Translate id='buttons.startTrip' />

@@ -3,6 +3,7 @@
         "home": "الرئيسية",
         "about": "عننا",
         "places": "الأماكن",
+        "tourismPackages": "الباقات السياحية",
         "dialog": {
             "hi": "اهلا",
             "manage": "إدارة حسابك",
@@ -22,6 +23,7 @@
         "trend": "تريند",
         "search": "بحث",
         "places": "الأماكن",
+        "tourismPackages": "باقات سياحية",
         "myAccount": "حسابي",
         "loginToContinue": "من فضلك؛ قم بتسجيل الدخول للمتابعة"
     },

@@ -1,20 +1,13 @@
 import { Category } from './category';
 import { Offer } from './offer';
 import { Tag } from './tag';
-export interface Place {
+export interface TourismPackage {
     id: number,
-    name: string,
+    title: string,
     about: string,
-    min_price?: string,
-    max_price?: string,
     price?: string,
     rating: number,
-    menu?: string,
-    open_at?: string,
-    close_at?: string,
-    city?: { id: number, name: string, code: string | null }
-    lat?: string,
-    long?: string,
+    city?: { id: number, name: string, code: string | null },
     logo?: string,
     booking_link?: string,
     featured_image: string,
@@ -23,6 +16,7 @@ export interface Place {
     tags: Tag[],
     category: Category,
     is_recommended: boolean,
-    offer: Offer,
-    distance: string
+    // offer: Offer,
+    discount: number,
+    program: string
 }
