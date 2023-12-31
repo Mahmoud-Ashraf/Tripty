@@ -5,7 +5,7 @@ import Translate from '../helpers/Translate/Translate';
 import { useRouter } from 'next/router';
 import useHTTP from '@/hooks/use-http';
 
-const RateModal = ({ placeId, closeModal }: { placeId: number, closeModal: () => void }) => {
+const RateModal = ({ placeId, closeModal, type }: { placeId: number, closeModal: () => void, type: 'places' | 'tourism-packages' }) => {
     const [rate, setRate] = useState(0);
     const [comment, setComment] = useState('');
     const router = useRouter();
@@ -16,7 +16,7 @@ const RateModal = ({ placeId, closeModal }: { placeId: number, closeModal: () =>
         }
         sendRequest(
             {
-                url: `/api/place/${placeId}/rating`,
+                url: `/api/${type}/${placeId}/rating`,
                 method: 'POST',
                 body: { comment, stars: rate }
             },

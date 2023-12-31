@@ -19,9 +19,10 @@ import ShareButtons from "@/components/UI/ShareButtons/ShareButtons";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { authActions } from "@/store/Auth/Auth";
+import { TourismPackage } from "@/interfaces/tourism-package";
 
 interface Props {
-    serverPlace: Place,
+    serverPlace: TourismPackage,
     notFound: boolean
 }
 
@@ -29,29 +30,30 @@ const PlacePage = (props: Props) => {
     const { serverPlace, notFound } = props;
     const { translate } = useTranslate();
     const dispatch = useDispatch();
-    const [place, setPlace] = useState<Place>(serverPlace);
+    const [tourismPackage, setTourismPackage] = useState<TourismPackage>(serverPlace);
     const [showRateModal, setShowRateModal] = useState(false);
     const [showGalleryModal, setShowGalleryModal] = useState(false);
     const { isLoading, error, sendRequest } = useHTTP();
     const router = useRouter();
     const [isFavorite, setIsFavorite] = useState<boolean>();
     const { data: session }: any = useSession();
-    const { placeId } = router.query;
+    const { tourismId } = router.query;
     // const { locale } = router;
     console.log(serverPlace);
     useEffect(() => {
-        if (placeId) {
-            getPlace();
+        if (tourismId) {
+            getTourismPackage();
         }
-    }, [placeId]);
+    }, [tourismId]);
 
-    const getPlace = () => {
+    const getTourismPackage = () => {
+        console.log(tourismId);
         sendRequest(
             {
-                url: `/api/place?id=${placeId}`,
+                url: `/api/tourism-package?id=${tourismId}`,
                 method: 'GET'
             },
-            (data: any) => setPlace(data.place),
+            (data: any) => setTourismPackage(data.tourismPackage),
             (err: any) => console.log(err)
         )
     }
@@ -62,11 +64,11 @@ const PlacePage = (props: Props) => {
             setIsFavorite(prev => !prev);
             sendRequest(
                 {
-                    url: `/api/favs/toggle?prevFav=${prevFav}&placeId=${place.id}`,
+                    url: `/api/favs/toggle?prevFav=${prevFav}&placeId=${tourismPackage?.id}`,
                     method: 'GET'
                 },
                 (data: any) => {
-                    setPlace(data);
+                    setTourismPackage(data);
                 },
                 (err: any) => console.error(err)
             )
@@ -76,9 +78,9 @@ const PlacePage = (props: Props) => {
     }
 
     useEffect(() => {
-        console.log(place);
-        setIsFavorite(place?.is_favoritable);
-    }, [place])
+        console.log(tourismPackage);
+        setIsFavorite(tourismPackage?.is_favoritable);
+    }, [tourismPackage])
 
     if (notFound) {
         return (
@@ -91,20 +93,20 @@ const PlacePage = (props: Props) => {
         )
     }
     return (
-        place && <>
+        tourismPackage && <>
             <Head>
-                <title>{`Tripty - ${place?.name}`}</title>
+                <title>{`Tripty - ${tourismPackage?.name}`}</title>
             </Head>
             {
                 showRateModal &&
                 <CustomModal onOutsideClick={() => setShowRateModal(false)}>
-                    <RateModal type="places" placeId={place.id} closeModal={() => setShowRateModal(false)} />
+                    <RateModal type="tourism-packages" placeId={tourismPackage.id} closeModal={() => setShowRateModal(false)} />
                 </CustomModal>
             }
             {
                 showGalleryModal &&
                 <CustomModal onOutsideClick={() => setShowGalleryModal(false)}>
-                    <GalleryModal images={place.gallery} />
+                    <GalleryModal images={tourismPackage.gallery} />
                 </CustomModal>
             }
             {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
@@ -112,11 +114,11 @@ const PlacePage = (props: Props) => {
                 <div className={classes.details}>
                     <div className={classes.title}>
                         <div className={classes.naming}>
-                            <div className={classes.logo}>
-                                <img src={place.logo} alt={`${place.name} logo`} />
-                            </div>
+                            {/* <div className={classes.logo}>
+                                <img src={tourismPackage.logo} alt={`${tourismPackage.name} logo`} />
+                            </div> */}
                             <div className={classes.name}>
-                                <h2>{place.name}</h2>
+                                <h2>{tourismPackage.name}</h2>
                             </div>
                         </div>
                         <div className={classes.actions}>
@@ -138,16 +140,16 @@ const PlacePage = (props: Props) => {
                                         </svg>
                                     </span>
                                 </Dropdown.Toggle>
-                                <ShareButtons url={`/place/${place.id}`} title={place.name} />
+                                <ShareButtons url={`/tourism-package/${tourismPackage.id}`} title={tourismPackage.name} />
                             </Dropdown>
                         </div>
                     </div>
                     <div className="row gx-5">
                         <div className="col-md-6">
-                            {place.tags.length > 0 && <div className={classes.tags}>
+                            {tourismPackage.tags?.length > 0 && <div className={classes.tags}>
                                 <div className="row">
                                     {
-                                        place?.tags?.map(tag => {
+                                        tourismPackage?.tags?.map(tag => {
                                             return (
                                                 <div key={tag.id} className="col-auto">
                                                     <div className={classes.tag}>{tag.name}</div>
@@ -158,9 +160,9 @@ const PlacePage = (props: Props) => {
                                 </div>
                             </div>}
                             <div className={classes.specs}>
-                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>
-                                {place?.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place?.category?.name}</span> : ''}
-                                <span className={classes.distance}>
+                                <span className={classes.rate}><i className="fa-solid fa-star"></i> {Number(tourismPackage?.rating).toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>
+                                {tourismPackage?.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {tourismPackage?.category?.name}</span> : ''}
+                                {/* <span className={classes.distance}>
                                     <svg data-name="Group 274" xmlns="http://www.w3.org/2000/svg" width="25.026" height="32.269" viewBox="0 0 25.026 32.269">
                                         <defs>
                                             <clipPath id="gwf19axr2a">
@@ -172,25 +174,25 @@ const PlacePage = (props: Props) => {
                                             <path data-name="Path 345" d="M21.5 16.071a5.28 5.28 0 1 1-10.558-.019 5.28 5.28 0 0 1 10.558.019m-5.218 4.014a3.958 3.958 0 0 0 3.948-3.969 4.011 4.011 0 0 0-8.022 0 3.969 3.969 0 0 0 4.074 3.967" transform="translate(-3.704 -3.677)" fill="#8b8e98" />
                                         </g>
                                     </svg> {Number(place.distance).toFixed(1)} <Translate id='common.km' />
-                                </span>
+                                </span> */}
                             </div>
                             <div className={classes.gallery}>
                                 <div className="row">
                                     {
-                                        place?.gallery?.map(
+                                        tourismPackage?.gallery?.map(
                                             (img: string, i: number) => {
                                                 if (i > 4) return
                                                 if (i === 4) return (
                                                     <div key={i} className="col">
                                                         <div className={classes.img} onClick={() => setShowGalleryModal(true)}>
-                                                            <div className={classes.galleryShowAll}>+{place.gallery.length - 4}</div>
+                                                            <div className={classes.galleryShowAll}>+{tourismPackage.gallery.length - 4}</div>
                                                         </div>
                                                     </div>
                                                 )
                                                 return (
                                                     <div key={i} className="col">
                                                         <div className={classes.img}>
-                                                            <Image src={img} alt={`${place.name} gallery`} rounded fluid />
+                                                            <Image src={img} alt={`${tourismPackage.name} gallery`} rounded fluid />
                                                         </div>
                                                     </div>
                                                 )
@@ -202,27 +204,22 @@ const PlacePage = (props: Props) => {
                             </div>
                             <div className={classes.about}>
                                 <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
-                                <p className={classes.aboutText}>{place?.about}</p>
+                                <p className={classes.aboutText}>{tourismPackage?.about}</p>
                             </div>
-                            <div className={classes.menu}>
-                                <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
-                                <Link href={place?.menu ? place.menu : ''} className={classes.menuLink}><Translate id='buttons.showMenu' /></Link>
+                            <div className={`${classes.about} mt-5`}>
+                                {/* <h3 className={classes.aboutTitle}>Travel itinerary</h3> */}
+                                <div dangerouslySetInnerHTML={{ __html: tourismPackage?.program }} />
                             </div>
-                            <div className={classes.menu}>
-                                <h5 className={classes.menuTitle}><Translate id='place.location' /></h5>
-                                <PlaceMap lat={place.lat} lng={place.long} name={place.name} />
-                            </div>
-
                         </div>
                         <div className="col-md-6">
                             <div className={classes.cover}>
                                 <div className={classes.photo}>
-                                    {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                    {place.offer && <div className={classes.offer}>
-                                        <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
+                                    {tourismPackage?.featured_image && <Image alt={`${tourismPackage.name} Cover`} src={tourismPackage?.featured_image} fluid />}
+                                    {tourismPackage.offer && <div className={classes.offer}>
+                                        <span>{tourismPackage.offer.amount}{tourismPackage.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>
-                                {place?.booking_link && <Link className={classes.bookNow} href={place?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
+                                {tourismPackage?.booking_link && <Link className={classes.bookNow} href={tourismPackage?.booking_link} ><Translate id='buttons.bookNow' /></Link>}
                             </div>
                         </div>
                     </div>
@@ -246,35 +243,35 @@ const PlacePage = (props: Props) => {
 //     };
 // }
 
-export async function getServerSideProps({ locale, params }: any) {
-    const { placeId } = params;
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    try {
-        const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
-        if (!response.ok) {
-            throw new Error('Fetch Place Failed')
-        }
-        const data = await response.json();
-        if (data.error) {
-            throw new Error(data.error);
-        }
-        return {
-            props: {
-                serverPlace: data?.data || undefined,
-                notFound: false
-            },
-        };
-    } catch (error) {
-        console.error(error);
-        return {
-            props: {
-                serverPlace: null,
-                notFound: true
-            }
-            // notFound: true,
-        };
-    }
-}
+// export async function getServerSideProps({ locale, params }: any) {
+//     const { placeId } = params;
+//     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+//     try {
+//         const response = await fetch(`${baseUrl}places/${placeId}?change_language=${locale}`);
+//         if (!response.ok) {
+//             throw new Error('Fetch Place Failed')
+//         }
+//         const data = await response.json();
+//         if (data.error) {
+//             throw new Error(data.error);
+//         }
+//         return {
+//             props: {
+//                 serverPlace: data?.data || undefined,
+//                 notFound: false
+//             },
+//         };
+//     } catch (error) {
+//         console.error(error);
+//         return {
+//             props: {
+//                 serverPlace: null,
+//                 notFound: true
+//             }
+//             // notFound: true,
+//         };
+//     }
+// }
 
 export default PlacePage;
 
