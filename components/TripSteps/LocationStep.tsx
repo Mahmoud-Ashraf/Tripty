@@ -54,7 +54,7 @@ const LocationStep = () => {
                 {
                     citeies?.map(city => {
                         return (
-                            <li onClick={() => handleLocationClick(city)} className={classes.locationCity} key={city.id}>{city.name}</li>
+                            <li onClick={() => handleLocationClick(city)} className={`${classes.locationCity} ${selectedLocation?.id === city.id ? classes.selected : ''}`} key={city.id}>{city.name}</li>
                         )
                     })
                 }

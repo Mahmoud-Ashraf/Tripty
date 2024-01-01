@@ -133,5 +133,9 @@
         "terms": "Terms and Conditions",
         "privacy": "Privacy Policy",
         "logout": "sign out"
+    },
+    "time": {
+        "am": "AM",
+        "pm": "PM"
     }
 }
