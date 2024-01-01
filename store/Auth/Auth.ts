@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface TripState {
-    showAuthModal: boolean
+    showAuthModal: boolean,
+    userCoords: { latitude: number, longitude: number } | null
 }
 
-const initialAuthState: TripState = { showAuthModal: false }
+const initialAuthState: TripState = { showAuthModal: false, userCoords: null }
 
 const authSlice = createSlice({
     name: 'auth',
@@ -15,6 +16,9 @@ const authSlice = createSlice({
         },
         closeShowAuthModal(state) {
             state.showAuthModal = false;
+        },
+        setCoords(state, action) {
+            state.userCoords = action.payload;
         }
     }
 })

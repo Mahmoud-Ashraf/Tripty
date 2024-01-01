@@ -36,7 +36,9 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
                     <div className={classes.details}>
                         <span className={classes.rate}><i className="fa-solid fa-star"></i> {Number(place.rating).toFixed(1)}</span>
                         {place.category?.parent ? <span className={classes.cuisine}><i className="fa-solid fa-utensils"></i> {place.category.name}</span> : ''}
-                        {place.distance || !isTourism && <span className={classes.distance}>{Number(place.distance).toFixed(1)} <Translate id='common.km' /></span>}
+                        {place.distance || !isTourism && <span className={classes.distance}>{place.distance}
+                            {/* <Translate id='common.km' /> */}
+                        </span>}
                         {place.is_recommended && <span className={classes.recomendedText}><Translate id='common.recomended' /></span>}
                     </div>
                     <div className={classes.recomended}>

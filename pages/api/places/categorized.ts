@@ -5,7 +5,7 @@ interface CategorizedPlaces {
     [categoryName: string]: Place[]; // Define the structure for categorized places
 }
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { locale, trendNow } = req.query;
+    const { locale, trendNow, long, lat } = req.query;
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         await Promise.all(categories?.data?.map(async (category: any) => {
             try {
-                const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}${trendNow ? '&trend_now=1' : ''}`);
+                const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}${long ? `&long=${long}` : ''}${lat ? `&lat=${lat}` : ''}&category_id=${category.id}${trendNow ? '&trend_now=1' : ''}`);
                 if (!categoryPlacesReq.ok) {
                     throw new Error(`error fetching category ${category.name}`);
                 }

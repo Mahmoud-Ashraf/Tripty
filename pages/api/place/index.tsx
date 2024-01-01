@@ -3,12 +3,12 @@ import { Place } from '@/interfaces/place';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { id, locale } = req.query;
+    const { id, locale, long, lat } = req.query;
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     const { headers } = req;
 
     try {
-        const response = await fetch(`${baseUrl}places/${id}?change_language=${locale}`, {
+        const response = await fetch(`${baseUrl}places/${id}?change_language=${locale}&long=${long}&lat=${lat}`, {
             headers: { 'Authorization': headers['authorization'] || '' }
         });
         if (!response.ok) {

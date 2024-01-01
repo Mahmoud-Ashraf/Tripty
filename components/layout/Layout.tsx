@@ -18,6 +18,27 @@ const Layout = (props: PropsWithChildren) => {
         return state.auth.showAuthModal;
     });
 
+    useEffect(() => {
+        // Check if the Geolocation API is supported by the browser
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    // Retrieve the latitude and longitude from the position object
+                    console.log('coords: ', position.coords);
+                    const { latitude, longitude } = position.coords;
+                    dispatch(authActions.setCoords({ latitude, longitude }));
+                    // setLocation({ latitude, longitude });
+                },
+                (error) => {
+                    // Handle any errors that occur while retrieving the location
+                    console.error('Error getting location:', error);
+                }
+            );
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+    }, []);
+
     return (
         <div className={classes.layout}>
             {showTripModal && <CustomModal onOutsideClick={() => { }}>
