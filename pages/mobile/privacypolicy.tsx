@@ -1,10 +1,15 @@
-import PrivacyPolicyCom from "@/components/PrivacyPolicyCom/PrivacyPolicyCom";
+import PrivacyPolicyCom from "@/components/Static/PrivacyPolicyCom/PrivacyPolicyCom";
+import MobileLayout from "@/components/layout/MobileLayout/MobileLayout";
+import Head from "next/head";
 
 const PrivacyPolicy = () => {
     return (
-        <div className="">
+        <MobileLayout>
+            <Head>
+                <title>Tripty - Privacy Policy</title>
+            </Head>
             <PrivacyPolicyCom />
-        </div>
+        </MobileLayout>
     )
 }
 

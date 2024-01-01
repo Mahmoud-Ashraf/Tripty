@@ -1,10 +1,15 @@
-import TermsConditions from "@/components/TermsConditions/TermsConditions";
+import TermsConditions from "@/components/Static/TermsConditions/TermsConditions";
+import MobileLayout from "@/components/layout/MobileLayout/MobileLayout";
+import Head from "next/head";
 
 const TermsAndConditions = () => {
     return (
-        <div className="">
+        <MobileLayout>
+            <Head>
+                <title>Tripty - Privacy Policy</title>
+            </Head>
             <TermsConditions />
-        </div>
+        </MobileLayout>
     )
 }
 
