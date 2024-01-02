@@ -1,6 +1,11 @@
+import ColorBox from "@/components/UI/ColorBox/ColorBox";
+import AboutUs from "../mobile/aboutus";
+
 const About = () => {
     return (
-        <h1>Hello from about</h1>
+        <div className="container">
+            <AboutUs />
+        </div>
     )
 }
 

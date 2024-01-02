@@ -23,7 +23,8 @@ const Register = (props: Props) => {
     const [mobile, setMobile] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPassword_confirmation] = useState('');
-    const { isLoading, error, sendRequest } = useHttp();
+    const [formError, setFormError] = useState<string | null>(null);
+    const { isLoading, error, sendRequest }: any = useHttp();
     const { data: session } = useSession();
     const handleSignIn = async () => {
         const result = await signIn('credentials', {
@@ -57,6 +58,14 @@ const Register = (props: Props) => {
             (err: any) => console.log(err)
         )
     }
+
+    useEffect(() => {
+        console.log(error);
+        if (error) {
+            const tempError = error.replace('.', '');
+            setFormError(`errors.${tempError}`)
+        }
+    }, [error]);
     return (
         <>
             <Head>
@@ -71,6 +80,7 @@ const Register = (props: Props) => {
                         <input className={classes.input} type="email" placeholder={translate('placeholder.email')} value={email} onChange={(e) => setEmail(e.target.value)} />
                         <input className={classes.input} type="password" placeholder={translate('placeholder.password')} value={password} onChange={(e) => setPassword(e.target.value)} />
                         <input className={classes.input} type="password" placeholder={translate('placeholder.confirmPassword')} value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
+                        {formError && <p className={classes.loginError}><Translate id={formError} /></p>}
                     </div>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
                         <Button variant="main" type="button" onClick={register}>

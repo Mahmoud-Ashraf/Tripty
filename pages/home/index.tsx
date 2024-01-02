@@ -13,9 +13,10 @@ import { Slider } from "@/interfaces/slider";
 import { tripActions } from "@/store/Trip/Trip";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import explore from '@/public/assets/images/explore.svg';
 import HomeTrip from "@/components/HomeTrip/HomeTrip";
+import { RootState } from "@/store";
 
 interface Props {
    sliders: Slider[] | [],
@@ -29,6 +30,7 @@ const Home = (props: Props) => {
    const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
    const [newSliders, setNewSliders] = useState(sliders);
    const dispatch = useDispatch();
+   const coords = useSelector((state: RootState) => state.auth.userCoords);
 
    useEffect(() => {
       fetchPlaces();
@@ -38,7 +40,7 @@ const Home = (props: Props) => {
    const fetchPlaces = () => {
       sendRequest(
          {
-            url: '/api/places/categorized',
+            url: `/api/places/categorized?long=${coords?.longitude}&lat=${coords?.latitude}`,
             method: 'GET'
          },
          (data: any) => {

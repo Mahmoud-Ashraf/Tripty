@@ -85,7 +85,15 @@
     },
     "errors": {
         "tagsError": "من فضلك اختر اهتماماتك اولاً",
-        "wrongCredentials": "البريد الإلكتروني او كلمة المرور غير صحيحة"
+        "wrongCredentials": "البريد الإلكتروني او كلمة المرور غير صحيحة",
+        "The name field is required": "الاسم مطلوب",
+        "The email has already been taken": "هذا البريد الالكتروني مستخدم من قبل",
+        "The email must be a valid email address": "برجاء كتابة البريد الالكتروني بشكل صحيح",
+        "The email field is required": "البريد الالكتروني مطلوب",
+        "The password field is required": "كلمة المرور مطلوبة",
+        "The password confirmation does not match": "كلمة المرور غير متطابقة",
+        "The mobile has already been taken": "رقم الجوال ماخوذ من قبل",
+        "The password must be at least 6 characters": "كلمة المرور يجب ان تكون 6 احرف على الأقل"
     },
     "currencies": {
         "sar": "ريال"
@@ -133,5 +141,9 @@
         "terms": "الشروط والاحكام",
         "privacy": "سياسة الخصوصية",
         "logout": "تسجيل خروج"
+    },
+    "time": {
+        "am": "ص",
+        "pm": "م"
     }
 }

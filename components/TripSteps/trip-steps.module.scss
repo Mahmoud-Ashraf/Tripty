@@ -20,6 +20,10 @@
         color: $main-color;
         text-transform: capitalize;
         cursor: pointer;
+
+        &.selected {
+            font-weight: 600;
+        }
     }
 
     &Input {

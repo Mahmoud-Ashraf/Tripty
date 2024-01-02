@@ -34,9 +34,12 @@ const useHTTP = () => {
                 }
             );
             if (!response.ok) {
-                if (response.status === 401) {
+                const data = await response.json();
+                if (data.error) {
+                    throw new Error(data.error);
+                } else {
+                    throw new Error('Request Failed');
                 }
-                throw new Error('Request Failed!');
             }
 
             const data = await response.json();

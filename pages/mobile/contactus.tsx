@@ -1,10 +1,11 @@
 import Contact from "@/components/Contact/Contact";
+import MobileLayout from "@/components/layout/MobileLayout/MobileLayout";
 
 const ContactUs = () => {
     return (
-        <div className="">
+        <MobileLayout>
             <Contact />
-        </div>
+        </MobileLayout>
     )
 }
 

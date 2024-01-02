@@ -37,10 +37,6 @@ const ForgetPassword = (props: any) => {
                 <Form>
                     <h1><Translate id='auth.enterEmail' /></h1>
                     <input className={classes.input} type="email" placeholder={translate('placeholder.email')} value={email} onChange={(e) => setEmail(e.target.value)} />
-                    {/* {loginError && <p className={classes.loginError}><Translate id={loginError} /></p>} */}
-                    {/* <Form.Group className="d-flex justify-content-between">
-                        <Link href={'/home'}><Translate id='auth.forgetPassword' /></Link>
-                    </Form.Group> */}
                     <div className={`d-grid gap-2 ${classes.submit}`}>
                         <Button variant="main" type="button" onClick={handleSignIn}>
                             <Translate id='buttons.send' />

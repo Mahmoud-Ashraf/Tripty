@@ -85,7 +85,15 @@
     },
     "errors": {
         "tagsError": "Please Select Tags First",
-        "wrongCredentials": "Email or Password is incorrect"
+        "wrongCredentials": "Email or Password is incorrect",
+        "The name field is required": "Name is Required",
+        "The email has already been taken": "This Email has already been taken",
+        "The email must be a valid email address": "The Email must be valid email address",
+        "The email field is required": "Email is Required",
+        "The password field is required": "Password is Required",
+        "The password confirmation does not match": "Password dosen't match",
+        "The mobile has already been taken": "Mobile has already been taken",
+        "The password must be at least 6 characters": "Password must be at least 6 characters"
     },
     "currencies": {
         "sar": "SAR"
@@ -133,5 +141,9 @@
         "terms": "Terms and Conditions",
         "privacy": "Privacy Policy",
         "logout": "sign out"
+    },
+    "time": {
+        "am": "AM",
+        "pm": "PM"
     }
 }

@@ -3,4 +3,8 @@
     display: flex;
     gap: 1rem;
     line-height: 1;
+
+    .initialTime {
+        white-space: nowrap;
+    }
 }
