@@ -40,7 +40,7 @@ const Login = (props: any) => {
                     <input className={classes.input} type="password" placeholder={translate('placeholder.password')} value={password} onChange={(e) => setPassword(e.target.value)} />
                     {loginError && <p className={classes.loginError}><Translate id={loginError} /></p>}
                     <Form.Group className="d-flex justify-content-between">
-                        <Link href={'/home'}><Translate id='auth.forgetPassword' /></Link>
+                        <Link href={'/auth/forget-password'}><Translate id='auth.forgetPassword' /></Link>
                     </Form.Group>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
                         <Button variant="main" type="button" onClick={handleSignIn}>

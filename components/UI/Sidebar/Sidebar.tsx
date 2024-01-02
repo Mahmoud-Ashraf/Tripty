@@ -26,30 +26,30 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className={classes.links}>
-                <div className={classes.item}>
                     {/* <i className="fa-regular fa-circle-user"></i> */}
+                    {/* <i className="fa-regular fa-heart"></i> */}
+                    {/* <i className="fa-solid fa-route"></i> */}
+                    {/* <i className="fa-regular fa-bell"></i> */}
+                    {/* <i className="fa-solid fa-file-signature"></i> */}
+                    {/* <i className="fa-solid fa-shield-halved"></i> */}
+                <div className={classes.item}>
                     <ActiveLink href="profile" ><Translate id="sidebar.personalData" /></ActiveLink>
                 </div>
                 <div className={classes.item}>
-                    {/* <i className="fa-regular fa-heart"></i> */}
                     <ActiveLink href="favorites" ><Translate id="sidebar.favorite" /></ActiveLink>
                 </div>
                 <div className={classes.item}>
-                    {/* <i className="fa-solid fa-route"></i> */}
                     <ActiveLink href="trips" ><Translate id="sidebar.trips" /></ActiveLink>
                 </div>
-                <div className={classes.item}>
-                    {/* <i className="fa-regular fa-bell"></i> */}
+                {/* <div className={classes.item}>
                     <ActiveLink href="notifications" ><Translate id="sidebar.notifications" /></ActiveLink>
-                </div>
-                <div className={classes.item}>
-                    {/* <i className="fa-solid fa-file-signature"></i> */}
+                </div> */}
+                {/* <div className={classes.item}>
                     <ActiveLink href="terms-and-conditions" ><Translate id="sidebar.terms" /></ActiveLink>
-                </div>
-                <div className={classes.item}>
-                    {/* <i className="fa-solid fa-shield-halved"></i> */}
+                </div> */}
+                {/* <div className={classes.item}>
                     <ActiveLink href="privacy-policy" ><Translate id="sidebar.privacy" /></ActiveLink>
-                </div>
+                </div> */}
             </div>
         </div>
     )
