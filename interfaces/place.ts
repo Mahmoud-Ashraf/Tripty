@@ -5,6 +5,7 @@ export interface Place {
     id: number,
     name: string,
     about: string,
+    tel: string,
     min_price?: string,
     max_price?: string,
     price?: string,

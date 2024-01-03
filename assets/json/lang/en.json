@@ -51,7 +51,8 @@
         "about": "About",
         "menu": "Menu",
         "location": "Location",
-        "getDiscount": "Get the Discount"
+        "getDiscount": "Get the Discount",
+        "contact": "Contact number"
     },
     "tripModal": {
         "create": "Create Your",

@@ -11,6 +11,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const { body, headers, method } = req;
+    console.log(body);
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
         const response = await fetch(baseUrl + 'profile', {
@@ -25,9 +26,12 @@ export default async function handler(
         }
 
         const data = await response.json();
+        if (data.error) {
+            throw new Error(data.message);
+        }
         res.status(200).json(data.data);
-    } catch (error) {
+    } catch (error: any) {
         console.error('API Error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 }

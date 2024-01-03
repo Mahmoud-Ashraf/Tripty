@@ -67,7 +67,7 @@ const CompleteData = (props: any) => {
     const getTags = () => {
         sendRequest(
             {
-                url: '/api/tags',
+                url: '/api/categories',
                 method: 'GET'
             },
             (data: any) => {

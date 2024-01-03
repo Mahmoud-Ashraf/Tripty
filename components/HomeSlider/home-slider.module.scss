@@ -1,6 +1,21 @@
 .container {
-    img {
-        width: 100%;
-        min-height: 100%;
+    margin-bottom: 5rem;
+
+    .item {
+        img {
+            width: 100%;
+            min-height: 100%;
+        }
+    }
+
+    .carousel {
+        margin-bottom: 1rem;
+    }
+
+    .seperatorContainer {
+        position: absolute;
+        width: 100vw;
+        right: -3%;
+        left: -3%;
     }
 }

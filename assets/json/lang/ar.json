@@ -51,7 +51,8 @@
         "about": "عن المكان",
         "menu": "المنيو",
         "location": "العنوان",
-        "getDiscount": "احصل على الخصم"
+        "getDiscount": "احصل على الخصم",
+        "contact": "رقم التواصل"
     },
     "tripModal": {
         "create": "خطط لـ",
