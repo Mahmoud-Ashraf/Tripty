@@ -12,7 +12,11 @@ const Footer = () => {
             </div>
             <div className={classes.nav}>
                 <Link href={'/home'}><Translate id={'header.home'} /></Link>
-                <Link href={'/about'}><Translate id={'header.about'} /></Link>
+                <div className='d-flex flex-column'>
+                    <Link href={'/about'}><Translate id={'header.about'} /></Link>
+                    <Link href={'/termsandconditions'}><Translate id={'footer.termsAndConditions'} /></Link>
+                    <Link href={'/privacypolicy'}><Translate id={'footer.privacyPolicy'} /></Link>
+                </div>
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
                 <Link href={'/tourism-packages'}><Translate id={'header.tourismPackages'} /></Link>
             </div>
