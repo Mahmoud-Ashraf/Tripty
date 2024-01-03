@@ -40,7 +40,7 @@ const Home = (props: Props) => {
    const fetchPlaces = () => {
       sendRequest(
          {
-            url: `/api/places/categorized?long=${coords?.longitude}&lat=${coords?.latitude}`,
+            url: `/api/places/categorized${coords ? `?long=${coords?.longitude}&lat=${coords?.latitude}` : ''}`,
             method: 'GET'
          },
          (data: any) => {
@@ -107,51 +107,51 @@ interface CategorizedPlaces {
 //    // Add other properties based on your data structure
 //  }
 
-export async function getServerSideProps({ locale }: any) {
-   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+// export async function getServerSideProps({ locale }: any) {
+//    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-   try {
-      const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
-      if (!categoriesReq.ok) {
-         throw new Error('error fetching categories');
-      }
-      const categoriesData = await categoriesReq?.json();
-      categoriesData?.data?.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
+//    try {
+//       const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
+//       if (!categoriesReq.ok) {
+//          throw new Error('error fetching categories');
+//       }
+//       const categoriesData = await categoriesReq?.json();
+//       categoriesData?.data?.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
 
-      const slidersReq = await fetch(`${baseUrl}sliders`);
-      if (!slidersReq.ok) {
-         throw new Error('error fetching sliders');
-      }
-      const slidersData = await slidersReq?.json();
+//       const slidersReq = await fetch(`${baseUrl}sliders`);
+//       if (!slidersReq.ok) {
+//          throw new Error('error fetching sliders');
+//       }
+//       const slidersData = await slidersReq?.json();
 
-      const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
+//       const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
-      await Promise.all(categoriesData?.data?.map(async (category: any) => {
-         const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}`);
-         if (!categoryPlacesReq.ok) {
-            throw new Error('error fetching categoty data');
-         }
-         const categoryPlacesData = await categoryPlacesReq?.json();
-         categorizedPlaces[category.name] = categoryPlacesData?.data;
-      }));
-      return {
-         props: {
-            tabs: categoriesData.data,
-            categorizedPlaces,
-            sliders: slidersData.data,
-         }
-      };
-   } catch (error) {
-      console.error('Error fetching data:', error);
-      return {
-         props: {
-            tabs: [],
-            categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
-            sliders: [] // Adjust based on the expected sliders data structure
-         }
-      };
-   }
-}
+//       await Promise.all(categoriesData?.data?.map(async (category: any) => {
+//          const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&category_id=${category.id}`);
+//          if (!categoryPlacesReq.ok) {
+//             throw new Error('error fetching categoty data');
+//          }
+//          const categoryPlacesData = await categoryPlacesReq?.json();
+//          categorizedPlaces[category.name] = categoryPlacesData?.data;
+//       }));
+//       return {
+//          props: {
+//             tabs: categoriesData.data,
+//             categorizedPlaces,
+//             sliders: slidersData.data,
+//          }
+//       };
+//    } catch (error) {
+//       console.error('Error fetching data:', error);
+//       return {
+//          props: {
+//             tabs: [],
+//             categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
+//             sliders: [] // Adjust based on the expected sliders data structure
+//          }
+//       };
+//    }
+// }
 
 
 export default Home;

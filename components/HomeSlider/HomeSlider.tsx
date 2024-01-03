@@ -3,7 +3,7 @@ import { Slider } from '@/interfaces/slider';
 import Image from 'next/image';
 import { SetStateAction, useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-
+import seperator from '@/public/assets/images/seperator.svg';
 interface Props {
     sliders: Slider[] | undefined
 }
@@ -16,17 +16,20 @@ const HomeSlider = (props: Props) => {
     };
     return (
         <div className={`${classes.container} home-slider`}>
-            <Carousel activeIndex={index} onSelect={handleSelect}>
+            <Carousel className={classes.carousel} activeIndex={index} onSelect={handleSelect}>
                 {
                     sliders?.map(slider => {
                         return (
-                            <Carousel.Item key={slider?.id}>
+                            <Carousel.Item key={slider?.id} className={classes.item}>
                                 <img className={classes.img} src={slider?.image} alt="slider" />
                             </Carousel.Item>
                         )
                     })
                 }
             </Carousel>
+            <div className={classes.seperatorContainer}>
+                <Image className={classes.seperator} src={seperator} alt={'seperator'} />
+            </div>
         </div>
     )
 }

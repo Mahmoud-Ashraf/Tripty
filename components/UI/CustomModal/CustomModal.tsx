@@ -5,13 +5,14 @@ import { tripActions } from "@/store/Trip/Trip";
 
 interface Props {
     children: ReactNode,
-    onOutsideClick: any
+    onOutsideClick: () => void,
+    onClose?: () => void
 }
 const CustomModal = (props: Props) => {
     const { children } = props;
     const modalRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
-    const closeModal = (e: MouseEvent) => {
+    const outSideClick = (e: MouseEvent) => {
         if (
             modalRef.current &&
             e.target instanceof Node &&
@@ -20,14 +21,13 @@ const CustomModal = (props: Props) => {
             props.onOutsideClick();
         }
     };
+
     useEffect(() => {
         const handleOutsideClick = (e: MouseEvent) => {
-            closeModal(e);
+            outSideClick(e);
         };
-
         // Attach the event listener when the component mounts
         document.addEventListener('mousedown', handleOutsideClick);
-
         // Clean up the event listener when the component unmounts
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
@@ -39,6 +39,9 @@ const CustomModal = (props: Props) => {
             </div>
             <div className={classes.modalOverlay}>
                 <div ref={modalRef} className={classes.container}>
+                    {props.onClose && <div className={classes.close}>
+                        <i onClick={props.onClose} className="fa-solid fa-xmark"></i>
+                    </div>}
                     {children}
                 </div>
             </div>

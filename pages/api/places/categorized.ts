@@ -17,10 +17,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         categories?.data?.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
 
         const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
-
         await Promise.all(categories?.data?.map(async (category: any) => {
+            console.log(!!long)
             try {
-                const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}${long ? `&long=${long}` : ''}${lat ? `&lat=${lat}` : ''}&category_id=${category.id}${trendNow ? '&trend_now=1' : ''}`);
+                const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}${!!long ? `&long=${long}` : ''}${!!lat ? `&lat=${lat}` : ''}&category_id=${category.id}${trendNow ? '&trend_now=1' : ''}`);
                 if (!categoryPlacesReq.ok) {
                     throw new Error(`error fetching category ${category.name}`);
                 }
