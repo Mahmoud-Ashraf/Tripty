@@ -100,7 +100,9 @@
         "sar": "SAR"
     },
     "footer": {
-        "copyRights": "Copyright © 2023 Tripty. All rights reserved"
+        "copyRights": "Copyright © 2023 Tripty. All rights reserved",
+        "termsAndConditions": "Terms and conditions",
+        "privacyPolicy": "Privacy policy"
     },
     "auth": {
         "login": "Login",

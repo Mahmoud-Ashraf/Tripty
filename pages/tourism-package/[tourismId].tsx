@@ -116,9 +116,9 @@ const PlacePage = (props: Props) => {
                             {/* <div className={classes.logo}>
                                 <img src={tourismPackage.logo} alt={`${tourismPackage.name} logo`} />
                             </div> */}
-                            <div className={classes.name}>
+                            {tourismPackage?.title && <div className={classes.name}>
                                 <h2>{tourismPackage.title}</h2>
-                            </div>
+                            </div>}
                         </div>
                         <div className={classes.actions}>
                             <button onClick={handleToggleFav} className={classes.fav}>
@@ -145,7 +145,7 @@ const PlacePage = (props: Props) => {
                     </div>
                     <div className="row gx-5">
                         <div className="col-md-6">
-                            {tourismPackage.tags?.length > 0 && <div className={classes.tags}>
+                            {tourismPackage?.tags?.length > 0 && <div className={classes.tags}>
                                 <div className="row">
                                     {
                                         tourismPackage?.tags?.map(tag => {
@@ -175,7 +175,7 @@ const PlacePage = (props: Props) => {
                                     </svg> {Number(place.distance).toFixed(1)} <Translate id='common.km' />
                                 </span> */}
                             </div>
-                            <div className={classes.gallery}>
+                            {tourismPackage?.gallery?.length > 0 && <div className={classes.gallery}>
                                 <div className="row">
                                     {
                                         tourismPackage?.gallery?.map(
@@ -199,16 +199,15 @@ const PlacePage = (props: Props) => {
                                         )
                                     }
                                 </div>
-
-                            </div>
-                            <div className={classes.about}>
+                            </div>}
+                            {tourismPackage?.about && <div className={classes.about}>
                                 <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
                                 <p className={classes.aboutText}>{tourismPackage?.about}</p>
-                            </div>
-                            <div className={`${classes.about} mt-5`}>
+                            </div>}
+                            {tourismPackage?.program && <div className={`${classes.about} mt-5`}>
                                 {/* <h3 className={classes.aboutTitle}>Travel itinerary</h3> */}
                                 <div dangerouslySetInnerHTML={{ __html: tourismPackage?.program }} />
-                            </div>
+                            </div>}
                         </div>
                         <div className="col-md-6">
                             <div className={classes.cover}>

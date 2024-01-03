@@ -225,7 +225,7 @@ const PlacePage = (props: Props) => {
                             <div className={classes.cover}>
                                 <div className={classes.photo}>
                                     {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                    {place.offer && <div className={classes.offer}>
+                                    {place?.offer && <div className={classes.offer}>
                                         <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>

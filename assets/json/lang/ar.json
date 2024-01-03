@@ -100,7 +100,9 @@
         "sar": "ريال"
     },
     "footer": {
-        "copyRights": "حقوق النشر © 2023 Tripty. كل الحقوق محفوظة"
+        "copyRights": "حقوق النشر © 2023 Tripty. كل الحقوق محفوظة",
+        "termsAndConditions": "الشروط والاحكام",
+        "privacyPolicy": "سياسة الخصوصية"
     },
     "auth": {
         "login": "تسجيل الدخول",
