@@ -6,6 +6,7 @@ import { tripActions } from '@/store/Trip/Trip';
 import logo from '@/public/assets/images/logo_white.svg';
 import { useSession } from 'next-auth/react';
 import { authActions } from '@/store/Auth/Auth';
+import Translate from '../helpers/Translate/Translate';
 
 const HomeTrip = () => {
     const dispatch = useDispatch();
@@ -23,14 +24,15 @@ const HomeTrip = () => {
                 <div className="col-md-6">
                     <div className={classes.details}>
                         <div className={classes.title}>
-                            <h3>Start New</h3>
-                            <h3>Experience</h3>
+                            <h3><Translate id="trip.start"/></h3>
+                            <h3><Translate id="trip.experience"/></h3>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={openModal} className='btn btn-main'>START YOUR TRIP NOW</button>
+                            <button onClick={openModal} className='btn btn-main'><Translate id="trip.startNow"/></button>
                         </div>
                         <div className={classes.desc}>
-                            <p>Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture.</p>
+                            <p><Translate id="trip.text"/></p>
+                            <p><Translate id="trip.text1"/></p>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 {
     "header": {
         "home": "Home",
-        "about": "About",
+        "about": "About Tripty",
         "places": "Places",
         "tourismPackages": "Tourism Packages",
         "dialog": {
@@ -148,5 +148,12 @@
     "time": {
         "am": "AM",
         "pm": "PM"
+    },
+    "trip": {
+        "start": "Start New",
+        "experience": "Experience",
+        "text": "With us you can schedule your trip according to your budget, style etc...",
+        "text1": "Don't miss the expirence! leave the planning to us and enjoy your trip",
+        "startNow": "START YOUR TRIP NOW"
     }
 }
