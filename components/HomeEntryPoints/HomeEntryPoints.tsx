@@ -1,7 +1,7 @@
 import EntryPoint from "../EntryPoint/EntryPoint";
 import discounts from '@/public/assets/images/discounts.svg';
 import tourism from '@/public/assets/images/tourism.svg';
-import trend from '@/public/assets/images/trend.svg';
+import trend from '@/public/assets/images/trend.png';
 const HomeEntryPoints = () => {
     return (
         <div className="row justify-content-center mb-5">
