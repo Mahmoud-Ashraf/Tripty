@@ -193,7 +193,7 @@ const PlacePage = (props: Props) => {
                             {place.gallery?.length > 0 && place?.videos?.length > 0 && <div className={classes.gallery}>
                                 <div className="row">
                                     {
-                                        [...place?.videos, ...place.gallery].map(
+                                        [...place?.gallery, ...place.videos].map(
                                             (img: any, i: number) => {
                                                 if (i > 4) return
                                                 if (i === 4) return (
