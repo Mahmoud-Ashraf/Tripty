@@ -23,6 +23,8 @@ const GalleryModal = ({ images }: { images: any[] }) => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        // rtl: true,
+        adabtiveHeight: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
