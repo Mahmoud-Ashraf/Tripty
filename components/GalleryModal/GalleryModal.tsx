@@ -1,3 +1,4 @@
+import ReactPlayer from 'react-player';
 import classes from './gallery-modal.module.scss';
 import Slider from 'react-slick';
 
@@ -15,7 +16,7 @@ function SamplePrevArrow(props: any) {
     );
 }
 
-const GalleryModal = ({ images }: { images: string[] }) => {
+const GalleryModal = ({ images }: { images: any[] }) => {
     const settings = {
         dots: false,
         infinite: false,
@@ -32,7 +33,10 @@ const GalleryModal = ({ images }: { images: string[] }) => {
                 {
                     images?.map((img, i) => {
                         return (
-                            <img key={i} src={img} />
+                            img.video_url ?
+                                <ReactPlayer controls width='100%' height='500px' key={i} url={img.video_url} />
+                                :
+                                <img key={i} src={img} />
                         )
                     })
                 }
