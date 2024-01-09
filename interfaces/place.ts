@@ -25,5 +25,6 @@ export interface Place {
     category: Category,
     is_recommended: boolean,
     offer: Offer,
-    distance: string
+    distance: string,
+    videos: any[] 
 }
