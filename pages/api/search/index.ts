@@ -26,14 +26,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         // Restructure the places based on categories
         const categorizedPlaces: any = {};
+
         places.forEach((place: Place) => {
             const categoryName: string = place?.category?.name;
             // categoriesSet.add(place.category);
-            if (!categorizedPlaces[categoryName]) {
-                categorizedPlaces[categoryName] = [];
-                categories.push(place.category);
+            if (place?.category?.name) {
+                if (!categorizedPlaces[categoryName]) {
+                    categorizedPlaces[categoryName] = [];
+                    categories.push(place.category);
+                }
+                categorizedPlaces[categoryName].push(place);
             }
-            categorizedPlaces[categoryName].push(place);
         });
 
         // const categories = Array.from(categoriesSet).map(category => (category));

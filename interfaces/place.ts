@@ -27,4 +27,5 @@ export interface Place {
     offer: Offer,
     distance: string,
     videos: any[] 
+    sub_cats: any[]
 }

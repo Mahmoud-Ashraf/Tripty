@@ -170,8 +170,8 @@ const PlacePage = (props: Props) => {
                             <div className={classes.specs}>
                                 {place?.rating && <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>}
                                 {
-                                    place?.category?.name ?
-                                        <span className={classes.cuisine}> {place?.category.icon && <img src={place.category.icon} />} {place?.category?.name}</span>
+                                    place?.category?.name || place.sub_cats.length ?
+                                        <span className={classes.cuisine}> {(place?.category.icon || place.sub_cats[0].icon) && <img src={place.sub_cats[0].icon || place.category.icon} />} {place.sub_cats[0].name || place?.category?.name}</span>
                                         :
                                         ''
                                 }
