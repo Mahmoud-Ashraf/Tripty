@@ -154,12 +154,12 @@ const PlacePage = (props: Props) => {
                     </div>
                     <div className="row gx-5">
                         <div className="col-md-6">
-                            {place.tags.length > 0 && <div className={classes.tags}>
-                                <div className="row">
+                            {(place.tags.length > 0 || place.sub_cats.length > 0) && <div className={classes.tags}>
+                                <div className="row g-2">
                                     {
-                                        place?.tags?.map(tag => {
+                                        [...place?.sub_cats, ...place?.tags].map((tag, i) => {
                                             return (
-                                                <div key={tag.id} className="col-auto">
+                                                <div key={i} className="col-auto">
                                                     <div className={classes.tag}>{tag.name}</div>
                                                 </div>
                                             )
