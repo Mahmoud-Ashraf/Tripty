@@ -13,15 +13,35 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba($main-color, .5);
-    padding: 8vw;
+    padding: 1rem;
     // display: flex;
     // justify-content: center;
     // align-items: center;
     overflow-y: auto;
-    z-index: 9999999
+    z-index: 9999999;
+
+    @media (min-width: 576px) {
+        padding: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
+
+    @media (min-width: 992px) {
+        padding: 3rem;
+    }
+
+    @media (min-width: 1200px) {
+        padding: 4rem;
+    }
+
+    @media (min-width: 1400px) {
+        padding: 5rem;
+    }
 }
 
 .container {

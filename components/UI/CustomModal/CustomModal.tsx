@@ -6,10 +6,11 @@ import { tripActions } from "@/store/Trip/Trip";
 interface Props {
     children: ReactNode,
     onOutsideClick: () => void,
-    onClose?: () => void
+    onClose?: () => void,
+    size?: string
 }
 const CustomModal = (props: Props) => {
-    const { children } = props;
+    const { children, size = 'lg' } = props;
     const modalRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const outSideClick = (e: MouseEvent) => {

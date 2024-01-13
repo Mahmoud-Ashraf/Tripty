@@ -14,8 +14,8 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
                         <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km' /></span>
                     </div>
                     {
-                        place?.category?.name || place.sub_cats.length ?
-                            <span className={classes.cuisine}> {(place?.category.icon || place.sub_cats[0].icon) && <img src={place.sub_cats[0].icon || place.category.icon} />} {place.sub_cats[0].name || place?.category?.name}</span>
+                        place?.category?.name || place?.sub_cats?.length > 0 ?
+                            <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
                             :
                             ''
                     }

@@ -2,6 +2,12 @@ import useHTTP from '@/hooks/use-http';
 import classes from './menu-modal.module.scss';
 import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
+// import PdfViewer from '../PDFViewer/PDFViewer';
+import dynamic from 'next/dynamic'
+
+const PdfViewer = dynamic(() => import('../PDFViewer/PDFViewer'), {
+    ssr: false,
+});
 
 function SampleNextArrow(props: any) {
     const { className, style, onClick } = props;
@@ -17,7 +23,7 @@ function SamplePrevArrow(props: any) {
     );
 }
 
-const MenuModal = ({ menuId }: { menuId: any }) => {
+const MenuModal = ({ link, type }: { link: string, type: string }) => {
     const { isLoading, error, sendRequest } = useHTTP();
     const [menu, setMenu] = useState();
     const settings = {
@@ -30,34 +36,14 @@ const MenuModal = ({ menuId }: { menuId: any }) => {
         prevArrow: <SamplePrevArrow />
     };
 
-    const getMenu = () => {
-        sendRequest(
-            {
-                url: `/api/menu/${menuId}`,
-                method: 'GET'
-            },
-            (data: any) => {
-                setMenu(data);
-            },
-            (err: any) => console.error(err)
-        )
-    }
-
-    useEffect(() => {
-        getMenu();
-    }, [])
-
     return (
         <div className={classes.container}>
-            <Slider {...settings}>
-                {
-                    // images?.map((img, i) => {
-                    //     return (
-                    //         <img key={i} src={img} />
-                    //     )
-                    // })
-                }
-            </Slider>
+            {
+                type === 'pdf' ?
+                    <PdfViewer pdfUrl={link} />
+                    :
+                    <iframe style={{height: '70vh', marginTop: '3rem'}} src={link} frameBorder={0} width='100%' height='100%' />
+            }
         </div>
     )
 }

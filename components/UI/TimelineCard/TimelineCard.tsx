@@ -32,7 +32,7 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
                         <i className="fa-solid fa-clock"></i>
                         <span>{formatTiming(date)}</span>
                     </div>
-                    {showCover && <button onClick={handleReplace} className='btn btn-main btn-sm'><Translate id='buttons.replace' /></button>}
+                    {showCover && onReplaceClick && <button onClick={handleReplace} className='btn btn-main btn-sm'><Translate id='buttons.replace' /></button>}
                 </div>
                 {showCover && <div className={classes.cover}>
                     <img src={place?.featured_image} alt='card-image' />
@@ -63,8 +63,8 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
                 <div className={classes.utils}>
                     <span className={classes.location}><i className="fa-solid fa-location-dot"></i> {place.city.name}</span>
                     {
-                        place?.category?.name || place.sub_cats.length ?
-                            <span className={classes.cuisine}> {(place?.category.icon || place.sub_cats[0].icon) && <img src={place.sub_cats[0].icon || place.category.icon} />} {place.sub_cats[0].name || place?.category?.name}</span>
+                        place?.category?.name || place?.sub_cats?.length > 0 ?
+                            <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
                             :
                             ''
                     }

@@ -8,6 +8,7 @@ import { tripActions } from '@/store/Trip/Trip';
 import Translate from '../helpers/Translate/Translate';
 import ar from 'date-fns/locale/ar';
 import { useRouter } from 'next/router';
+import useTranslate from '@/hooks/use-translate';
 registerLocale('ar', ar);
 
 interface CustomDateButtonProps {
@@ -25,11 +26,13 @@ const DateCustomButton = forwardRef<HTMLButtonElement, CustomDateButtonProps>(
 const DetailsStep = () => {
     const dispatch = useDispatch();
     const router = useRouter();
+    const { translate } = useTranslate();
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [howComing, setHowComing] = useState<string[]>(['solo', 'family', 'friends']);
     const [selectedComing, setSelectedComing] = useState<string>('');
     const [adultsCount, setAdultsCount] = useState<number>();
     const [childrenCount, setChildrenCount] = useState<number>();
+    const [tripName, setTripName] = useState<string>('');
 
     function formatDateToYYYYMMDD(date: Date | null) {
         if (date) {
@@ -74,12 +77,18 @@ const DetailsStep = () => {
         dispatch(tripActions.setTripData({ date: formatDateToYYYYMMDD(selectedDate) }));
     }, [selectedDate]);
 
+    useEffect(() => {
+        dispatch(tripActions.setTripData({ name: tripName }));
+    }, [tripName]);
+
 
 
     return (
         <div className={classes.details}>
             <div className="row">
                 <div className="col-md-6">
+                    <TripModalHeading text='tripName' />
+                    <input placeholder={translate('placeholder.tripName')} className={classes.input} value={tripName} onChange={(e) => setTripName(e.target.value)} />
                     <TripModalHeading text='date' />
                     <DatePicker
                         selected={selectedDate}

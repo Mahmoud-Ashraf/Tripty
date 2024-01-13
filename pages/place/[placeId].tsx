@@ -114,7 +114,7 @@ const PlacePage = (props: Props) => {
             {
                 showMenuModal &&
                 <CustomModal onOutsideClick={() => setShowMenuModal(false)} onClose={() => setShowMenuModal(false)}>
-                    <MenuModal menuId={place?.menu} />
+                    <MenuModal link={place?.menu_pdf || place?.menu} type={place?.menu_pdf ? 'pdf' : 'link'} />
                 </CustomModal>
             }
             {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
@@ -170,8 +170,8 @@ const PlacePage = (props: Props) => {
                             <div className={classes.specs}>
                                 {place?.rating && <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>}
                                 {
-                                    place?.category?.name || place.sub_cats.length ?
-                                        <span className={classes.cuisine}> {(place?.category.icon || place.sub_cats[0].icon) && <img src={place.sub_cats[0].icon || place.category.icon} />} {place.sub_cats[0].name || place?.category?.name}</span>
+                                    place?.category?.name || place?.sub_cats?.length > 0 ?
+                                        <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
                                         :
                                         ''
                                 }
@@ -230,7 +230,7 @@ const PlacePage = (props: Props) => {
                                 <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
                                 <p className={classes.aboutText}>{place?.about}</p>
                             </div>}
-                            {place?.menu && <div className={classes.menu}>
+                            {(place?.menu || place?.menu_pdf) && <div className={classes.menu}>
                                 <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
                                 <button onClick={() => setShowMenuModal(true)} className={classes.menuLink}><Translate id='buttons.showMenu' /></button>
                             </div>}

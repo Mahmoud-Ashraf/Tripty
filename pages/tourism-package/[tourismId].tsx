@@ -161,8 +161,8 @@ const PlacePage = (props: Props) => {
                             <div className={classes.specs}>
                                 <span className={classes.rate}><i className="fa-solid fa-star"></i> {Number(tourismPackage?.rating).toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>
                                 {
-                                    tourismPackage?.category?.name || tourismPackage.sub_cats.length ?
-                                        <span className={classes.cuisine}> {(tourismPackage?.category.icon || tourismPackage.sub_cats[0].icon) && <img src={tourismPackage.sub_cats[0].icon || tourismPackage.category.icon} />} {tourismPackage.sub_cats[0].name || tourismPackage?.category?.name}</span>
+                                    tourismPackage?.category?.name || tourismPackage?.sub_cats?.length > 0 ?
+                                        <span className={classes.cuisine}> {(tourismPackage?.category?.icon || tourismPackage?.sub_cats[0]?.icon) && <img src={tourismPackage?.sub_cats && tourismPackage?.sub_cats[0]?.icon ? tourismPackage?.sub_cats[0]?.icon : tourismPackage?.category?.icon} />} {tourismPackage?.sub_cats && tourismPackage?.sub_cats[0]?.name ? tourismPackage?.sub_cats[0]?.name : tourismPackage?.category?.name}</span>
                                         :
                                         ''
                                 }

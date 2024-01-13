@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    return config;
+  },
   i18n: {
     locales: ['en', 'ar'],
     defaultLocale: 'ar',

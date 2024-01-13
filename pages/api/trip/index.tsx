@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { headers } = req;
 
     try {
-        const response = await fetch(`${baseUrl}trips?change_language=${locale}`, {
+        const response = await fetch(`${baseUrl}trips/${id}?change_language=${locale}`, {
             headers: { 'Authorization': headers['authorization'] || '' }
         });
         if (!response.ok) {
@@ -20,11 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log(data);
 
         // Search for places based on the provided text
-        const returnTrip = data.data.find((trip: any) => trip.id === Number(id));
-        console.log(returnTrip);
+        // const returnTrip = data.data.find((trip: any) => trip.id === Number(id));
+        // console.log(returnTrip);
         // const categories = Array.from(categoriesSet).map(category => (category));
         // Respond with the categorized places
-        res.status(200).json({ trip: returnTrip });
+        res.status(200).json({ trip: data.data });
     } catch (error: any) {
         res.status(400).json({ error: error.message });
     }

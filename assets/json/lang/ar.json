@@ -20,7 +20,7 @@
         "discounts": "خصومات",
         "explorePlacesNearYou": "استكشف اماكن بالقرب منك",
         "explore": "اكتشف",
-        "trend": "تريند",
+        "trend": "الهبة",
         "search": "بحث",
         "places": "الأماكن",
         "tourismPackages": "باقات سياحية",
@@ -71,7 +71,8 @@
         "tagsPlaceHolder": "سبا, تسوق",
         "adults": "بالغين",
         "children": "أطفال",
-        "other": "آخرى"
+        "other": "آخرى",
+        "tripName": "اسم طلعتك"
     },
     "common": {
         "yes": "نعم",
@@ -82,7 +83,8 @@
         "m": "د",
         "recomended": "موصى به",
         "male": "ذكر",
-        "female": "انثى"
+        "female": "انثى",
+        "day": "يوم"
     },
     "errors": {
         "tagsError": "من فضلك اختر اهتماماتك اولاً",
@@ -94,7 +96,10 @@
         "The password field is required": "كلمة المرور مطلوبة",
         "The password confirmation does not match": "كلمة المرور غير متطابقة",
         "The mobile has already been taken": "رقم الجوال ماخوذ من قبل",
-        "The password must be at least 6 characters": "كلمة المرور يجب ان تكون 6 احرف على الأقل"
+        "The password must be at least 6 characters": "كلمة المرور يجب ان تكون 6 احرف على الأقل",
+        "updateError": "برجاء اكمال البيانات",
+        "tripNameRequiredError": "برجاء ادخال اسم لطلعتك",
+        "tripNameTakenError": "اسم الطلعة مأخوذ من قبل"
     },
     "currencies": {
         "sar": "ريال"
@@ -121,7 +126,9 @@
         "confirmPassword": "تأكيد كلمة المرور",
         "gender": "الجنس",
         "city": "المدينة",
-        "selectInterests": "اختر اهتماماتك"
+        "selectInterests": "اختر اهتماماتك",
+        "birthdate": "تاريخ الميلاد",
+        "tripName": "اسم طلعتك"
     },
     "noData": {
         "sorry": "عفواً",

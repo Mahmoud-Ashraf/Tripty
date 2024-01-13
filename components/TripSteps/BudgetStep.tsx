@@ -13,7 +13,7 @@ const BudgetStep = () => {
     const { translate } = useTranslate();
 
     useEffect(() => {
-        setHaveBudget(true);
+        setHaveBudget(false);
     }, []);
     useEffect(() => {
         dispatch(tripActions.setTripData({ budget: (haveBudget && budget) ? budget : '0' }))
@@ -25,13 +25,13 @@ const BudgetStep = () => {
                     <TripModalHeading text='doYouHaveBudget' />
                     <div className="row">
                         <div className="col-4">
-                            <div onClick={() => setHaveBudget(true)} className={`${classes.selection} ${haveBudget ? classes.selected : ''}`}>
-                                <span><Translate id='common.yes' /></span>
+                            <div onClick={() => setHaveBudget(false)} className={`${classes.selection} ${!haveBudget ? classes.selected : ''}`}>
+                                <span><Translate id='common.no' /></span>
                             </div>
                         </div>
                         <div className="col-4">
-                            <div onClick={() => setHaveBudget(false)} className={`${classes.selection} ${!haveBudget ? classes.selected : ''}`}>
-                                <span><Translate id='common.no' /></span>
+                            <div onClick={() => setHaveBudget(true)} className={`${classes.selection} ${haveBudget ? classes.selected : ''}`}>
+                                <span><Translate id='common.yes' /></span>
                             </div>
                         </div>
                     </div>

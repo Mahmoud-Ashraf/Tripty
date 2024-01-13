@@ -36,8 +36,8 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
                     <div className={classes.details}>
                         <span className={classes.rate}><i className="fa-solid fa-star"></i> {Number(place.rating).toFixed(1)}</span>
                         {
-                            place?.category?.name || place?.sub_cats?.length ?
-                                <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats[0]?.icon || place?.category?.icon} />} {place?.sub_cats[0]?.name || place?.category?.name}</span>
+                            place?.category?.name || place?.sub_cats?.length > 0 ?
+                                <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
                                 :
                                 ''
                         }

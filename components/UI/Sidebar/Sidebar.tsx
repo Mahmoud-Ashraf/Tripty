@@ -17,7 +17,7 @@ const Sidebar = () => {
         <div className={classes.sidebar}>
             <div className={classes.details}>
                 <div className={classes.data}>
-                    <img src={session?.user?.image || ''} alt="user avatar" />
+                    {session?.user?.image && <img src={session?.user?.image || ''} alt="user avatar" />}
                     <h3>{session?.user?.name}</h3>
                 </div>
                 <div className={classes.logout} onClick={handleLogout}>
@@ -26,12 +26,12 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className={classes.links}>
-                    {/* <i className="fa-regular fa-circle-user"></i> */}
-                    {/* <i className="fa-regular fa-heart"></i> */}
-                    {/* <i className="fa-solid fa-route"></i> */}
-                    {/* <i className="fa-regular fa-bell"></i> */}
-                    {/* <i className="fa-solid fa-file-signature"></i> */}
-                    {/* <i className="fa-solid fa-shield-halved"></i> */}
+                {/* <i className="fa-regular fa-circle-user"></i> */}
+                {/* <i className="fa-regular fa-heart"></i> */}
+                {/* <i className="fa-solid fa-route"></i> */}
+                {/* <i className="fa-regular fa-bell"></i> */}
+                {/* <i className="fa-solid fa-file-signature"></i> */}
+                {/* <i className="fa-solid fa-shield-halved"></i> */}
                 <div className={classes.item}>
                     <ActiveLink href="profile" ><Translate id="sidebar.personalData" /></ActiveLink>
                 </div>
