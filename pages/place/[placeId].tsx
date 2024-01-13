@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "@/store/Auth/Auth";
 import { RootState } from "@/store";
 import MenuModal from "@/components/MenuModal/MenuModal";
+import OfferModal from "@/components/OfferModal/OfferModal";
 
 interface Props {
     serverPlace: Place,
@@ -35,6 +36,7 @@ const PlacePage = (props: Props) => {
     const [showRateModal, setShowRateModal] = useState(false);
     const [showGalleryModal, setShowGalleryModal] = useState(false);
     const [showMenuModal, setShowMenuModal] = useState(false);
+    const [showOfferModal, setShowOfferModal] = useState(false);
     const { isLoading, error, sendRequest } = useHTTP();
     const router = useRouter();
     const [isFavorite, setIsFavorite] = useState<boolean>();
@@ -115,6 +117,12 @@ const PlacePage = (props: Props) => {
                 showMenuModal &&
                 <CustomModal onOutsideClick={() => setShowMenuModal(false)} onClose={() => setShowMenuModal(false)}>
                     <MenuModal link={place?.menu_pdf || place?.menu} type={place?.menu_pdf ? 'pdf' : 'link'} />
+                </CustomModal>
+            }
+            {
+                showOfferModal &&
+                <CustomModal size='sm' onOutsideClick={() => setShowOfferModal(false)} onClose={() => setShowOfferModal(false)}>
+                    <OfferModal offer={place?.offer} />
                 </CustomModal>
             }
             {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
@@ -248,7 +256,7 @@ const PlacePage = (props: Props) => {
                             <div className={classes.cover}>
                                 <div className={classes.photo}>
                                     {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                    {place?.offer && <div className={classes.offer}>
+                                    {place?.offer && <div className={classes.offer} onClick={() => setShowOfferModal(true)}>
                                         <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>

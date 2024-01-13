@@ -42,6 +42,16 @@
     @media (min-width: 1400px) {
         padding: 5rem;
     }
+
+    &.sm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .container {
+            width: min(500px, 100%);
+        }
+    }
 }
 
 .container {

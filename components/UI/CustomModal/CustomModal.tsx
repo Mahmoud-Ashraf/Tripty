@@ -38,8 +38,8 @@ const CustomModal = (props: Props) => {
         <>
             <div className={classes.modalBackdrop}>
             </div>
-            <div className={classes.modalOverlay}>
-                <div ref={modalRef} className={classes.container}>
+            <div className={`${classes.modalOverlay} ${size === 'sm' ? classes.sm : ''}`}>
+                <div ref={modalRef} className={`${classes.container}`}>
                     {props.onClose && <div className={classes.close}>
                         <i onClick={props.onClose} className="fa-solid fa-xmark"></i>
                     </div>}
