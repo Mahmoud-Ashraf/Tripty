@@ -9,7 +9,7 @@ import useHttp from '@/hooks/use-http';
 import { City } from '@/interfaces/City';
 import { useRouter } from 'next/router';
 import { Tag } from '@/interfaces/tag';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 
 const CompleteData = (props: any) => {
     const { sliders } = props;
@@ -21,19 +21,45 @@ const CompleteData = (props: any) => {
     const [city, setCity] = useState('');
     const [tags, setTags] = useState<Tag[]>([]);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-    const { data: session }: any = useSession();
+    // const { data: session }: any = useSession();
 
+
+    const checkUserSession = async () => {
+        const session: any = await getSession();
+        if (session?.user) {
+            if (session?.user?.gender && session?.user?.city && session.user?.interests) {
+                router.push('/home');
+            } else {
+                getProfile();
+            }
+        } else {
+            router.push('/home');
+        }
+    }
     useEffect(() => {
+        checkUserSession();
         getLocations();
         getTags();
     }, []);
 
-    useEffect(() => {
-        if (session?.user?.name && session.user.gender && session.user.city) {
-            // router.push('/home');
-        }
-    }, [session?.user]);
-
+    const getProfile = () => {
+        sendRequest(
+            {
+                url: '/api/user/profile',
+                method: 'GET'
+            },
+            (data: any) => {
+                if (data.gender && data.city && data.interests) {
+                    router.push('/home');
+                } else {
+                    setGender(data.gender);
+                    setCity(data.city.id);
+                    setSelectedTags(data.interests);
+                }
+            },
+            (err: any) => console.error('user Error: ', err)
+        )
+    }
 
     const getLocations = () => {
         sendRequest(
@@ -72,7 +98,7 @@ const CompleteData = (props: any) => {
             },
             (data: any) => {
                 setTags(data);
-                setSelectedTags([]);
+                // setSelectedTags([]);
             },
             (err: any) => console.log(err)
         );
