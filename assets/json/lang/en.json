@@ -84,7 +84,8 @@
         "recomended": "Recomended",
         "male": "Male",
         "female": "Female",
-        "day": "Day"
+        "day": "Day",
+        "all": "All"
     },
     "errors": {
         "tagsError": "Please Select Tags First",

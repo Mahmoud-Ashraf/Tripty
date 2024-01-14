@@ -3,20 +3,20 @@ import HomeEntryPoints from "@/components/HomeEntryPoints/HomeEntryPoints";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import HomeTabs from "@/components/HomeTabs/HomeTabs";
 import HomeTourism from "@/components/HomeTourism/HomeTourism";
-import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
+// import PlaceHeader from "@/components/UI/PlaceHeader/PlaceHeader";
 import SectionHeader from "@/components/UI/SectionHeader/SectionHeader";
-import Translate from "@/components/helpers/Translate/Translate";
+// import Translate from "@/components/helpers/Translate/Translate";
 import useHTTP from "@/hooks/use-http";
 import { Category } from "@/interfaces/category";
 import { Place } from "@/interfaces/place";
 import { Slider } from "@/interfaces/slider";
-import { tripActions } from "@/store/Trip/Trip";
+// import { tripActions } from "@/store/Trip/Trip";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import explore from '@/public/assets/images/explore.svg';
+// import explore from '@/public/assets/images/explore.svg';
 import HomeTrip from "@/components/HomeTrip/HomeTrip";
-import { RootState } from "@/store";
+// import { RootState } from "@/store";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
@@ -27,37 +27,37 @@ interface Props {
 }
 const Home = (props: Props) => {
    const { isLoading, error, sendRequest } = useHTTP();
-   const { sliders, tabs, categorizedPlaces } = props;
-   const [newTabs, setNewTabs] = useState(tabs);
-   const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
+   const { sliders } = props;
+   // const [newTabs, setNewTabs] = useState(tabs);
+   // const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
    const [newSliders, setNewSliders] = useState(sliders);
    const dispatch = useDispatch();
-   const coords = useSelector((state: RootState) => state.auth.userCoords);
+   // const coords = useSelector((state: RootState) => state.auth.userCoords);
    const { data: session }: any = useSession();
    const router = useRouter();
 
    useEffect(() => {
-      fetchPlaces();
+      // fetchPlaces();
       fetchSliders();
    }, []);
 
-   const fetchPlaces = () => {
-      sendRequest(
-         {
-            url: `/api/places/categorized${coords ? `?long=${coords?.longitude}&lat=${coords?.latitude}` : ''}`,
-            method: 'GET'
-         },
-         (data: any) => {
-            console.log(data);
-            setNewPlaces(data.categorizedPlaces);
-            setNewTabs(data.categories);
-         },
-         (err: any) => {
-            // setNewTabs([]);
-            // setNewPlaces({});
-         }
-      )
-   }
+   // const fetchPlaces = () => {
+   //    sendRequest(
+   //       {
+   //          url: `/api/places/tabplaces${coords ? `?long=${coords?.longitude}&lat=${coords?.latitude}` : ''}`,
+   //          method: 'GET'
+   //       },
+   //       (data: any) => {
+   //          console.log(data);
+   //          setNewPlaces(data.categorizedPlaces);
+   //          setNewTabs(data.categories);
+   //       },
+   //       (err: any) => {
+   //          // setNewTabs([]);
+   //          // setNewPlaces({});
+   //       }
+   //    )
+   // }
 
    const fetchSliders = () => {
       sendRequest(
@@ -105,7 +105,7 @@ const Home = (props: Props) => {
          <SectionHeader title="headings.explore" />
          <HomeEntryPoints />
 
-         <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
+         <HomeTabs />
 
          {/* <PlaceHeader onClick={() => { dispatch(tripActions.openShowTripModal()) }}>
             <h2><Translate id='headings.startYour' /></h2>
@@ -121,9 +121,9 @@ const Home = (props: Props) => {
    )
 }
 
-interface CategorizedPlaces {
-   [categoryName: string]: Place[]; // Define the structure for categorized places
-}
+// interface CategorizedPlaces {
+//    [categoryName: string]: Place[]; // Define the structure for categorized places
+// }
 
 //  interface Place {
 //    // Define the structure for the Place object
