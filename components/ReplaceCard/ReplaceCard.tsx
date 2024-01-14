@@ -13,10 +13,11 @@ const ReplaceCard = ({ place, onSelectPlace }: any) => {
                         <span className={classes.rate}><i className="fa-solid fa-star"></i> {place.rating.toFixed(1)}</span>
                         <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km' /></span>
                     </div>
-                    {place.category.parent &&
-                        <div className={classes.cuisine}>
-                            <i className="fa-solid fa-utensils"></i> {place.category.name} : ''
-                        </div>
+                    {
+                        place?.category?.name || place?.sub_cats?.length > 0 ?
+                            <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
+                            :
+                            ''
                     }
                     <div className={classes.dots}>
                         <i className="fa-solid fa-ellipsis-vertical fa-2xl"></i>

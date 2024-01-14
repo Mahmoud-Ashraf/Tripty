@@ -52,8 +52,9 @@ const Register = (props: Props) => {
                     redirect: false,
                     email: email,
                     password: password,
+                    callbackUrl: '/home'
                 });
-                router.push('/auth/complete-data');
+                // router.push('/auth/complete-data');
             },
             (err: any) => console.log(err)
         )

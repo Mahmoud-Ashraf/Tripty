@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import classes from './auth.module.scss';
 import Head from 'next/head';
-import { useState } from 'react';
-import { signIn } from "next-auth/react"
+import { useEffect, useState } from 'react';
+import { signIn, useSession } from "next-auth/react"
 import { Button, Form } from 'react-bootstrap';
 import Translate from '@/components/helpers/Translate/Translate';
 import useTranslate from '@/hooks/use-translate';
 import AuthLayout from '@/components/layout/AuthLayout/AuthLayout';
+import { useRouter } from 'next/router';
 
 const Login = (props: any) => {
     const { sliders } = props;
@@ -14,6 +15,9 @@ const Login = (props: any) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
+    const { data: session } = useSession();
+    const router = useRouter();
+
     const handleSignIn = async () => {
         signIn('credentials', {
             redirect: false,
@@ -28,6 +32,13 @@ const Login = (props: any) => {
         });
 
     };
+
+    useEffect(() => {
+        if (session) {
+            router.push('/home');
+        }
+    }, [session, router]);
+    
     return (
         <>
             <Head>
@@ -51,10 +62,10 @@ const Login = (props: any) => {
                 <div className={classes.socialLogin}>
                     <p><Translate id='auth.loginBy' /></p>
                     <div className={classes.loginOptions}>
-                        <button className={classes.loginOption} onClick={() => signIn('google', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-google"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('facebook', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-facebook-f"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('twitter', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-x-twitter"></i></button>
-                        <button className={classes.loginOption} onClick={() => signIn('apple', { callbackUrl: '/auth/complete-data' })}><i className="fa-brands fa-apple"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('google', { callbackUrl: '/home' })}><i className="fa-brands fa-google"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('facebook', { callbackUrl: '/home' })}><i className="fa-brands fa-facebook-f"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('twitter', { callbackUrl: '/home' })}><i className="fa-brands fa-x-twitter"></i></button>
+                        <button className={classes.loginOption} onClick={() => signIn('apple', { callbackUrl: '/home' })}><i className="fa-brands fa-apple"></i></button>
                     </div>
                 </div>
                 <Link href={'/auth/register'} className={classes.register}><Translate id='auth.registerWithMail' /></Link>

@@ -99,12 +99,14 @@
 }
 
 .cuisine {
-    // font-size: 1.4rem;
+    img {
+        width: 30px;
+    }
 }
 
-.cuisine i {
-    color: #979aa3;
-}
+// .cuisine i {
+//     color: #979aa3;
+// }
 
 .price {
     font-size: 1.5rem;

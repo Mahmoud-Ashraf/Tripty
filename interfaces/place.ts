@@ -10,7 +10,7 @@ export interface Place {
     max_price?: string,
     price?: string,
     rating: number,
-    menu?: string,
+    menu: string,
     open_at?: string,
     close_at?: string,
     city?: { id: number, name: string, code: string | null }
@@ -27,4 +27,6 @@ export interface Place {
     offer: Offer,
     distance: string,
     videos: any[] 
+    sub_cats: any[],
+    menu_pdf: string
 }

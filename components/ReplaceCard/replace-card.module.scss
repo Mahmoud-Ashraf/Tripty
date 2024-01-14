@@ -59,6 +59,12 @@
                 color: $yellow;
             }
         }
+        .cuisine {
+            display: flex;
+            img {
+                width: 30px;
+            }
+        }
     }
 
     .actions {

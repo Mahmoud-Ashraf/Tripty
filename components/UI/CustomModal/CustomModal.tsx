@@ -6,10 +6,11 @@ import { tripActions } from "@/store/Trip/Trip";
 interface Props {
     children: ReactNode,
     onOutsideClick: () => void,
-    onClose?: () => void
+    onClose?: () => void,
+    size?: string
 }
 const CustomModal = (props: Props) => {
-    const { children } = props;
+    const { children, size = 'lg' } = props;
     const modalRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const outSideClick = (e: MouseEvent) => {
@@ -37,8 +38,8 @@ const CustomModal = (props: Props) => {
         <>
             <div className={classes.modalBackdrop}>
             </div>
-            <div className={classes.modalOverlay}>
-                <div ref={modalRef} className={classes.container}>
+            <div className={`${classes.modalOverlay} ${size === 'sm' ? classes.sm : ''}`}>
+                <div ref={modalRef} className={`${classes.container}`}>
                     {props.onClose && <div className={classes.close}>
                         <i onClick={props.onClose} className="fa-solid fa-xmark"></i>
                     </div>}

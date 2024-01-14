@@ -19,7 +19,10 @@ const TripModalFooter = () => {
     const { data: session }: any = useSession();
 
     const nextStep = () => {
-        if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
+        if (step === 2 && !tripData?.name) {
+            setStepError('errors.tripNameRequiredError');
+        }
+        else if (step === 4 && (!tripData?.tags || !(tripData.tags.length > 0))) {
             setStepError('errors.tagsError')
         } else if (step === 4) {
             // if (session?.token) {
@@ -27,7 +30,7 @@ const TripModalFooter = () => {
                 {
                     url: '/api/trip/create',
                     method: 'POST',
-                    body: { ...tripData, name: `trip ${tripData?.date} from ${tripData?.start_at} to ${tripData?.end_at} @ ${tripData?.city_id}` }
+                    body: { ...tripData }
                 },
                 (data: any) => {
                     dispatch(tripActions.setCurrentTrip(data));
@@ -35,13 +38,19 @@ const TripModalFooter = () => {
                     // dispatch(tripActions.closeShowTripModal());
                     dispatch(tripActions.nextStep());
                 },
-                (err: any) => console.error(err)
+                (err: any) => {
+                    if (err === 'The name has already been taken.') {
+                        setStepError('errors.tripNameTakenError')
+                    }
+                    console.log(err)
+                }
             )
             // } else {
             //     dispatch(authActions.openShowAuthModal());
             // }
         } else {
             dispatch(tripActions.nextStep());
+            setStepError('');
         }
     }
 

@@ -50,6 +50,7 @@ const CreateTrip = () => {
     const [viewType, setViewType] = useState<'map' | 'places' | 'replace'>('places');
     useEffect(() => {
         if (currentTrip) {
+            console.log(currentTrip);
             setData(currentTrip);
         } else {
             router.push('/home');
@@ -107,12 +108,12 @@ const CreateTrip = () => {
             </PlaceHeader> */}
             <div className={classes.container}>
                 <div className={classes.header}>
-                    <div className={classes.city}>
-                        Riyadh
-                    </div>
+                    {data?.city?.name && <div className={classes.city}>
+                        {data?.city?.name}
+                    </div>}
                     <div className={classes.group}>
-                        <p>1 day</p>
-                        <p>5 Family, 2023</p>
+                        <p>1 <Translate id="common.day" /> : {data?.date && <span>{data?.date}</span>}</p>
+                        <p>{data?.adults && <span>{data?.adults} <Translate id="tripModal.adults" /></span>}{data?.children ? <span>, {data?.children} <Translate id="tripModal.children" /></span> : ''}</p>
                     </div>
                     <div className={classes.switch}>
                         {
@@ -154,8 +155,8 @@ const CreateTrip = () => {
                             {
                                 viewType === 'map' &&
                                 <>
-                                    <Map locations={Object.keys(currentTrip?.places)?.map((key) => {
-                                        return { location: { lat: Number(currentTrip?.places[key][0].lat), lng: Number(currentTrip?.places[key][0].long) } }
+                                    <Map locations={Object.keys(data?.places)?.map((key) => {
+                                        return { location: { lat: Number(data?.places[key][0].lat), lng: Number(data?.places[key][0].long) } }
                                     })} />
                                     <Timeline>
                                         {

@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import explore from '@/public/assets/images/explore.svg';
 import HomeTrip from "@/components/HomeTrip/HomeTrip";
 import { RootState } from "@/store";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 interface Props {
    sliders: Slider[] | [],
@@ -31,6 +33,8 @@ const Home = (props: Props) => {
    const [newSliders, setNewSliders] = useState(sliders);
    const dispatch = useDispatch();
    const coords = useSelector((state: RootState) => state.auth.userCoords);
+   const { data: session }: any = useSession();
+   const router = useRouter();
 
    useEffect(() => {
       fetchPlaces();
@@ -69,6 +73,27 @@ const Home = (props: Props) => {
          }
       )
    }
+
+   const getProfile = () => {
+      sendRequest(
+         {
+            url: '/api/user/profile',
+            method: 'GET'
+         },
+         (data: any) => {
+            if (!data.gender && !data.city && !data.interests) {
+               router.push('/auth/complete-data');
+            }
+         },
+         (err: any) => console.error('user Error: ', err)
+      )
+   }
+
+   useEffect(() => {
+      if (session?.user) {
+         getProfile();
+      }
+   }, [session?.user]);
    return (
       <>
          <Head>

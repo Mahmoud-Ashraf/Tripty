@@ -71,7 +71,8 @@
         "tagsPlaceHolder": "Spa, Shopping",
         "adults": "Adults",
         "children": "Children",
-        "other": "Other"
+        "other": "Other",
+        "tripName": "Trip Name"
     },
     "common": {
         "yes": "Yes",
@@ -82,7 +83,8 @@
         "m": "m",
         "recomended": "Recomended",
         "male": "Male",
-        "female": "Female"
+        "female": "Female",
+        "day": "Day"
     },
     "errors": {
         "tagsError": "Please Select Tags First",
@@ -94,7 +96,10 @@
         "The password field is required": "Password is Required",
         "The password confirmation does not match": "Password dosen't match",
         "The mobile has already been taken": "Mobile has already been taken",
-        "The password must be at least 6 characters": "Password must be at least 6 characters"
+        "The password must be at least 6 characters": "Password must be at least 6 characters",
+        "updateError": "Please, Complete your data",
+        "tripNameRequiredError": "Trip name is required",
+        "tripNameTakenError": "Trip name is already taken"
     },
     "currencies": {
         "sar": "SAR"
@@ -121,7 +126,9 @@
         "confirmPassword": "Confirm Password",
         "gender": "Gender",
         "city": "City",
-        "selectInterests": "Select Your Interests"
+        "selectInterests": "Select Your Interests",
+        "birthdate": "Birth date",
+        "tripName": "Trip Name"
     },
     "noData": {
         "sorry": "Sorry",

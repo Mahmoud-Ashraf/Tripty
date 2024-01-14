@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "@/store/Auth/Auth";
 import { RootState } from "@/store";
 import MenuModal from "@/components/MenuModal/MenuModal";
+import OfferModal from "@/components/OfferModal/OfferModal";
 
 interface Props {
     serverPlace: Place,
@@ -35,6 +36,7 @@ const PlacePage = (props: Props) => {
     const [showRateModal, setShowRateModal] = useState(false);
     const [showGalleryModal, setShowGalleryModal] = useState(false);
     const [showMenuModal, setShowMenuModal] = useState(false);
+    const [showOfferModal, setShowOfferModal] = useState(false);
     const { isLoading, error, sendRequest } = useHTTP();
     const router = useRouter();
     const [isFavorite, setIsFavorite] = useState<boolean>();
@@ -114,7 +116,13 @@ const PlacePage = (props: Props) => {
             {
                 showMenuModal &&
                 <CustomModal onOutsideClick={() => setShowMenuModal(false)} onClose={() => setShowMenuModal(false)}>
-                    <MenuModal menuId={place?.menu} />
+                    <MenuModal link={place?.menu_pdf || place?.menu} type={place?.menu_pdf ? 'pdf' : 'link'} />
+                </CustomModal>
+            }
+            {
+                showOfferModal &&
+                <CustomModal size='sm' onOutsideClick={() => setShowOfferModal(false)} onClose={() => setShowOfferModal(false)}>
+                    <OfferModal offer={place?.offer} />
                 </CustomModal>
             }
             {/* <PlaceHeader name={place?.name} id={place?.id} img={place?.featured_image} logo={place.logo} fav isFav={place.is_favoritable} share discount={place.offer} /> */}
@@ -154,12 +162,12 @@ const PlacePage = (props: Props) => {
                     </div>
                     <div className="row gx-5">
                         <div className="col-md-6">
-                            {place.tags.length > 0 && <div className={classes.tags}>
-                                <div className="row">
+                            {(place.tags.length > 0 || place.sub_cats.length > 0) && <div className={classes.tags}>
+                                <div className="row g-2">
                                     {
-                                        place?.tags?.map(tag => {
+                                        [...place?.sub_cats, ...place?.tags].map((tag, i) => {
                                             return (
-                                                <div key={tag.id} className="col-auto">
+                                                <div key={i} className="col-auto">
                                                     <div className={classes.tag}>{tag.name}</div>
                                                 </div>
                                             )
@@ -170,8 +178,8 @@ const PlacePage = (props: Props) => {
                             <div className={classes.specs}>
                                 {place?.rating && <span className={classes.rate}><i className="fa-solid fa-star"></i> {place?.rating?.toFixed(1)} <span className={classes.addRate} onClick={() => setShowRateModal(true)}><Translate id='buttons.addRate' />..</span></span>}
                                 {
-                                    place?.category?.name ?
-                                        <span className={classes.cuisine}> {place?.category.icon && <img src={place.category.icon} />} {place?.category?.name}</span>
+                                    place?.category?.name || place?.sub_cats?.length > 0 ?
+                                        <span className={classes.cuisine}> {(place?.category?.icon || place?.sub_cats[0]?.icon) && <img src={place?.sub_cats && place?.sub_cats[0]?.icon ? place?.sub_cats[0]?.icon : place?.category?.icon} />} {place?.sub_cats && place?.sub_cats[0]?.name ? place?.sub_cats[0]?.name : place?.category?.name}</span>
                                         :
                                         ''
                                 }
@@ -230,7 +238,7 @@ const PlacePage = (props: Props) => {
                                 <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
                                 <p className={classes.aboutText}>{place?.about}</p>
                             </div>}
-                            {place?.menu && <div className={classes.menu}>
+                            {(place?.menu || place?.menu_pdf) && <div className={classes.menu}>
                                 <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
                                 <button onClick={() => setShowMenuModal(true)} className={classes.menuLink}><Translate id='buttons.showMenu' /></button>
                             </div>}
@@ -248,7 +256,7 @@ const PlacePage = (props: Props) => {
                             <div className={classes.cover}>
                                 <div className={classes.photo}>
                                     {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                    {place?.offer && <div className={classes.offer}>
+                                    {place?.offer && <div className={classes.offer} onClick={() => setShowOfferModal(true)}>
                                         <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                     </div>}
                                 </div>
