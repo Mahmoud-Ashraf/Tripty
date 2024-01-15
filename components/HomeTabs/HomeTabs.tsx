@@ -21,7 +21,8 @@ interface Props {
 
 const HomeTabs = (props: Props) => {
     const { translate } = useTranslate();
-    const { isLoading, error, sendRequest } = useHTTP();
+    const { isLoading: isPlacesLoading, error: placesError, sendRequest: fetchPlaces } = useHTTP();
+    const { isLoading: isTabsLoading, error: tabsError, sendRequest: fetchTabs } = useHTTP();
     const coords = useSelector((state: RootState) => state.auth.userCoords);
     const [key, setKey] = useState<any>(0);
     const {
@@ -40,7 +41,7 @@ const HomeTabs = (props: Props) => {
     }, [newTabs]);
 
     const getTabs = () => {
-        sendRequest(
+        fetchTabs(
             {
                 url: `/api/categories`,
                 method: 'GET'
@@ -51,7 +52,7 @@ const HomeTabs = (props: Props) => {
     }
 
     const getTabPlaces = () => {
-        sendRequest(
+        fetchPlaces(
             {
                 url: `/api/places/tabplaces?categoryId=${key}${trend ? '&trendNow=1' : ''}${!!searchText ? `&text=${searchText}` : ''}${coords ? `&long=${coords?.longitude}&lat=${coords?.latitude}` : ''}${discount ? '&with_discounts=1' : ''}`,
                 method: 'GET'
@@ -72,14 +73,14 @@ const HomeTabs = (props: Props) => {
         <>
             <div className={`home-tabs mt-5`}>
                 {
-                    newTabs?.length > 0 &&
+                    !isTabsLoading && newTabs?.length > 0 &&
                     <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                         {
                             newTabs?.map(tab => {
                                 return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
                                     <div className="row g-4">
                                         {
-                                            isLoading ?
+                                            isPlacesLoading ?
                                                 <Loader />
                                                 :
                                                 tabPlaces?.length > 0 ?

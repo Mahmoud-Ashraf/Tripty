@@ -134,7 +134,8 @@
     "noData": {
         "sorry": "Sorry",
         "noPlaces": "No places found",
-        "noPlace": "This place not found"
+        "noPlace": "This place not found",
+        "noTrip": "This trip not found"
     },
     "rate": {
         "yourRate": "Your rate",

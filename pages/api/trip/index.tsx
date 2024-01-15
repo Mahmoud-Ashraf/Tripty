@@ -15,15 +15,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const errorData = await response.json();
             throw new Error(errorData.message);
         }
-
         const data = await response.json();
-        console.log(data);
-
-        // Search for places based on the provided text
-        // const returnTrip = data.data.find((trip: any) => trip.id === Number(id));
-        // console.log(returnTrip);
-        // const categories = Array.from(categoriesSet).map(category => (category));
-        // Respond with the categorized places
+        if (data.error) {
+            throw new Error(data.message);
+        }
+        if (!data.data) {
+            throw new Error('No trip found');
+        }
         res.status(200).json({ trip: data.data });
     } catch (error: any) {
         res.status(400).json({ error: error.message });

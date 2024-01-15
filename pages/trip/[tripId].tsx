@@ -183,7 +183,7 @@ const PlacePage = (props: Props) => {
                 <Head>
                     <title>Tripty - No Data</title>
                 </Head>
-                <NoData showHomeBtn text={translate('noData.noPlace')} />
+                <NoData showHomeBtn text={translate('noData.noTrip')} />
             </>
     );
 }

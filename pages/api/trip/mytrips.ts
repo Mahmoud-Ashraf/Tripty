@@ -14,6 +14,12 @@ export default async function handler(
             headers: { 'Authorization': headers['authorization'] || '' }
         });
         const data = await response.json();
+        if (data.error) {
+            throw new Error(data.message);
+        }
+        if (!data.data || data.data.length === 0) {
+            throw new Error('No trips found');
+        }
         res.status(200).json(data.data);
     }
     catch (error: any) {
