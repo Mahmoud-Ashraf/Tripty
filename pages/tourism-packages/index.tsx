@@ -1,6 +1,8 @@
 import Card from "@/components/UI/Card/Card";
 import ColorBox from "@/components/UI/ColorBox/ColorBox";
+import Loader from "@/components/UI/Loader/Loader";
 import PageHeading from "@/components/UI/PageHeading/PageHeading";
+import NoData from "@/components/layout/NoData/NoData";
 import useHTTP from "@/hooks/use-http";
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -40,14 +42,20 @@ const TourismPackages = () => {
                 <ColorBox>
                     <div className="row">
                         {
-                            tourismPackages?.map((tourismPackage, i) => {
-                                return (
-                                    <div key={i} className="col-lg-4 col-md-6">
-                                        <Card isTourism={true} place={tourismPackage} />
-                                        {/* {tourismPackage} */}
-                                    </div>
-                                )
-                            })
+                            isLoading ?
+                                <Loader />
+                                :
+                                tourismPackages?.length > 0 ?
+                                    tourismPackages?.map((tourismPackage, i) => {
+                                        return (
+                                            <div key={i} className="col-lg-4 col-md-6">
+                                                <Card isTourism={true} place={tourismPackage} />
+                                                {/* {tourismPackage} */}
+                                            </div>
+                                        )
+                                    })
+                                    :
+                                    <NoData text={""} />
                         }
                     </div>
                 </ColorBox>

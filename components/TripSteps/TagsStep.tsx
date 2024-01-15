@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import useTranslate from '@/hooks/use-translate';
 import useHTTP from '@/hooks/use-http';
+import Loader from '../UI/Loader/Loader';
 
 const TagsStep = () => {
     const dispatch = useDispatch();
@@ -67,45 +68,48 @@ const TagsStep = () => {
         dispatch(tripActions.setTripData({ tags: selectedTags?.map(tag => tag.id) }));
     }, [selectedTags])
     return (
-        <div className={classes.tags}>
-            <TripModalHeading text='howSpendTime' />
-            <div className="row mb-5 gy-2">
-                {
-                    tags?.map(tag => {
-                        return (
-                            <div key={tag.id} className="col-auto">
-                                <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>
-                                    <span>{tag.name}</span>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <TripModalHeading text='other' />
-            <div className="row">
-                <div className="col-md-7">
-                    <div className={classes.inputContainer}>
-                        <input className={classes.input} onChange={(e: any) => setOtherTag(e.target.value)} value={otherTag} placeholder={translate('tripModal.tagsPlaceHolder')} />
-                        <button onClick={addTag} className={classes.addTagBtn}>+</button>
-                    </div>
-                    <div className="row mt-4">
-                        {
-                            otherTags?.map(newTag => {
-                                return (
-                                    <div key={newTag.id} className="col-auto">
-                                        <div className={`${classes.selection}`}>
-                                            <span>{newTag.name}</span>
-                                        </div>
+        <>
+            {isLoading && <Loader full />}
+            <div className={classes.tags}>
+                <TripModalHeading text='howSpendTime' />
+                <div className="row mb-5 gy-2">
+                    {
+                        tags?.map(tag => {
+                            return (
+                                <div key={tag.id} className="col-auto">
+                                    <div onClick={() => handleSelectTag(tag)} className={`${classes.selection} ${selectedTags.some(selectedTag => selectedTag.id === tag.id) ? classes.selected : ''}`}>
+                                        <span>{tag.name}</span>
                                     </div>
-                                )
-                            })
-                        }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <TripModalHeading text='other' />
+                <div className="row">
+                    <div className="col-md-7">
+                        <div className={classes.inputContainer}>
+                            <input className={classes.input} onChange={(e: any) => setOtherTag(e.target.value)} value={otherTag} placeholder={translate('tripModal.tagsPlaceHolder')} />
+                            <button onClick={addTag} className={classes.addTagBtn}>+</button>
+                        </div>
+                        <div className="row mt-4">
+                            {
+                                otherTags?.map(newTag => {
+                                    return (
+                                        <div key={newTag.id} className="col-auto">
+                                            <div className={`${classes.selection}`}>
+                                                <span>{newTag.name}</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        </>
     )
 }
 

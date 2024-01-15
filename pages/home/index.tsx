@@ -19,6 +19,7 @@ import HomeTrip from "@/components/HomeTrip/HomeTrip";
 // import { RootState } from "@/store";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Loader from "@/components/UI/Loader/Loader";
 
 interface Props {
    sliders: Slider[] | [],
@@ -99,7 +100,7 @@ const Home = (props: Props) => {
          <Head>
             <title>Tripty - Home</title>
          </Head>
-
+         {isLoading && <Loader full />}
          <HomeSlider sliders={newSliders} />
 
          <SectionHeader title="headings.explore" />

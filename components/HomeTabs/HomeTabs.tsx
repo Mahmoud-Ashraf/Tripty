@@ -9,6 +9,7 @@ import useTranslate from '@/hooks/use-translate';
 import useHTTP from '@/hooks/use-http';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import Loader from '../UI/Loader/Loader';
 interface Props {
     // tabs: Category[],
     trend?: boolean,
@@ -78,16 +79,19 @@ const HomeTabs = (props: Props) => {
                                 return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
                                     <div className="row g-4">
                                         {
-                                            tabPlaces?.length > 0 ?
-                                                tabPlaces?.map(place => {
-                                                    return (
-                                                        <div key={place?.id} className="col-md-6 col-lg-4">
-                                                            <Card place={place} />
-                                                        </div>
-                                                    )
-                                                })
+                                            isLoading ?
+                                                <Loader />
                                                 :
-                                                <NoData text={translate('noData.noPlaces')} />
+                                                tabPlaces?.length > 0 ?
+                                                    tabPlaces?.map(place => {
+                                                        return (
+                                                            <div key={place?.id} className="col-md-6 col-lg-4">
+                                                                <Card place={place} />
+                                                            </div>
+                                                        )
+                                                    })
+                                                    :
+                                                    <NoData text={translate('noData.noPlaces')} />
                                         }
                                     </div>
                                 </Tab>

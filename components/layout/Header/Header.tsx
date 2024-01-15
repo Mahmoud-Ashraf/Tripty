@@ -14,6 +14,7 @@ import { langActions } from '@/store/Lang/Lang';
 import useTranslate from '@/hooks/use-translate';
 import { signOut, useSession } from 'next-auth/react';
 import { authActions } from '@/store/Auth/Auth';
+import Loader from '@/components/UI/Loader/Loader';
 
 
 const Header = () => {
@@ -86,6 +87,7 @@ const Header = () => {
     }
     return (
         <header className={classes.container}>
+            {isLoading && <Loader full />}
             <div className={classes.start}>
                 <Link href={'/home'} className={classes.logo}>
                     <Image loading='lazy' alt='Tripty Logo' src={logo} />

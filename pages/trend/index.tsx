@@ -19,10 +19,10 @@ interface Props {
 }
 
 const Trend = (props: Props) => {
-    const { isLoading, error, sendRequest } = useHTTP();
-    const { tabs, categorizedPlaces } = props;
-    const [newTabs, setNewTabs] = useState(tabs);
-    const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
+    // const { isLoading, error, sendRequest } = useHTTP();
+    // const { tabs, categorizedPlaces } = props;
+    // const [newTabs, setNewTabs] = useState(tabs);
+    // const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
     // const dispatch = useDispatch();
 
     useEffect(() => {

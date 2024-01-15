@@ -1,6 +1,7 @@
 import useHTTP from '@/hooks/use-http';
 import React, { useEffect, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import Loader from '../UI/Loader/Loader';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -40,11 +41,16 @@ const PdfViewer = ({ pdfUrl }: any) => {
 
     return (
         <div>
-            <Document file={pdfContent} onLoadSuccess={onDocumentLoadSuccess}>
-                {Array.from(new Array(numPages), (el, index) => (
-                    <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-                ))}
-            </Document>
+            {
+                isLoading ?
+                    <Loader />
+                    :
+                    <Document file={pdfContent} onLoadSuccess={onDocumentLoadSuccess}>
+                        {Array.from(new Array(numPages), (el, index) => (
+                            <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+                        ))}
+                    </Document>
+            }
         </div>
     );
 };

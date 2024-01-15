@@ -9,6 +9,7 @@ import Translate from '@/components/helpers/Translate/Translate';
 import useTranslate from '@/hooks/use-translate';
 import AuthLayout from '@/components/layout/AuthLayout/AuthLayout';
 import useHttp from '@/hooks/use-http';
+import Loader from '@/components/UI/Loader/Loader';
 
 interface Props {
     sliders: Slider[]
@@ -26,13 +27,13 @@ const Register = (props: Props) => {
     const [formError, setFormError] = useState<string | null>(null);
     const { isLoading, error, sendRequest }: any = useHttp();
     const { data: session } = useSession();
-    const handleSignIn = async () => {
-        const result = await signIn('credentials', {
-            redirect: false,
-            email: email,
-            password: password,
-        });
-    };
+    // const handleSignIn = async () => {
+    //     const result = await signIn('credentials', {
+    //         redirect: false,
+    //         email: email,
+    //         password: password,
+    //     });
+    // };
 
     useEffect(() => {
         if (session) {
@@ -76,16 +77,16 @@ const Register = (props: Props) => {
                 <Form className={classes.registerForm}>
                     <h1><Translate id='auth.registerWithMail' /></h1>
                     <div>
-                        <input className={classes.input} type="text" placeholder={translate('placeholder.name')} value={name} onChange={(e) => setName(e.target.value)} />
-                        <input className={classes.input} type="phone" placeholder={translate('placeholder.mobile')} value={mobile} onChange={(e) => setMobile(e.target.value)} />
-                        <input className={classes.input} type="email" placeholder={translate('placeholder.email')} value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input className={classes.input} type="password" placeholder={translate('placeholder.password')} value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input className={classes.input} type="password" placeholder={translate('placeholder.confirmPassword')} value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
+                        <input className={classes.input} disabled={isLoading} type="text" placeholder={translate('placeholder.name')} value={name} onChange={(e) => setName(e.target.value)} />
+                        <input className={classes.input} disabled={isLoading} type="phone" placeholder={translate('placeholder.mobile')} value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                        <input className={classes.input} disabled={isLoading} type="email" placeholder={translate('placeholder.email')} value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className={classes.input} disabled={isLoading} type="password" placeholder={translate('placeholder.password')} value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input className={classes.input} disabled={isLoading} type="password" placeholder={translate('placeholder.confirmPassword')} value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
                         {formError && <p className={classes.loginError}><Translate id={formError} /></p>}
                     </div>
                     <div className={`d-grid gap-2 ${classes.submit}`}>
-                        <Button variant="main" type="button" onClick={register}>
-                            <Translate id='buttons.register' />
+                        <Button variant="main" type="button" onClick={register} disabled={isLoading}>
+                            {isLoading ? <Loader /> : <Translate id='buttons.register' />}
                         </Button>
                     </div>
                 </Form>

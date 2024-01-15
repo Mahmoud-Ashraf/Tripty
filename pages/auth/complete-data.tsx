@@ -10,6 +10,7 @@ import { City } from '@/interfaces/City';
 import { useRouter } from 'next/router';
 import { Tag } from '@/interfaces/tag';
 import { getSession, useSession } from 'next-auth/react';
+import Loader from '@/components/UI/Loader/Loader';
 
 const CompleteData = (props: any) => {
     const { sliders } = props;
@@ -126,6 +127,7 @@ const CompleteData = (props: any) => {
                 <title>Tripty - Complete Data</title>
             </Head>
             <AuthLayout sliders={sliders} className={classes.complete}>
+                {isLoading && <Loader full />}
                 <Form>
                     <h1><Translate id='auth.completeData' /></h1>
                     <select className={classes.input} value={gender} onChange={(e) => setGender(e.target.value)}>
