@@ -40,7 +40,8 @@
         "update": "Update",
         "addRate": "Add rate",
         "goToHome": "Go To Home",
-        "send": "Send"
+        "send": "Send",
+        "saveYourData": "Save your data"
     },
     "entries": {
         "trend": "Trend Now",
@@ -164,5 +165,11 @@
         "text": "With us you can schedule your trip according to your budget, style etc...",
         "text1": "Don't miss the expirence! leave the planning to us and enjoy your trip",
         "startNow": "START YOUR TRIP NOW"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn"
     }
 }
