@@ -119,7 +119,7 @@ const Favorite = () => {
                         {updateError && <p className="text-error fs-3 text-center mt-5"><Translate id={updateError} /></p>}
                         <div className="row justify-content-end mt-5">
                             <div className="col-md-4">
-                                <button type="button" onClick={updateProfile} className="btn btn-main w-100">Save your data</button>
+                                <button type="button" onClick={updateProfile} className="btn btn-main w-100"><Translate id="buttons.saveYourData" /></button>
                             </div>
                         </div>
                     </form>

@@ -40,7 +40,8 @@
         "update": "Update",
         "addRate": "Add rate",
         "goToHome": "Go To Home",
-        "send": "Send"
+        "send": "Send",
+        "saveYourData": "Save your data"
     },
     "entries": {
         "trend": "Trend Now",
