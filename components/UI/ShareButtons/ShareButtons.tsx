@@ -1,3 +1,4 @@
+import Translate from '@/components/helpers/Translate/Translate';
 import { useRouter } from 'next/router';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {
@@ -21,22 +22,22 @@ const ShareButtons = ({ url, title, tags }: any) => {
         <Dropdown.Menu>
             <Dropdown.Item>
                 <FacebookShareButton url={baseUrl + url} >
-                    Facebook
+                    <Translate id='social.facebook' />
                 </FacebookShareButton>
             </Dropdown.Item>
             <Dropdown.Item>
                 <LinkedinShareButton url={baseUrl + url} >
-                    LinkedIn
+                    <Translate id='social.linkedin' />
                 </LinkedinShareButton>
             </Dropdown.Item>
             <Dropdown.Item>
                 <WhatsappShareButton url={baseUrl + url} title={title}>
-                    WhatsApp
+                    <Translate id='social.whatsapp' />
                 </WhatsappShareButton>
             </Dropdown.Item>
             <Dropdown.Item>
                 <TwitterShareButton url={baseUrl + url} title={title} hashtags={tags}>
-                    Twitter
+                    <Translate id='social.twitter' />
                 </TwitterShareButton>
             </Dropdown.Item>
         </Dropdown.Menu>
