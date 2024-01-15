@@ -5,18 +5,17 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Translate from "../helpers/Translate/Translate";
-import { useSession } from "next-auth/react";
 import { authActions } from "@/store/Auth/Auth";
+import Loader from "../UI/Loader/Loader";
 
 const TripModalFooter = () => {
     const dispatch = useDispatch();
-    const router = useRouter();
+    // const router = useRouter();
     const step = useSelector((state: RootState) => state.trip.currentStep);
-    const stepsCount = useSelector((state: RootState) => state.trip.numberOfSteps);
+    // const stepsCount = useSelector((state: RootState) => state.trip.numberOfSteps);
     const tripData = useSelector((state: RootState) => state.trip.tripData);
     const [stepError, setStepError] = useState('');
     const { isLoading, error, sendRequest } = useHTTP();
-    const { data: session }: any = useSession();
 
     const nextStep = () => {
         if (step === 2 && !tripData?.name) {
@@ -66,10 +65,10 @@ const TripModalFooter = () => {
             </div>}
             <div className="row justify-content-end mt-5">
                 <div className="col-4">
-                    <button onClick={cancel} className="btn btn-main btn-lg w-100"><Translate id='common.cancel' /></button>
+                    <button onClick={cancel} className="btn btn-main btn-lg w-100" disabled={isLoading}><Translate id='common.cancel' /></button>
                 </div>
                 <div className="col-4">
-                    <button onClick={nextStep} className="btn btn-main btn-lg w-100"><Translate id='common.next' /></button>
+                    <button onClick={nextStep} className="btn btn-main btn-lg w-100" disabled={isLoading}>{isLoading ? <Loader /> : <Translate id='common.next' />}</button>
                 </div>
             </div>
         </div>

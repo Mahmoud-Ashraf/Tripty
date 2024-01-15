@@ -19,32 +19,32 @@ interface Props {
 }
 
 const Trend = (props: Props) => {
-    const { isLoading, error, sendRequest } = useHTTP();
-    const { tabs, categorizedPlaces } = props;
-    const [newTabs, setNewTabs] = useState(tabs);
-    const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
+    // const { isLoading, error, sendRequest } = useHTTP();
+    // const { tabs, categorizedPlaces } = props;
+    // const [newTabs, setNewTabs] = useState(tabs);
+    // const [newPlaces, setNewPlaces] = useState(categorizedPlaces);
     // const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchPlaces();
+        // fetchPlaces();
     }, []);
 
-    const fetchPlaces = () => {
-        sendRequest(
-            {
-                url: '/api/places/categorized?trendNow=1',
-                method: 'GET'
-            },
-            (data: any) => {
-                setNewPlaces(data.categorizedPlaces);
-                setNewTabs(data.categories);
-            },
-            (err: any) => {
-                // setNewTabs([]);
-                // setNewPlaces({});
-            }
-        )
-    }
+    // const fetchPlaces = () => {
+    //     sendRequest(
+    //         {
+    //             url: '/api/places/categorized?trendNow=1',
+    //             method: 'GET'
+    //         },
+    //         (data: any) => {
+    //             setNewPlaces(data.categorizedPlaces);
+    //             setNewTabs(data.categories);
+    //         },
+    //         (err: any) => {
+    //             // setNewTabs([]);
+    //             // setNewPlaces({});
+    //         }
+    //     )
+    // }
 
     return (
         <>
@@ -53,44 +53,47 @@ const Trend = (props: Props) => {
             </Head>
             <div className={classes.container}>
                 <PageHeading title='headings.trend' />
-                <HomeTabs tabs={newTabs} categorizedPlaces={newPlaces} />
+                <HomeTabs
+                    // tabs={newTabs}
+                    trend
+                />
             </div>
         </>
     )
 }
 
 
-export async function getServerSideProps({ locale }: any) {
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+// export async function getServerSideProps({ locale }: any) {
+//     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-    try {
-        const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
-        const categoriesData = await categoriesReq.json();
-        categoriesData.data.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
+//     try {
+//         const categoriesReq = await fetch(`${baseUrl}categories?change_language=${locale}`);
+//         const categoriesData = await categoriesReq.json();
+//         categoriesData.data.unshift({ name: locale === 'ar' ? 'الكل' : 'all', id: 0, icon: '' });
 
-        const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
+//         // const categorizedPlaces: CategorizedPlaces = {}; // Initialize as the defined interface
 
-        await Promise.all(categoriesData?.data?.map(async (category: any) => {
-            const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&trend_now=1&category_id=${category.id}`);
-            const categoryPlacesData = await categoryPlacesReq.json();
+//         // await Promise.all(categoriesData?.data?.map(async (category: any) => {
+//         //     const categoryPlacesReq = await fetch(`${baseUrl}places?change_language=${locale}&trend_now=1&category_id=${category.id}`);
+//         //     const categoryPlacesData = await categoryPlacesReq.json();
 
-            categorizedPlaces[category.name] = categoryPlacesData.data;
-        }));
-        return {
-            props: {
-                tabs: categoriesData.data,
-                categorizedPlaces
-            }
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            props: {
-                tabs: [],
-                categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
-            }
-        };
-    }
-}
+//         //     categorizedPlaces[category.name] = categoryPlacesData.data;
+//         // }));
+//         return {
+//             props: {
+//                 tabs: categoriesData.data,
+//                 // categorizedPlaces
+//             }
+//         };
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//         return {
+//             props: {
+//                 tabs: [],
+//                 // categorizedPlaces: {} as CategorizedPlaces, // Initialize as the defined interface
+//             }
+//         };
+//     }
+// }
 
 export default Trend;

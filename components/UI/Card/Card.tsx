@@ -44,7 +44,7 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
                         {place.distance && !isTourism && <span className={classes.distance}>{place.distance}
                             {/* <Translate id='common.km' /> */}
                         </span>}
-                        {place.is_recommended && <span className={classes.recomendedText}><Translate id='common.recomended' /></span>}
+                        {/* {place.is_recommended && <span className={classes.recomendedText}><Translate id='common.recomended' /></span>} */}
                     </div>
                     <div className={classes.recomended}>
                         {

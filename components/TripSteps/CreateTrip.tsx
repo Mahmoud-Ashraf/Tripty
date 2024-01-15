@@ -15,6 +15,7 @@ import Head from 'next/head';
 import Map from '@/components/Map/Map';
 import useHTTP from '@/hooks/use-http';
 import Translate from '@/components/helpers/Translate/Translate';
+import Loader from '../UI/Loader/Loader';
 
 function SampleNextArrow(props: any) {
     const { className, style, onClick } = props;
@@ -106,6 +107,7 @@ const CreateTrip = () => {
                 <h2><Translate id='headings.your' /></h2>
                 <h2><Translate id='headings.trip' /></h2>
             </PlaceHeader> */}
+            {isLoading && <Loader full />}
             <div className={classes.container}>
                 <div className={classes.header}>
                     {data?.city?.name && <div className={classes.city}>

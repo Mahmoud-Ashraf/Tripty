@@ -23,36 +23,38 @@ const Search = () => {
     const router = useRouter();
     const { translate } = useTranslate();
     const searchText = router.query.text;
-    const { isLoading, error, sendRequest } = useHTTP();
+    // const { isLoading, error, sendRequest } = useHTTP();
     const [searchValue, setSearchValue] = useState<string>('');
+    const [searchInput, setSearchInput] = useState<string>('');
     // const [searchText, setSearchText] = useState(router.query.text);
-    const [searchTabs, setSearchTabs] = useState<any>();
-    const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
+    // const [searchTabs, setSearchTabs] = useState<any>();
+    // const [searchCategorizedPlaces, setSearchCategorizedPlaces] = useState<any>();
 
     useEffect(() => {
         if (searchText) {
             setSearchValue(Array.isArray(searchText) ? searchText[0] : searchText); // Set searchValue when query changes
-            getSearchData();
+            setSearchInput(Array.isArray(searchText) ? searchText[0] : searchText);
+            // getSearchData();
         }
     }, [searchText, router.locale]); // Watch for changes in searchText
 
     const search = () => {
-        router.push(`/search?text=${searchValue}`);
+        router.push(`/search?text=${searchInput}`);
     }
 
-    const getSearchData = () => {
-        sendRequest(
-            {
-                url: `/api/search?text=${searchText}`,
-                method: 'GET'
-            },
-            (data: any) => {
-                setSearchTabs(data.categories);
-                setSearchCategorizedPlaces(data.categorizedPlaces)
-            },
-            (err: any) => console.log(err)
-        )
-    }
+    // const getSearchData = () => {
+    //     sendRequest(
+    //         {
+    //             url: `/api/places?text=${searchText}`,
+    //             method: 'GET'
+    //         },
+    //         (data: any) => {
+    //             // setSearchTabs(data.categories);
+    //             setSearchCategorizedPlaces(data.categorizedPlaces)
+    //         },
+    //         (err: any) => console.log(err)
+    //     )
+    // }
 
     return (
         <>
@@ -67,14 +69,14 @@ const Search = () => {
                 <div className={classes.searchInput}>
                     <div className={classes.search}>
                         <i className="fa-solid fa-magnifying-glass"></i>
-                        <input type='text' placeholder={translate('searchBar.placeholder')} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                        <input type='text' placeholder={translate('searchBar.placeholder')} value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                     </div>
                     <button onClick={search} className="btn btn-main">Search</button>
                 </div>
                 <div className={classes.content}>
                     {
-                        searchTabs && searchCategorizedPlaces &&
-                        <HomeTabs tabs={searchTabs} categorizedPlaces={searchCategorizedPlaces} />
+                        // searchTabs && searchCategorizedPlaces &&
+                        <HomeTabs searchText={searchValue} />
                     }
                 </div>
             </div>

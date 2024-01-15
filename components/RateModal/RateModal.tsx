@@ -4,6 +4,7 @@ import Rate from 'rc-rate';
 import Translate from '../helpers/Translate/Translate';
 import { useRouter } from 'next/router';
 import useHTTP from '@/hooks/use-http';
+import Loader from '../UI/Loader/Loader';
 
 const RateModal = ({ placeId, closeModal, type }: { placeId: number, closeModal: () => void, type: 'places' | 'tourism-packages' }) => {
     const [rate, setRate] = useState(0);
@@ -28,6 +29,7 @@ const RateModal = ({ placeId, closeModal, type }: { placeId: number, closeModal:
     }
     return (
         <div className={classes.container}>
+            {isLoading && <Loader full />}
             <div className={classes.inputGroup}>
                 <label><Translate id="rate.yourRate" /></label>
                 <Rate
