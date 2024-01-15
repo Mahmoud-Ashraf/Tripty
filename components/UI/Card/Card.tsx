@@ -29,7 +29,7 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
             </div>
             <div className={classes.data}>
                 <div className={classes.caption}>
-                    <h3 className={classes.name}>{place?.name}</h3>
+                    <h3 className={classes.name}>{isTourism ? place.title : place?.name}</h3>
                     <p className={classes.desc}>{cutAboutWords(place?.about, 12)}</p>
                 </div>
                 <div className={classes.specs}>

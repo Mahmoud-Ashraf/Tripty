@@ -4,6 +4,7 @@ import { Tag } from './tag';
 export interface Place {
     id: number,
     name: string,
+    title?: string,
     about: string,
     tel: string,
     min_price?: string,
