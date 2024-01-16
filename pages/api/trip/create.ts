@@ -5,9 +5,11 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const { body, headers, method } = req;
+    const { locale, long, lat } = req.query;
+
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        const response = await fetch(baseUrl + 'trips', {
+        const response = await fetch(baseUrl + `trips?change_language=${locale}`, {
             method,
             body: JSON.stringify(body),
             headers: { 'Authorization': headers['authorization'] || '', 'Content-type': 'application/json' }

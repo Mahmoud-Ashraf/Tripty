@@ -19,7 +19,7 @@ const useHTTP = () => {
         let url = requestConfig.url;
         let contentTypeHeader = requestConfig.method === 'POST' ? { 'Content-Type': 'application/json' } : {};
         let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
-        if (requestConfig.method === 'GET') {
+        if (requestConfig.method === 'GET' || url.includes('/api/trip/create')) {
             const newUrl = new URL(baseUrl + url);
             newUrl.searchParams.set(`locale`, `${router.locale || 'ar'}`);
             url = newUrl.toString();

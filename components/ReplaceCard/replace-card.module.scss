@@ -6,6 +6,10 @@
     background-color: #eaeaea;
     margin: 0 1rem;
 
+    &.rtl {
+        direction: rtl;
+    }
+
     .cover {
         position: relative;
         height: 25rem;
@@ -28,7 +32,7 @@
         }
     }
 
-    .details {
+    .content {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -37,35 +41,50 @@
         color: #FFF;
         z-index: 2;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        gap: .5rem;
 
-        .desc {
+        .name {
+            font-size: 1.2rem;
             display: flex;
-            flex-direction: column;
-            gap: .5rem;
-
-            h4 {
-                font-size: 1.2rem;
-            }
-
-            span {
-                font-size: .75rem;
-                display: inline-flex;
-                justify-content: space-between;
-            }
-
-            .rate i {
-                color: $yellow;
-            }
+            justify-content: flex-start;
         }
-        .cuisine {
+
+        .details {
             display: flex;
-            img {
-                width: 30px;
+            justify-content: space-between;
+            align-items: center;
+
+            .desc {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                h4 {
+                    font-size: 1.2rem;
+                }
+
+                span {
+                    font-size: .75rem;
+                    display: inline-flex;
+                    justify-content: space-between;
+                }
+
+                .rate i {
+                    color: $yellow;
+                }
+            }
+
+            .cuisine {
+                display: flex;
+
+                img {
+                    width: 30px;
+                }
             }
         }
     }
+
 
     .actions {
         margin-top: .75rem;
@@ -73,7 +92,8 @@
         align-items: center;
         justify-content: space-between;
 
-        a, button {
+        a,
+        button {
             cursor: pointer;
             background-color: #FFF;
             color: $main-color;
@@ -82,6 +102,7 @@
             border-radius: 1rem;
             font-size: .875rem;
             text-decoration: none;
+
             &:last-child {
                 border-radius: 50%;
                 // font-size: 1rem;
