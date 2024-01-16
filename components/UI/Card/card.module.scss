@@ -24,6 +24,21 @@
         width: 100%;
         min-height: 100%;
     }
+
+    .placeStatus {
+        position: absolute;
+        top: .75rem;
+        right: .75rem;
+        padding: .3rem 1.5rem;
+        background-color: #FFF;
+        border-radius: .5rem;
+        font-size: .75rem;
+        line-height: 1;
+
+        span {
+            line-height: 1;
+        }
+    }
 }
 
 .offer {

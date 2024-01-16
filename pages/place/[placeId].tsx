@@ -263,6 +263,14 @@ const PlacePage = (props: Props) => {
                                             {place?.offer && <div className={classes.offer} onClick={() => setShowOfferModal(true)}>
                                                 <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                             </div>}
+                                            <div className={classes.placeStatus}>
+                                                {
+                                                    place?.is_open ?
+                                                        <span style={{ color: '#1fa200' }}><Translate id='common.open' /></span>
+                                                        :
+                                                        <span className='text-error' style={{ color: '#1fa200' }}><Translate id='common.openAt' /> {place?.open_at?.slice(0, 5)}</span>
+                                                }
+                                            </div>
                                         </div>
                                         {place?.booking_link && <div className="row justify-content-end">
                                             <div className="col-lg-6">

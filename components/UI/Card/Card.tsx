@@ -23,6 +23,14 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
         place && <Link href={isTourism ? `tourism-package/1` : `/place/${place.id}`} className={classes.container}>
             <div className={classes.cover}>
                 <img src={place?.featured_image} alt='card-image' />
+                <div className={classes.placeStatus}>
+                    {
+                        place?.is_open ?
+                            <span style={{ color: '#1fa200' }}><Translate id='common.open' /></span>
+                            :
+                            <span className='text-error' style={{ color: '#1fa200' }}><Translate id='common.openAt' /> {place?.open_at?.slice(0, 5)}</span>
+                    }
+                </div>
                 {place.offer && <div className={classes.offer}>
                     <span>{place.offer.amount}%</span> <Translate id='place.getDiscount' />
                 </div>}
