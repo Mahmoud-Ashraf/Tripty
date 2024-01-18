@@ -191,6 +191,7 @@
         font-weight: 500;
         margin-bottom: .8rem;
     }
+
     p {
         font-size: 1rem;
         color: $main-color;
@@ -208,6 +209,21 @@
     .photo {
         position: relative;
 
+        .placeStatus {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: .4rem 2rem;
+            background-color: #FFF;
+            border-radius: .5rem;
+            font-size: 1rem;
+            line-height: 1;
+
+            span {
+                line-height: 1;
+            }
+        }
+
         .offer {
             position: absolute;
             background-color: $main-color;
@@ -222,6 +238,7 @@
             align-items: center;
             line-height: 1;
             gap: .5rem;
+            cursor: pointer;
 
             span {
                 font-size: 1.8rem;

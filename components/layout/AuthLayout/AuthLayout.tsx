@@ -5,33 +5,33 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Slider } from '@/interfaces/slider';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useSession } from "next-auth/react"
+// import { useSession } from "next-auth/react"
 import logo from '@/public/assets/images/logo.svg';
-import useHTTP from '@/hooks/use-http';
+// import useHTTP from '@/hooks/use-http';
 
 const AuthLayout = ({ sliders, children, className }: any) => {
     const router = useRouter();
     const [index, setIndex] = useState(0);
-    const { data: session }: any = useSession();
+    // const { data: session }: any = useSession();
     const [newSliders, setNewSliders] = useState(sliders);
-    const { isLoading, error, sendRequest } = useHTTP();
+    // const { isLoading, error, sendRequest } = useHTTP();
 
     const handleSelect = (selectedIndex: SetStateAction<number>) => {
         setIndex(selectedIndex);
     };
 
-    const getSliders = () => {
-        sendRequest(
-            {
-                url: '/api/sliders',
-                method: 'GET'
-            },
-            (data: any) => {
-                setNewSliders(data);
-            },
-            (err: any) => console.error(err)
-        )
-    }
+    // const getSliders = () => {
+    //     sendRequest(
+    //         {
+    //             url: '/api/sliders',
+    //             method: 'GET'
+    //         },
+    //         (data: any) => {
+    //             setNewSliders(data);
+    //         },
+    //         (err: any) => console.error(err)
+    //     )
+    // }
 
     // useEffect(() => {
     //     if (session?.user) {

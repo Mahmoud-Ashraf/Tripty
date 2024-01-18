@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import classes from './no-data.module.scss';
 import Translate from '@/components/helpers/Translate/Translate';
-
+import Lottie from 'lottie-react';
+import noData from '@/public/assets/lottie/emptyComponent.json';
 interface Props {
     text: string
     showHomeBtn?: boolean
@@ -11,7 +12,12 @@ const NoData = (props: Props) => {
     return (
         <div className="col-12">
             <div className={classes.noData}>
-                <p><Translate id="noData.sorry" />, {text}</p>
+                <Lottie
+                    animationData={noData}
+                    loop={true}
+                    autoplay={true}
+                    style={{ width: '300px', height: '300px' }} // Adjust the size as needed
+                />
                 {showHomeBtn && <Link href={'/home'} className='btn btn-main'><Translate id="buttons.goToHome" /></Link>}
             </div>
         </div>

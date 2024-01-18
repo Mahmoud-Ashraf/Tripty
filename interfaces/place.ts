@@ -12,6 +12,7 @@ export interface Place {
     price?: string,
     rating: number,
     menu: string,
+    is_open: boolean,
     open_at?: string,
     close_at?: string,
     city?: { id: number, name: string, code: string | null }
