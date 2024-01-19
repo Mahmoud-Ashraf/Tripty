@@ -88,7 +88,9 @@
         "day": "Day",
         "all": "All",
         "open": "open",
-        "openAt": "open at"
+        "openAt": "open at",
+        "from": "From",
+        "to": "To"
     },
     "errors": {
         "tagsError": "Please Select Tags First",
@@ -132,7 +134,8 @@
         "city": "City",
         "selectInterests": "Select Your Interests",
         "birthdate": "Birth date",
-        "tripName": "Trip Name"
+        "tripName": "Trip Name",
+        "selectTripTime": "Select trip time"
     },
     "noData": {
         "sorry": "Sorry",
