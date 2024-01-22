@@ -2,7 +2,7 @@ import useHTTP from "@/hooks/use-http";
 import { RootState } from "@/store";
 import { tripActions } from "@/store/Trip/Trip";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Translate from "../helpers/Translate/Translate";
 import { authActions } from "@/store/Auth/Auth";
@@ -53,8 +53,12 @@ const TripModalFooter = () => {
         }
     }
 
-    const cancel = () => {
-        dispatch(tripActions.closeShowTripModal());
+    useEffect(() => {
+        setStepError('');
+    }, [step])
+
+    const prevStep = () => {
+        dispatch(tripActions.prevStep());
     }
     return (
         <div>
@@ -63,9 +67,9 @@ const TripModalFooter = () => {
                     <p className="fs-5 text-error"><Translate id={stepError} /></p>
                 </div>
             </div>}
-            <div className="row justify-content-end mt-5">
+            <div className="row justify-content-between mt-5">
                 <div className="col-4">
-                    <button onClick={cancel} className="btn btn-main btn-lg w-100" disabled={isLoading}><Translate id='common.cancel' /></button>
+                    {(step > 1 || step > 4) && <button onClick={prevStep} className="btn btn-main btn-lg w-100" disabled={isLoading}><Translate id='common.prev' /></button>}
                 </div>
                 <div className="col-4">
                     <button onClick={nextStep} className="btn btn-main btn-lg w-100" disabled={isLoading}>{isLoading ? <Loader /> : <Translate id='common.next' />}</button>

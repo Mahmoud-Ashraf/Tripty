@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 import classes from './trip-steps.module.scss';
 import useHttp from '../../hooks/use-http';
 import { City } from '@/interfaces/City';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import Translate from '../helpers/Translate/Translate';
 import Loader from '../UI/Loader/Loader';
+import { RootState } from '@/store';
 
 const LocationStep = () => {
     const dispatch = useDispatch();
     const { isLoading, error, sendRequest } = useHttp();
     const [citeies, setCities] = useState<City[]>([]);
     const [selectedLocation, setSelectedLocation] = useState<City>()
+    const tripData = useSelector((state: RootState) => state.trip.tripData);
 
     useEffect(() => {
         getLocations();
@@ -28,7 +30,11 @@ const LocationStep = () => {
             },
             (data: any) => {
                 setCities(data);
-                setCurrentCity(data[0]);
+                if (tripData?.city_id) {
+                    setCurrentCity(data.find((city: any) => city.id === tripData.city_id));
+                } else {
+                    setCurrentCity(data[0]);
+                }
             },
             (error: any) => {
                 console.error(error);
