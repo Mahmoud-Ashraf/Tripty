@@ -58,7 +58,7 @@ const HomeTabs = (props: Props) => {
                 method: 'GET'
             },
             (data: any) => setTabPlaces(data.places),
-            (err: any) => console.error(err)
+            (err: any) => setTabPlaces([])
         )
     }
 
