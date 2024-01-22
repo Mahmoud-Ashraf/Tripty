@@ -9,6 +9,7 @@ import Translate from '../helpers/Translate/Translate';
 import ar from 'date-fns/locale/ar';
 import { useRouter } from 'next/router';
 import useTranslate from '@/hooks/use-translate';
+import TimeRangePicker from '../UI/TimeRangePicker/TimeRangePicker';
 registerLocale('ar', ar);
 
 interface CustomDateButtonProps {
@@ -99,7 +100,8 @@ const DetailsStep = () => {
                         customInput={<DateCustomButton />}
                     />
                     <TripModalHeading text='tripDuration' />
-                    <TimeRangeSlider />
+                    {/* <TimeRangeSlider /> */}
+                    <TimeRangePicker />
                 </div>
                 <div className="col-md-6">
                     <TripModalHeading text='WhoComing' />

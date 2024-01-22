@@ -61,10 +61,10 @@
         "myLocation": "موقعي الحالي",
         "date": "تاريخ",
         "tripDuration": "مدة الرحلة",
-        "WhoComing": "من بيخاويك في الطلعة؟",
-        "solo": "لحالي",
-        "family": "اهلي",
-        "friends": "اصدقائي",
+        "WhoComing": "من بيجي معك؟",
+        "solo": "بس أنا",
+        "family": "عائلتي",
+        "friends": "اصدقاء",
         "doYouHaveBudget": "هل لديك ميزانية؟",
         "howMuchBudget": "كم هي ميزانيتك؟",
         "yourBudget": "ميزانيتك؟",
@@ -88,7 +88,9 @@
         "day": "يوم",
         "all": "الكل",
         "open": "مفتوح",
-        "openAt": "يفتح في"
+        "openAt": "يفتح في",
+        "from": "من",
+        "to": "الى"
     },
     "errors": {
         "tagsError": "من فضلك اختر اهتماماتك اولاً",
@@ -132,7 +134,8 @@
         "city": "المدينة",
         "selectInterests": "اختر اهتماماتك",
         "birthdate": "تاريخ الميلاد",
-        "tripName": "اسم طلعتك"
+        "tripName": "اسم طلعتك",
+        "selectTripTime": "اختر وقت طلعتك"
     },
     "noData": {
         "sorry": "عفواً",
