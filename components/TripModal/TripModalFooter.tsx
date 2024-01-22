@@ -2,7 +2,7 @@ import useHTTP from "@/hooks/use-http";
 import { RootState } from "@/store";
 import { tripActions } from "@/store/Trip/Trip";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Translate from "../helpers/Translate/Translate";
 import { authActions } from "@/store/Auth/Auth";
@@ -52,6 +52,10 @@ const TripModalFooter = () => {
             setStepError('');
         }
     }
+
+    useEffect(() => {
+        setStepError('');
+    }, [step])
 
     const prevStep = () => {
         dispatch(tripActions.prevStep());

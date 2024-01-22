@@ -100,8 +100,8 @@ const DetailsStep = () => {
                         customInput={<DateCustomButton />}
                     />
                     <TripModalHeading text='tripDuration' />
-                    {/* <TimeRangeSlider /> */}
-                    <TimeRangePicker />
+                    <TimeRangeSlider />
+                    {/* <TimeRangePicker /> */}
                 </div>
                 <div className="col-md-6">
                     <TripModalHeading text='WhoComing' />

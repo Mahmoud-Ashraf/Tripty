@@ -168,7 +168,7 @@ const Map = ({ locations }: { locations: Waypoint[] }) => {
     }, [markers]);
 
     return (
-        <div id="map" style={{ width: '100%', height: '500px', marginBottom: '1rem' }} ref={googleMapRef}></div>
+        <div id="map" style={{ width: '100%', height: '200px', marginBottom: '1rem' }} ref={googleMapRef}></div>
     );
 };
 
