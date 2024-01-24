@@ -30,6 +30,9 @@ const tripSlice = createSlice({
         nextStep(state) {
             state.currentStep = ++state.currentStep;
         },
+        prevStep(state) {
+            state.currentStep = --state.currentStep;
+        },
         setCurrentTrip(state, action) {
             state.currentTrip = action.payload;
         },

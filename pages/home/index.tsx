@@ -100,7 +100,7 @@ const Home = (props: Props) => {
          <Head>
             <title>Tripty - Home</title>
          </Head>
-         {isLoading && <Loader full />}
+         { <Loader full />}
          <HomeSlider sliders={newSliders} />
 
          <SectionHeader title="headings.explore" />
