@@ -23,6 +23,13 @@
     img {
         width: 100%;
         min-height: 100%;
+        transition: all .5s ease-in-out;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.2);
+        }
     }
 
     .placeStatus {
