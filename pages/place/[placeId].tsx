@@ -202,7 +202,7 @@ const PlacePage = (props: Props) => {
                                             {/* <Translate id='common.km' /> */}
                                         </span>}
                                     </div>
-                                    {place.gallery?.length > 0 && place?.videos?.length > 0 && <div className={classes.gallery}>
+                                    {(place.gallery?.length > 0 || place?.videos?.length > 0) && <div className={classes.gallery}>
                                         <div className="row">
                                             {
                                                 [...place?.gallery, ...place.videos].map(
