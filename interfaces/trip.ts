@@ -4,7 +4,7 @@ import { Tag } from "./tag"
 
 export interface Trip {
     id?: number,
-    date?: string,
+    date?: any,
     name?: string,
     start_at?: string,
     end_at?: string,

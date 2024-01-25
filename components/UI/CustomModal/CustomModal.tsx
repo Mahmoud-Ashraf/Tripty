@@ -2,6 +2,7 @@ import { ReactNode, useRef, MouseEventHandler, useEffect } from "react";
 import classes from './custom-modal.module.scss';
 import { useDispatch } from "react-redux";
 import { tripActions } from "@/store/Trip/Trip";
+import ReactDOM from "react-dom";
 
 interface Props {
     children: ReactNode,
@@ -34,19 +35,22 @@ const CustomModal = (props: Props) => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
-    return (
+    return ReactDOM.createPortal(
         <>
-            <div className={classes.modalBackdrop}>
-            </div>
+            {/* <div className={classes.modalBackdrop}>
+            </div> */}
             <div className={`${classes.modalOverlay} ${size === 'sm' ? classes.sm : ''}`}>
-                <div ref={modalRef} className={`${classes.container}`}>
-                    {props.onClose && <div className={classes.close}>
-                        <i onClick={props.onClose} className="fa-solid fa-xmark"></i>
-                    </div>}
-                    {children}
+                <div className={`${classes.container}`}>
+                    <div ref={modalRef} className={classes.content}>
+                        {props.onClose && <div className={classes.close}>
+                            <i onClick={props.onClose} className="fa-solid fa-xmark"></i>
+                        </div>}
+                        {children}
+                    </div>
                 </div>
             </div>
-        </>
+        </>,
+        document.body
     )
 }
 

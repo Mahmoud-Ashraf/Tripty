@@ -217,7 +217,7 @@ const PlacePage = (props: Props) => {
                                                         )
                                                         return (
                                                             <div key={i} className="col">
-                                                                <div className={classes.img}>
+                                                                <div className={classes.img} onClick={() => setShowGalleryModal(true)}>
                                                                     {
                                                                         img.thumb ?
                                                                             <div className={classes.videoThumb}>
