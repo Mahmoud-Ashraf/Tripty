@@ -36,7 +36,7 @@ const GalleryModal = ({ images }: { images: any[] }) => {
                     images?.map((img, i) => {
                         return (
                             img.video_url ?
-                                <ReactPlayer controls width='100%' height='500px' key={i} url={img.video_url} />
+                                <ReactPlayer controls key={i} url={img.video_url} />
                                 :
                                 <img key={i} src={img} />
                         )
