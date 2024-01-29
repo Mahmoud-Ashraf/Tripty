@@ -1,16 +1,31 @@
+import { TIME_SLIDER_MAX_HOUR, TIME_SLIDER_MIN_HOUR } from '@/config/constants';
 import { Trip } from '@/interfaces/trip';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface TripState {
     showTripModal: boolean
-    tripData: Trip | null,
+    tripData: Trip,
     numberOfSteps: number,
     currentStep: number,
     currentTrip: Trip | null
 }
 
-// const initialTripData = null;
-const initialTripState: TripState = { showTripModal: false, tripData: null, numberOfSteps: 5, currentStep: 1, currentTrip: null }
+const initialTripData: Trip = {
+    adults: 1,
+    haveBudget: false,
+    budget: "",
+    children: 0,
+    city: null,
+    date: new Date().toISOString(),
+    end_at: TIME_SLIDER_MAX_HOUR,
+    family: 0,
+    name: '',
+    start_at: TIME_SLIDER_MIN_HOUR,
+    tags: [],
+    otherTags: [],
+    howsComing: 'solo'
+};
+const initialTripState: TripState = { showTripModal: false, tripData: initialTripData, numberOfSteps: 5, currentStep: 1, currentTrip: null }
 
 const tripSlice = createSlice({
     name: 'trip',
@@ -22,7 +37,7 @@ const tripSlice = createSlice({
         closeShowTripModal(state) {
             state.showTripModal = false;
             state.currentStep = 1;
-            state.tripData = null;
+            state.tripData = initialTripData;
         },
         setTripData(state, action) {
             state.tripData = { ...state.tripData, ...action.payload };

@@ -35,6 +35,7 @@ interface Props {
 const PlacePage = (props: Props) => {
     // const { serverPlace, notFound } = props;
     const { translate } = useTranslate();
+    const coords = useSelector((state: RootState) => state.auth.userCoords);
     // const dispatch = useDispatch();
     // const [place, setPlace] = useState<Place>(serverPlace);
     // const [showRateModal, setShowRateModal] = useState(false);
@@ -59,7 +60,7 @@ const PlacePage = (props: Props) => {
     const getPlace = () => {
         sendRequest(
             {
-                url: `/api/trip?id=${tripId}`,
+                url: `/api/trip?id=${tripId}${coords ? `&long=${coords?.longitude}&lat=${coords?.latitude}` : ''}`,
                 method: 'GET'
             },
             (data: any) => setTrip(data.trip),
