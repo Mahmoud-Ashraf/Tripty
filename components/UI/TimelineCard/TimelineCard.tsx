@@ -68,7 +68,7 @@ const TimelineCard = ({ place, showCover = true, date, onReplaceClick }: any) =>
                             :
                             ''
                     }
-                    <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance} <Translate id='common.km' /></span>
+                    <span className={classes.distance}><i className="fa-solid fa-location-dot"></i> {place.distance}</span>
                 </div>
             </div>
             <span className={classes.distanceTime}><i className="fa-solid fa-car"></i> 30<Translate id='common.m' /></span>

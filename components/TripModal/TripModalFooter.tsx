@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Translate from "../helpers/Translate/Translate";
 import { authActions } from "@/store/Auth/Auth";
 import Loader from "../UI/Loader/Loader";
+import { useFormatTime } from "@/hooks/formatTime";
+import { Tag } from "@/interfaces/tag";
 
 const TripModalFooter = () => {
     const dispatch = useDispatch();
@@ -16,6 +18,35 @@ const TripModalFooter = () => {
     const tripData = useSelector((state: RootState) => state.trip.tripData);
     const [stepError, setStepError] = useState('');
     const { isLoading, error, sendRequest } = useHTTP();
+    const { formatTime24, formatDateToYYYYMMDD } = useFormatTime()
+
+
+
+    const handleTripDataBody = () => {
+        const tags = [...tripData.tags.map(tag => tag.id), ...tripData.otherTags.map((tag: Tag) => tag.id)];
+        const start_at = formatTime24(tripData.start_at);
+        const end_at = formatTime24(tripData.end_at);
+        const city_id = tripData.city?.id;
+        const budget = tripData.haveBudget && tripData.budget ? tripData.budget : '0';
+        const family = tripData.howsComing === 'family' ? 1 : 0;
+        const date = formatDateToYYYYMMDD(new Date(tripData?.date));
+        const adults = tripData?.adults;
+        const children = tripData?.children;
+        const name = tripData?.name;
+        const tripDataBody = {
+            tags,
+            start_at,
+            end_at,
+            city_id,
+            budget,
+            family,
+            date,
+            adults,
+            children,
+            name
+        };
+        return tripDataBody;
+    }
 
     const nextStep = () => {
         if (step === 2 && !tripData?.name) {
@@ -29,7 +60,7 @@ const TripModalFooter = () => {
                 {
                     url: '/api/trip/create',
                     method: 'POST',
-                    body: { ...tripData }
+                    body: handleTripDataBody()
                 },
                 (data: any) => {
                     dispatch(tripActions.setCurrentTrip(data));

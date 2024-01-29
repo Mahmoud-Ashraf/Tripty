@@ -24,7 +24,7 @@ const TripSteps = () => {
         case 4:
             return <TagsStep />;
         case 5:
-            return <CreateTrip />
+            return <CreateTrip />;
         default:
             return;
     }

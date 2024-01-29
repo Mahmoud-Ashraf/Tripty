@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { headers } = req;
 
     try {
-        const response = await fetch(`${baseUrl}trips/${id}?change_language=${locale}`, {
+        const response = await fetch(`${baseUrl}trips/${id}?change_language=${locale}${!!long ? `&long=${long}` : ''}${!!lat ? `&lat=${lat}` : ''}`, {
             headers: { 'Authorization': headers['authorization'] || '' }
         });
         if (!response.ok) {

@@ -3,13 +3,14 @@ import TripModalHeading from '../TripModal/TripModalHeading';
 import classes from './trip-steps.module.scss';
 import DatePicker, { registerLocale } from 'react-datepicker'
 import TimeRangeSlider from '../UI/TimeRangeSlider/TimeRangeSlider';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { tripActions } from '@/store/Trip/Trip';
 import Translate from '../helpers/Translate/Translate';
 import ar from 'date-fns/locale/ar';
 import { useRouter } from 'next/router';
 import useTranslate from '@/hooks/use-translate';
 import TimeRangePicker from '../UI/TimeRangePicker/TimeRangePicker';
+import { RootState } from '@/store';
 registerLocale('ar', ar);
 
 interface CustomDateButtonProps {
@@ -28,71 +29,40 @@ const DetailsStep = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const { translate } = useTranslate();
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [howComing, setHowComing] = useState<string[]>(['solo', 'family', 'friends']);
-    const [selectedComing, setSelectedComing] = useState<string>('');
-    const [adultsCount, setAdultsCount] = useState<number>();
-    const [childrenCount, setChildrenCount] = useState<number>();
-    const [tripName, setTripName] = useState<string>('');
-
-    function formatDateToYYYYMMDD(date: Date | null) {
-        if (date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-            const day = String(date.getDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-        return null;
-    }
+    const tripData = useSelector((state: RootState) => state.trip.tripData);
 
     const handleChangeDate = (date: Date | null) => {
-        setSelectedDate(date);
+        // console.log(date?.toISOString());
+        dispatch(tripActions.setTripData({ date: date?.toISOString() }));
+        // setSelectedDate(date);
     }
 
     const handleSetComing = (item: string) => {
-        setSelectedComing(item);
+        dispatch(tripActions.setTripData({ howsComing: item, children: 0, adults: 1 }));
     }
 
-    useEffect(() => {
-        setSelectedDate(new Date());
-        setSelectedComing(howComing[0]);
-        setAdultsCount(1);
-        setChildrenCount(0);
-    }, []);
+    const handleNameChange = (name: string) => {
+        dispatch(tripActions.setTripData({ name }));
+    }
 
-    useEffect(() => {
-        setChildrenCount(0);
-        setAdultsCount(1);
-        dispatch(tripActions.setTripData({ family: selectedComing === 'Family' ? 1 : 0 }));
-    }, [selectedComing]);
+    const handleAdultsCount = (count: number) => {
+        dispatch(tripActions.setTripData({ adults: count }));
+    }
 
-    useEffect(() => {
-        dispatch(tripActions.setTripData({ adults: adultsCount }));
-    }, [adultsCount]);
-
-    useEffect(() => {
-        dispatch(tripActions.setTripData({ children: childrenCount }));
-    }, [childrenCount]);
-
-    useEffect(() => {
-        dispatch(tripActions.setTripData({ date: formatDateToYYYYMMDD(selectedDate) }));
-    }, [selectedDate]);
-
-    useEffect(() => {
-        dispatch(tripActions.setTripData({ name: tripName }));
-    }, [tripName]);
-
-
+    const handleChildrenCount = (count: number) => {
+        dispatch(tripActions.setTripData({ children: count }));
+    }
 
     return (
         <div className={classes.details}>
             <div className="row">
                 <div className="col-md-6">
                     <TripModalHeading text='tripName' />
-                    <input placeholder={translate('placeholder.tripName')} className={classes.input} value={tripName} onChange={(e) => setTripName(e.target.value)} />
+                    <input placeholder={translate('placeholder.tripName')} className={classes.input} value={tripData?.name} onChange={(e) => handleNameChange(e.target.value)} />
                     <TripModalHeading text='date' />
                     <DatePicker
-                        selected={selectedDate}
+                        selected={new Date(tripData.date)}
                         locale={router.locale}
                         dateFormat={'dd MMM yy'}
                         minDate={new Date()}
@@ -112,7 +82,7 @@ const DetailsStep = () => {
                                     item => {
                                         return (
                                             <div key={item} className="col-auto">
-                                                <div onClick={() => handleSetComing(item)} className={`${classes.selection} ${selectedComing === item ? classes.selected : ''}`}>
+                                                <div onClick={() => handleSetComing(item)} className={`${classes.selection} ${tripData.howsComing === item ? classes.selected : ''}`}>
                                                     <span><Translate id={`tripModal.${item}`} /></span>
                                                 </div>
                                             </div>
@@ -124,21 +94,21 @@ const DetailsStep = () => {
                         <div className={classes.comingCount}>
                             <div className="row mt-3 g-3">
                                 {
-                                    (selectedComing === 'family' || selectedComing === 'friends') &&
+                                    (tripData.howsComing === 'family' || tripData.howsComing === 'friends') &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
-                                            <span onClick={() => setAdultsCount(prev => (prev && (prev > 1)) ? --prev : 1)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{adultsCount} <Translate id='tripModal.adults' /></span>
-                                            <span onClick={() => setAdultsCount(prev => (prev && (prev < 10)) ? ++prev : 10)} className={classes.counterInc}>+</span>
+                                            <span onClick={() => handleAdultsCount((tripData?.adults > 1) ? (tripData?.adults - 1) : 1)} className={classes.counterDec}>-</span>
+                                            <span className={classes.count}>{tripData?.adults} <Translate id='tripModal.adults' /></span>
+                                            <span onClick={() => handleAdultsCount((tripData?.adults < 10) ? (tripData.adults + 1) : 10)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>}
                                 {
-                                    selectedComing === 'family' &&
+                                    tripData.howsComing === 'family' &&
                                     <div className="col-12">
                                         <div className={classes.counter}>
-                                            <span onClick={() => setChildrenCount(prev => (prev && (prev > 0)) ? --prev : 0)} className={classes.counterDec}>-</span>
-                                            <span className={classes.count}>{childrenCount} <Translate id='tripModal.children' /></span>
-                                            <span onClick={() => setChildrenCount(prev => (prev?.toString() && (prev < 5)) ? ++prev : 5)} className={classes.counterInc}>+</span>
+                                            <span onClick={() => handleChildrenCount((tripData?.children > 0) ? (tripData.children - 1) : 0)} className={classes.counterDec}>-</span>
+                                            <span className={classes.count}>{tripData?.children} <Translate id='tripModal.children' /></span>
+                                            <span onClick={() => handleChildrenCount((tripData.children < 5) ? (tripData?.children + 1) : 5)} className={classes.counterInc}>+</span>
                                         </div>
                                     </div>
                                 }

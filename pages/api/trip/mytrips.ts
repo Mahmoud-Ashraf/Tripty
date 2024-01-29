@@ -6,7 +6,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const { locale } = req.query;
+    const { locale, long, lat } = req.query;
     const { headers } = req;
 
     try {
