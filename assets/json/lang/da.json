@@ -4,7 +4,11 @@
         "about": "Om Tripty",
         "places": "Sted",
         "tourismPackages": "Turisme Pakker",
-        "dialog": "[objekt]"
+        "dialog": {
+            "hi": "Hej",
+            "manage": "Administrer din konto",
+            "signout": "Log ud"
+        }
     },
     "searchBar": {
         "placeholder": "Søge"

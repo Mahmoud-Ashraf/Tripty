@@ -4,7 +4,11 @@
         "about": "À propos de Tripty",
         "places": "Lieux",
         "tourismPackages": "Forfaits Touristiques",
-        "dialog": "[objet Objet]"
+        "dialog": {
+            "hi": "Salut",
+            "manage": "Gérer votre Compte",
+            "signout": "Déconnectez-vous"
+        }
     },
     "searchBar": {
         "placeholder": "Chercher"
@@ -105,7 +109,7 @@
         "tripNameTakenError": "Le nom du voyage est déjà pris"
     },
     "currencies": {
-        "sar": "DAS"
+        "sar": "SAR"
     },
     "footer": {
         "copyRights": "Copyright © 2023 Tripty. Tous droits réservés",

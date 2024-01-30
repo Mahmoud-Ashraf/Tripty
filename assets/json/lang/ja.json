@@ -4,7 +4,11 @@
         "about": "Triptyについて",
         "places": "場所",
         "tourismPackages": "観光パッケージ",
-        "dialog": "[オブジェクトオブジェクト]"
+        "dialog": {
+            "hi": "こんにちは",
+            "manage": "アカウントの管理",
+            "signout": "サインアウト"
+        }
     },
     "searchBar": {
         "placeholder": "検索"

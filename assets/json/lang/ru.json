@@ -4,7 +4,11 @@
         "about": "О Трипти",
         "places": "Места",
         "tourismPackages": "Туристические пакеты",
-        "dialog": "[объектный объект]"
+        "dialog": {
+            "hi": "Привет",
+            "manage": "Управляйте своей учетной записью",
+            "signout": "Выход"
+        }
     },
     "searchBar": {
         "placeholder": "Поиск"
@@ -105,7 +109,7 @@
         "tripNameTakenError": "Название поездки уже выбрано"
     },
     "currencies": {
-        "sar": "сар"
+        "sar": "SAR"
     },
     "footer": {
         "copyRights": "Авторское право © 2023 Tripty. Все права защищены",

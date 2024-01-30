@@ -4,7 +4,11 @@
         "about": "关于Tripty",
         "places": "地方",
         "tourismPackages": "旅游套餐",
-        "dialog": "[对象对象]"
+        "dialog": {
+            "hi": "嗨。",
+            "manage": "管理您的帐户",
+            "signout": "签出"
+        }
     },
     "searchBar": {
         "placeholder": "搜索"
@@ -105,7 +109,7 @@
         "tripNameTakenError": "行程名称已取"
     },
     "currencies": {
-        "sar": "特区"
+        "sar": "SAR"
     },
     "footer": {
         "copyRights": "版权附图2023Tripty。 版权所有不得转载",

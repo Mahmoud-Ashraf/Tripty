@@ -4,7 +4,11 @@
         "about": "Über Tripty",
         "places": "Tze",
         "tourismPackages": "Touristische Pakete",
-        "dialog": "[objekt Objekt]"
+        "dialog": {
+            "hi": "Hi",
+            "manage": "Verwalten Sie Ihr Konto",
+            "signout": "Abmelden"
+        }
     },
     "searchBar": {
         "placeholder": "Suche"
@@ -105,7 +109,7 @@
         "tripNameTakenError": "Name der Reise ist bereits vergeben"
     },
     "currencies": {
-        "sar": "SONDERVERWALTUNGSZONE SAR"
+        "sar": "SAR"
     },
     "footer": {
         "copyRights": "Urheberrecht © 2023 Tripty. Alle Rechte vorbehalten",

@@ -4,7 +4,11 @@
         "about": "ٹرپٹی کے بارے میں",
         "places": "مقامات",
         "tourismPackages": "سیاحت پیکجز",
-        "dialog": "[آبجیکٹ آبجیکٹ]"
+        "dialog": {
+            "hi": "ہیلو",
+            "manage": "اپنے اکاؤنٹ کا نظم کریں",
+            "signout": "سائن آؤٹ کریں"
+        }
     },
     "searchBar": {
         "placeholder": "تلاش"
@@ -105,7 +109,7 @@
         "tripNameTakenError": "سفر کا نام پہلے ہی لیا گیا ہے"
     },
     "currencies": {
-        "sar": "سار"
+        "sar": "SAR"
     },
     "footer": {
         "copyRights": "کاپی رائٹ © 2023 ٹرپٹی. جملہ حقوق محفوظ ہیں",

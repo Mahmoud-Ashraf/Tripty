@@ -4,7 +4,11 @@
         "about": "Acerca de Tripty",
         "places": "Lugares",
         "tourismPackages": "Paquetes Turísticos",
-        "dialog": "[objeto Objeto]"
+        "dialog": {
+            "hi": "Hola",
+            "manage": "Administre su Cuenta",
+            "signout": "Cerrar sesión"
+        }
     },
     "searchBar": {
         "placeholder": "Buscar"
