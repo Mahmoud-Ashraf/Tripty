@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "家",
+        "about": "关于Tripty",
+        "places": "地方",
+        "tourismPackages": "旅游套餐",
+        "dialog": "[对象对象]"
+    },
+    "searchBar": {
+        "placeholder": "搜索"
+    },
+    "headings": {
+        "startYour": "开始你的",
+        "your": "你的",
+        "trip": "旅行",
+        "discounts": "折扣优惠",
+        "explorePlacesNearYou": "探索你附近最好的地方",
+        "explore": "探索",
+        "trend": "现在的趋势",
+        "search": "搜索",
+        "places": "地方",
+        "tourismPackages": "旅游套餐",
+        "myAccount": "我的帐户",
+        "loginToContinue": "请登入继续"
+    },
+    "buttons": {
+        "startTrip": "开始你的旅行",
+        "showMore": "عرض المزيد",
+        "login": "登入",
+        "replace": "更换/更换",
+        "moreDetails": "更多详情",
+        "saveTrip": "省省你的旅行吧",
+        "bookNow": "现在就读书",
+        "register": "登记册",
+        "showMenu": "显示菜单",
+        "update": "更新资料",
+        "addRate": "加税率",
+        "goToHome": "回家去吧",
+        "send": "发送",
+        "saveYourData": "保存您的数据"
+    },
+    "entries": {
+        "trend": "现在的趋势",
+        "discount": "折扣优惠",
+        "tourism": "旅游套餐"
+    },
+    "place": {
+        "about": "关于",
+        "menu": "菜单",
+        "location": "地点",
+        "getDiscount": "获得折扣",
+        "contact": "联络电话"
+    },
+    "tripModal": {
+        "create": "创建您的",
+        "trip": "旅行",
+        "myLocation": "我现在的位置",
+        "date": "日期",
+        "tripDuration": "行程时间",
+        "WhoComing": "谁和你一起去？",
+        "solo": "独唱",
+        "family": "家庭；家庭",
+        "friends": "朋友",
+        "doYouHaveBudget": "你有预算吗?",
+        "howMuchBudget": "你的预算是多少？",
+        "yourBudget": "你的预算？",
+        "howSpendTime": "你想怎么度过你的时间？",
+        "tagsPlaceHolder": "水疗,购物",
+        "adults": "成年人",
+        "children": "儿童",
+        "other": "其他",
+        "tripName": "行程名称"
+    },
+    "common": {
+        "yes": "是的",
+        "no": "非也。",
+        "cancel": "取消",
+        "prev": "上一次",
+        "next": "下一个",
+        "km": "公里",
+        "m": "m",
+        "recomended": "重新提出",
+        "male": "男",
+        "female": "女",
+        "day": "日",
+        "all": "全部",
+        "open": "打开",
+        "openAt": "开放时间：",
+        "from": "从",
+        "to": "到"
+    },
+    "errors": {
+        "tagsError": "请先选择标签",
+        "wrongCredentials": "电子邮件或密码不正确",
+        "The name field is required": "需要姓名",
+        "The email has already been taken": "这封电子邮件已经被接收了",
+        "The email must be a valid email address": "电子邮件必须是有效的电子邮件地址",
+        "The email field is required": "电子邮件是必需的",
+        "The password field is required": "需要密码",
+        "The password confirmation does not match": "密码不匹配",
+        "The mobile has already been taken": "手机已经被拿走了",
+        "The password must be at least 6 characters": "密码必须至少为6个字符",
+        "updateError": "请填写您的资料",
+        "tripNameRequiredError": "行程名称为必填项",
+        "tripNameTakenError": "行程名称已取"
+    },
+    "currencies": {
+        "sar": "特区"
+    },
+    "footer": {
+        "copyRights": "版权附图2023Tripty。 版权所有不得转载",
+        "termsAndConditions": "条款及细则",
+        "privacyPolicy": "私隐政策"
+    },
+    "auth": {
+        "login": "登入",
+        "forgetPassword": "忘记密码",
+        "loginBy": "或登入",
+        "registerWithMail": "新登记册电邮",
+        "completeData": "完整数据",
+        "enterEmail": "输入您的电子邮件",
+        "enterNewPassword": "输入新密码"
+    },
+    "placeholder": {
+        "name": "姓名",
+        "mobile": "流动电话",
+        "email": "电邮",
+        "password": "密码",
+        "confirmPassword": "确认密码",
+        "gender": "性别",
+        "city": "城市",
+        "selectInterests": "选择你的兴趣",
+        "birthdate": "出生日期",
+        "tripName": "行程名称",
+        "selectTripTime": "选择行程时间"
+    },
+    "noData": {
+        "sorry": "不好意思。。。",
+        "noPlaces": "没有找到地方",
+        "noPlace": "这个地方没有找到",
+        "noTrip": "这次旅行没有找到"
+    },
+    "rate": {
+        "yourRate": "你的价格",
+        "comments": "评论"
+    },
+    "notFound": {
+        "404": "404页未找到",
+        "sorry": "对不起，您要查找的页面不存在。"
+    },
+    "sidebar": {
+        "personalData": "个人资料",
+        "favorite": "最喜欢的",
+        "trips": "行程",
+        "notifications": "通知书",
+        "terms": "条款及细则",
+        "privacy": "私隐政策",
+        "logout": "签出"
+    },
+    "time": {
+        "am": "我",
+        "pm": "下午"
+    },
+    "trip": {
+        "start": "开始新的",
+        "experience": "经验",
+        "text": "与我们一起，您可以根据您的预算，风格等安排您的旅行。..",
+        "text1": "不要错过expirence！ 把计划留给我们，享受你的旅行吧",
+        "startNow": "现在就开始你的旅行"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "推特",
+        "whatsapp": "WhatsApp的",
+        "linkedin": "领英"
+    }
+}

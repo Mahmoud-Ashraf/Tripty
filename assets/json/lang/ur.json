@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "گھر",
+        "about": "ٹرپٹی کے بارے میں",
+        "places": "مقامات",
+        "tourismPackages": "سیاحت پیکجز",
+        "dialog": "[آبجیکٹ آبجیکٹ]"
+    },
+    "searchBar": {
+        "placeholder": "تلاش"
+    },
+    "headings": {
+        "startYour": "اپنا آغاز کریں",
+        "your": "آپ",
+        "trip": "سفر",
+        "discounts": "چھوٹ",
+        "explorePlacesNearYou": "اپنے قریب بہترین مقامات دریافت کریں",
+        "explore": "دریافت کریں",
+        "trend": "رجحان اب",
+        "search": "تلاش",
+        "places": "مقامات",
+        "tourismPackages": "سیاحت پیکجز",
+        "myAccount": "میرا اکاؤنٹ",
+        "loginToContinue": "براہ کرم ، جاری رکھنے کے لئے لاگ ان کریں"
+    },
+    "buttons": {
+        "startTrip": "اپنا سفر شروع کریں",
+        "showMore": "عرض المزيد",
+        "login": "لاگ ان",
+        "replace": "تبدیل کریں",
+        "moreDetails": "مزید تفصیلات",
+        "saveTrip": "اپنا سفر بچائیں",
+        "bookNow": "اب کتاب",
+        "register": "رجسٹر",
+        "showMenu": "مینو دکھائیں",
+        "update": "اپ ڈیٹ",
+        "addRate": "شرح شامل کریں",
+        "goToHome": "گھر جاؤ",
+        "send": "بھیجیں",
+        "saveYourData": "اپنا ڈیٹا محفوظ کریں"
+    },
+    "entries": {
+        "trend": "رجحان اب",
+        "discount": "چھوٹ",
+        "tourism": "سیاحت پیکجز"
+    },
+    "place": {
+        "about": "کے بارے میں",
+        "menu": "مینو",
+        "location": "مقام",
+        "getDiscount": "رعایت حاصل کریں",
+        "contact": "رابطہ نمبر"
+    },
+    "tripModal": {
+        "create": "اپنا بنائیں",
+        "trip": "سفر",
+        "myLocation": "میرا موجودہ مقام",
+        "date": "تاریخ",
+        "tripDuration": "سفر کا دورانیہ",
+        "WhoComing": "آپ کے ساتھ کون آ رہا ہے ؟ ",
+        "solo": "سولو",
+        "family": "خاندان",
+        "friends": "دوست",
+        "doYouHaveBudget": "کیا آپ کے پاس بجٹ ہے؟",
+        "howMuchBudget": "آپ کا بجٹ کتنا ہے؟",
+        "yourBudget": "آپ کا بجٹ؟",
+        "howSpendTime": "آپ اپنا وقت کیسے گزارنا چاہتے ہیں ؟ ",
+        "tagsPlaceHolder": "سپا ، خریداری",
+        "adults": "بالغ",
+        "children": "بچے",
+        "other": "دیگر",
+        "tripName": "سفر کا نام"
+    },
+    "common": {
+        "yes": "ہاں",
+        "no": "نہیں",
+        "cancel": "منسوخ کریں",
+        "prev": "پچھلا",
+        "next": "اگلا",
+        "km": "کلومیٹر",
+        "m": "m",
+        "recomended": "تجویز کردہ",
+        "male": "مرد",
+        "female": "عورت",
+        "day": "دن",
+        "all": "سب",
+        "open": "کھلا",
+        "openAt": "پر کھولیں",
+        "from": "سے",
+        "to": "کرنے کے لئے"
+    },
+    "errors": {
+        "tagsError": "براہ کرم پہلے ٹیگ منتخب کریں ۔ ",
+        "wrongCredentials": "ای میل یا پاس ورڈ غلط ہے",
+        "The name field is required": "نام کی ضرورت ہے",
+        "The email has already been taken": "یہ ای میل پہلے ہی لیا جا چکا ہے",
+        "The email must be a valid email address": "ای میل درست ای میل ایڈریس ہونا ضروری ہے",
+        "The email field is required": "ای میل کی ضرورت ہے",
+        "The password field is required": "پاس ورڈ کی ضرورت ہے",
+        "The password confirmation does not match": "پاس ورڈ مماثل نہیں ہے",
+        "The mobile has already been taken": "موبائل پہلے ہی لیا جا چکا ہے ۔ ",
+        "The password must be at least 6 characters": "پاس ورڈ کم از کم 6 حروف ہونا ضروری ہے",
+        "updateError": "براہ کرم اپنا ڈیٹا مکمل کریں",
+        "tripNameRequiredError": "سفر کا نام ضروری ہے",
+        "tripNameTakenError": "سفر کا نام پہلے ہی لیا گیا ہے"
+    },
+    "currencies": {
+        "sar": "سار"
+    },
+    "footer": {
+        "copyRights": "کاپی رائٹ © 2023 ٹرپٹی. جملہ حقوق محفوظ ہیں",
+        "termsAndConditions": "شرائط و ضوابط",
+        "privacyPolicy": "رازداری کی پالیسی"
+    },
+    "auth": {
+        "login": "لاگ ان",
+        "forgetPassword": "پاس ورڈ بھول جاؤ",
+        "loginBy": "یا لاگ ان کریں",
+        "registerWithMail": "نیا رجسٹر بذریعہ ای میل",
+        "completeData": "مکمل ڈیٹا",
+        "enterEmail": "اپنا ای میل درج کریں",
+        "enterNewPassword": "نیا پاس ورڈ درج کریں"
+    },
+    "placeholder": {
+        "name": "نام",
+        "mobile": "موبائل",
+        "email": "ای میل",
+        "password": "پاس ورڈ",
+        "confirmPassword": "پاس ورڈ کی تصدیق کریں",
+        "gender": "جنس",
+        "city": "شہر",
+        "selectInterests": "اپنی دلچسپیاں منتخب کریں ۔ ",
+        "birthdate": "تاریخ پیدائش",
+        "tripName": "سفر کا نام",
+        "selectTripTime": "سفر کا وقت منتخب کریں ۔ "
+    },
+    "noData": {
+        "sorry": "معذرت",
+        "noPlaces": "کوئی جگہ نہیں ملی",
+        "noPlace": "یہ جگہ نہیں ملی",
+        "noTrip": "یہ سفر نہیں ملا"
+    },
+    "rate": {
+        "yourRate": "آپ کی شرح",
+        "comments": "تبصرے"
+    },
+    "notFound": {
+        "404": "404 صفحہ نہیں ملا",
+        "sorry": "معذرت ، جس صفحے کی آپ تلاش کر رہے ہیں وہ موجود نہیں ہے ۔ "
+    },
+    "sidebar": {
+        "personalData": "ذاتی ڈیٹا",
+        "favorite": "پسندیدہ",
+        "trips": "سفر",
+        "notifications": "اطلاعات",
+        "terms": "شرائط و ضوابط",
+        "privacy": "رازداری کی پالیسی",
+        "logout": "سائن آؤٹ کریں"
+    },
+    "time": {
+        "am": "ام",
+        "pm": "وزیر اعظم"
+    },
+    "trip": {
+        "start": "نیا شروع کریں",
+        "experience": "تجربہ",
+        "text": "ہمارے ساتھ آپ اپنے سفر کو اپنے بجٹ ، انداز وغیرہ کے مطابق شیڈول کرسکتے ہیں ۔ ..",
+        "text1": "تجربے کو مت چھوڑیں! منصوبہ بندی کو ہمارے پاس چھوڑیں اور اپنے سفر سے لطف اٹھائیں",
+        "startNow": "ابھی اپنا سفر شروع کریں"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "ٹویٹر",
+        "whatsapp": "واٹس ایپ",
+        "linkedin": "لنکڈین"
+    }
+}

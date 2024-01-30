@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "Accueil",
+        "about": "À propos de Tripty",
+        "places": "Lieux",
+        "tourismPackages": "Forfaits Touristiques",
+        "dialog": "[objet Objet]"
+    },
+    "searchBar": {
+        "placeholder": "Chercher"
+    },
+    "headings": {
+        "startYour": "COMMENCEZ VOTRE",
+        "your": "VOTRE",
+        "trip": "VOYAGE",
+        "discounts": "RÉDUCTIONS",
+        "explorePlacesNearYou": "Explorez les meilleurs endroits près de chez vous",
+        "explore": "explorer",
+        "trend": "TENDANCE MAINTENANT",
+        "search": "Chercher",
+        "places": "LIEUX",
+        "tourismPackages": "Forfaits Touristiques",
+        "myAccount": "Mon Compte",
+        "loginToContinue": "Veuillez vous connecter pour continuer"
+    },
+    "buttons": {
+        "startTrip": "Commencez Votre Voyage",
+        "showMore": "عرض المزيد",
+        "login": "Connexion",
+        "replace": "Remplacer",
+        "moreDetails": "Plus De Détails",
+        "saveTrip": "Sauvegardez votre voyage",
+        "bookNow": "Réservez Maintenant",
+        "register": "S'inscrire",
+        "showMenu": "Afficher Le Menu",
+        "update": "Mise à Jour",
+        "addRate": "Ajouter un taux",
+        "goToHome": "Aller À La Maison",
+        "send": "Envoyer",
+        "saveYourData": "Sauvegardez vos données"
+    },
+    "entries": {
+        "trend": "Tendance Maintenant",
+        "discount": "Réductions",
+        "tourism": "Forfaits Touristiques"
+    },
+    "place": {
+        "about": "Au sujet",
+        "menu": "Le Menu",
+        "location": "Emplacement",
+        "getDiscount": "Obtenez la Réduction",
+        "contact": "Numéro de contact"
+    },
+    "tripModal": {
+        "create": "Créez Votre",
+        "trip": "Voyage",
+        "myLocation": "Mon Emplacement Actuel",
+        "date": "Date",
+        "tripDuration": "Durée du Voyage",
+        "WhoComing": "Qui vient avec toi?",
+        "solo": "En Solo",
+        "family": "Famille",
+        "friends": "Amis",
+        "doYouHaveBudget": "Avez-vous un budget?",
+        "howMuchBudget": "Quel est votre budget?",
+        "yourBudget": "Votre Budget?",
+        "howSpendTime": "Comment veux-tu passer ton temps?",
+        "tagsPlaceHolder": "Spa, Boutiques",
+        "adults": "Adultes",
+        "children": "Enfants",
+        "other": "Autres",
+        "tripName": "Nom du Voyage"
+    },
+    "common": {
+        "yes": "Oui",
+        "no": "Non",
+        "cancel": "Annuler",
+        "prev": "Précédent",
+        "next": "Suivant",
+        "km": "KILOMÈTRES",
+        "m": "m",
+        "recomended": "Recommandé",
+        "male": "Hommes",
+        "female": "Femelle",
+        "day": "Jour",
+        "all": "Tous",
+        "open": "ouvert",
+        "openAt": "ouvert à",
+        "from": "À partir De",
+        "to": "À"
+    },
+    "errors": {
+        "tagsError": "Veuillez D'Abord Sélectionner Les Tags",
+        "wrongCredentials": "L'e-mail ou le mot de passe est incorrect",
+        "The name field is required": "Le nom est requis",
+        "The email has already been taken": "Cet email a déjà été pris",
+        "The email must be a valid email address": "L'e-mail doit être une adresse e-mail valide",
+        "The email field is required": "E-mail est requis",
+        "The password field is required": "Un mot de passe est requis",
+        "The password confirmation does not match": "Le mot de passe ne correspond pas",
+        "The mobile has already been taken": "Mobile a déjà été pris",
+        "The password must be at least 6 characters": "Le mot de passe doit comporter au moins 6 caractères",
+        "updateError": "Veuillez compléter vos données",
+        "tripNameRequiredError": "Le nom du voyage est requis",
+        "tripNameTakenError": "Le nom du voyage est déjà pris"
+    },
+    "currencies": {
+        "sar": "DAS"
+    },
+    "footer": {
+        "copyRights": "Copyright © 2023 Tripty. Tous droits réservés",
+        "termsAndConditions": "Termes et conditions",
+        "privacyPolicy": "Politique de confidentialité"
+    },
+    "auth": {
+        "login": "Connexion",
+        "forgetPassword": "Oublier le Mot de Passe",
+        "loginBy": "Ou Connectez-Vous Par",
+        "registerWithMail": "Nouvelle Inscription Par Email",
+        "completeData": "Données Complètes",
+        "enterEmail": "Entrez votre email",
+        "enterNewPassword": "Entrez un nouveau mot de passe"
+    },
+    "placeholder": {
+        "name": "Nom",
+        "mobile": "Mobiles",
+        "email": "Courriel",
+        "password": "Mot de Passe",
+        "confirmPassword": "Confirmer Le Mot de Passe",
+        "gender": "Sexe",
+        "city": "Ville",
+        "selectInterests": "Sélectionnez Vos Centres D'Intérêt",
+        "birthdate": "Date de naissance",
+        "tripName": "Nom du Voyage",
+        "selectTripTime": "Sélectionnez le temps de trajet"
+    },
+    "noData": {
+        "sorry": "Désolé",
+        "noPlaces": "Aucun logement trouvé",
+        "noPlace": "Cet endroit n'a pas été trouvé",
+        "noTrip": "Ce voyage n'a pas été trouvé"
+    },
+    "rate": {
+        "yourRate": "Votre tarif",
+        "comments": "Commentaires"
+    },
+    "notFound": {
+        "404": "Erreur 404-Page Non trouvée",
+        "sorry": "Désolé, la page que vous recherchez n'existe pas."
+    },
+    "sidebar": {
+        "personalData": "Données Personnelles",
+        "favorite": "Favori",
+        "trips": "voyages",
+        "notifications": "Notifications",
+        "terms": "Termes et Conditions",
+        "privacy": "Politique de Confidentialité",
+        "logout": "déconnectez-vous"
+    },
+    "time": {
+        "am": "SUIS",
+        "pm": "PM"
+    },
+    "trip": {
+        "start": "Commencer Nouveau",
+        "experience": "Expérience",
+        "text": "Avec nous, vous pouvez planifier votre voyage en fonction de votre budget, de votre style, etc...",
+        "text1": "Ne manquez pas l'expiration! laissez-nous la planification et profitez de votre voyage",
+        "startNow": "COMMENCEZ VOTRE VOYAGE MAINTENANT"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "Sur Twitter",
+        "whatsapp": "WhatsApp Plus",
+        "linkedin": "Sur LinkedIn"
+    }
+}

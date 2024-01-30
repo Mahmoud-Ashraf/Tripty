@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "ホーム",
+        "about": "Triptyについて",
+        "places": "場所",
+        "tourismPackages": "観光パッケージ",
+        "dialog": "[オブジェクトオブジェクト]"
+    },
+    "searchBar": {
+        "placeholder": "検索"
+    },
+    "headings": {
+        "startYour": "あなたの始めて下さい",
+        "your": "あなたの",
+        "trip": "トリップ",
+        "discounts": "割引",
+        "explorePlacesNearYou": "お近くの最高の場所を探索",
+        "explore": "探索する",
+        "trend": "今のトレンド",
+        "search": "検索",
+        "places": "場所",
+        "tourismPackages": "観光パッケージ",
+        "myAccount": "マイアカウント",
+        "loginToContinue": "続行するにはログインしてください"
+    },
+    "buttons": {
+        "startTrip": "あなたの旅行を開始します。",
+        "showMore": "عرض المزيد",
+        "login": "ログイン",
+        "replace": "置換",
+        "moreDetails": "より多くの細部",
+        "saveTrip": "あなたの旅行を保存します。",
+        "bookNow": "今すぐ予約",
+        "register": "登録",
+        "showMenu": "メニューを表示する",
+        "update": "更新",
+        "addRate": "率を加えて下さい",
+        "goToHome": "家に行く",
+        "send": "送信",
+        "saveYourData": "データの保存"
+    },
+    "entries": {
+        "trend": "今のトレンド",
+        "discount": "割引",
+        "tourism": "観光パッケージ"
+    },
+    "place": {
+        "about": "づﾂつｷﾂ。",
+        "menu": "メニュー",
+        "location": "場所",
+        "getDiscount": "割引を得る",
+        "contact": "連絡先番号"
+    },
+    "tripModal": {
+        "create": "あなたを作成して下さい",
+        "trip": "トリップ",
+        "myLocation": "私の現在の場所",
+        "date": "日付",
+        "tripDuration": "旅行期間",
+        "WhoComing": "誰があなたと一緒に来るのですか？",
+        "solo": "ソロ",
+        "family": "家族",
+        "friends": "フレンズ",
+        "doYouHaveBudget": "あなたは予算を持っていますか？",
+        "howMuchBudget": "あなたの予算はいくらですか？",
+        "yourBudget": "あなたの予算？",
+        "howSpendTime": "どのようにあなたの時間を過ごすしたいですか？",
+        "tagsPlaceHolder": "スパ、ショッピング",
+        "adults": "大人",
+        "children": "子供たち",
+        "other": "その他",
+        "tripName": "旅行名"
+    },
+    "common": {
+        "yes": "はい。",
+        "no": "いいえ。",
+        "cancel": "キャンセル",
+        "prev": "前へ",
+        "next": "次へ",
+        "km": "KM",
+        "m": "m",
+        "recomended": "お勧めします",
+        "male": "男性",
+        "female": "女性",
+        "day": "日",
+        "all": "すべて",
+        "open": "オープン",
+        "openAt": "で開く",
+        "from": "から",
+        "to": "に"
+    },
+    "errors": {
+        "tagsError": "最初にタグを選択してください",
+        "wrongCredentials": "電子メールまたはパスワードが正しくありません",
+        "The name field is required": "名前は必須です",
+        "The email has already been taken": "このメールはすでに取得されています",
+        "The email must be a valid email address": "電子メールは有効な電子メールアドレスである必要があります",
+        "The email field is required": "メールが必要です",
+        "The password field is required": "パスワードが必要です",
+        "The password confirmation does not match": "パスワードが一致しない",
+        "The mobile has already been taken": "モバイルはすでに撮影されています",
+        "The password must be at least 6 characters": "パスワードは6文字以上でなければなりません",
+        "updateError": "あなたのデータを記入してください",
+        "tripNameRequiredError": "旅行名は必須です",
+        "tripNameTakenError": "旅行名はすでに取られています"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "著作権©2023Tripty. すべての権利を保有",
+        "termsAndConditions": "利用規約",
+        "privacyPolicy": "個人情報保護方針"
+    },
+    "auth": {
+        "login": "ログイン",
+        "forgetPassword": "パスワードを忘れた",
+        "loginBy": "またはログインして",
+        "registerWithMail": "メールで新規登録",
+        "completeData": "完全なデータ",
+        "enterEmail": "あなたの電子メールを入力してください",
+        "enterNewPassword": "新しいパスワードを入力します"
+    },
+    "placeholder": {
+        "name": "名前",
+        "mobile": "モバイル",
+        "email": "メール",
+        "password": "パスワード",
+        "confirmPassword": "パスワードの確認",
+        "gender": "性別",
+        "city": "市",
+        "selectInterests": "あなたの興味を選択してください",
+        "birthdate": "生年月日",
+        "tripName": "旅行名",
+        "selectTripTime": "旅行時間を選択"
+    },
+    "noData": {
+        "sorry": "ちょっと失礼。",
+        "noPlaces": "場所が見つかりません",
+        "noPlace": "この場所は見つかりません",
+        "noTrip": "この旅行は見つかりません"
+    },
+    "rate": {
+        "yourRate": "あなたの率",
+        "comments": "コメント"
+    },
+    "notFound": {
+        "404": "404-ページが見つかりません",
+        "sorry": "申し訳ありませんが、あなたが探しているページは存在しません。"
+    },
+    "sidebar": {
+        "personalData": "個人データ",
+        "favorite": "お気に入り",
+        "trips": "トリップ",
+        "notifications": "通知",
+        "terms": "利用規約",
+        "privacy": "個人情報保護方針",
+        "logout": "サインアウト"
+    },
+    "time": {
+        "am": "AM",
+        "pm": "PM"
+    },
+    "trip": {
+        "start": "新しいスタート",
+        "experience": "経験",
+        "text": "私たちと一緒にあなたの予算、スタイルなどに応じてあなたの旅行をスケジュールすることができます。..",
+        "text1": "Expirenceをお見逃しなく！ 私たちに計画を残して、あなたの旅行をお楽しみください",
+        "startNow": "今すぐ旅行を始めましょう"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "ツイッター",
+        "whatsapp": "WhatsApp",
+        "linkedin": "リンクトイン"
+    }
+}

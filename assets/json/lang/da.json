@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "Hjem",
+        "about": "Om Tripty",
+        "places": "Sted",
+        "tourismPackages": "Turisme Pakker",
+        "dialog": "[objekt]"
+    },
+    "searchBar": {
+        "placeholder": "Søge"
+    },
+    "headings": {
+        "startYour": "START DIN",
+        "your": "DIN",
+        "trip": "TUR",
+        "discounts": "RABAT",
+        "explorePlacesNearYou": "Udforsk de bedste steder i nærheden af dig",
+        "explore": "udforske",
+        "trend": "TREND NU",
+        "search": "Søge",
+        "places": "STED",
+        "tourismPackages": "Turisme Pakker",
+        "myAccount": "Min Konto",
+        "loginToContinue": "Venligst, log ind for at fortsætte"
+    },
+    "buttons": {
+        "startTrip": "Start Din Rejse",
+        "showMore": "عرض المزيد",
+        "login": "Login",
+        "replace": "Erstatte",
+        "moreDetails": "Flere Detaljer",
+        "saveTrip": "Gem din rejse",
+        "bookNow": "Book Nu",
+        "register": "Registrere",
+        "showMenu": "Vis Menuen",
+        "update": "Opdatering",
+        "addRate": "Tilføj Sats",
+        "goToHome": "Gå Hjem",
+        "send": "Sende",
+        "saveYourData": "Gem dine data"
+    },
+    "entries": {
+        "trend": "Trend Nu",
+        "discount": "Rabat",
+        "tourism": "Turisme Pakker"
+    },
+    "place": {
+        "about": "Om",
+        "menu": "Menu",
+        "location": "Beliggenhed",
+        "getDiscount": "Få rabat",
+        "contact": "Kontaktnummer"
+    },
+    "tripModal": {
+        "create": "Opret Din",
+        "trip": "Tur",
+        "myLocation": "Min Nuværende Placering",
+        "date": "Dato",
+        "tripDuration": "Turens Varighed",
+        "WhoComing": "Hvem kommer med dig?",
+        "solo": "Solo",
+        "family": "Familie",
+        "friends": "Venner",
+        "doYouHaveBudget": "Har du et budget?",
+        "howMuchBudget": "Hvor meget dit budget?",
+        "yourBudget": "Dit Budget?",
+        "howSpendTime": "Hvordan vil du bruge din tid?",
+        "tagsPlaceHolder": "Spa, Shopping",
+        "adults": "Voksne",
+        "children": "Barn",
+        "other": "Andre",
+        "tripName": "Rejsens Navn"
+    },
+    "common": {
+        "yes": "Ja",
+        "no": "Ingen",
+        "cancel": "Annullere",
+        "prev": "Tidligere",
+        "next": "Næste",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Anbefalet",
+        "male": "Mandlig",
+        "female": "Kvindelig",
+        "day": "Dag",
+        "all": "Alle",
+        "open": "åbne",
+        "openAt": "åben kl",
+        "from": "Fra",
+        "to": "At"
+    },
+    "errors": {
+        "tagsError": "Vælg Venligst Tags Først",
+        "wrongCredentials": "E-mail eller adgangskode er forkert",
+        "The name field is required": "Navn er påkrævet",
+        "The email has already been taken": "Denne e-mail er allerede taget",
+        "The email must be a valid email address": "E-mailen skal være gyldig e-mail-adresse",
+        "The email field is required": "E-mail er påkrævet",
+        "The password field is required": "Adgangskode er påkrævet",
+        "The password confirmation does not match": "Adgangskode stemmer ikke overens",
+        "The mobile has already been taken": "Mobil er allerede taget",
+        "The password must be at least 6 characters": "Adgangskoden skal være mindst 6 tegn",
+        "updateError": "Udfyld venligst dine data",
+        "tripNameRequiredError": "Rejsens navn er påkrævet",
+        "tripNameTakenError": "Rejsens navn er allerede taget"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "Copyright-Deling 2023 Tripty. Alle rettigheder forbeholdes",
+        "termsAndConditions": "Vilkår og betingelser",
+        "privacyPolicy": "Fortrolighedspolitik"
+    },
+    "auth": {
+        "login": "Login",
+        "forgetPassword": "Glem Adgangskode",
+        "loginBy": "Eller Log Ind Af",
+        "registerWithMail": "Nyt Register Via E-Mail",
+        "completeData": "Fuldstændige Data",
+        "enterEmail": "Indtast din e-mail",
+        "enterNewPassword": "Indtast ny adgangskode"
+    },
+    "placeholder": {
+        "name": "Navn",
+        "mobile": "Mobil",
+        "email": "Mail",
+        "password": "Adgangskode",
+        "confirmPassword": "Bekræft Adgangskode",
+        "gender": "Køn",
+        "city": "By",
+        "selectInterests": "Vælg Dine Interesser",
+        "birthdate": "Fødselsdag",
+        "tripName": "Rejsens Navn",
+        "selectTripTime": "Vælg rejsetid"
+    },
+    "noData": {
+        "sorry": "Ked",
+        "noPlaces": "Ingen steder fundet",
+        "noPlace": "Dette sted blev ikke fundet",
+        "noTrip": "Denne rejse blev ikke fundet"
+    },
+    "rate": {
+        "yourRate": "Din pris",
+        "comments": "Kommentar"
+    },
+    "notFound": {
+        "404": "404-Siden Blev Ikke Fundet",
+        "sorry": "Den side, du leder efter, findes desværre ikke."
+    },
+    "sidebar": {
+        "personalData": "personoplysninger",
+        "favorite": "Favorit",
+        "trips": "TRIPS",
+        "notifications": "Meddelelse",
+        "terms": "Vilkår og betingelser",
+        "privacy": "Fortrolighedspolitik",
+        "logout": "Log ud"
+    },
+    "time": {
+        "am": "ER",
+        "pm": "PM"
+    },
+    "trip": {
+        "start": "Start Nyt",
+        "experience": "Erfaring",
+        "text": "Hos os kan du planlægge din rejse i henhold til dit budget, stil osv...",
+        "text1": "Gå ikke glip af udløbet! overlad planlægningen til os og nyd din rejse",
+        "startNow": "START DIN REJSE NU"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "whatsapp": "Hvadapp",
+        "linkedin": "LinkedIn"
+    }
+}

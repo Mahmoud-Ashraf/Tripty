@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "Домой",
+        "about": "О Трипти",
+        "places": "Места",
+        "tourismPackages": "Туристические пакеты",
+        "dialog": "[объектный объект]"
+    },
+    "searchBar": {
+        "placeholder": "Поиск"
+    },
+    "headings": {
+        "startYour": "НАЧНИТЕ СВОЙ",
+        "your": "твой",
+        "trip": "поездка",
+        "discounts": "скидки",
+        "explorePlacesNearYou": "Исследуйте лучшие места рядом с вами",
+        "explore": "исследовать",
+        "trend": "ТЕНДЕНЦИЯ СЕЙЧАС",
+        "search": "Поиск",
+        "places": "места",
+        "tourismPackages": "Туристические пакеты",
+        "myAccount": "Мой аккаунт",
+        "loginToContinue": "Пожалуйста, войдите в систему, чтобы продолжить"
+    },
+    "buttons": {
+        "startTrip": "Начинайте свое путешествие",
+        "showMore": "عرض المزيد",
+        "login": "Авторизоваться",
+        "replace": "Заменять",
+        "moreDetails": "Более подробная информация",
+        "saveTrip": "Сэкономьте свое путешествие",
+        "bookNow": "Закажите прямо сейчас",
+        "register": "Зарегистрировать",
+        "showMenu": "Показать меню",
+        "update": "Обновление",
+        "addRate": "Добавить ставку",
+        "goToHome": "Иди Домой",
+        "send": "Отправить",
+        "saveYourData": "Сохраните ваши данные"
+    },
+    "entries": {
+        "trend": "Тенденция сейчас",
+        "discount": "Скидки",
+        "tourism": "Туристические пакеты"
+    },
+    "place": {
+        "about": "О",
+        "menu": "Меню",
+        "location": "Местоположение",
+        "getDiscount": "Получите скидку",
+        "contact": "Контактный номер"
+    },
+    "tripModal": {
+        "create": "Создайте свой",
+        "trip": "Поездка",
+        "myLocation": "Мое текущее местоположение",
+        "date": "Дата",
+        "tripDuration": "Продолжительность поездки",
+        "WhoComing": "Кто пойдет с тобой?",
+        "solo": "Сольный",
+        "family": "Семья",
+        "friends": "Друзья",
+        "doYouHaveBudget": "Есть ли у вас бюджет?",
+        "howMuchBudget": "Каков ваш бюджет?",
+        "yourBudget": "Ваш бюджет?",
+        "howSpendTime": "Как вы хотите провести свое время?",
+        "tagsPlaceHolder": "Спа, Шопинг",
+        "adults": "Взрослые",
+        "children": "Дети",
+        "other": "Другой",
+        "tripName": "Название поездки"
+    },
+    "common": {
+        "yes": "Да",
+        "no": "Нет",
+        "cancel": "Отменить",
+        "prev": "Предыдущий",
+        "next": "Следующий",
+        "km": "км",
+        "m": "m",
+        "recomended": "Рекомендуемый",
+        "male": "Самец",
+        "female": "Женский",
+        "day": "День",
+        "all": "Все",
+        "open": "открывать",
+        "openAt": "открыто по адресу",
+        "from": "От",
+        "to": "К"
+    },
+    "errors": {
+        "tagsError": "Пожалуйста, сначала выберите теги",
+        "wrongCredentials": "Неверный адрес электронной почты или пароль",
+        "The name field is required": "Требуется имя",
+        "The email has already been taken": "Это электронное письмо уже было отправлено",
+        "The email must be a valid email address": "Адрес электронной почты должен быть действительным",
+        "The email field is required": "Требуется электронная почта",
+        "The password field is required": "Требуется пароль",
+        "The password confirmation does not match": "Пароль не совпадает",
+        "The mobile has already been taken": "Мобильный телефон уже забрали",
+        "The password must be at least 6 characters": "Пароль должен содержать не менее 6 символов",
+        "updateError": "Пожалуйста, заполните свои данные",
+        "tripNameRequiredError": "Требуется указать название поездки",
+        "tripNameTakenError": "Название поездки уже выбрано"
+    },
+    "currencies": {
+        "sar": "сар"
+    },
+    "footer": {
+        "copyRights": "Авторское право © 2023 Tripty. Все права защищены",
+        "termsAndConditions": "Условия и положения",
+        "privacyPolicy": "Политика конфиденциальности"
+    },
+    "auth": {
+        "login": "Авторизоваться",
+        "forgetPassword": "Забыли пароль",
+        "loginBy": "Или Войдите в систему с помощью",
+        "registerWithMail": "Новая регистрация по электронной почте",
+        "completeData": "Полные данные",
+        "enterEmail": "Введите свой адрес электронной почты",
+        "enterNewPassword": "Введите новый пароль"
+    },
+    "placeholder": {
+        "name": "Имя",
+        "mobile": "Мобильный",
+        "email": "Электронная почта",
+        "password": "Пароль",
+        "confirmPassword": "Подтвердите пароль",
+        "gender": "Пол",
+        "city": "Город",
+        "selectInterests": "Выберите свои интересы",
+        "birthdate": "Дата рождения",
+        "tripName": "Название поездки",
+        "selectTripTime": "Выберите время поездки"
+    },
+    "noData": {
+        "sorry": "Извините",
+        "noPlaces": "Мест не найдено",
+        "noPlace": "Это место не найдено",
+        "noTrip": "Эта поездка не найдена"
+    },
+    "rate": {
+        "yourRate": "Ваша ставка",
+        "comments": "Комментарии"
+    },
+    "notFound": {
+        "404": "404 - Страница не найдена",
+        "sorry": "Извините, страница, которую вы ищете, не существует."
+    },
+    "sidebar": {
+        "personalData": "личные данные",
+        "favorite": "Любимый",
+        "trips": "поездки",
+        "notifications": "Уведомления",
+        "terms": "условия и положения",
+        "privacy": "политика конфиденциальности",
+        "logout": "выход"
+    },
+    "time": {
+        "am": "АМ",
+        "pm": "после полудня"
+    },
+    "trip": {
+        "start": "Начать все сначала",
+        "experience": "Опыт",
+        "text": "С нами вы можете спланировать свою поездку в соответствии с вашим бюджетом, стилем и т.д...",
+        "text1": "Не пропустите мероприятие! предоставьте планирование нам и наслаждайтесь поездкой",
+        "startNow": "НАЧНИТЕ СВОЕ ПУТЕШЕСТВИЕ ПРЯМО СЕЙЧАС"
+    },
+    "social": {
+        "facebook": "Фейсбук",
+        "twitter": "Твиттер",
+        "whatsapp": "WhatsApp",
+        "linkedin": "сеть LinkedIn"
+    }
+}

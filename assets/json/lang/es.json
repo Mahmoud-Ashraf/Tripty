@@ -1,0 +1,177 @@
+{
+    "header": {
+        "home": "Inicio",
+        "about": "Acerca de Tripty",
+        "places": "Lugares",
+        "tourismPackages": "Paquetes Turísticos",
+        "dialog": "[objeto Objeto]"
+    },
+    "searchBar": {
+        "placeholder": "Buscar"
+    },
+    "headings": {
+        "startYour": "COMIENCE SU",
+        "your": "SU",
+        "trip": "VIAJE",
+        "discounts": "DESCUENTOS",
+        "explorePlacesNearYou": "Explore los mejores lugares cerca de usted",
+        "explore": "explora",
+        "trend": "TENDENCIA AHORA",
+        "search": "Buscar",
+        "places": "LUGARES",
+        "tourismPackages": "Paquetes Turísticos",
+        "myAccount": "Mi Cuenta",
+        "loginToContinue": "Por favor, Inicie sesión para continuar"
+    },
+    "buttons": {
+        "startTrip": "Comience Su Viaje",
+        "showMore": "عرض المزيد",
+        "login": "Iniciar sesión",
+        "replace": "Reemplazar",
+        "moreDetails": "Más Detalles",
+        "saveTrip": "Guarde su viaje",
+        "bookNow": "Reserve Ahora",
+        "register": "Registrarse",
+        "showMenu": "Mostrar El Menú",
+        "update": "Actualización",
+        "addRate": "Añadir tarifa",
+        "goToHome": "Ir A Inicio",
+        "send": "Enviar",
+        "saveYourData": "Guarde sus datos"
+    },
+    "entries": {
+        "trend": "Tendencia Ahora",
+        "discount": "Descuentos",
+        "tourism": "Paquetes Turísticos"
+    },
+    "place": {
+        "about": "Acerca de",
+        "menu": "Menú",
+        "location": "Ubicación",
+        "getDiscount": "Obtenga el Descuento",
+        "contact": "Número de contacto"
+    },
+    "tripModal": {
+        "create": "Crea Tu",
+        "trip": "Viaje",
+        "myLocation": "Mi Ubicación Actual",
+        "date": "Fecha",
+        "tripDuration": "Duración del Viaje",
+        "WhoComing": "¿Quién viene contigo?",
+        "solo": "Solo",
+        "family": "Familia",
+        "friends": "Amigos",
+        "doYouHaveBudget": "¿Tienes presupuesto?",
+        "howMuchBudget": "¿Cuánto es su presupuesto?",
+        "yourBudget": "¿Su Presupuesto?",
+        "howSpendTime": "¿Cómo quieres pasar tu tiempo?",
+        "tagsPlaceHolder": "Spa, Compras",
+        "adults": "Adultos",
+        "children": "Niños",
+        "other": "Otros",
+        "tripName": "Nombre del Viaje"
+    },
+    "common": {
+        "yes": "Sí",
+        "no": "No",
+        "cancel": "Cancelar",
+        "prev": "Anterior",
+        "next": "Siguiente",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Recomendado",
+        "male": "Masculino",
+        "female": "Femenino",
+        "day": "Día",
+        "all": "Todos",
+        "open": "abierto",
+        "openAt": "abierto a las",
+        "from": "Desde",
+        "to": "Para"
+    },
+    "errors": {
+        "tagsError": "Por Favor, Seleccione Las Etiquetas Primero",
+        "wrongCredentials": "El correo electrónico o la contraseña son incorrectos",
+        "The name field is required": "Se Requiere Nombre",
+        "The email has already been taken": "Este correo electrónico ya ha sido recibido",
+        "The email must be a valid email address": "El correo electrónico debe ser una dirección de correo electrónico válida",
+        "The email field is required": "Se Requiere Correo electrónico",
+        "The password field is required": "Se Requiere Contraseña",
+        "The password confirmation does not match": "La contraseña no coincide",
+        "The mobile has already been taken": "El móvil ya ha sido tomado",
+        "The password must be at least 6 characters": "La contraseña debe tener al menos 6 caracteres",
+        "updateError": "Por favor, Complete sus datos",
+        "tripNameRequiredError": "Se requiere el nombre del viaje",
+        "tripNameTakenError": "El nombre del viaje ya está tomado"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "Copyright © 2023 Tripty. Todos los derechos reservados",
+        "termsAndConditions": "Términos y condiciones",
+        "privacyPolicy": "Política de privacidad"
+    },
+    "auth": {
+        "login": "Iniciar sesión",
+        "forgetPassword": "Olvida la Contraseña",
+        "loginBy": "O Inicie Sesión Por",
+        "registerWithMail": "Nuevo Registro Por Correo Electrónico",
+        "completeData": "Datos Completos",
+        "enterEmail": "Ingrese su correo electrónico",
+        "enterNewPassword": "Introduzca una nueva contraseña"
+    },
+    "placeholder": {
+        "name": "Nombre",
+        "mobile": "Móvil",
+        "email": "Correo Electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar Contraseña",
+        "gender": "Género",
+        "city": "Ciudad",
+        "selectInterests": "Seleccione Sus Intereses",
+        "birthdate": "Fecha de nacimiento",
+        "tripName": "Nombre del Viaje",
+        "selectTripTime": "Seleccione la hora del viaje"
+    },
+    "noData": {
+        "sorry": "Disculpe...",
+        "noPlaces": "No se han encontrado lugares",
+        "noPlace": "Este lugar no se encuentra",
+        "noTrip": "Este viaje no se encontró"
+    },
+    "rate": {
+        "yourRate": "Su tarifa",
+        "comments": "Comentarios"
+    },
+    "notFound": {
+        "404": "404-Página No Encontrada",
+        "sorry": "Lo sentimos, la página que estás buscando no existe."
+    },
+    "sidebar": {
+        "personalData": "Datos Personales",
+        "favorite": "Favorito",
+        "trips": "viajes",
+        "notifications": "Notificaciones",
+        "terms": "Términos y Condiciones",
+        "privacy": "Política de Privacidad",
+        "logout": "cerrar sesión"
+    },
+    "time": {
+        "am": "AM",
+        "pm": "PM"
+    },
+    "trip": {
+        "start": "Empezar de Nuevo",
+        "experience": "Experiencia",
+        "text": "Con nosotros puedes programar tu viaje de acuerdo a tu presupuesto, estilo, etc...",
+        "text1": "¡No te pierdas la expirencia! déjanos la planificación a nosotros y disfruta de tu viaje",
+        "startNow": "COMIENCE SU VIAJE AHORA"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "En Twitter",
+        "whatsapp": "Mensajes de WhatsApp",
+        "linkedin": "LinkedIn"
+    }
+}
