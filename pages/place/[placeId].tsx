@@ -120,7 +120,7 @@ const PlacePage = (props: Props) => {
                     {
                         showMenuModal &&
                         <CustomModal onOutsideClick={() => setShowMenuModal(false)} onClose={() => setShowMenuModal(false)}>
-                            <MenuModal link={place?.menu_pdf || place?.menu} type={place?.menu_pdf ? 'pdf' : 'link'} />
+                            <MenuModal data={place?.menu_images?.length > 0 ? place?.menu_images : place?.menu && place?.menu} type={place?.menu_images.length > 0 ? 'images' : 'link'} logo={place.logo} name={place.name} />
                         </CustomModal>
                     }
                     {
@@ -242,7 +242,7 @@ const PlacePage = (props: Props) => {
                                         <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
                                         <p className={classes.aboutText}>{place?.about}</p>
                                     </div>}
-                                    {(place?.menu || place?.menu_pdf) && <div className={classes.menu}>
+                                    {(place?.menu || place?.menu_images.length > 0) && <div className={classes.menu}>
                                         <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
                                         <button onClick={() => setShowMenuModal(true)} className={classes.menuLink}><Translate id='buttons.showMenu' /></button>
                                     </div>}

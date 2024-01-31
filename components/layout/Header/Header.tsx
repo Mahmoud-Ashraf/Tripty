@@ -102,7 +102,7 @@ const Header = () => {
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
                 <Link href={'/tourism-packages'}><Translate id={'header.tourismPackages'} /></Link>
                 <Link href={''} onClick={openModal}><Translate id='buttons.startTrip' /></Link>
-                <Dropdown>
+                <Dropdown className={classes.dropdown}>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                         <i className="fa-solid fa-bars fa-xl text-main"></i>
                     </Dropdown.Toggle>

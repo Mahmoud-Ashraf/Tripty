@@ -18,7 +18,7 @@ export interface Place {
     city?: { id: number, name: string, code: string | null }
     lat?: string,
     long?: string,
-    logo?: string,
+    logo: string,
     booking_link?: string,
     featured_image: string,
     is_favoritable: boolean,
@@ -28,7 +28,8 @@ export interface Place {
     is_recommended: boolean,
     offer: Offer,
     distance: string,
-    videos: any[] 
+    videos: any[]
     sub_cats: any[],
+    menu_images: string[],
     menu_pdf: string
 }
