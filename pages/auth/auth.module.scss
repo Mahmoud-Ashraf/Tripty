@@ -10,10 +10,14 @@
 }
 
 .innerContainer {
-    width: max(300px, 80vw);
+    width: 80vw;
     display: flex;
     gap: 0;
     height: 80vh;
+
+    @media screen and (max-width: 1024px) {
+        width: 90vw;
+    }
 }
 
 .carousel {
@@ -22,6 +26,13 @@
     img {
         width: 100%;
         min-height: 100%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        display: 60%;
+    }
+    @media screen and (max-width: 768px) {
+        display: none;
     }
 }
 
@@ -41,6 +52,14 @@
     align-items: center;
     flex-direction: column;
     gap: 3rem;
+
+    @media screen and (max-width: 1024px) {
+        width: 40%;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 
     .registerForm {
         height: 100%;

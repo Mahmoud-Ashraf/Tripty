@@ -39,8 +39,9 @@ const TimeRangeSlider = () => {
     useEffect(() => {
         if (formatDateToYYYYMMDD(new Date(tripData.date)) === formatDateToYYYYMMDD(new Date())) {
             const currentHour = new Date().getHours();
+            const currentMinutes = new Date().getMinutes();
             if (currentHour >= TIME_SLIDER_AFTER_HOURS) {
-                dispatch(timeSliderActions.changeTimeSliderData({ min: (currentHour + 1) * MINTUES_IN_HOUR }));
+                dispatch(timeSliderActions.changeTimeSliderData({ min: ((currentHour + 1) * MINTUES_IN_HOUR) + currentMinutes + (10 - currentMinutes % 10) }));
             } else {
                 dispatch(timeSliderActions.resetTimeSliderData());
             }
