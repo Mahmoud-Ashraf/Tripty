@@ -20,6 +20,7 @@ import HomeTrip from "@/components/HomeTrip/HomeTrip";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Loader from "@/components/UI/Loader/Loader";
+import Search from "@/components/UI/Search/Search";
 
 interface Props {
    sliders: Slider[] | [],
@@ -102,6 +103,8 @@ const Home = (props: Props) => {
          </Head>
          {isLoading && <Loader full />}
          <HomeSlider sliders={newSliders} />
+
+         <Search from={'home'} />
 
          <SectionHeader title="headings.explore" />
          <HomeEntryPoints />

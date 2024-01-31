@@ -86,7 +86,7 @@ const HomeTabs = (props: Props) => {
                                                 tabPlaces?.length > 0 ?
                                                     tabPlaces?.map(place => {
                                                         return (
-                                                            <div key={place?.id} className="col-md-6 col-lg-4">
+                                                            <div key={place?.id} className="col-sm-6 col-lg-4">
                                                                 <Card place={place} />
                                                             </div>
                                                         )
