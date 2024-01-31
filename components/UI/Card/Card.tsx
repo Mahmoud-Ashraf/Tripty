@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Place } from '@/interfaces/place';
 import Image from 'next/image';
 import Translate from '@/components/helpers/Translate/Translate';
+import { useEffect } from 'react';
 const Card = ({ place, isTourism = false }: { place: Place | undefined, isTourism?: boolean }) => {
 
     const cutAboutWords = (text: string, wordsCount: number) => {
@@ -18,6 +19,10 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
         }
         return newText;
     }
+
+    useEffect(() => {
+        console.log('window width: ', window?.innerWidth);
+    }, [window?.innerWidth])
 
     return (
         place && <Link href={isTourism ? `tourism-package/${place.id}` : `/place/${place.id}`} className={classes.container}>
@@ -49,10 +54,7 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
                                 :
                                 ''
                         }
-                        {place.distance && !isTourism && <span className={classes.distance}>{place.distance}
-                            {/* <Translate id='common.km' /> */}
-                        </span>}
-                        {/* {place.is_recommended && <span className={classes.recomendedText}><Translate id='common.recomended' /></span>} */}
+                        {place.distance && !isTourism && window?.innerWidth > 768 && <span className={classes.distance}>{place.distance}</span>}
                     </div>
                     <div className={classes.recomended}>
                         {

@@ -1,5 +1,6 @@
 .home-tabs {
     margin-bottom: 4rem;
+
     .nav-tabs {
         justify-content: center;
         border-bottom: none;
@@ -23,6 +24,23 @@
                 border-bottom: 5px solid $tabs-active-border-color;
                 color: $tabs-active-color;
                 background-color: transparent;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .nav-tabs {
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: 0;
+            align-items: baseline;
+            .nav-item {
+                white-space: nowrap;
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
             }
         }
     }

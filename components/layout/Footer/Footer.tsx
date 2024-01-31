@@ -9,6 +9,10 @@ const Footer = () => {
         <div className={classes.data}>
             <div className={classes.logo}>
                 <Image loading='lazy' alt='Tripty Logo' src={logo} />
+                <div className={classes.downloadApp}>
+                    <img src='/assets/images/app_store.svg' alt='download app from app store' />
+                    <img src='/assets/images/google_play.svg' alt='download app from app store' />
+                </div>
             </div>
             <div className={classes.nav}>
                 <Link href={'/home'}><Translate id={'header.home'} /></Link>

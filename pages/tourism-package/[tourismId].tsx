@@ -186,7 +186,7 @@ const PlacePage = (props: Props) => {
                                                         )
                                                         return (
                                                             <div key={i} className="col">
-                                                                <div className={classes.img}>
+                                                                <div className={classes.img} onClick={() => setShowGalleryModal(true)}>
                                                                     <Image src={img} alt={`${tourismPackage.title} gallery`} rounded fluid />
                                                                 </div>
                                                             </div>
