@@ -15,9 +15,8 @@ import {
 } from 'react-share'
 const ShareButtons = ({ url, title, tags }: any) => {
     const router = useRouter();
-    const twitterHandle = "_MsLinda";
+    // const twitterHandle = "_MsLinda";
     const baseUrl = `${process.env.NEXT_PUBLIC_ORIGIN}${router.locale}`;
-    console.log(baseUrl)
     return (
         <Dropdown.Menu>
             <Dropdown.Item>
