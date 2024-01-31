@@ -20,7 +20,7 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
     }
 
     return (
-        place && <Link href={isTourism ? `tourism-package/1` : `/place/${place.id}`} className={classes.container}>
+        place && <Link href={isTourism ? `tourism-package/${place.id}` : `/place/${place.id}`} className={classes.container}>
             <div className={classes.cover}>
                 <img src={place?.featured_image} alt='card-image' />
                 <div className={classes.placeStatus}>
