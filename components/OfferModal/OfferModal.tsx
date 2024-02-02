@@ -1,10 +1,8 @@
-import useHTTP from '@/hooks/use-http';
 import classes from './offer-modal.module.scss';
-import Slider from 'react-slick';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Translate from '../helpers/Translate/Translate';
-import barcode from '@/public/assets/images/barcode.png';
-import Image from 'next/image';
+import { QRCodeSVG } from 'qrcode.react';
+
 const OfferModal = ({ offer }: { offer: any }) => {
 
     useEffect(() => {
@@ -19,7 +17,8 @@ const OfferModal = ({ offer }: { offer: any }) => {
                             <span>{offer.amount}{offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                         </div>
                         <div className={classes.barcode}>
-                            <Image src={barcode} alt='offer barcodes' />
+                            <QRCodeSVG value={offer.code} />,
+                            {/* <Image src={barcode} alt='offer barcodes' /> */}
                         </div>
                         <div className={classes.conditions} dangerouslySetInnerHTML={{ __html: offer?.conditions }}>
 
