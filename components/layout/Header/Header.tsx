@@ -17,6 +17,7 @@ import { authActions } from '@/store/Auth/Auth';
 import Loader from '@/components/UI/Loader/Loader';
 import { Dropdown } from 'react-bootstrap';
 import Search from '@/components/UI/Search/Search';
+import { subscriptionActions } from '@/store/Subscription/Subscription';
 
 
 const Header = () => {
@@ -27,14 +28,34 @@ const Header = () => {
     const router = useRouter();
     const [selectedLang, setSlectedLang] = useState(router.locale);
     const [showUserDialog, setShowUserDialog] = useState(false);
+    const [subscription, setSubscription] = useState();
     // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-    const openModal = () => {
+    const openModal = async () => {
         if (session?.token) {
-            dispatch(tripActions.openShowTripModal());
+            const subscription: any = await getSubscriptionStatus();
+            if (subscription?.status === 'valid') {
+                dispatch(tripActions.openShowTripModal());
+            } else {
+                // dispatch(subscriptionActions.changeSubscribtionCheck('trip'));
+                dispatch(subscriptionActions.openStartSubscriptionModal());
+            }
         } else {
             dispatch(authActions.openShowAuthModal());
         }
+    }
+
+    const getSubscriptionStatus = async () => {
+        let subscription = null;
+        await sendRequest(
+            {
+                url: '/api/subscription/check',
+                method: 'GET'
+            },
+            (data: any) => subscription = data.subscription,
+            (err: any) => console.error(err)
+        )
+        return subscription;
     }
 
     const getLanguages = () => {
