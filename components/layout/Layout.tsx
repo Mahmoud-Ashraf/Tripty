@@ -8,6 +8,9 @@ import TripModal from '../TripModal/TripModal';
 import { tripActions } from '@/store/Trip/Trip';
 import LoginModal from '../LoginModal/LoginModal';
 import { authActions } from '@/store/Auth/Auth';
+import { RootState } from '@/store';
+import { subscriptionActions } from '@/store/Subscription/Subscription';
+import StartSubscriptionModal from '../StartSubscriptionModal/StartSubscriptionModal';
 
 const Layout = (props: PropsWithChildren) => {
     const dispatch = useDispatch();
@@ -17,6 +20,9 @@ const Layout = (props: PropsWithChildren) => {
     const showAuthModal = useSelector((state: any) => {
         return state.auth.showAuthModal;
     });
+    const showSubscriptionModal = useSelector((state: RootState) => {
+        return state.subscription.showStartSubscriptionModal;
+    })
 
     useEffect(() => {
         // Check if the Geolocation API is supported by the browser
@@ -41,12 +47,26 @@ const Layout = (props: PropsWithChildren) => {
 
     return (
         <div className={classes.layout}>
-            {showTripModal && <CustomModal onClose={() => dispatch(tripActions.closeShowTripModal())} onOutsideClick={() => { }}>
-                <TripModal />
-            </CustomModal>}
-            {showAuthModal && <CustomModal onOutsideClick={() => { dispatch(authActions.closeShowAuthModal()) }}>
-                <LoginModal />
-            </CustomModal>}
+            {
+                showTripModal &&
+                <CustomModal onClose={() => dispatch(tripActions.closeShowTripModal())} onOutsideClick={() => { }}>
+                    <TripModal />
+                </CustomModal>
+            }
+            {
+                showAuthModal &&
+                <CustomModal size='sm' onOutsideClick={() => { dispatch(authActions.closeShowAuthModal()) }}>
+                    <LoginModal />
+                </CustomModal>
+            }
+            {
+                showSubscriptionModal &&
+                <CustomModal size='sm'
+                    onOutsideClick={() => { dispatch(subscriptionActions.closeStartSubscriptionModal()) }}
+                    onClose={() => { dispatch(subscriptionActions.closeStartSubscriptionModal()) }}>
+                    <StartSubscriptionModal />
+                </CustomModal>
+            }
             <div className="container-lg container-fluid">
                 <Header />
                 {props.children}

@@ -1,9 +1,7 @@
 import classes from './card.module.scss';
 import Link from 'next/link';
 import { Place } from '@/interfaces/place';
-import Image from 'next/image';
 import Translate from '@/components/helpers/Translate/Translate';
-import { useEffect } from 'react';
 const Card = ({ place, isTourism = false }: { place: Place | undefined, isTourism?: boolean }) => {
 
     const cutAboutWords = (text: string, wordsCount: number) => {
@@ -19,10 +17,6 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
         }
         return newText;
     }
-
-    useEffect(() => {
-        console.log('window width: ', window?.innerWidth);
-    }, [window?.innerWidth])
 
     return (
         place && <Link href={isTourism ? `tourism-package/${place.id}` : `/place/${place.id}`} className={classes.container}>
