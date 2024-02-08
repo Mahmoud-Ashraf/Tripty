@@ -10,11 +10,14 @@ import useHTTP from '@/hooks/use-http';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import Loader from '../UI/Loader/Loader';
+import Paginator from '../UI/Paginator/Paginator';
 interface Props {
     // tabs: Category[],
     trend?: boolean,
     discount?: boolean,
     searchText?: string
+    withPagination?: boolean,
+    pageSize?: number
     // categorizedPlaces: { [categoryName: string]: Place[] },
     // showTitle?: boolean
 }
@@ -29,10 +32,15 @@ const HomeTabs = (props: Props) => {
         // tabs,
         discount,
         trend,
-        searchText = false
+        searchText = false,
+        withPagination = false,
+        pageSize = 40
     } = props;
     const [tabPlaces, setTabPlaces] = useState<Place[]>([]);
     const [newTabs, setNewTabs] = useState<Category[]>([]);
+    const [page, setPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
+    const [perPage, setPerPage] = useState(pageSize);
 
     useEffect(() => {
         if (newTabs?.length > 0) {
@@ -54,10 +62,15 @@ const HomeTabs = (props: Props) => {
     const getTabPlaces = () => {
         fetchPlaces(
             {
-                url: `/api/places/tabplaces?categoryId=${key}${trend ? '&trendNow=1' : ''}${!!searchText ? `&text=${searchText}` : ''}${coords ? `&long=${coords?.longitude}&lat=${coords?.latitude}` : ''}${discount ? '&with_discounts=1' : ''}`,
+                url: `/api/places/tabplaces?categoryId=${key}${trend ? '&trendNow=1' : ''}${!!searchText ? `&text=${searchText}` : ''}${coords ? `&long=${coords?.longitude}&lat=${coords?.latitude}` : ''}${discount ? '&with_discounts=1' : ''}${page ? `&page=${page}` : ''}${perPage ? `&perPage=${perPage}` : ''}`,
                 method: 'GET'
             },
-            (data: any) => setTabPlaces(data.places),
+            (data: any) => {
+                // setPage(data.pagination.current_page);
+                setPerPage(data.pagination.per_page);
+                setLastPage(data.pagination.last_page);
+                setTabPlaces(data.places)
+            },
             (err: any) => setTabPlaces([])
         )
     }
@@ -68,13 +81,13 @@ const HomeTabs = (props: Props) => {
 
     useEffect(() => {
         getTabPlaces();
-    }, [key, searchText])
+    }, [key, searchText, page])
     return (
         <>
             <div className={`home-tabs mt-5`}>
                 {
                     !isTabsLoading && newTabs?.length > 0 &&
-                    <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
+                    <Tabs activeKey={key} onSelect={(k) => { setKey(k); setPage(1) }}>
                         {
                             newTabs?.map(tab => {
                                 return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
@@ -84,13 +97,18 @@ const HomeTabs = (props: Props) => {
                                                 <Loader />
                                                 :
                                                 tabPlaces?.length > 0 ?
-                                                    tabPlaces?.map(place => {
-                                                        return (
-                                                            <div key={place?.id} className="col-sm-6 col-lg-4">
-                                                                <Card place={place} />
-                                                            </div>
-                                                        )
-                                                    })
+                                                    <>
+                                                        {
+                                                            tabPlaces?.map(place => {
+                                                                return (
+                                                                    <div key={place?.id} className="col-sm-6 col-lg-4">
+                                                                        <Card place={place} />
+                                                                    </div>
+                                                                )
+                                                            })
+                                                        }
+                                                        {withPagination && <Paginator lastPage={lastPage} pageSize={perPage} currentPage={page} onPageChange={(e: number) => setPage(e)} />}
+                                                    </>
                                                     :
                                                     <NoData text={translate('noData.noPlaces')} />
                                         }

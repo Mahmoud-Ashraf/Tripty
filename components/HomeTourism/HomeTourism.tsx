@@ -9,14 +9,22 @@ const HomeTourism = () => {
         <>
             <SectionHeader title="entries.tourism" />
             <div className="row mb-5">
-                <div className="col-7">
-                    <TourismCard img={tourism1.src} big />
+                <div className="col-md-7">
+                    <TourismCard
+                        img={tourism1.src}
+                        big />
                 </div>
-                <div className="col-5">
-                    <div className={classes.stacked_images}>
-                        <TourismCard img={tourism2.src} />
-                        <TourismCard img={tourism3.src} />
+                <div className="col-md-5">
+                    <div className="row">
+                        <div className="col-12">
+                            <TourismCard img={tourism2.src} />
+                        </div>
+                        <div className="col-12">
+                            <TourismCard img={tourism3.src} />
+                        </div>
                     </div>
+                    {/* <div className={classes.stacked_images}>
+                    </div> */}
                 </div>
             </div>
         </>

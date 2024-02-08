@@ -15,9 +15,10 @@ import useTranslate from '@/hooks/use-translate';
 import { signOut, useSession } from 'next-auth/react';
 import { authActions } from '@/store/Auth/Auth';
 import Loader from '@/components/UI/Loader/Loader';
-import { Dropdown } from 'react-bootstrap';
+// import { Dropdown } from 'react-bootstrap';
 import Search from '@/components/UI/Search/Search';
 import { subscriptionActions } from '@/store/Subscription/Subscription';
+import Dropdown from '@/components/UI/Dropdown/Dropdown';
 
 
 const Header = () => {
@@ -123,17 +124,37 @@ const Header = () => {
                 <Link href={'/places'}><Translate id={'header.places'} /></Link>
                 <Link href={'/tourism-packages'}><Translate id={'header.tourismPackages'} /></Link>
                 <Link href={''} onClick={openModal}><Translate id='buttons.startTrip' /></Link>
-                <Dropdown className={classes.dropdown}>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown align={'start'} trigger={<i className="fa-solid fa-bars fa-xl text-main"></i>}>
+                    {/* <Dropdown.Toggle variant="success" id="dropdown-basic">
                         <i className="fa-solid fa-bars fa-xl text-main"></i>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1"><Link href={'/home'}><Translate id={'header.home'} /></Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-2"><Link href={'/about'}><Translate id={'header.about'} /></Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-3"><Link href={'/places'}><Translate id={'header.places'} /></Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-3"><Link href={'/tourism-packages'}><Translate id={'header.tourismPackages'} /></Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-3"><Link href={''} onClick={openModal}><Translate id='buttons.startTrip' /></Link></Dropdown.Item>
-                    </Dropdown.Menu>
+                    </Dropdown.Toggle> */}
+                    {/* <Dropdown.Menu> */}
+                    <Link href="/home">
+                        {/* <Link href={'/home'}> */}
+                        <Translate id={'header.home'} />
+                        {/* </Link> */}
+                    </Link>
+                    <Link href="/about">
+                        {/* <Link href={'/about'}> */}
+                        <Translate id={'header.about'} />
+                        {/* </Link> */}
+                    </Link>
+                    <Link href="/places">
+                        {/* <Link href={'/places'}> */}
+                        <Translate id={'header.places'} />
+                        {/* </Link> */}
+                    </Link>
+                    <Link href="/tourism-packages">
+                        {/* <Link href={'/tourism-packages'}> */}
+                        <Translate id={'header.tourismPackages'} />
+                        {/* </Link> */}
+                    </Link>
+                    <Link href="" onClick={openModal}>
+                        {/* <Link href={''} onClick={openModal}> */}
+                        <Translate id='buttons.startTrip' />
+                        {/* </Link> */}
+                    </Link>
+                    {/* </Dropdown.Menu> */}
                 </Dropdown>
             </div>
             <div className={classes.user}>
@@ -147,18 +168,27 @@ const Header = () => {
                         })
                     }
                 </select>
-                {session && <div className={classes.userDialog}>
-                    <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
-                    {
-                        showUserDialog &&
-                        <div className={`ar-right ${classes.userDialogContent}`}>
-                            <Image loading='lazy' alt='user' src={userIcon} />
-                            <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
-                            <button onClick={handleGoToProfile} className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
-                            <button className="btn btn-outline-main" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
-                        </div>
-                    }
-                </div>}
+                {
+                    session &&
+                    <Dropdown direction={'ste'} trigger={<Image loading='lazy' alt='user' src={userIcon} />} >
+                        <Image loading='lazy' alt='user' src={userIcon} />
+                        <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
+                        <button onClick={handleGoToProfile} className="btn btn-outline-main w-100"><Translate id='header.dialog.manage' /></button>
+                        <button className="btn btn-outline-main w-100" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
+                    </Dropdown>
+                    // <div className={classes.userDialog}>
+                    //     <Image onClick={toggleUserDialog} loading='lazy' alt='user' src={userIcon} />
+                    //     {
+                    //         showUserDialog &&
+                    //         <div className={`ar-right ${classes.userDialogContent}`}>
+                    //             <Image loading='lazy' alt='user' src={userIcon} />
+                    //             <p><Translate id='header.dialog.hi' />, {session?.user?.name}</p>
+                    //             <button onClick={handleGoToProfile} className="btn btn-outline-main"><Translate id='header.dialog.manage' /></button>
+                    //             <button className="btn btn-outline-main" onClick={handleLogout}><Translate id='header.dialog.signout' /> <i className="fa-solid fa-right-from-bracket"></i></button>
+                    //         </div>
+                    //     }
+                    // </div>
+                }
             </div>
         </header>
     )

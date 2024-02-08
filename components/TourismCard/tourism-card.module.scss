@@ -12,7 +12,9 @@
 }
 
 .big {
-    height: 100%;
+    @media screen and (min-width: 768px) {
+        height: 100%;
+    }
     /* Adjust the height for the bigger image */
 }
 

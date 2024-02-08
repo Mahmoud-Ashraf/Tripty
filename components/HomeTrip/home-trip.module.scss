@@ -6,6 +6,7 @@
     background-color: $white;
     color: $main-color;
     margin-bottom: 7rem;
+    position: relative;
 }
 
 .details {
@@ -15,14 +16,36 @@
     padding: 0 4rem;
     justify-content: center;
     height: 100%;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-bottom: 2rem;
+    }
 }
 
 .title {
+    @media screen and (max-width: 768px) {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+    }
+
     h3 {
         font-size: 3.5rem;
         text-transform: uppercase;
         font-weight: 800;
         line-height: 1;
+
+        @media screen and (max-width: 1024px) {
+            font-size: 2.5rem;
+        }
     }
 }
 
@@ -44,13 +67,53 @@
 
     .logo {
         position: absolute;
-        top: 3rem;
-        left: 3rem;
+        top: 1rem;
+        left: 0;
+        width: 100%;
         z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 1rem;
+
+        img {
+            max-width: min(40%, 10rem);
+        }
     }
 
     img {
         width: 100%;
         max-height: 360px;
+    }
+}
+
+.btn {
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        bottom: 3rem;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        z-index: 2;
+    }
+
+    button {
+        background-color: $main-color;
+        color: $white;
+
+        &:hover {
+            background-color: $main-color;
+            color: $white;
+        }
+
+        @media screen and (max-width: 767px) {
+            background-color: $white;
+            color: $main-color;
+
+            &:hover {
+                background-color: $white;
+                color: $main-color;
+            }
+        }
     }
 }

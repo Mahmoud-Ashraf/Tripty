@@ -41,7 +41,7 @@ const StartSubscriptionModal = () => {
                         <p className='text-center'><Translate id='subscribe.enjoySubscription' /></p>
                         <div className="d-flex gap-2 align-items-start">
                             <input type='checkbox' className='mt-2' checked={agree} onChange={(e) => setAgree(e.target.checked)} required />
-                            <p><Translate id='subscribe.bySubscription' /> <Link href={'/privacypolicy'} className='text-main'><Translate id='sidebar.privacy' /></Link></p>
+                            <p><Translate id='subscribe.bySubscription' /> <Link href={'/privacypolicy'} target='_blank' className='text-main'><Translate id='sidebar.privacy' /></Link></p>
                         </div>
                     </div>
                     <div className="row justify-content-center">
