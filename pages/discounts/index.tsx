@@ -52,7 +52,7 @@ const Discounts = (props: Props) => {
             <div className={classes.container}>
                 {/* <PlaceHeader name='headings.discounts' /> */}
                 <PageHeading title="headings.discounts" />
-                <HomeTabs discount />
+                <HomeTabs withPagination pageSize={20} discount />
             </div>
         </>
     )

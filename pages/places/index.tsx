@@ -51,7 +51,7 @@ const Places = () => {
             <div>
                 <PageHeading title="headings.places" />
                 <ColorBox>
-                    <HomeTabs />
+                    <HomeTabs withPagination pageSize={20} />
                 </ColorBox>
             </div>
         </>

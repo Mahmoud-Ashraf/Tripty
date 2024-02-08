@@ -76,7 +76,7 @@ const Search = () => {
                 <div className={classes.content}>
                     {
                         // searchTabs && searchCategorizedPlaces &&
-                        <HomeTabs searchText={searchValue} />
+                        <HomeTabs withPagination pageSize={20} searchText={searchValue} />
                     }
                 </div>
             </div>

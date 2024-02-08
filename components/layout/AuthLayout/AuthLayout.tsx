@@ -47,7 +47,7 @@ const AuthLayout = ({ sliders, children, className }: any) => {
             <div className={`${classes.container} ${className}`}>
                 <div className={classes.innerContainer}>
                     <div className={`${classes.carousel} login-slider`}>
-                        {newSliders.length > 0 && <Carousel controls={false} activeIndex={index} onSelect={handleSelect}>
+                        {newSliders?.length > 0 && <Carousel controls={false} activeIndex={index} onSelect={handleSelect}>
                             {
                                 newSliders?.map((slider: Slider) => {
                                     return (

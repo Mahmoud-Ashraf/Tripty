@@ -7,6 +7,7 @@ import { RootState } from '@/store';
 import { useEffect, useState } from 'react';
 import useHTTP from '@/hooks/use-http';
 import Translate from '../helpers/Translate/Translate';
+import Loader from '../UI/Loader/Loader';
 
 const TripModal = () => {
     const { isLoading, error, sendRequest } = useHTTP();
@@ -25,6 +26,8 @@ const TripModal = () => {
         )
         if (subscription?.status === 'valid' && subscription?.can_create_trip) {
             setCanCreateTrip(true);
+        } else {
+            setCanCreateTrip(false);
         }
     }
 
@@ -33,18 +36,23 @@ const TripModal = () => {
     }, [])
     return (
         <>
-            {canCreateTrip ?
-                <div className={classes.container}>
-                    <TripModalHeader />
-                    <div className={classes.steps}>
-                        <TripSteps />
-                    </div>
-                    {step !== 5 && <TripModalFooter />}
-                </div>
-                :
-                <div className={classes.container}>
-                    <p className='fs-5 text-center'><Translate id="subscribe.finished" /></p>
-                </div>
+
+            {
+                isLoading ?
+                    <Loader />
+                    :
+                    canCreateTrip ?
+                        <div className={classes.container}>
+                            <TripModalHeader />
+                            <div className={classes.steps}>
+                                <TripSteps />
+                            </div>
+                            {step !== 5 && <TripModalFooter />}
+                        </div>
+                        :
+                        <div className={classes.container}>
+                            <p className='fs-5 text-center'><Translate id="subscribe.finished" /></p>
+                        </div>
             }
         </>
     )

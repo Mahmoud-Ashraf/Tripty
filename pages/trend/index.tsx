@@ -54,6 +54,7 @@ const Trend = (props: Props) => {
             <div className={classes.container}>
                 <PageHeading title='headings.trend' />
                 <HomeTabs
+                    withPagination pageSize={20}
                     // tabs={newTabs}
                     trend
                 />

@@ -40,14 +40,14 @@
         }
     }
 
-    [class*=dropdown] {
+    [class*=dropdown_toggle] {
         display: none;
     }
 
     @media screen and (max-width: 1200px) {
         order: 0;
 
-        [class*=dropdown] {
+        [class*=dropdown_toggle] {
             display: block;
         }
 

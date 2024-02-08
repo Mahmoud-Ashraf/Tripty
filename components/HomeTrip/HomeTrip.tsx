@@ -24,15 +24,15 @@ const HomeTrip = () => {
                 <div className="col-md-6">
                     <div className={classes.details}>
                         <div className={classes.title}>
-                            <h3><Translate id="trip.start"/></h3>
-                            <h3><Translate id="trip.experience"/></h3>
-                        </div>
-                        <div className={classes.btn}>
-                            <button onClick={openModal} className='btn btn-main'><Translate id="trip.startNow"/></button>
+                            <h3><Translate id="trip.start" /></h3>
+                            <h3><Translate id="trip.experience" /></h3>
                         </div>
                         <div className={classes.desc}>
-                            <p><Translate id="trip.text"/></p>
-                            <p><Translate id="trip.text1"/></p>
+                            <p><Translate id="trip.text" /></p>
+                            <p><Translate id="trip.text1" /></p>
+                        </div>
+                        <div className={classes.btn}>
+                            <button onClick={openModal} className='btn btn-lg px-5'><Translate id="trip.startNow" /></button>
                         </div>
                     </div>
                 </div>

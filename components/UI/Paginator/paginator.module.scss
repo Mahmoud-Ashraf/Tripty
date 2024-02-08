@@ -1,0 +1,43 @@
+@import '@/styles/Utils/variables';
+// .container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: center;
+
+    .page {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: $main-color;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        justify-content: center;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        &.selected {
+            border-radius: 62.4375rem;
+            background: $main-color;
+            color: $white;
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+}
+
+// }
