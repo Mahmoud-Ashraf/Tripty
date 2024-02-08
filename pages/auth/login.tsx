@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import classes from './auth.module.scss';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { signIn, useSession } from "next-auth/react"
 import { Button, Form } from 'react-bootstrap';
 import Translate from '@/components/helpers/Translate/Translate';
@@ -37,11 +37,15 @@ const Login = (props: any) => {
 
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (session) {
             router.push('/home');
         }
     }, [session, router]);
+
+    if (session) {
+        return null;
+    }
 
     return (
         <>

@@ -93,6 +93,10 @@
     font-size: 1rem;
     line-height: 1.5;
     // line-height: 1;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 .specs {
@@ -108,6 +112,10 @@
     justify-content: space-between;
     align-items: baseline;
     font-size: .9rem;
+
+    @media screen and (max-width: 767px) {
+        order: 1;
+    }
 }
 
 .rate {
@@ -133,12 +141,21 @@
 .price {
     font-size: 1.5rem;
     font-weight: 600;
+
+    @media screen and (max-width: 767px) {
+        font-size: .75rem;
+        font-weight: 400;
+    }
 }
 
 .recomended {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 767px) {
+        order: 0;
+    }
 
     &Text {
         background-color: #ffe9d6;

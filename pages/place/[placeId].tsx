@@ -23,6 +23,7 @@ import { RootState } from "@/store";
 import MenuModal from "@/components/MenuModal/MenuModal";
 import OfferModal from "@/components/OfferModal/OfferModal";
 import Loader from "@/components/UI/Loader/Loader";
+import { subscriptionActions } from "@/store/Subscription/Subscription";
 
 interface Props {
     serverPlace: Place,
@@ -82,6 +83,32 @@ const PlacePage = (props: Props) => {
         }
     }
 
+    const handleOfferModal = async () => {
+        if (session?.token) {
+            const subscription: any = await getSubscriptionStatus();
+            if (subscription?.status === 'valid') {
+                setShowOfferModal(true);
+            } else {
+                // dispatch(subscriptionActions.changeSubscribtionCheck('offer'));
+                dispatch(subscriptionActions.openStartSubscriptionModal());
+            }
+        } else {
+            dispatch(authActions.openShowAuthModal());
+        }
+    }
+
+    const getSubscriptionStatus = async () => {
+        let subscription = null;
+        await sendRequest(
+            {
+                url: '/api/subscription/check',
+                method: 'GET'
+            },
+            (data: any) => subscription = data.subscription,
+            (err: any) => console.error(err)
+        )
+        return subscription;
+    }
     useEffect(() => {
         // console.log(place);
         setIsFavorite(place?.is_favoritable);
@@ -120,7 +147,7 @@ const PlacePage = (props: Props) => {
                     {
                         showMenuModal &&
                         <CustomModal onOutsideClick={() => setShowMenuModal(false)} onClose={() => setShowMenuModal(false)}>
-                            <MenuModal link={place?.menu_pdf || place?.menu} type={place?.menu_pdf ? 'pdf' : 'link'} />
+                            <MenuModal data={place?.menu_images?.length > 0 ? place?.menu_images : place?.menu && place?.menu} type={place?.menu_images.length > 0 ? 'images' : 'link'} logo={place.logo} name={place.name} />
                         </CustomModal>
                     }
                     {
@@ -242,7 +269,7 @@ const PlacePage = (props: Props) => {
                                         <h3 className={classes.aboutTitle}><Translate id='place.about' /></h3>
                                         <p className={classes.aboutText}>{place?.about}</p>
                                     </div>}
-                                    {(place?.menu || place?.menu_pdf) && <div className={classes.menu}>
+                                    {(place?.menu || place?.menu_images.length > 0) && <div className={classes.menu}>
                                         <h5 className={classes.menuTitle}><Translate id='place.menu' /></h5>
                                         <button onClick={() => setShowMenuModal(true)} className={classes.menuLink}><Translate id='buttons.showMenu' /></button>
                                     </div>}
@@ -260,7 +287,7 @@ const PlacePage = (props: Props) => {
                                     <div className={classes.cover}>
                                         <div className={classes.photo}>
                                             {place?.featured_image && <Image alt={`${place.name} Cover`} src={place?.featured_image} fluid />}
-                                            {place?.offer && <div className={classes.offer} onClick={() => setShowOfferModal(true)}>
+                                            {place?.offer && <div className={classes.offer} onClick={handleOfferModal}>
                                                 <span>{place.offer.amount}{place.offer.type === "percentage" && '%'}</span> <Translate id='place.getDiscount' />
                                             </div>}
                                             <div className={classes.placeStatus}>

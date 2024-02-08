@@ -186,9 +186,14 @@ $icon-url: "//at.alicdn.com/t/font_r5u29ls31bgldi";
     content: "\e660";
 }
 
+.ar-right {
+    right: 0;
+    left: unset;
+}
+
 html[lang="ar"] {
     .ar-right {
-        right: unset !important;
+        right: unset;
         left: 0;
     }
 }

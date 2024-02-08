@@ -34,16 +34,6 @@
     // @media (min-width: 1400px) {
     //     padding: 5rem;
     // }
-
-    &.sm {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .container {
-            width: min(500px, 100%);
-        }
-    }
 }
 
 .container {
@@ -67,6 +57,10 @@
     position: relative;
     min-width: 70vw;
     max-width: 80vw;
+
+    &.sm {
+        min-width: min(500px, 95vw);
+    }
 }
 
 .close {

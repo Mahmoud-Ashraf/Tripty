@@ -1,7 +1,6 @@
 import classes from './card.module.scss';
 import Link from 'next/link';
 import { Place } from '@/interfaces/place';
-import Image from 'next/image';
 import Translate from '@/components/helpers/Translate/Translate';
 const Card = ({ place, isTourism = false }: { place: Place | undefined, isTourism?: boolean }) => {
 
@@ -20,17 +19,20 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
     }
 
     return (
-        place && <Link href={isTourism ? `tourism-package/1` : `/place/${place.id}`} className={classes.container}>
+        place && <Link href={isTourism ? `tourism-package/${place.id}` : `/place/${place.id}`} className={classes.container}>
             <div className={classes.cover}>
                 <img src={place?.featured_image} alt='card-image' />
-                <div className={classes.placeStatus}>
-                    {
-                        place?.is_open ?
-                            <span style={{ color: '#1fa200' }}><Translate id='common.open' /></span>
-                            :
-                            <span className='text-error' style={{ color: '#1fa200' }}><Translate id='common.openAt' /> {place?.open_at?.slice(0, 5)}</span>
-                    }
-                </div>
+                {
+                    !isTourism &&
+                    <div className={classes.placeStatus}>
+                        {
+                            place?.is_open ?
+                                <span style={{ color: '#1fa200' }}><Translate id='common.open' /></span>
+                                :
+                                <span className='text-error' style={{ color: '#1fa200' }}><Translate id='common.openAt' /> {place?.open_at?.slice(0, 5)}</span>
+                        }
+                    </div>
+                }
                 {place.offer && <div className={classes.offer}>
                     <span>{place.offer.amount}%</span> <Translate id='place.getDiscount' />
                 </div>}
@@ -49,10 +51,7 @@ const Card = ({ place, isTourism = false }: { place: Place | undefined, isTouris
                                 :
                                 ''
                         }
-                        {place.distance && !isTourism && <span className={classes.distance}>{place.distance}
-                            {/* <Translate id='common.km' /> */}
-                        </span>}
-                        {/* {place.is_recommended && <span className={classes.recomendedText}><Translate id='common.recomended' /></span>} */}
+                        {place.distance && !isTourism && window?.innerWidth > 768 && <span className={classes.distance}>{place.distance}</span>}
                     </div>
                     <div className={classes.recomended}>
                         {

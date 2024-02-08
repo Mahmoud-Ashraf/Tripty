@@ -35,3 +35,31 @@
     font-weight: 400;
     // text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        background-color: transparent;
+        border: none;
+        gap: .5rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .iconContainer {
+        order: 0;
+        background-color: $white;
+        border: 1px solid $main-color;
+        padding: 1rem;
+        border-radius: .75rem;
+        max-height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title {
+        order: 1;
+        text-align: center;
+    }
+}

@@ -1,0 +1,12 @@
+button.dropdown-toggle {
+    &::after {
+        content: none;
+    }
+
+    // &button {
+    &:active, &.show, &:hover {
+        border: none;
+    }
+
+    // }
+}

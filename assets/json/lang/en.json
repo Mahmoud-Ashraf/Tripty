@@ -177,5 +177,11 @@
         "twitter": "Twitter",
         "whatsapp": "WhatsApp",
         "linkedin": "LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "enjoy free subscription for 3 months from now",
+        "bySubscription": "By subscription you accept",
+        "startFreeSubscription": "start free subscription",
+        "finished": "subscription finished"
     }
 }
