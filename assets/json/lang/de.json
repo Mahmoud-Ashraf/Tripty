@@ -1,0 +1,187 @@
+{
+    "header": {
+        "home": "Startseite",
+        "about": "Über Tripty",
+        "places": "Tze",
+        "tourismPackages": "Touristische Pakete",
+        "dialog": {
+            "hi": "Hi",
+            "manage": "Verwalten Sie Ihr Konto",
+            "signout": "Abmelden"
+        }
+    },
+    "searchBar": {
+        "placeholder": "Suche"
+    },
+    "headings": {
+        "startYour": "STARTEN SIE IHRE",
+        "your": "IHRER",
+        "trip": "REISE",
+        "discounts": "RABATT",
+        "explorePlacesNearYou": "Entdecken Sie die besten Orte in Ihrer Nähe",
+        "explore": "erkunden",
+        "trend": "TREND JETZT",
+        "search": "Suche",
+        "places": "TZE",
+        "tourismPackages": "Touristische Pakete",
+        "myAccount": "Mein Konto",
+        "loginToContinue": "Bitte loggen Sie sich ein, um fortzufahren"
+    },
+    "buttons": {
+        "startTrip": "Beginnen Sie Ihre Reise",
+        "showMore": "عرض المزيد",
+        "login": "Login",
+        "replace": "Ersetzen",
+        "moreDetails": "detaillierter",
+        "saveTrip": "Speichern Sie Ihre Reise",
+        "bookNow": "Jetzt buchen",
+        "register": "Registrieren",
+        "showMenu": "Das Menü anzeigen",
+        "update": "Update",
+        "addRate": "Rate hinzufügen",
+        "goToHome": "Gehe nach Hause",
+        "send": "Senden",
+        "saveYourData": "Speichern Sie Ihre Daten"
+    },
+    "entries": {
+        "trend": "Trend jetzt",
+        "discount": "Rabatt",
+        "tourism": "Touristische Pakete"
+    },
+    "place": {
+        "about": "Über",
+        "menu": "Menü",
+        "location": "Lage",
+        "getDiscount": "Holen Sie sich den Rabatt",
+        "contact": "Kontaktnummer"
+    },
+    "tripModal": {
+        "create": "Erstellen Sie Ihre",
+        "trip": "Reise",
+        "myLocation": "Mein aktueller Standort",
+        "date": "Datum",
+        "tripDuration": "Reisedauer",
+        "WhoComing": "Wer kommt mit dir?",
+        "solo": "Solo",
+        "family": "Familie",
+        "friends": "Freunden",
+        "doYouHaveBudget": "Haben Sie ein Budget?",
+        "howMuchBudget": "Wie hoch ist Ihr Budget?",
+        "yourBudget": "Ihr Budget?",
+        "howSpendTime": "Wie möchten Sie Ihre Zeit verbringen?",
+        "tagsPlaceHolder": "Wellness, Einkaufen",
+        "adults": "Erwachsene",
+        "children": "Kinder",
+        "other": "Andere",
+        "tripName": "Name der Reise"
+    },
+    "common": {
+        "yes": "Ja",
+        "no": "Nein",
+        "cancel": "Stornieren",
+        "prev": "Vorherigen",
+        "next": "Nächsten",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Empfohlen",
+        "male": "Männlich",
+        "female": "Weiblich",
+        "day": "Tag",
+        "all": "Aller",
+        "open": "öffnen",
+        "openAt": "geöffnet um",
+        "from": "Von",
+        "to": "Zu"
+    },
+    "errors": {
+        "tagsError": "Bitte wählen Sie zuerst Tags aus",
+        "wrongCredentials": "E-Mail oder Passwort ist falsch",
+        "The name field is required": "Name ist erforderlich",
+        "The email has already been taken": "Diese E-Mail wurde bereits vergeben",
+        "The email must be a valid email address": "Die E-Mail-Adresse muss eine gültige E-Mail-Adresse sein",
+        "The email field is required": "E-Mail ist erforderlich",
+        "The password field is required": "Passwort ist erforderlich",
+        "The password confirmation does not match": "Passwort stimmt nicht überein",
+        "The mobile has already been taken": "Handy wurde bereits vergeben",
+        "The password must be at least 6 characters": "Passwort muss mindestens 6 Zeichen lang sein",
+        "updateError": "Bitte vervollständigen Sie Ihre Daten",
+        "tripNameRequiredError": "Name der Reise ist erforderlich",
+        "tripNameTakenError": "Name der Reise ist bereits vergeben"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "footer": {
+        "copyRights": "Urheberrecht © 2023 Tripty. Alle Rechte vorbehalten",
+        "termsAndConditions": "Allgemeine Geschäftsbedingungen",
+        "privacyPolicy": "Datenschutzerklärung"
+    },
+    "auth": {
+        "login": "Login",
+        "forgetPassword": "Passwort vergessen",
+        "loginBy": "Oder Einloggen per",
+        "registerWithMail": "Neue Registrierung per E-Mail",
+        "completeData": "Vollständige Daten",
+        "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein",
+        "enterNewPassword": "Neues Passwort eingeben"
+    },
+    "placeholder": {
+        "name": "Name",
+        "mobile": "Mobile",
+        "email": "Email",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "gender": "Geschlecht",
+        "city": "Stadt",
+        "selectInterests": "Wählen Sie Ihre Interessen aus",
+        "birthdate": "Geburtsdatum",
+        "tripName": "Name der Reise",
+        "selectTripTime": "Reisezeit auswählen"
+    },
+    "noData": {
+        "sorry": "Entschuldigung...",
+        "noPlaces": "Keine Orte gefunden",
+        "noPlace": "Dieser Ort wurde nicht gefunden",
+        "noTrip": "Diese Reise wurde nicht gefunden"
+    },
+    "rate": {
+        "yourRate": "Ihre Rate",
+        "comments": "Kommentare"
+    },
+    "notFound": {
+        "404": "404 - Seite nicht gefunden",
+        "sorry": "Entschuldigung, die von Ihnen gesuchte Seite existiert nicht."
+    },
+    "sidebar": {
+        "personalData": "Personaldaten",
+        "favorite": "Favorit",
+        "trips": "Ausfl",
+        "notifications": "Benachrichtigung",
+        "terms": "Allgemeine Geschäftsbedingungen",
+        "privacy": "Datenschutzerklärung",
+        "logout": "abmelden"
+    },
+    "time": {
+        "am": "UHR",
+        "pm": "UHR"
+    },
+    "trip": {
+        "start": "Neu anfangen",
+        "experience": "Erfahrung",
+        "text": "Bei uns können Sie Ihre Reise nach Ihrem Budget, Stil usw. planen...",
+        "text1": "Verpassen Sie nicht die Erfahrung! überlassen Sie die Planung uns und genießen Sie Ihre Reise",
+        "startNow": "BEGINNEN SIE IHRE REISE JETZT"
+    },
+    "social": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "whatsapp": "WhatsApp-Nachrichten",
+        "linkedin": "LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "genießen Sie ab sofort ein kostenloses Abonnement für 3 Monate",
+        "bySubscription": "Mit dem Abonnement akzeptieren Sie",
+        "startFreeSubscription": "kostenloses Abonnement starten",
+        "finished": "abonnement beendet"
+    }
+}

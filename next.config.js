@@ -5,7 +5,7 @@ const nextConfig = {
     return config;
   },
   i18n: {
-    locales: ['en', 'ar'],
+    locales: ['en', 'ar', 'da', 'de', 'es', 'fr', 'ja', 'ru', 'ur', 'zh'],
     defaultLocale: 'ar',
     localeDetection: false,
   },
