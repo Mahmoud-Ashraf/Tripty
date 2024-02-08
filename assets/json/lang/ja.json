@@ -177,5 +177,11 @@
         "twitter": "ツイッター",
         "whatsapp": "WhatsApp",
         "linkedin": "リンクトイン"
+    },
+    "subscribe": {
+        "enjoySubscription": "今から3ヶ月間無料購読をお楽しみください",
+        "bySubscription": "購読することにより、あなたは受け入れます",
+        "startFreeSubscription": "無料購読開始",
+        "finished": "購読終了"
     }
 }

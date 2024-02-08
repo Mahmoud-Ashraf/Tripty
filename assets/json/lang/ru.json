@@ -177,5 +177,11 @@
         "twitter": "Твиттер",
         "whatsapp": "WhatsApp",
         "linkedin": "сеть LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "наслаждайтесь бесплатной подпиской в течение 3 месяцев с этого момента",
+        "bySubscription": "По подписке вы принимаете",
+        "startFreeSubscription": "начните бесплатную подписку",
+        "finished": "подписка завершена"
     }
 }

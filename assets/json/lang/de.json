@@ -177,5 +177,11 @@
         "twitter": "Twitter",
         "whatsapp": "WhatsApp-Nachrichten",
         "linkedin": "LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "genießen Sie ab sofort ein kostenloses Abonnement für 3 Monate",
+        "bySubscription": "Mit dem Abonnement akzeptieren Sie",
+        "startFreeSubscription": "kostenloses Abonnement starten",
+        "finished": "abonnement beendet"
     }
 }

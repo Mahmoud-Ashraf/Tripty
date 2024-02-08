@@ -177,5 +177,11 @@
         "twitter": "ٹویٹر",
         "whatsapp": "واٹس ایپ",
         "linkedin": "لنکڈین"
+    },
+    "subscribe": {
+        "enjoySubscription": "اب سے 3 ماہ کے لئے مفت سبسکرپشن کا لطف اٹھائیں",
+        "bySubscription": "سبسکرپشن کے ذریعہ آپ قبول کرتے ہیں",
+        "startFreeSubscription": "مفت سبسکرپشن شروع کریں",
+        "finished": "سبسکرپشن ختم"
     }
 }

@@ -177,5 +177,11 @@
         "twitter": "Twitter",
         "whatsapp": "Hvadapp",
         "linkedin": "LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "nyd gratis abonnement i 3 måneder fra nu",
+        "bySubscription": "Ved abonnement accepterer du",
+        "startFreeSubscription": "start gratis abonnement",
+        "finished": "abonnement afsluttet"
     }
 }

@@ -177,5 +177,11 @@
         "twitter": "推特",
         "whatsapp": "WhatsApp的",
         "linkedin": "领英"
+    },
+    "subscribe": {
+        "enjoySubscription": "从现在起免费订阅3个月",
+        "bySubscription": "通过订阅您接受",
+        "startFreeSubscription": "开始免费订阅",
+        "finished": "订阅已完成"
     }
 }

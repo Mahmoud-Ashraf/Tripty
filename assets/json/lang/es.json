@@ -177,5 +177,11 @@
         "twitter": "En Twitter",
         "whatsapp": "Mensajes de WhatsApp",
         "linkedin": "LinkedIn"
+    },
+    "subscribe": {
+        "enjoySubscription": "disfrute de una suscripción gratuita durante 3 meses a partir de ahora",
+        "bySubscription": "Por suscripción aceptas",
+        "startFreeSubscription": "iniciar suscripción gratuita",
+        "finished": "suscripción finalizada"
     }
 }
