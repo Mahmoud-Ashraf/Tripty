@@ -67,8 +67,8 @@ const HomeTabs = (props: Props) => {
             },
             (data: any) => {
                 // setPage(data.pagination.current_page);
-                setPerPage(data.pagination.per_page);
-                setLastPage(data.pagination.last_page);
+                setPerPage(data.pagination?.per_page);
+                setLastPage(data.pagination?.last_page);
                 setTabPlaces(data.places)
             },
             (err: any) => setTabPlaces([])
@@ -107,7 +107,7 @@ const HomeTabs = (props: Props) => {
                                                                 )
                                                             })
                                                         }
-                                                        {withPagination && <Paginator lastPage={lastPage} pageSize={perPage} currentPage={page} onPageChange={(e: number) => setPage(e)} />}
+                                                        {withPagination && <Paginator lastPage={lastPage} currentPage={page} onPageChange={(e: number) => setPage(e)} />}
                                                     </>
                                                     :
                                                     <NoData text={translate('noData.noPlaces')} />
