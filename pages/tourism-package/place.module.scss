@@ -215,3 +215,52 @@
         color: #484848;
     }
 }
+
+.program {
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        height: 3rem;
+
+        span {
+            &.dot {
+                // flex: 1;
+                width: .7rem;
+                height: .7rem;
+                border-radius: 50%;
+                background-color: $main-color;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 1px;
+                    background-color: $main-color;
+                    height: 3rem;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            &:first-child {
+                flex: 3;
+            }
+
+            &:last-child {
+                flex: 7;
+            }
+        }
+
+        &:last-child {
+            span {
+                &.dot {
+                    &::before {
+                        content: unset;
+                    }
+                }
+            }
+        }
+    }
+}

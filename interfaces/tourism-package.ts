@@ -18,6 +18,6 @@ export interface TourismPackage {
     is_recommended: boolean,
     // offer: Offer,
     discount: number,
-    program: string,
+    program: { [key: string]: string },
     sub_cats: any[]
 }

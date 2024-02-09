@@ -201,8 +201,21 @@ const PlacePage = (props: Props) => {
                                         <p className={classes.aboutText}>{tourismPackage?.about}</p>
                                     </div>}
                                     {tourismPackage?.program && <div className={`${classes.about} mt-5`}>
-                                        {/* <h3 className={classes.aboutTitle}>Travel itinerary</h3> */}
-                                        <div dangerouslySetInnerHTML={{ __html: tourismPackage?.program }} />
+                                        <h3 className={classes.aboutTitle}>Travel itinerary</h3>
+                                        <div className={classes.program}>
+                                            {
+                                                Object.keys(tourismPackage?.program).map(key => {
+                                                    return (
+                                                        <div key={key} className={classes.item}>
+                                                            <span>{key}</span>
+                                                            <span className={classes.dot}></span>
+                                                            <span>{tourismPackage.program[key]}</span>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        {/* <div dangerouslySetInnerHTML={{ __html: tourismPackage?.program }} /> */}
                                     </div>}
                                 </div>
                                 <div className="col-md-6">
