@@ -54,7 +54,7 @@ const HomeTabs = (props: Props) => {
                 url: `/api/categories`,
                 method: 'GET'
             },
-            (data: Category[]) => setNewTabs([{ name: translate('common.all'), id: 0, icon: '' }, ...data]),
+            (data: Category[]) => setNewTabs([{ name: 'all', id: 0, icon: '' }, ...data]),
             (err: any) => console.error(err)
         )
     }
@@ -90,7 +90,7 @@ const HomeTabs = (props: Props) => {
                     <Tabs activeKey={key} onSelect={(k) => { setKey(k); setPage(1) }}>
                         {
                             newTabs?.map(tab => {
-                                return <Tab key={tab.id} eventKey={tab.id} title={tab.name}>
+                                return <Tab key={tab.id} eventKey={tab.id} title={tab.name === 'all' ? translate('common.all') : tab.name}>
                                     <div className="row g-4">
                                         {
                                             isPlacesLoading ?
