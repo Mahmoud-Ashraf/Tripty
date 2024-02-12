@@ -54,7 +54,7 @@ const Favorite = () => {
                                             }
                                         </div>
                                         <div className={classes.cardDetails}>
-                                            <p>{trip?.name || `trip ${trip?.date} from ${trip?.start_at} to ${trip?.end_at} @ ${trip?.city?.name}`}</p>
+                                            <h2>{trip?.name || `trip ${trip?.date} from ${trip?.start_at} to ${trip?.end_at} @ ${trip?.city?.name}`}</h2>
                                         </div>
                                     </div>
                                 )

@@ -2,14 +2,14 @@ import classes from './tourism-card.module.scss';
 interface Props {
     img: string,
     children?: any,
-    big?: boolean
+    big?: boolean,
+    onClick?: () => void
 }
-const TourismCard = (props: Props) => {
-    const { img, children, big } = props;
+const TourismCard = ({ img, children, big, onClick }: Props) => {
     const cardClass = big ? `${classes.container} ${classes.big}` : classes.container;
 
     return (
-        <div className={cardClass} style={{ backgroundImage: `url(${img})` }}>
+        <div className={cardClass} onClick={onClick} style={{ backgroundImage: `url(${img})` }}>
             {children}
         </div>
     )
