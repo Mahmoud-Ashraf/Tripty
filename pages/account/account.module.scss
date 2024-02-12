@@ -7,6 +7,15 @@
     align-items: center;
     padding: 4rem;
     cursor: pointer;
+
+
+    @media screen and (max-width: 1024px) {
+        padding: 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1.5rem;
+    }
 }
 
 .cardCover {
@@ -16,6 +25,15 @@
     flex: 2;
     border-radius: 1rem;
     overflow: hidden;
+
+
+    @media screen and (max-width: 1024px) {
+        flex: 3;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex: 5;
+    }
 }
 
 .cardDetails {

@@ -1,20 +1,36 @@
 .container {
     width: 100%;
-    height: 222px;
+    height: 14rem;
+    min-height: 14rem;
     background-size: 100% 100%;
     background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     max-height: 100%;
     border-radius: 1rem;
     background-repeat: no-repeat;
+    color: #FFF;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
 }
 
 .big {
     @media screen and (min-width: 768px) {
         height: 100%;
+        // min-height: 30rem;
     }
+
     /* Adjust the height for the bigger image */
 }
 
