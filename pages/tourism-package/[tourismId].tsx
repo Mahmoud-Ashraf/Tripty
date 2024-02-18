@@ -201,20 +201,30 @@ const PlacePage = (props: Props) => {
                                         <p className={classes.aboutText}>{tourismPackage?.about}</p>
                                     </div>}
                                     {tourismPackage?.program && <div className={`${classes.about} mt-5`}>
-                                        <h3 className={classes.aboutTitle}>Travel itinerary</h3>
-                                        <div className={classes.program}>
-                                            {
-                                                Object.keys(tourismPackage?.program).map(key => {
-                                                    return (
-                                                        <div key={key} className={classes.item}>
-                                                            <span>{key}</span>
-                                                            <span className={classes.dot}></span>
-                                                            <span>{tourismPackage.program[key]}</span>
+                                        {/* <h3 className={classes.aboutTitle}>Travel itinerary</h3> */}
+                                        {
+                                            Object.keys(tourismPackage?.program).map(day => {
+                                                return (
+                                                    <>
+                                                        <h3 className={classes.aboutTitle}>{day}</h3>
+                                                        <div className={classes.program}>
+                                                            {
+                                                                Object.entries(tourismPackage?.program[day]).map(([time, value]) => {
+                                                                    return (
+                                                                        <div key={time} className={classes.item}>
+                                                                            <span>{time}</span>
+                                                                            <span className={classes.dot}></span>
+                                                                            <span>{value}</span>
+                                                                        </div>
+                                                                    )
+                                                                })
+                                                            }
                                                         </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                        {/* </div> */}
                                         {/* <div dangerouslySetInnerHTML={{ __html: tourismPackage?.program }} /> */}
                                     </div>}
                                 </div>
